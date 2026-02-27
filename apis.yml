@@ -1,0 +1,105 @@
+name: Microsoft Endpoint Configuration Management
+description: 'Microsoft Endpoint Configuration Management (formerly System Center Configuration Manager) provides comprehensive management of devices and applications across an enterprise. It enables IT administrators to manage PCs, servers, and mobile devices, deploy software, manage compliance, and protect data.
+
+  '
+image: https://docs.microsoft.com/en-us/mem/configmgr/core/media/configmgr-logo.png
+url: https://docs.microsoft.com/en-us/mem/configmgr/
+created: '2024'
+modified: '2024'
+specificationVersion: '0.18'
+tags:
+- endpoint management
+- device management
+- configuration management
+- mobile device management
+- software deployment
+- compliance
+- patch management
+apis:
+- name: Configuration Manager REST API
+  description: 'REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries.
+
+    '
+  image: https://docs.microsoft.com/en-us/mem/configmgr/core/media/configmgr-logo.png
+  humanURL: https://docs.microsoft.com/en-us/mem/configmgr/develop/core/understand/configuration-manager-rest-api
+  baseURL: https://{siteserver}/AdminService
+  tags:
+  - REST API
+  - admin service
+  - WMI
+  properties:
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/mem/configmgr/develop/adminservice/overview
+  - type: OpenAPI
+    url: https://{siteserver}/AdminService/v1.0/$metadata
+  - type: Authentication
+    url: https://docs.microsoft.com/en-us/mem/configmgr/develop/adminservice/authenticate
+- name: Configuration Manager PowerShell Cmdlets
+  description: 'PowerShell module for Configuration Manager automation and scripting, providing cmdlets for all major management tasks.
+
+    '
+  humanURL: https://docs.microsoft.com/en-us/powershell/sccm/overview
+  tags:
+  - PowerShell
+  - automation
+  - scripting
+  properties:
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/powershell/sccm/overview
+  - type: Getting Started
+    url: https://docs.microsoft.com/en-us/mem/configmgr/core/servers/manage/admin-console
+  - type: Cmdlet Reference
+    url: https://docs.microsoft.com/en-us/powershell/module/configurationmanager/
+- name: Configuration Manager SDK
+  description: 'Software Development Kit for extending and integrating with Configuration Manager, including WMI providers, class schemas, and programming interfaces.
+
+    '
+  humanURL: https://docs.microsoft.com/en-us/mem/configmgr/develop/core/misc/system-center-configuration-manager-sdk
+  tags:
+  - SDK
+  - WMI
+  - development
+  properties:
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/mem/configmgr/develop/
+  - type: Code Samples
+    url: https://docs.microsoft.com/en-us/mem/configmgr/develop/core/understand/configuration-manager-programming-fundamentals
+  - type: Class Schema
+    url: https://docs.microsoft.com/en-us/mem/configmgr/develop/reference/configuration-manager-reference
+- name: Microsoft Intune Graph API
+  description: 'Microsoft Graph API endpoints for Intune integration with Configuration Manager, enabling co-management scenarios and cloud-based device management.
+
+    '
+  humanURL: https://docs.microsoft.com/en-us/graph/api/resources/intune-graph-overview
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Microsoft Graph
+  - Intune
+  - co-management
+  - cloud
+  properties:
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/intune-graph-overview
+  - type: API Reference
+    url: https://docs.microsoft.com/en-us/graph/api/resources/intune-devices-manageddevice
+  - type: Authentication
+    url: https://docs.microsoft.com/en-us/graph/auth/
+common:
+- type: Portal
+  url: https://endpoint.microsoft.com/
+- type: Getting Started
+  url: https://docs.microsoft.com/en-us/mem/configmgr/core/understand/introduction
+- type: Blog
+  url: https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/bg-p/MicrosoftEndpointManagerBlog
+- type: Support
+  url: https://docs.microsoft.com/en-us/mem/get-support
+- type: Status
+  url: https://status.azure.com/
+- type: Privacy Policy
+  url: https://privacy.microsoft.com/
+- type: Terms of Service
+  url: https://www.microsoft.com/licensing/terms/
+maintainers:
+- FN: Microsoft
+  email: support@microsoft.com
+  url: https://www.microsoft.com/
