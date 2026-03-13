@@ -1,0 +1,297 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "microsoft": "https://graph.microsoft.com/v1.0/$metadata#",
+    "intune": "https://graph.microsoft.com/v1.0/deviceManagement/",
+    "configmgr": "https://learn.microsoft.com/en-us/intune/configmgr/develop/reference/",
+    "odata": "http://docs.oasis-open.org/odata/ns/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "ManagedDevice": {
+      "@id": "microsoft:managedDevice",
+      "@context": {
+        "id": "@id",
+        "deviceName": "name",
+        "operatingSystem": "operatingSystem",
+        "osVersion": "microsoft:osVersion",
+        "manufacturer": "manufacturer",
+        "model": "model",
+        "serialNumber": "serialNumber",
+        "userId": {
+          "@id": "microsoft:userId",
+          "@type": "xsd:string"
+        },
+        "managedDeviceOwnerType": {
+          "@id": "microsoft:managedDeviceOwnerType",
+          "@type": "xsd:string"
+        },
+        "enrolledDateTime": {
+          "@id": "microsoft:enrolledDateTime",
+          "@type": "xsd:dateTime"
+        },
+        "lastSyncDateTime": {
+          "@id": "microsoft:lastSyncDateTime",
+          "@type": "xsd:dateTime"
+        },
+        "complianceState": {
+          "@id": "microsoft:complianceState",
+          "@type": "xsd:string"
+        },
+        "managementAgent": {
+          "@id": "microsoft:managementAgent",
+          "@type": "xsd:string"
+        },
+        "deviceEnrollmentType": {
+          "@id": "microsoft:deviceEnrollmentType",
+          "@type": "xsd:string"
+        },
+        "emailAddress": {
+          "@id": "microsoft:emailAddress",
+          "@type": "xsd:string"
+        },
+        "azureADDeviceId": {
+          "@id": "microsoft:azureADDeviceId",
+          "@type": "xsd:string"
+        },
+        "isSupervised": {
+          "@id": "microsoft:isSupervised",
+          "@type": "xsd:boolean"
+        },
+        "isEncrypted": {
+          "@id": "microsoft:isEncrypted",
+          "@type": "xsd:boolean"
+        },
+        "userPrincipalName": {
+          "@id": "microsoft:userPrincipalName",
+          "@type": "xsd:string"
+        },
+        "imei": {
+          "@id": "microsoft:imei",
+          "@type": "xsd:string"
+        },
+        "phoneNumber": {
+          "@id": "telephone",
+          "@type": "xsd:string"
+        },
+        "wiFiMacAddress": {
+          "@id": "microsoft:wiFiMacAddress",
+          "@type": "xsd:string"
+        },
+        "totalStorageSpaceInBytes": {
+          "@id": "microsoft:totalStorageSpaceInBytes",
+          "@type": "xsd:long"
+        },
+        "freeStorageSpaceInBytes": {
+          "@id": "microsoft:freeStorageSpaceInBytes",
+          "@type": "xsd:long"
+        },
+        "physicalMemoryInBytes": {
+          "@id": "microsoft:physicalMemoryInBytes",
+          "@type": "xsd:long"
+        }
+      }
+    },
+
+    "DeviceCompliancePolicy": {
+      "@id": "microsoft:deviceCompliancePolicy",
+      "@context": {
+        "id": "@id",
+        "displayName": "name",
+        "description": "description",
+        "createdDateTime": {
+          "@id": "dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "lastModifiedDateTime": {
+          "@id": "dateModified",
+          "@type": "xsd:dateTime"
+        },
+        "version": {
+          "@id": "version",
+          "@type": "xsd:integer"
+        },
+        "assignments": {
+          "@id": "microsoft:assignments",
+          "@container": "@set"
+        },
+        "scheduledActionsForRule": {
+          "@id": "microsoft:scheduledActionsForRule",
+          "@container": "@set"
+        },
+        "deviceStatuses": {
+          "@id": "microsoft:deviceStatuses",
+          "@container": "@set"
+        },
+        "userStatuses": {
+          "@id": "microsoft:userStatuses",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "MobileApp": {
+      "@id": "microsoft:mobileApp",
+      "@context": {
+        "id": "@id",
+        "displayName": "name",
+        "description": "description",
+        "publisher": "publisher",
+        "developer": "microsoft:developer",
+        "owner": "microsoft:owner",
+        "createdDateTime": {
+          "@id": "dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "lastModifiedDateTime": {
+          "@id": "dateModified",
+          "@type": "xsd:dateTime"
+        },
+        "isFeatured": {
+          "@id": "microsoft:isFeatured",
+          "@type": "xsd:boolean"
+        },
+        "privacyInformationUrl": {
+          "@id": "microsoft:privacyInformationUrl",
+          "@type": "@id"
+        },
+        "informationUrl": {
+          "@id": "url",
+          "@type": "@id"
+        },
+        "notes": {
+          "@id": "microsoft:notes",
+          "@type": "xsd:string"
+        },
+        "publishingState": {
+          "@id": "microsoft:publishingState",
+          "@type": "xsd:string"
+        },
+        "categories": {
+          "@id": "microsoft:categories",
+          "@container": "@set"
+        },
+        "assignments": {
+          "@id": "microsoft:assignments",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "DeviceConfiguration": {
+      "@id": "microsoft:deviceConfiguration",
+      "@context": {
+        "id": "@id",
+        "displayName": "name",
+        "description": "description",
+        "createdDateTime": {
+          "@id": "dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "lastModifiedDateTime": {
+          "@id": "dateModified",
+          "@type": "xsd:dateTime"
+        },
+        "version": {
+          "@id": "version",
+          "@type": "xsd:integer"
+        },
+        "assignments": {
+          "@id": "microsoft:assignments",
+          "@container": "@set"
+        },
+        "deviceStatuses": {
+          "@id": "microsoft:deviceStatuses",
+          "@container": "@set"
+        },
+        "userStatuses": {
+          "@id": "microsoft:userStatuses",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "ConfigMgrCollection": {
+      "@id": "configmgr:SMS_Collection",
+      "@context": {
+        "CollectionID": "@id",
+        "Name": "name",
+        "Comment": "description",
+        "CollectionType": {
+          "@id": "configmgr:CollectionType",
+          "@type": "xsd:integer"
+        },
+        "MemberCount": {
+          "@id": "configmgr:MemberCount",
+          "@type": "xsd:integer"
+        },
+        "LimitToCollectionID": {
+          "@id": "configmgr:LimitToCollectionID",
+          "@type": "xsd:string"
+        },
+        "LastRefreshTime": {
+          "@id": "configmgr:LastRefreshTime",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "ConfigMgrApplication": {
+      "@id": "configmgr:SMS_Application",
+      "@context": {
+        "CI_ID": "@id",
+        "LocalizedDisplayName": "name",
+        "LocalizedDescription": "description",
+        "Manufacturer": "manufacturer",
+        "SoftwareVersion": "softwareVersion",
+        "DateCreated": {
+          "@id": "dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "DateLastModified": {
+          "@id": "dateModified",
+          "@type": "xsd:dateTime"
+        },
+        "IsDeployed": {
+          "@id": "configmgr:IsDeployed",
+          "@type": "xsd:boolean"
+        },
+        "IsSuperseded": {
+          "@id": "configmgr:IsSuperseded",
+          "@type": "xsd:boolean"
+        }
+      }
+    },
+
+    "DataWarehouseDevice": {
+      "@id": "intune:dataWarehouseDevice",
+      "@context": {
+        "deviceKey": "@id",
+        "deviceName": "name",
+        "operatingSystem": "operatingSystem",
+        "manufacturer": "manufacturer",
+        "model": "model",
+        "serialNumber": "serialNumber",
+        "osVersion": {
+          "@id": "microsoft:osVersion",
+          "@type": "xsd:string"
+        },
+        "enrolledDateTime": {
+          "@id": "microsoft:enrolledDateTime",
+          "@type": "xsd:dateTime"
+        },
+        "lastSyncDateTime": {
+          "@id": "microsoft:lastSyncDateTime",
+          "@type": "xsd:dateTime"
+        },
+        "complianceState": {
+          "@id": "microsoft:complianceState",
+          "@type": "xsd:string"
+        },
+        "dateKey": {
+          "@id": "intune:dateKey",
+          "@type": "xsd:integer"
+        }
+      }
+    }
+  }
+}

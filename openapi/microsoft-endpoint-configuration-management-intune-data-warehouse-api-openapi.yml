@@ -1,0 +1,774 @@
+openapi: 3.1.0
+info:
+  title: Intune Data Warehouse API
+  description: >-
+    OData-based REST API that provides access to Intune reporting data in a
+    machine-readable format. Enables building custom reports and analytics for
+    enterprise mobile environment insights. Uses OData v4.0 protocol with
+    standard patterns for request/response headers, status codes, HTTP methods,
+    URL conventions, and query options. Data is sampled daily to provide a
+    historical view of the mobile device environment.
+  version: 1.0.0
+  contact:
+    name: Microsoft Intune Support
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
+  license:
+    name: Microsoft API License
+    url: https://learn.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
+servers:
+  - url: https://fef.{location}.manage.microsoft.com/ReportingService/DataWarehouseFEService
+    description: Intune Data Warehouse endpoint
+    variables:
+      location:
+        default: msua06
+        description: >-
+          Location identifier found in the Data Warehouse API blade in the
+          Microsoft Intune admin center.
+security:
+  - oauth2: []
+paths:
+  /devices:
+    get:
+      operationId: listDevices
+      summary: List device records
+      description: >-
+        Retrieve historical device records from the Data Warehouse. Returns
+        daily snapshots of device properties including enrollment status,
+        compliance state, and OS information.
+      tags:
+        - Devices
+      parameters:
+        - $ref: '#/components/parameters/apiVersion'
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/maxhistorydays'
+      responses:
+        '200':
+          description: Successful response returning device records.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Device'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /dates:
+    get:
+      operationId: listDates
+      summary: List date dimension records
+      description: >-
+        Retrieve date dimension records used to correlate facts over time
+        dimensions. Provides date keys with associated calendar attributes.
+      tags:
+        - Dates
+      parameters:
+        - $ref: '#/components/parameters/apiVersion'
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successful response returning date records.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DateEntity'
+  /users:
+    get:
+      operationId: listUsers
+      summary: List user records
+      description: >-
+        Retrieve user dimension records from the Data Warehouse. Provides
+        historical snapshots of user information associated with device
+        enrollments.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/apiVersion'
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/maxhistorydays'
+      responses:
+        '200':
+          description: Successful response returning user records.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+  /devicePropertyHistories:
+    get:
+      operationId: listDevicePropertyHistories
+      summary: List device property histories
+      description: >-
+        Retrieve historical device property snapshots. Contains daily snapshots
+        of device-level data for the configured history window.
+      tags:
+        - Devices
+      parameters:
+        - $ref: '#/components/parameters/apiVersion'
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/maxhistorydays'
+      responses:
+        '200':
+          description: Successful response returning device property history.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DevicePropertyHistory'
+  /policies:
+    get:
+      operationId: listPolicies
+      summary: List policy records
+      description: >-
+        Retrieve compliance and configuration policy records from the Data
+        Warehouse.
+      tags:
+        - Policies
+      parameters:
+        - $ref: '#/components/parameters/apiVersion'
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successful response returning policy records.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Policy'
+  /policyDeviceActivities:
+    get:
+      operationId: listPolicyDeviceActivities
+      summary: List policy device activities
+      description: >-
+        Retrieve policy device activity records showing device compliance
+        status against policies over time.
+      tags:
+        - Policies
+      parameters:
+        - $ref: '#/components/parameters/apiVersion'
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/maxhistorydays'
+      responses:
+        '200':
+          description: Successful response returning policy device activities.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PolicyDeviceActivity'
+  /policyUserActivities:
+    get:
+      operationId: listPolicyUserActivities
+      summary: List policy user activities
+      description: >-
+        Retrieve policy user activity records showing user compliance
+        status against policies over time.
+      tags:
+        - Policies
+      parameters:
+        - $ref: '#/components/parameters/apiVersion'
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/maxhistorydays'
+      responses:
+        '200':
+          description: Successful response returning policy user activities.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PolicyUserActivity'
+  /applications:
+    get:
+      operationId: listApplications
+      summary: List application records
+      description: >-
+        Retrieve application inventory records from the Data Warehouse
+        including discovered and managed applications.
+      tags:
+        - Applications
+      parameters:
+        - $ref: '#/components/parameters/apiVersion'
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successful response returning application records.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Application'
+  /mobileAppInstallStatuses:
+    get:
+      operationId: listMobileAppInstallStatuses
+      summary: List mobile app install statuses
+      description: >-
+        Retrieve mobile application installation status records.
+      tags:
+        - Applications
+      parameters:
+        - $ref: '#/components/parameters/apiVersion'
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/maxhistorydays'
+      responses:
+        '200':
+          description: Successful response returning install statuses.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/MobileAppInstallStatus'
+  /userDeviceAssociations:
+    get:
+      operationId: listUserDeviceAssociations
+      summary: List user-device associations
+      description: >-
+        Retrieve records mapping users to their associated devices.
+      tags:
+        - User Device Associations
+      parameters:
+        - $ref: '#/components/parameters/apiVersion'
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/maxhistorydays'
+      responses:
+        '200':
+          description: Successful response returning user-device associations.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/UserDeviceAssociation'
+  /intuneManagementExtensions:
+    get:
+      operationId: listIntuneManagementExtensions
+      summary: List Intune management extension records
+      description: >-
+        Retrieve Intune management extension activity records including
+        script execution results.
+      tags:
+        - Management Extensions
+      parameters:
+        - $ref: '#/components/parameters/apiVersion'
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/maxhistorydays'
+      responses:
+        '200':
+          description: Successful response returning management extension records.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/IntuneManagementExtension'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: >-
+        OAuth 2.0 via Microsoft Entra ID. Requires Intune service administrator
+        role or role-based access to the Intune data warehouse resource.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes:
+            https://api.manage.microsoft.com/.default: Access Intune Data Warehouse
+  parameters:
+    apiVersion:
+      name: api-version
+      in: query
+      required: true
+      description: >-
+        API version. Use 'v1.0' for stable or 'beta' for preview features.
+      schema:
+        type: string
+        enum:
+          - v1.0
+          - beta
+        default: v1.0
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
+    skip:
+      name: $skip
+      in: query
+      description: Number of items to skip.
+      schema:
+        type: integer
+    filter:
+      name: $filter
+      in: query
+      description: >-
+        OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC
+        may be supported for filtering depending on the collection.
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include.
+      schema:
+        type: string
+    maxhistorydays:
+      name: maxhistorydays
+      in: query
+      description: >-
+        Maximum number of days of history to retrieve. Only takes effect
+        for collections that include dateKey as part of their key property.
+      schema:
+        type: integer
+        default: 7
+  schemas:
+    Device:
+      type: object
+      description: >-
+        Device entity representing a snapshot of device properties in the
+        Data Warehouse.
+      properties:
+        deviceKey:
+          type: integer
+          description: Unique identifier of the device in the Data Warehouse.
+        deviceId:
+          type: string
+          description: Unique identifier of the device.
+        deviceName:
+          type: string
+          description: Name of the device.
+        deviceType:
+          type: string
+          description: Type of device.
+        operatingSystem:
+          type: string
+          description: Operating system of the device.
+        osVersion:
+          type: string
+          description: Operating system version.
+        ownerType:
+          type: string
+          description: >-
+            Type of owner (company, personal, unknown).
+        enrolledDateTime:
+          type: string
+          format: date-time
+          description: Date and time the device was enrolled.
+        lastSyncDateTime:
+          type: string
+          format: date-time
+          description: Last time the device synced with Intune.
+        managementAgent:
+          type: string
+          description: Management agent type.
+        managementState:
+          type: string
+          description: Management state of the device.
+        referenceId:
+          type: string
+          description: Reference identifier for the device in Azure AD.
+        manufacturer:
+          type: string
+          description: Manufacturer of the device.
+        model:
+          type: string
+          description: Model of the device.
+        serialNumber:
+          type: string
+          description: Serial number of the device.
+        isSupervised:
+          type: boolean
+          description: Whether the device is supervised.
+        isEncrypted:
+          type: boolean
+          description: Whether the device is encrypted.
+        dateKey:
+          type: integer
+          description: Date key reference for the snapshot.
+        complianceState:
+          type: string
+          description: Compliance state of the device.
+    DateEntity:
+      type: object
+      description: >-
+        Date dimension entity used to correlate facts over time.
+      properties:
+        dateKey:
+          type: integer
+          description: Unique identifier for the date in YYYYMMDD format.
+        fullDate:
+          type: string
+          format: date
+          description: Full date representation.
+        dayOfWeek:
+          type: integer
+          description: Day of the week (1=Sunday, 7=Saturday).
+        dayOfMonth:
+          type: integer
+          description: Day of the month.
+        dayOfYear:
+          type: integer
+          description: Day of the year.
+        weekOfYear:
+          type: integer
+          description: Week of the year.
+        monthOfYear:
+          type: integer
+          description: Month of the year.
+        calendarQuarter:
+          type: integer
+          description: Calendar quarter.
+        calendarYear:
+          type: integer
+          description: Calendar year.
+    User:
+      type: object
+      description: >-
+        User dimension entity representing user information associated with
+        device enrollments.
+      properties:
+        userKey:
+          type: integer
+          description: Unique identifier of the user in the Data Warehouse.
+        userId:
+          type: string
+          description: Unique identifier of the user.
+        userEmail:
+          type: string
+          description: Email address of the user.
+        userPrincipalName:
+          type: string
+          description: User principal name.
+        displayName:
+          type: string
+          description: Display name of the user.
+        isDeleted:
+          type: boolean
+          description: Whether the user has been deleted.
+        startDateInclusiveUTC:
+          type: string
+          format: date-time
+          description: Start of the record validity period.
+        endDateExclusiveUTC:
+          type: string
+          format: date-time
+          description: End of the record validity period.
+        isCurrent:
+          type: boolean
+          description: Whether this is the current record.
+    DevicePropertyHistory:
+      type: object
+      description: >-
+        Historical snapshot of device properties taken daily.
+      properties:
+        devicePropertyHistoryKey:
+          type: integer
+          description: Unique key for the history record.
+        deviceKey:
+          type: integer
+          description: Reference to the device.
+        dateKey:
+          type: integer
+          description: Date key for this snapshot.
+        deviceName:
+          type: string
+          description: Device name at the time of snapshot.
+        deviceRegistrationStateKey:
+          type: integer
+          description: Device registration state key.
+        complianceStateKey:
+          type: integer
+          description: Compliance state key.
+        osVersion:
+          type: string
+          description: OS version at the time of snapshot.
+        storageTotal:
+          type: integer
+          format: int64
+          description: Total storage in bytes.
+        storageFree:
+          type: integer
+          format: int64
+          description: Free storage in bytes.
+    Policy:
+      type: object
+      description: >-
+        Policy entity representing compliance and configuration policies.
+      properties:
+        policyKey:
+          type: integer
+          description: Unique key for the policy in the Data Warehouse.
+        policyId:
+          type: string
+          description: Unique identifier of the policy.
+        policyName:
+          type: string
+          description: Name of the policy.
+        policyVersion:
+          type: integer
+          description: Version of the policy.
+        isDeleted:
+          type: boolean
+          description: Whether the policy has been deleted.
+        policyTypeKey:
+          type: integer
+          description: Reference to the policy type.
+        policyPlatformKey:
+          type: integer
+          description: Reference to the platform.
+    PolicyDeviceActivity:
+      type: object
+      description: >-
+        Device compliance activity record against a specific policy.
+      properties:
+        dateKey:
+          type: integer
+          description: Date key for the activity.
+        policyKey:
+          type: integer
+          description: Policy key reference.
+        pending:
+          type: integer
+          description: Number of devices pending compliance evaluation.
+        succeeded:
+          type: integer
+          description: Number of devices in compliance.
+        failed:
+          type: integer
+          description: Number of devices out of compliance.
+        error:
+          type: integer
+          description: Number of devices in error state.
+    PolicyUserActivity:
+      type: object
+      description: >-
+        User compliance activity record against a specific policy.
+      properties:
+        dateKey:
+          type: integer
+          description: Date key for the activity.
+        policyKey:
+          type: integer
+          description: Policy key reference.
+        pending:
+          type: integer
+          description: Number of users pending compliance evaluation.
+        succeeded:
+          type: integer
+          description: Number of users in compliance.
+        failed:
+          type: integer
+          description: Number of users out of compliance.
+        error:
+          type: integer
+          description: Number of users in error state.
+    Application:
+      type: object
+      description: >-
+        Application entity from the Data Warehouse inventory.
+      properties:
+        applicationKey:
+          type: integer
+          description: Unique key for the application in the Data Warehouse.
+        applicationId:
+          type: string
+          description: Unique identifier of the application.
+        applicationName:
+          type: string
+          description: Name of the application.
+        applicationVersion:
+          type: string
+          description: Version of the application.
+        applicationPublisher:
+          type: string
+          description: Publisher of the application.
+        isDeleted:
+          type: boolean
+          description: Whether the application record has been deleted.
+    MobileAppInstallStatus:
+      type: object
+      description: >-
+        Mobile application installation status record.
+      properties:
+        dateKey:
+          type: integer
+          description: Date key for the status.
+        deviceKey:
+          type: integer
+          description: Device key reference.
+        userKey:
+          type: integer
+          description: User key reference.
+        applicationKey:
+          type: integer
+          description: Application key reference.
+        installState:
+          type: string
+          description: Installation state.
+        errorCode:
+          type: integer
+          description: Error code if installation failed.
+    UserDeviceAssociation:
+      type: object
+      description: >-
+        Record mapping a user to an associated device.
+      properties:
+        userDeviceAssociationKey:
+          type: integer
+          description: Unique key for the association.
+        userKey:
+          type: integer
+          description: User key reference.
+        deviceKey:
+          type: integer
+          description: Device key reference.
+        createdDate:
+          type: string
+          format: date-time
+          description: Date the association was created.
+    IntuneManagementExtension:
+      type: object
+      description: >-
+        Intune management extension activity record.
+      properties:
+        dateKey:
+          type: integer
+          description: Date key for the record.
+        tenantKey:
+          type: integer
+          description: Tenant key reference.
+        deviceKey:
+          type: integer
+          description: Device key reference.
+        userKey:
+          type: integer
+          description: User key reference.
+        extensionVersionKey:
+          type: integer
+          description: Extension version key.
+        policyKey:
+          type: integer
+          description: Policy key reference.
+        policyTypeKey:
+          type: integer
+          description: Policy type key reference.
+        status:
+          type: string
+          description: Extension execution status.
+    ODataError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+  responses:
+    Unauthorized:
+      description: >-
+        Unauthorized. Microsoft Entra ID authentication with OAuth 2.0 is
+        required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Forbidden:
+      description: >-
+        Forbidden. User must have Intune service administrator role or
+        role-based access to the Intune data warehouse resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+tags:
+  - name: Devices
+    description: Device entity collections and property histories.
+  - name: Dates
+    description: Date dimension for time-based reporting.
+  - name: Users
+    description: User dimension records.
+  - name: Policies
+    description: Policy records and compliance activities.
+  - name: Applications
+    description: Application inventory and install status.
+  - name: User Device Associations
+    description: User-to-device mapping records.
+  - name: Management Extensions
+    description: Intune management extension activities.

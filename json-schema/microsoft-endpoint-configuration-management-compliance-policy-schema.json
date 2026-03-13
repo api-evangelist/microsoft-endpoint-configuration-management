@@ -1,0 +1,320 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/kinlane/microsoft-endpoint-configuration-management/json-schema/microsoft-endpoint-configuration-management-compliance-policy-schema.json",
+  "title": "Device Compliance Policy",
+  "description": "Base class for Compliance policy in Microsoft Intune. Compliance policies are platform-specific and individual per-platform compliance policies inherit from this base type. Represents the deviceCompliancePolicy resource from the Microsoft Graph API.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Key of the entity."
+    },
+    "createdDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "DateTime the object was created.",
+      "readOnly": true
+    },
+    "description": {
+      "type": ["string", "null"],
+      "description": "Admin provided description of the device configuration."
+    },
+    "lastModifiedDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "DateTime the object was last modified.",
+      "readOnly": true
+    },
+    "displayName": {
+      "type": "string",
+      "description": "Admin provided name of the device configuration."
+    },
+    "version": {
+      "type": "integer",
+      "description": "Version of the device configuration.",
+      "readOnly": true
+    },
+    "scheduledActionsForRule": {
+      "type": "array",
+      "description": "The list of scheduled action per rule for this compliance policy. Required when creating per-platform compliance policies.",
+      "items": {
+        "$ref": "#/$defs/DeviceComplianceScheduledActionForRule"
+      }
+    },
+    "deviceStatuses": {
+      "type": "array",
+      "description": "List of per-device compliance statuses.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/$defs/DeviceComplianceDeviceStatus"
+      }
+    },
+    "userStatuses": {
+      "type": "array",
+      "description": "List of per-user compliance statuses.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/$defs/DeviceComplianceUserStatus"
+      }
+    },
+    "deviceStatusOverview": {
+      "$ref": "#/$defs/DeviceComplianceDeviceOverview",
+      "description": "Device compliance devices status overview.",
+      "readOnly": true
+    },
+    "userStatusOverview": {
+      "$ref": "#/$defs/DeviceComplianceUserOverview",
+      "description": "Device compliance users status overview.",
+      "readOnly": true
+    },
+    "deviceSettingStateSummaries": {
+      "type": "array",
+      "description": "Compliance setting state device summary.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/$defs/SettingStateDeviceSummary"
+      }
+    },
+    "assignments": {
+      "type": "array",
+      "description": "The collection of assignments for this compliance policy.",
+      "items": {
+        "$ref": "#/$defs/DeviceCompliancePolicyAssignment"
+      }
+    }
+  },
+  "required": ["displayName"],
+  "$defs": {
+    "DeviceComplianceScheduledActionForRule": {
+      "type": "object",
+      "description": "Scheduled action for a compliance policy rule.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Key of the entity."
+        },
+        "ruleName": {
+          "type": ["string", "null"],
+          "description": "Name of the rule this scheduled action applies to."
+        },
+        "scheduledActionConfigurations": {
+          "type": "array",
+          "description": "The list of scheduled action configurations for this compliance policy.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "gracePeriodHours": {
+                "type": "integer",
+                "description": "Number of hours to wait before enforcing the action."
+              },
+              "actionType": {
+                "type": "string",
+                "description": "Type of action to take.",
+                "enum": ["noAction", "notification", "block", "retire", "wipe", "removeResourceAccessProfiles", "pushNotification"]
+              },
+              "notificationTemplateId": {
+                "type": "string",
+                "description": "Notification template ID to use."
+              },
+              "notificationMessageCCList": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of group IDs to CC the notification message to."
+              }
+            }
+          }
+        }
+      }
+    },
+    "DeviceComplianceDeviceStatus": {
+      "type": "object",
+      "description": "Per-device compliance status.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "deviceDisplayName": {
+          "type": "string",
+          "description": "Device display name."
+        },
+        "status": {
+          "type": "string",
+          "description": "Compliance status of the policy report.",
+          "enum": ["unknown", "notApplicable", "compliant", "remediated", "nonCompliant", "error", "conflict", "notAssigned"]
+        },
+        "lastReportedDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last modified date time of the policy report."
+        },
+        "userPrincipalName": {
+          "type": "string",
+          "description": "User principal name."
+        }
+      }
+    },
+    "DeviceComplianceUserStatus": {
+      "type": "object",
+      "description": "Per-user compliance status.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "userDisplayName": {
+          "type": "string",
+          "description": "User display name."
+        },
+        "devicesCount": {
+          "type": "integer",
+          "description": "Devices count for the user."
+        },
+        "status": {
+          "type": "string",
+          "description": "Compliance status of the policy report.",
+          "enum": ["unknown", "notApplicable", "compliant", "remediated", "nonCompliant", "error", "conflict", "notAssigned"]
+        },
+        "lastReportedDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "userPrincipalName": {
+          "type": "string"
+        }
+      }
+    },
+    "DeviceComplianceDeviceOverview": {
+      "type": "object",
+      "description": "Overview of device compliance status counts.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "pendingCount": {
+          "type": "integer",
+          "description": "Number of pending devices."
+        },
+        "notApplicableCount": {
+          "type": "integer",
+          "description": "Number of not applicable devices."
+        },
+        "successCount": {
+          "type": "integer",
+          "description": "Number of succeeded devices."
+        },
+        "errorCount": {
+          "type": "integer",
+          "description": "Number of error devices."
+        },
+        "failedCount": {
+          "type": "integer",
+          "description": "Number of failed devices."
+        },
+        "lastUpdateDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update time."
+        },
+        "configurationVersion": {
+          "type": "integer",
+          "description": "Version of the policy for that overview."
+        }
+      }
+    },
+    "DeviceComplianceUserOverview": {
+      "type": "object",
+      "description": "Overview of user compliance status counts.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "pendingCount": {
+          "type": "integer"
+        },
+        "notApplicableCount": {
+          "type": "integer"
+        },
+        "successCount": {
+          "type": "integer"
+        },
+        "errorCount": {
+          "type": "integer"
+        },
+        "failedCount": {
+          "type": "integer"
+        },
+        "lastUpdateDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "configurationVersion": {
+          "type": "integer"
+        }
+      }
+    },
+    "SettingStateDeviceSummary": {
+      "type": "object",
+      "description": "Device compliance setting state summary.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "settingName": {
+          "type": "string",
+          "description": "Name of the setting."
+        },
+        "instancePath": {
+          "type": "string",
+          "description": "Name of the InstancePath for the setting."
+        },
+        "compliantDeviceCount": {
+          "type": "integer"
+        },
+        "errorDeviceCount": {
+          "type": "integer"
+        },
+        "conflictDeviceCount": {
+          "type": "integer"
+        },
+        "nonCompliantDeviceCount": {
+          "type": "integer"
+        },
+        "notApplicableDeviceCount": {
+          "type": "integer"
+        },
+        "remediatedDeviceCount": {
+          "type": "integer"
+        },
+        "unknownDeviceCount": {
+          "type": "integer"
+        }
+      }
+    },
+    "DeviceCompliancePolicyAssignment": {
+      "type": "object",
+      "description": "Assignment of a device compliance policy to a group.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "target": {
+          "type": "object",
+          "properties": {
+            "@odata.type": {
+              "type": "string",
+              "description": "Type of target (e.g., #microsoft.graph.groupAssignmentTarget)."
+            },
+            "groupId": {
+              "type": "string",
+              "description": "The group ID for the assignment target."
+            }
+          }
+        }
+      }
+    }
+  }
+}

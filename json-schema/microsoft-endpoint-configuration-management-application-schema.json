@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/kinlane/microsoft-endpoint-configuration-management/json-schema/microsoft-endpoint-configuration-management-application-schema.json",
+  "title": "Mobile Application",
+  "description": "Abstract base class containing the base properties for Intune mobile apps. Represents the mobileApp resource type from the Microsoft Graph API. Platform-specific app types (iOS, Android, Windows, web) inherit from this base type.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Key of the entity. This property is read-only.",
+      "readOnly": true
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The admin provided or imported title of the app."
+    },
+    "description": {
+      "type": ["string", "null"],
+      "description": "The description of the app."
+    },
+    "publisher": {
+      "type": ["string", "null"],
+      "description": "The publisher of the app."
+    },
+    "largeIcon": {
+      "$ref": "#/$defs/MimeContent",
+      "description": "The large icon, to be displayed in the app details and used for upload of the icon."
+    },
+    "createdDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the app was created.",
+      "readOnly": true
+    },
+    "lastModifiedDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the app was last modified.",
+      "readOnly": true
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "description": "The value indicating whether the app is marked as featured by the admin."
+    },
+    "privacyInformationUrl": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "The privacy statement URL."
+    },
+    "informationUrl": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "The more information URL."
+    },
+    "owner": {
+      "type": ["string", "null"],
+      "description": "The owner of the app."
+    },
+    "developer": {
+      "type": ["string", "null"],
+      "description": "The developer of the app."
+    },
+    "notes": {
+      "type": ["string", "null"],
+      "description": "Notes for the app."
+    },
+    "publishingState": {
+      "type": "string",
+      "description": "The publishing state for the app. The app cannot be assigned unless published.",
+      "enum": ["notPublished", "processing", "published"],
+      "readOnly": true
+    },
+    "categories": {
+      "type": "array",
+      "description": "The list of categories for this app.",
+      "items": {
+        "$ref": "#/$defs/MobileAppCategory"
+      }
+    },
+    "assignments": {
+      "type": "array",
+      "description": "The list of group assignments for this mobile app.",
+      "items": {
+        "$ref": "#/$defs/MobileAppAssignment"
+      }
+    }
+  },
+  "required": ["displayName"],
+  "$defs": {
+    "MimeContent": {
+      "type": "object",
+      "description": "Contains properties for a generic MIME content.",
+      "properties": {
+        "type": {
+          "type": ["string", "null"],
+          "description": "The MIME type."
+        },
+        "value": {
+          "type": ["string", "null"],
+          "contentEncoding": "base64",
+          "description": "The byte array content (base64 encoded)."
+        }
+      }
+    },
+    "MobileAppCategory": {
+      "type": "object",
+      "description": "Contains properties for an Intune app category.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Key of the entity."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The name of the app category."
+        },
+        "lastModifiedDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date and time the category was last modified."
+        }
+      }
+    },
+    "MobileAppAssignment": {
+      "type": "object",
+      "description": "A class containing the properties used for Group Assignment of a Mobile App.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Key of the entity."
+        },
+        "intent": {
+          "type": "string",
+          "description": "The install intent defined by the admin.",
+          "enum": ["available", "required", "uninstall", "availableWithoutEnrollment"]
+        },
+        "target": {
+          "$ref": "#/$defs/DeviceAndAppManagementAssignmentTarget",
+          "description": "The target group assignment."
+        },
+        "settings": {
+          "$ref": "#/$defs/MobileAppAssignmentSettings",
+          "description": "The settings for target assignment."
+        }
+      }
+    },
+    "DeviceAndAppManagementAssignmentTarget": {
+      "type": "object",
+      "description": "Base type for assignment targets.",
+      "properties": {
+        "@odata.type": {
+          "type": "string",
+          "description": "Type discriminator for the target type."
+        },
+        "groupId": {
+          "type": "string",
+          "description": "The group ID that is the target of the assignment."
+        }
+      }
+    },
+    "MobileAppAssignmentSettings": {
+      "type": "object",
+      "description": "Abstract class containing properties used to assign a mobile app to a group.",
+      "properties": {
+        "@odata.type": {
+          "type": "string",
+          "description": "Type discriminator for platform-specific settings."
+        }
+      }
+    }
+  }
+}

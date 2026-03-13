@@ -1,0 +1,910 @@
+openapi: 3.1.0
+info:
+  title: Configuration Manager REST API (AdminService)
+  description: >-
+    REST API for managing Configuration Manager resources including collections,
+    deployments, applications, and device queries. The administration service is
+    based on the OData v4 protocol and supports both WMI and versioned OData
+    routes. Class names are case-sensitive.
+  version: 1.0.0
+  contact:
+    name: Microsoft Configuration Manager Support
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  license:
+    name: Microsoft API License
+    url: https://learn.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
+servers:
+  - url: https://{siteserver}/AdminService
+    description: Configuration Manager AdminService endpoint
+    variables:
+      siteserver:
+        default: smsproviderfqdn
+        description: >-
+          Fully qualified domain name of the SMS Provider server hosting
+          the administration service.
+security:
+  - windowsAuth: []
+  - oauth2: []
+paths:
+  /wmi/SMS_Device:
+    get:
+      operationId: listDevicesWmi
+      summary: List devices via WMI route
+      description: >-
+        Retrieve a collection of devices managed by Configuration Manager using
+        the WMI route. Supports OData query options for filtering and selecting.
+      tags:
+        - Devices
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/orderby'
+      responses:
+        '200':
+          description: Successful response returning a collection of devices.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '@odata.context':
+                    type: string
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SMS_Device'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /wmi/SMS_R_System:
+    get:
+      operationId: listSystems
+      summary: List systems
+      description: >-
+        Retrieve all discovered system resources, representing computers and
+        devices discovered by Configuration Manager.
+      tags:
+        - Devices
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successful response returning discovered systems.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SMS_R_System'
+  /wmi/SMS_Collection:
+    get:
+      operationId: listCollections
+      summary: List collections
+      description: >-
+        Retrieve all device and user collections defined in Configuration
+        Manager.
+      tags:
+        - Collections
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/orderby'
+      responses:
+        '200':
+          description: Successful response returning collections.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SMS_Collection'
+    post:
+      operationId: createCollection
+      summary: Create a collection
+      description: Create a new device or user collection.
+      tags:
+        - Collections
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SMS_Collection'
+      responses:
+        '201':
+          description: Successfully created collection.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SMS_Collection'
+  /wmi/SMS_Collection('{collectionId}'):
+    get:
+      operationId: getCollection
+      summary: Get a collection
+      description: Retrieve a specific collection by its ID.
+      tags:
+        - Collections
+      parameters:
+        - name: collectionId
+          in: path
+          required: true
+          description: The unique identifier of the collection.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response returning the collection.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SMS_Collection'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /wmi/SMS_Application:
+    get:
+      operationId: listApplications
+      summary: List applications
+      description: >-
+        Retrieve all applications defined in Configuration Manager, including
+        deployment types and content information.
+      tags:
+        - Applications
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/orderby'
+      responses:
+        '200':
+          description: Successful response returning applications.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SMS_Application'
+    post:
+      operationId: createApplication
+      summary: Create an application
+      description: Create a new application in Configuration Manager.
+      tags:
+        - Applications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SMS_Application'
+      responses:
+        '201':
+          description: Successfully created application.
+  /wmi/SMS_Application('{applicationId}'):
+    get:
+      operationId: getApplication
+      summary: Get an application
+      description: Retrieve a specific application by its CI_ID.
+      tags:
+        - Applications
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response returning the application.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SMS_Application'
+  /wmi/SMS_ApplicationDeployment:
+    get:
+      operationId: listDeployments
+      summary: List application deployments
+      description: >-
+        Retrieve all application deployments in Configuration Manager.
+      tags:
+        - Deployments
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successful response returning deployments.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SMS_ApplicationDeployment'
+  /wmi/SMS_Package:
+    get:
+      operationId: listPackages
+      summary: List packages
+      description: Retrieve all legacy packages in Configuration Manager.
+      tags:
+        - Packages
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successful response returning packages.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SMS_Package'
+  /wmi/SMS_TaskSequence:
+    get:
+      operationId: listTaskSequences
+      summary: List task sequences
+      description: >-
+        Retrieve all task sequences used for operating system deployment and
+        other complex workflows.
+      tags:
+        - Task Sequences
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successful response returning task sequences.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SMS_TaskSequence'
+  /wmi/SMS_SoftwareUpdate:
+    get:
+      operationId: listSoftwareUpdates
+      summary: List software updates
+      description: >-
+        Retrieve all software updates known to Configuration Manager.
+      tags:
+        - Software Updates
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successful response returning software updates.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SMS_SoftwareUpdate'
+  /wmi/SMS_Site:
+    get:
+      operationId: listSites
+      summary: List sites
+      description: Retrieve Configuration Manager site information.
+      tags:
+        - Site Administration
+      parameters:
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successful response returning site information.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SMS_Site'
+  /wmi/SMS_BaselineAssignment:
+    get:
+      operationId: listBaselineAssignments
+      summary: List compliance baseline assignments
+      description: >-
+        Retrieve all configuration baseline assignments in Configuration
+        Manager.
+      tags:
+        - Compliance
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successful response returning baseline assignments.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        AssignmentID:
+                          type: integer
+                        AssignmentName:
+                          type: string
+                        TargetCollectionID:
+                          type: string
+                        StartTime:
+                          type: string
+                          format: date-time
+  /v1.0/Device:
+    get:
+      operationId: listDevicesV1
+      summary: List devices (versioned route)
+      description: >-
+        Retrieve devices through the versioned OData v1.0 route which supports
+        new Configuration Manager functionality.
+      tags:
+        - Devices
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successful response returning devices.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Device'
+  /v1.0/Device({deviceId}):
+    get:
+      operationId: getDeviceV1
+      summary: Get a device (versioned route)
+      description: Retrieve a specific device by ID via the versioned route.
+      tags:
+        - Devices
+      parameters:
+        - name: deviceId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response returning the device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+  /v1.0/Collections:
+    get:
+      operationId: listCollectionsV1
+      summary: List collections (versioned route)
+      description: >-
+        Retrieve collections through the versioned OData v1.0 route.
+      tags:
+        - Collections
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successful response returning collections.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SMS_Collection'
+  /v1.0/Scripts:
+    get:
+      operationId: listScripts
+      summary: List scripts
+      description: >-
+        Retrieve all PowerShell scripts available in Configuration Manager
+        for remote execution.
+      tags:
+        - Scripts
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successful response returning scripts.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        ScriptGuid:
+                          type: string
+                        ScriptName:
+                          type: string
+                        Author:
+                          type: string
+                        ApprovalState:
+                          type: string
+                        ScriptType:
+                          type: integer
+components:
+  securitySchemes:
+    windowsAuth:
+      type: http
+      scheme: negotiate
+      description: Windows Integrated Authentication (Kerberos/NTLM).
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via Azure AD for cloud management gateway access.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes: {}
+  parameters:
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression.
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include.
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      description: Order results by a property.
+      schema:
+        type: string
+  schemas:
+    SMS_Device:
+      type: object
+      description: >-
+        Represents a device discovered and managed by Configuration Manager
+        via the WMI route.
+      properties:
+        DeviceID:
+          type: integer
+          description: Unique device identifier.
+        Name:
+          type: string
+          description: Device name.
+        Domain:
+          type: string
+          description: Domain the device belongs to.
+        SMSID:
+          type: string
+          description: SMS unique identifier.
+        IsActive:
+          type: boolean
+          description: Whether the device is currently active.
+        DeviceOS:
+          type: string
+          description: Operating system of the device.
+        DeviceOSVersion:
+          type: string
+          description: Operating system version.
+        DeviceType:
+          type: integer
+          description: Type of device (1=Desktop, 2=Laptop, etc.).
+        IsBlocked:
+          type: boolean
+          description: Whether the device is blocked.
+        LastActiveTime:
+          type: string
+          format: date-time
+          description: Last time the device was active.
+    SMS_R_System:
+      type: object
+      description: >-
+        Represents a discovered system resource (computer or device) in
+        Configuration Manager.
+      properties:
+        ResourceID:
+          type: integer
+          description: Unique resource identifier.
+        Name:
+          type: string
+          description: Computer name.
+        SMSUniqueIdentifier:
+          type: string
+          description: SMS unique identifier.
+        ResourceDomainORWorkgroup:
+          type: string
+          description: Domain or workgroup.
+        Client:
+          type: integer
+          description: Whether the Configuration Manager client is installed (1=yes).
+        Active:
+          type: integer
+          description: Whether the resource is active.
+        IPAddresses:
+          type: array
+          items:
+            type: string
+          description: IP addresses of the system.
+        MACAddresses:
+          type: array
+          items:
+            type: string
+          description: MAC addresses of the system.
+        OperatingSystemNameandVersion:
+          type: string
+          description: Full operating system name and version string.
+        LastLogonUserName:
+          type: string
+          description: Last logged on user name.
+        LastLogonTimestamp:
+          type: string
+          format: date-time
+          description: Last logon timestamp.
+    SMS_Collection:
+      type: object
+      description: >-
+        Represents a device or user collection in Configuration Manager used
+        for targeting deployments and policies.
+      properties:
+        CollectionID:
+          type: string
+          description: Unique collection identifier.
+        Name:
+          type: string
+          description: Collection name.
+        Comment:
+          type: string
+          description: Collection description/comment.
+        CollectionType:
+          type: integer
+          description: Type of collection (1=User, 2=Device).
+        MemberCount:
+          type: integer
+          description: Number of members in the collection.
+        LimitToCollectionID:
+          type: string
+          description: The collection ID that limits membership.
+        LimitToCollectionName:
+          type: string
+          description: Name of the limiting collection.
+        LastRefreshTime:
+          type: string
+          format: date-time
+          description: Last time the collection membership was refreshed.
+        CurrentStatus:
+          type: integer
+          description: Current evaluation status of the collection.
+    SMS_Application:
+      type: object
+      description: >-
+        Represents an application in Configuration Manager with deployment
+        types, requirements, and detection methods.
+      properties:
+        CI_ID:
+          type: integer
+          description: Configuration item ID.
+        CI_UniqueID:
+          type: string
+          description: Unique configuration item identifier.
+        LocalizedDisplayName:
+          type: string
+          description: Display name of the application.
+        LocalizedDescription:
+          type: string
+          description: Description of the application.
+        Manufacturer:
+          type: string
+          description: Application manufacturer/publisher.
+        SoftwareVersion:
+          type: string
+          description: Software version.
+        DateCreated:
+          type: string
+          format: date-time
+          description: Date the application was created.
+        DateLastModified:
+          type: string
+          format: date-time
+          description: Date the application was last modified.
+        IsDeployed:
+          type: boolean
+          description: Whether the application is currently deployed.
+        IsSuperseded:
+          type: boolean
+          description: Whether the application has been superseded.
+        IsLatest:
+          type: boolean
+          description: Whether this is the latest version.
+        NumberOfDeploymentTypes:
+          type: integer
+          description: Number of deployment types.
+        NumberOfDeployments:
+          type: integer
+          description: Number of active deployments.
+    SMS_ApplicationDeployment:
+      type: object
+      description: >-
+        Represents an application deployment assignment in Configuration
+        Manager.
+      properties:
+        AssignmentID:
+          type: integer
+          description: Unique assignment identifier.
+        AssignmentName:
+          type: string
+          description: Name of the deployment.
+        ApplicationName:
+          type: string
+          description: Name of the deployed application.
+        TargetCollectionID:
+          type: string
+          description: Target collection for the deployment.
+        StartTime:
+          type: string
+          format: date-time
+          description: Deployment start time.
+        EnforcementDeadline:
+          type: string
+          format: date-time
+          description: Enforcement deadline.
+        DesiredConfigType:
+          type: integer
+          description: >-
+            Desired configuration type (1=Install, 2=Uninstall).
+        OfferTypeID:
+          type: integer
+          description: >-
+            Offer type (0=Required, 2=Available).
+        Enabled:
+          type: boolean
+          description: Whether the deployment is enabled.
+    SMS_Package:
+      type: object
+      description: Represents a legacy package in Configuration Manager.
+      properties:
+        PackageID:
+          type: string
+          description: Unique package identifier.
+        Name:
+          type: string
+          description: Package name.
+        Description:
+          type: string
+          description: Package description.
+        Manufacturer:
+          type: string
+          description: Manufacturer.
+        Version:
+          type: string
+          description: Package version.
+        SourceDate:
+          type: string
+          format: date-time
+          description: Source content date.
+        PackageType:
+          type: integer
+          description: Type of package.
+    SMS_TaskSequence:
+      type: object
+      description: >-
+        Represents a task sequence used for OS deployment and complex
+        automation workflows.
+      properties:
+        PackageID:
+          type: string
+          description: Task sequence package ID.
+        Name:
+          type: string
+          description: Task sequence name.
+        Description:
+          type: string
+          description: Task sequence description.
+        BootImageID:
+          type: string
+          description: Associated boot image ID.
+        Duration:
+          type: integer
+          description: Estimated duration in minutes.
+        Type:
+          type: integer
+          description: Task sequence type.
+    SMS_SoftwareUpdate:
+      type: object
+      description: >-
+        Represents a software update known to Configuration Manager.
+      properties:
+        CI_ID:
+          type: integer
+          description: Configuration item ID.
+        ArticleID:
+          type: string
+          description: Knowledge base article ID.
+        BulletinID:
+          type: string
+          description: Security bulletin ID.
+        LocalizedDisplayName:
+          type: string
+          description: Display name of the update.
+        LocalizedDescription:
+          type: string
+          description: Description of the update.
+        DatePosted:
+          type: string
+          format: date-time
+          description: Date the update was posted.
+        DateRevised:
+          type: string
+          format: date-time
+          description: Date the update was revised.
+        IsDeployed:
+          type: boolean
+          description: Whether the update is deployed.
+        IsSuperseded:
+          type: boolean
+          description: Whether the update is superseded.
+        NumMissing:
+          type: integer
+          description: Number of systems missing this update.
+        NumPresent:
+          type: integer
+          description: Number of systems with this update installed.
+        SeverityName:
+          type: string
+          description: Severity rating.
+    SMS_Site:
+      type: object
+      description: Represents a Configuration Manager site.
+      properties:
+        SiteCode:
+          type: string
+          description: Three-character site code.
+        SiteName:
+          type: string
+          description: Site name.
+        Type:
+          type: integer
+          description: Site type (1=Secondary, 2=Primary, 4=CAS).
+        Version:
+          type: string
+          description: Site version.
+        BuildNumber:
+          type: string
+          description: Build number.
+        ServerName:
+          type: string
+          description: Site server name.
+        Status:
+          type: integer
+          description: Site status.
+    Device:
+      type: object
+      description: >-
+        Device entity available through the versioned v1.0 OData route of
+        the AdminService.
+      properties:
+        MachineId:
+          type: integer
+          description: Unique machine identifier.
+        Name:
+          type: string
+          description: Device name.
+        Domain:
+          type: string
+          description: Domain.
+        IsActive:
+          type: boolean
+          description: Whether the device is active.
+        LastActiveTime:
+          type: string
+          format: date-time
+          description: Last active time.
+        DeviceOS:
+          type: string
+          description: Operating system.
+        Status:
+          type: string
+          description: Device status.
+        SiteCode:
+          type: string
+          description: Associated site code.
+    ODataError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+  responses:
+    Unauthorized:
+      description: Unauthorized. Authentication is required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Forbidden:
+      description: >-
+        Forbidden. The user account must be an administrative user in
+        Configuration Manager.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    NotFound:
+      description: Not found. The specified resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+tags:
+  - name: Devices
+    description: Query and manage device resources.
+  - name: Collections
+    description: Manage device and user collections.
+  - name: Applications
+    description: Manage Configuration Manager applications.
+  - name: Deployments
+    description: View and manage application deployments.
+  - name: Packages
+    description: Manage legacy software packages.
+  - name: Task Sequences
+    description: Manage OS deployment task sequences.
+  - name: Software Updates
+    description: Query software update information.
+  - name: Compliance
+    description: Manage compliance baselines and settings.
+  - name: Site Administration
+    description: Site configuration and administration.
+  - name: Scripts
+    description: Manage and execute PowerShell scripts.

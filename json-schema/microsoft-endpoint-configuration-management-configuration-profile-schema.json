@@ -1,0 +1,282 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/kinlane/microsoft-endpoint-configuration-management/json-schema/microsoft-endpoint-configuration-management-configuration-profile-schema.json",
+  "title": "Device Configuration Profile",
+  "description": "Device configuration profile in Microsoft Intune. Represents the deviceConfiguration resource type from the Microsoft Graph API. Platform-specific configuration profiles inherit from this base type to define specific settings for Windows, iOS, Android, and macOS devices.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Key of the entity."
+    },
+    "lastModifiedDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "DateTime the object was last modified.",
+      "readOnly": true
+    },
+    "createdDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "DateTime the object was created.",
+      "readOnly": true
+    },
+    "description": {
+      "type": ["string", "null"],
+      "description": "Admin provided description of the device configuration."
+    },
+    "displayName": {
+      "type": "string",
+      "description": "Admin provided name of the device configuration."
+    },
+    "version": {
+      "type": "integer",
+      "description": "Version of the device configuration.",
+      "readOnly": true
+    },
+    "assignments": {
+      "type": "array",
+      "description": "The list of assignments for the device configuration profile.",
+      "items": {
+        "$ref": "#/$defs/DeviceConfigurationAssignment"
+      }
+    },
+    "deviceStatuses": {
+      "type": "array",
+      "description": "Device configuration installation status by device.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/$defs/DeviceConfigurationDeviceStatus"
+      }
+    },
+    "userStatuses": {
+      "type": "array",
+      "description": "Device configuration installation status by user.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/$defs/DeviceConfigurationUserStatus"
+      }
+    },
+    "deviceStatusOverview": {
+      "$ref": "#/$defs/DeviceConfigurationDeviceOverview",
+      "description": "Device configuration devices status overview.",
+      "readOnly": true
+    },
+    "userStatusOverview": {
+      "$ref": "#/$defs/DeviceConfigurationUserOverview",
+      "description": "Device configuration users status overview.",
+      "readOnly": true
+    },
+    "deviceSettingStateSummaries": {
+      "type": "array",
+      "description": "Device configuration setting state device summary.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/$defs/SettingStateDeviceSummary"
+      }
+    }
+  },
+  "required": ["displayName"],
+  "$defs": {
+    "DeviceConfigurationAssignment": {
+      "type": "object",
+      "description": "Assignment of a device configuration profile to a group.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Key of the assignment."
+        },
+        "target": {
+          "type": "object",
+          "description": "The assignment target for the device configuration.",
+          "properties": {
+            "@odata.type": {
+              "type": "string",
+              "description": "Type discriminator for the target (e.g., #microsoft.graph.groupAssignmentTarget)."
+            },
+            "groupId": {
+              "type": "string",
+              "description": "The group ID for the assignment target."
+            }
+          }
+        }
+      }
+    },
+    "DeviceConfigurationDeviceStatus": {
+      "type": "object",
+      "description": "Per-device configuration installation status.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "deviceDisplayName": {
+          "type": "string",
+          "description": "Device display name."
+        },
+        "userName": {
+          "type": ["string", "null"],
+          "description": "User name associated with the report."
+        },
+        "deviceModel": {
+          "type": "string",
+          "description": "The device model."
+        },
+        "complianceGracePeriodExpirationDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The DateTime when device compliance grace period expires."
+        },
+        "status": {
+          "type": "string",
+          "description": "Compliance status of the policy report.",
+          "enum": ["unknown", "notApplicable", "compliant", "remediated", "nonCompliant", "error", "conflict", "notAssigned"]
+        },
+        "lastReportedDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last modified date time of the policy report."
+        },
+        "userPrincipalName": {
+          "type": "string",
+          "description": "User principal name."
+        }
+      }
+    },
+    "DeviceConfigurationUserStatus": {
+      "type": "object",
+      "description": "Per-user configuration installation status.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "userDisplayName": {
+          "type": "string",
+          "description": "User display name."
+        },
+        "devicesCount": {
+          "type": "integer",
+          "description": "Devices count for the user."
+        },
+        "status": {
+          "type": "string",
+          "description": "Compliance status of the policy report.",
+          "enum": ["unknown", "notApplicable", "compliant", "remediated", "nonCompliant", "error", "conflict", "notAssigned"]
+        },
+        "lastReportedDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "userPrincipalName": {
+          "type": "string"
+        }
+      }
+    },
+    "DeviceConfigurationDeviceOverview": {
+      "type": "object",
+      "description": "Overview of device configuration status counts.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "pendingCount": {
+          "type": "integer",
+          "description": "Number of pending devices."
+        },
+        "notApplicableCount": {
+          "type": "integer",
+          "description": "Number of not applicable devices."
+        },
+        "successCount": {
+          "type": "integer",
+          "description": "Number of succeeded devices."
+        },
+        "errorCount": {
+          "type": "integer",
+          "description": "Number of error devices."
+        },
+        "failedCount": {
+          "type": "integer",
+          "description": "Number of failed devices."
+        },
+        "lastUpdateDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update time."
+        },
+        "configurationVersion": {
+          "type": "integer",
+          "description": "Version of the policy for the overview."
+        }
+      }
+    },
+    "DeviceConfigurationUserOverview": {
+      "type": "object",
+      "description": "Overview of user configuration status counts.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "pendingCount": {
+          "type": "integer"
+        },
+        "notApplicableCount": {
+          "type": "integer"
+        },
+        "successCount": {
+          "type": "integer"
+        },
+        "errorCount": {
+          "type": "integer"
+        },
+        "failedCount": {
+          "type": "integer"
+        },
+        "lastUpdateDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "configurationVersion": {
+          "type": "integer"
+        }
+      }
+    },
+    "SettingStateDeviceSummary": {
+      "type": "object",
+      "description": "Device configuration setting state summary.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "settingName": {
+          "type": "string",
+          "description": "Name of the setting."
+        },
+        "instancePath": {
+          "type": "string",
+          "description": "Name of the InstancePath for the setting."
+        },
+        "compliantDeviceCount": {
+          "type": "integer"
+        },
+        "errorDeviceCount": {
+          "type": "integer"
+        },
+        "conflictDeviceCount": {
+          "type": "integer"
+        },
+        "nonCompliantDeviceCount": {
+          "type": "integer"
+        },
+        "notApplicableDeviceCount": {
+          "type": "integer"
+        },
+        "remediatedDeviceCount": {
+          "type": "integer"
+        },
+        "unknownDeviceCount": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

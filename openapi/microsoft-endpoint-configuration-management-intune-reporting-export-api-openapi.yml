@@ -1,0 +1,600 @@
+openapi: 3.1.0
+info:
+  title: Intune Reporting Export API
+  description: >-
+    Microsoft Graph API endpoints for exporting Intune reports
+    programmatically. Supports exporting device, compliance, and app management
+    reports in CSV or JSON format using asynchronous export jobs. All reports
+    migrated to the Intune reporting infrastructure are available for export
+    from the deviceManagement/reports/exportJobs endpoint. Requires an active
+    Intune license for the tenant.
+  version: 1.0.0
+  contact:
+    name: Microsoft Graph Support
+    url: https://developer.microsoft.com/en-us/graph/support
+  license:
+    name: Microsoft API License
+    url: https://learn.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
+servers:
+  - url: https://graph.microsoft.com/v1.0
+    description: Microsoft Graph v1.0 production endpoint
+  - url: https://graph.microsoft.com/beta
+    description: Microsoft Graph beta endpoint
+security:
+  - oauth2: []
+paths:
+  /deviceManagement/reports/exportJobs:
+    get:
+      operationId: listExportJobs
+      summary: List export jobs
+      description: >-
+        List properties and relationships of the deviceManagementExportJob
+        objects. Returns all export jobs that have been created for the tenant.
+      tags:
+        - Export Jobs
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/count'
+      responses:
+        '200':
+          description: >-
+            Successful response returning a collection of export job objects.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '@odata.context':
+                    type: string
+                  '@odata.count':
+                    type: integer
+                  '@odata.nextLink':
+                    type: string
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DeviceManagementExportJob'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+    post:
+      operationId: createExportJob
+      summary: Create export job
+      description: >-
+        Create a new deviceManagementExportJob object to initiate an
+        asynchronous report export. The reportName parameter is required in the
+        request body and identifies which report to export. After creation, poll
+        the export job by ID until the status changes to completed, then
+        download the report from the url property.
+      tags:
+        - Export Jobs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceManagementExportJobCreate'
+      responses:
+        '201':
+          description: Successfully created the export job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceManagementExportJob'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /deviceManagement/reports/exportJobs/{deviceManagementExportJobId}:
+    get:
+      operationId: getExportJob
+      summary: Get export job
+      description: >-
+        Read properties and relationships of a deviceManagementExportJob object.
+        Use this endpoint to poll the status of an export job. When the status
+        property is completed, the url property contains the download location
+        for the exported report file.
+      tags:
+        - Export Jobs
+      parameters:
+        - name: deviceManagementExportJobId
+          in: path
+          required: true
+          description: >-
+            The unique identifier of the deviceManagementExportJob.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: >-
+            Successful response returning the export job object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceManagementExportJob'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteExportJob
+      summary: Delete export job
+      description: >-
+        Delete a deviceManagementExportJob. Removes the export job record from
+        the service.
+      tags:
+        - Export Jobs
+      parameters:
+        - name: deviceManagementExportJobId
+          in: path
+          required: true
+          description: >-
+            The unique identifier of the deviceManagementExportJob.
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Successfully deleted the export job.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /deviceManagement/reports/getDeviceNonComplianceReport:
+    post:
+      operationId: getDeviceNonComplianceReport
+      summary: Get device non-compliance report
+      description: >-
+        Retrieve a report of devices that are not compliant with compliance
+        policies. This is a synchronous report endpoint that returns data
+        directly in the response body.
+      tags:
+        - Reports
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportRequest'
+      responses:
+        '200':
+          description: Successful response returning report data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /deviceManagement/reports/getCompliancePolicyNonComplianceReport:
+    post:
+      operationId: getCompliancePolicyNonComplianceReport
+      summary: Get compliance policy non-compliance report
+      description: >-
+        Retrieve a report of non-compliant devices grouped by compliance policy.
+      tags:
+        - Reports
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportRequest'
+      responses:
+        '200':
+          description: Successful response returning report data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /deviceManagement/reports/getComplianceSettingNonComplianceReport:
+    post:
+      operationId: getComplianceSettingNonComplianceReport
+      summary: Get compliance setting non-compliance report
+      description: >-
+        Retrieve a report of non-compliant devices grouped by compliance
+        setting.
+      tags:
+        - Reports
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportRequest'
+      responses:
+        '200':
+          description: Successful response returning report data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /deviceManagement/reports/getConfigurationPolicyNonComplianceReport:
+    post:
+      operationId: getConfigurationPolicyNonComplianceReport
+      summary: Get configuration policy non-compliance report
+      description: >-
+        Retrieve a report of non-compliant devices grouped by configuration
+        policy.
+      tags:
+        - Reports
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportRequest'
+      responses:
+        '200':
+          description: Successful response returning report data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /deviceManagement/reports/getHistoricalReport:
+    post:
+      operationId: getHistoricalReport
+      summary: Get historical report
+      description: >-
+        Retrieve a historical report from the Intune reporting infrastructure.
+        Returns report data for a specific time range.
+      tags:
+        - Reports
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportRequest'
+      responses:
+        '200':
+          description: Successful response returning report data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /deviceManagement/reports/getCachedReport:
+    post:
+      operationId: getCachedReport
+      summary: Get cached report
+      description: >-
+        Retrieve a cached report from a previous export. The snapshotId or
+        sessionId in the request body identifies the cached data to return.
+      tags:
+        - Reports
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportRequest'
+      responses:
+        '200':
+          description: Successful response returning cached report data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes:
+            DeviceManagementConfiguration.Read.All: Read device configurations
+            DeviceManagementConfiguration.ReadWrite.All: Read and write device configurations
+            DeviceManagementApps.Read.All: Read app management data
+            DeviceManagementApps.ReadWrite.All: Read and write app management data
+            DeviceManagementManagedDevices.Read.All: Read managed devices
+            DeviceManagementManagedDevices.ReadWrite.All: Read and write managed devices
+  parameters:
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
+    skip:
+      name: $skip
+      in: query
+      description: Number of items to skip.
+      schema:
+        type: integer
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression.
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response.
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      description: Order results by a property.
+      schema:
+        type: string
+    count:
+      name: $count
+      in: query
+      description: Include count of items.
+      schema:
+        type: boolean
+  schemas:
+    DeviceManagementExportJob:
+      type: object
+      description: >-
+        Entity representing a job to export a report. Tracks the status of an
+        asynchronous report export including the download URL when complete.
+      properties:
+        id:
+          type: string
+          description: Unique identifier for this entity.
+          readOnly: true
+        reportName:
+          type: string
+          description: >-
+            Name of the report. The maximum length allowed for this property is
+            2000 characters.
+        filter:
+          type: string
+          description: >-
+            Filters applied on the report. The maximum length allowed for this
+            property is 2000 characters.
+        select:
+          type: array
+          description: >-
+            Columns selected from the report. The maximum number of allowed
+            column names is 256. The maximum length allowed for each column name
+            is 1000 characters.
+          items:
+            type: string
+        format:
+          type: string
+          description: >-
+            Format of the exported report.
+          enum:
+            - csv
+            - pdf
+            - json
+            - unknownFutureValue
+        snapshotId:
+          type: string
+          description: >-
+            An identifiable subset of the dataset represented by the
+            ReportName. A sessionId or CachedReportConfiguration id can be used
+            here. The maximum length allowed is 128 characters.
+        localizationType:
+          type: string
+          description: >-
+            Configures how the requested export job is localized.
+          enum:
+            - localizedValuesAsAdditionalColumn
+            - replaceLocalizableValues
+        status:
+          type: string
+          description: Status of the export job.
+          enum:
+            - unknown
+            - notStarted
+            - inProgress
+            - completed
+            - failed
+          readOnly: true
+        url:
+          type: string
+          description: >-
+            Temporary location of the exported report. Available when status is
+            completed. The URL is a SAS-signed Azure Blob Storage URL.
+          readOnly: true
+        requestDateTime:
+          type: string
+          format: date-time
+          description: Time that the exported report was requested.
+          readOnly: true
+        expirationDateTime:
+          type: string
+          format: date-time
+          description: Time that the exported report expires.
+          readOnly: true
+    DeviceManagementExportJobCreate:
+      type: object
+      description: >-
+        Request body for creating a new deviceManagementExportJob.
+      required:
+        - reportName
+      properties:
+        reportName:
+          type: string
+          description: >-
+            Name of the report to export (e.g., Devices,
+            DevicesWithInventory, DeviceCompliance). The maximum length is 2000
+            characters.
+        filter:
+          type: string
+          description: >-
+            Filters applied on the report. The maximum length is 2000
+            characters.
+        select:
+          type: array
+          description: >-
+            Columns selected from the report. Only valid column names for the
+            specified report are accepted. Maximum 256 column names, each up to
+            1000 characters.
+          items:
+            type: string
+        format:
+          type: string
+          description: Format of the exported report. Defaults to csv.
+          enum:
+            - csv
+            - json
+        snapshotId:
+          type: string
+          description: >-
+            A sessionId or CachedReportConfiguration id. When specified, Filter,
+            Select, and OrderBy cannot also be specified. Maximum 128
+            characters.
+        localizationType:
+          type: string
+          description: >-
+            Configures how the export job is localized. Default is
+            localizedValuesAsAdditionalColumn.
+          enum:
+            - localizedValuesAsAdditionalColumn
+            - replaceLocalizableValues
+    ReportRequest:
+      type: object
+      description: >-
+        Request body for retrieving inline Intune reports.
+      properties:
+        name:
+          type: string
+          description: Name of the report to retrieve.
+        filter:
+          type: string
+          description: Filter expression to apply to the report data.
+        select:
+          type: array
+          description: Columns to include in the report output.
+          items:
+            type: string
+        orderBy:
+          type: array
+          description: Columns to order the report by.
+          items:
+            type: string
+        skip:
+          type: integer
+          description: Number of records to skip.
+        top:
+          type: integer
+          description: Number of records to return.
+        sessionId:
+          type: string
+          description: Session ID for cached report access.
+        search:
+          type: string
+          description: Search string to filter results.
+    ReportResponse:
+      type: object
+      description: >-
+        Response body for inline Intune reports. Contains report metadata and
+        tabular data in a values array format.
+      properties:
+        totalRowCount:
+          type: integer
+          description: Total number of rows in the report.
+        schema:
+          type: array
+          description: >-
+            Array of column definitions describing the columns in the values
+            array.
+          items:
+            type: object
+            properties:
+              column:
+                type: string
+                description: Column name.
+              propertyType:
+                type: integer
+                description: >-
+                  Data type of the column. Common values include 1 for string,
+                  2 for int32, 3 for dateTime, 4 for boolean.
+        values:
+          type: array
+          description: >-
+            Array of row data. Each row is an array of values corresponding to
+            the columns defined in the schema.
+          items:
+            type: array
+            items: {}
+    ODataError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                date:
+                  type: string
+  responses:
+    BadRequest:
+      description: Bad request. The request body or parameters are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized. Authentication is required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Forbidden:
+      description: Forbidden. Insufficient permissions.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    NotFound:
+      description: Not found. The specified resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    TooManyRequests:
+      description: >-
+        Too many requests. The API supports up to 100 requests per tenant per
+        minute, with per-user limits of 8 requests per minute and per-app
+        limits of 48 requests per minute.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+tags:
+  - name: Export Jobs
+    description: >-
+      Manage asynchronous report export jobs. Create export jobs, poll for
+      completion, and download exported report files.
+  - name: Reports
+    description: >-
+      Retrieve inline Intune reports for device compliance, configuration
+      policy status, and historical data.

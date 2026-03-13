@@ -1,0 +1,326 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/kinlane/microsoft-endpoint-configuration-management/json-schema/microsoft-endpoint-configuration-management-device-schema.json",
+  "title": "Managed Device",
+  "description": "A device managed or pre-enrolled through Microsoft Intune, representing the managedDevice resource type from the Microsoft Graph API for Intune device management.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the device. This property is read-only.",
+      "readOnly": true
+    },
+    "userId": {
+      "type": "string",
+      "description": "Unique identifier for the user associated with the device.",
+      "readOnly": true
+    },
+    "deviceName": {
+      "type": "string",
+      "description": "Name of the device.",
+      "readOnly": true
+    },
+    "managedDeviceOwnerType": {
+      "type": "string",
+      "description": "Ownership of the device. Can be company or personal.",
+      "enum": ["unknown", "company", "personal"]
+    },
+    "enrolledDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Enrollment time of the device.",
+      "readOnly": true
+    },
+    "lastSyncDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time that the device last completed a successful sync with Intune.",
+      "readOnly": true
+    },
+    "operatingSystem": {
+      "type": "string",
+      "description": "Operating system of the device (Windows, iOS, Android, macOS, etc.).",
+      "readOnly": true
+    },
+    "complianceState": {
+      "type": "string",
+      "description": "Compliance state of the device.",
+      "enum": ["unknown", "compliant", "noncompliant", "conflict", "error", "inGracePeriod", "configManager"]
+    },
+    "jailBroken": {
+      "type": "string",
+      "description": "Whether the device is jail broken or rooted.",
+      "readOnly": true
+    },
+    "managementAgent": {
+      "type": "string",
+      "description": "Management channel of the device.",
+      "enum": [
+        "eas", "mdm", "easMdm", "intuneClient", "easIntuneClient",
+        "configurationManagerClient", "configurationManagerClientMdm",
+        "configurationManagerClientMdmEas", "unknown", "jamf",
+        "googleCloudDevicePolicyController"
+      ]
+    },
+    "osVersion": {
+      "type": "string",
+      "description": "Operating system version of the device.",
+      "readOnly": true
+    },
+    "easActivated": {
+      "type": "boolean",
+      "description": "Whether the device is Exchange ActiveSync activated.",
+      "readOnly": true
+    },
+    "easDeviceId": {
+      "type": "string",
+      "description": "Exchange ActiveSync Id of the device.",
+      "readOnly": true
+    },
+    "easActivationDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Exchange ActivationSync activation time of the device.",
+      "readOnly": true
+    },
+    "azureADRegistered": {
+      "type": ["boolean", "null"],
+      "description": "Whether the device is Azure Active Directory registered.",
+      "readOnly": true
+    },
+    "deviceEnrollmentType": {
+      "type": "string",
+      "description": "Enrollment type of the device.",
+      "enum": [
+        "unknown", "userEnrollment", "deviceEnrollmentManager",
+        "appleBulkWithUser", "appleBulkWithoutUser", "windowsAzureADJoin",
+        "windowsBulkUserless", "windowsAutoEnrollment",
+        "windowsBulkAzureDomainJoin", "windowsCoManagement",
+        "windowsAzureADJoinUsingDeviceAuth", "appleUserEnrollment",
+        "appleUserEnrollmentWithServiceAccount"
+      ],
+      "readOnly": true
+    },
+    "activationLockBypassCode": {
+      "type": ["string", "null"],
+      "description": "The code that allows the Activation Lock on managed device to be bypassed.",
+      "readOnly": true
+    },
+    "emailAddress": {
+      "type": "string",
+      "description": "Email(s) for the user associated with the device.",
+      "readOnly": true
+    },
+    "azureADDeviceId": {
+      "type": "string",
+      "description": "The unique identifier for the Azure Active Directory device.",
+      "readOnly": true
+    },
+    "deviceRegistrationState": {
+      "type": "string",
+      "description": "Device registration state.",
+      "enum": [
+        "notRegistered", "registered", "revoked", "keyConflict",
+        "approvalPending", "certificateReset",
+        "notRegisteredPendingEnrollment", "unknown"
+      ],
+      "readOnly": true
+    },
+    "deviceCategoryDisplayName": {
+      "type": "string",
+      "description": "Device category display name.",
+      "readOnly": true
+    },
+    "isSupervised": {
+      "type": "boolean",
+      "description": "Device supervised status.",
+      "readOnly": true
+    },
+    "exchangeLastSuccessfulSyncDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last time the device contacted Exchange.",
+      "readOnly": true
+    },
+    "exchangeAccessState": {
+      "type": "string",
+      "description": "The Access State of the device in Exchange.",
+      "enum": ["none", "unknown", "allowed", "blocked", "quarantined"],
+      "readOnly": true
+    },
+    "exchangeAccessStateReason": {
+      "type": "string",
+      "description": "The reason for the device's access state in Exchange.",
+      "enum": [
+        "none", "unknown", "exchangeGlobalRule", "exchangeIndividualRule",
+        "exchangeDeviceRule", "exchangeUpgrade", "exchangeMailboxPolicy",
+        "other", "compliant", "notCompliant", "notEnrolled",
+        "unknownLocation", "mfaRequired", "azureADBlockDueToAccessPolicy",
+        "compromisedPassword", "deviceNotKnownWithManagedApp"
+      ],
+      "readOnly": true
+    },
+    "isEncrypted": {
+      "type": "boolean",
+      "description": "Device encryption status.",
+      "readOnly": true
+    },
+    "userPrincipalName": {
+      "type": "string",
+      "description": "Device user principal name.",
+      "readOnly": true
+    },
+    "model": {
+      "type": "string",
+      "description": "Model of the device.",
+      "readOnly": true
+    },
+    "manufacturer": {
+      "type": "string",
+      "description": "Manufacturer of the device.",
+      "readOnly": true
+    },
+    "imei": {
+      "type": "string",
+      "description": "IMEI.",
+      "readOnly": true
+    },
+    "complianceGracePeriodExpirationDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The DateTime when device compliance grace period expires.",
+      "readOnly": true
+    },
+    "serialNumber": {
+      "type": "string",
+      "description": "Serial number of the device.",
+      "readOnly": true
+    },
+    "phoneNumber": {
+      "type": "string",
+      "description": "Phone number of the device.",
+      "readOnly": true
+    },
+    "androidSecurityPatchLevel": {
+      "type": "string",
+      "description": "Android security patch level.",
+      "readOnly": true
+    },
+    "userDisplayName": {
+      "type": "string",
+      "description": "User display name.",
+      "readOnly": true
+    },
+    "configurationManagerClientEnabledFeatures": {
+      "type": "object",
+      "description": "Configuration Manager client enabled features.",
+      "properties": {
+        "inventory": {
+          "type": "boolean",
+          "description": "Whether inventory is managed by ConfigMgr."
+        },
+        "modernApps": {
+          "type": "boolean",
+          "description": "Whether modern apps are managed by ConfigMgr."
+        },
+        "resourceAccess": {
+          "type": "boolean",
+          "description": "Whether resource access is managed by ConfigMgr."
+        },
+        "deviceConfiguration": {
+          "type": "boolean",
+          "description": "Whether device configuration is managed by ConfigMgr."
+        },
+        "compliancePolicy": {
+          "type": "boolean",
+          "description": "Whether compliance policy is managed by ConfigMgr."
+        },
+        "windowsUpdateForBusiness": {
+          "type": "boolean",
+          "description": "Whether Windows Update for Business is managed by ConfigMgr."
+        }
+      },
+      "readOnly": true
+    },
+    "wiFiMacAddress": {
+      "type": "string",
+      "description": "Wi-Fi MAC address.",
+      "readOnly": true
+    },
+    "subscriberCarrier": {
+      "type": "string",
+      "description": "Subscriber carrier.",
+      "readOnly": true
+    },
+    "meid": {
+      "type": "string",
+      "description": "MEID.",
+      "readOnly": true
+    },
+    "totalStorageSpaceInBytes": {
+      "type": "integer",
+      "description": "Total storage in bytes.",
+      "readOnly": true
+    },
+    "freeStorageSpaceInBytes": {
+      "type": "integer",
+      "description": "Free storage in bytes.",
+      "readOnly": true
+    },
+    "managedDeviceName": {
+      "type": "string",
+      "description": "Automatically generated name to identify a device. Can be overwritten to a user-friendly name."
+    },
+    "partnerReportedThreatState": {
+      "type": "string",
+      "description": "Threat state of a device when a Mobile Threat Defense partner is in use.",
+      "enum": [
+        "unknown", "activated", "deactivated", "secured", "lowSeverity",
+        "mediumSeverity", "highSeverity", "unresponsive", "compromised",
+        "misconfigured"
+      ],
+      "readOnly": true
+    },
+    "requireUserEnrollmentApproval": {
+      "type": ["boolean", "null"],
+      "description": "Reports if the managed iOS device is user approval enrollment.",
+      "readOnly": true
+    },
+    "managementCertificateExpirationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Reports device management certificate expiration date.",
+      "readOnly": true
+    },
+    "iccid": {
+      "type": ["string", "null"],
+      "description": "Integrated Circuit Card Identifier (SIM card unique identification number).",
+      "readOnly": true
+    },
+    "udid": {
+      "type": ["string", "null"],
+      "description": "Unique Device Identifier for iOS and macOS devices.",
+      "readOnly": true
+    },
+    "notes": {
+      "type": ["string", "null"],
+      "description": "Notes on the device created by IT Admin."
+    },
+    "ethernetMacAddress": {
+      "type": ["string", "null"],
+      "description": "Ethernet MAC Address of the device.",
+      "readOnly": true
+    },
+    "physicalMemoryInBytes": {
+      "type": "integer",
+      "description": "Total memory in bytes.",
+      "readOnly": true
+    },
+    "enrollmentProfileName": {
+      "type": "string",
+      "description": "Name of the enrollment profile assigned to the device.",
+      "readOnly": true
+    }
+  },
+  "required": ["id"]
+}
