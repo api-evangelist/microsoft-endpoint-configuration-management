@@ -888,23 +888,23 @@ components:
           schema:
             $ref: '#/components/schemas/ODataError'
 tags:
-  - name: Devices
-    description: Query and manage device resources.
-  - name: Collections
-    description: Manage device and user collections.
   - name: Applications
     description: Manage Configuration Manager applications.
-  - name: Deployments
-    description: View and manage application deployments.
-  - name: Packages
-    description: Manage legacy software packages.
-  - name: Task Sequences
-    description: Manage OS deployment task sequences.
-  - name: Software Updates
-    description: Query software update information.
+  - name: Collections
+    description: Manage device and user collections.
   - name: Compliance
     description: Manage compliance baselines and settings.
-  - name: Site Administration
-    description: Site configuration and administration.
+  - name: Deployments
+    description: View and manage application deployments.
+  - name: Devices
+    description: Query and manage device resources.
+  - name: Packages
+    description: Manage legacy software packages.
   - name: Scripts
     description: Manage and execute PowerShell scripts.
+  - name: Site Administration
+    description: Site configuration and administration.
+  - name: Software Updates
+    description: Query software update information.
+  - name: Task Sequences
+    description: Manage OS deployment task sequences.

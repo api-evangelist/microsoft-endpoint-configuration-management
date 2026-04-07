@@ -758,17 +758,17 @@ components:
           schema:
             $ref: '#/components/schemas/ODataError'
 tags:
-  - name: Devices
-    description: Device entity collections and property histories.
-  - name: Dates
-    description: Date dimension for time-based reporting.
-  - name: Users
-    description: User dimension records.
-  - name: Policies
-    description: Policy records and compliance activities.
   - name: Applications
     description: Application inventory and install status.
-  - name: User Device Associations
-    description: User-to-device mapping records.
+  - name: Dates
+    description: Date dimension for time-based reporting.
+  - name: Devices
+    description: Device entity collections and property histories.
   - name: Management Extensions
     description: Intune management extension activities.
+  - name: Policies
+    description: Policy records and compliance activities.
+  - name: User Device Associations
+    description: User-to-device mapping records.
+  - name: Users
+    description: User dimension records.

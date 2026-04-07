@@ -1246,13 +1246,13 @@ components:
           schema:
             $ref: '#/components/schemas/ODataError'
 tags:
-  - name: Devices
-    description: Manage enrolled devices in Intune.
-  - name: Device Actions
-    description: Remote device actions such as wipe, retire, sync, and lock.
-  - name: Compliance Policies
-    description: Manage device compliance policies.
   - name: Applications
     description: Manage mobile applications.
+  - name: Compliance Policies
+    description: Manage device compliance policies.
   - name: Configuration Profiles
     description: Manage device configuration profiles.
+  - name: Device Actions
+    description: Remote device actions such as wipe, retire, sync, and lock.
+  - name: Devices
+    description: Manage enrolled devices in Intune.
