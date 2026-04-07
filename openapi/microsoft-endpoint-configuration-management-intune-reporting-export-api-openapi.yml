@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Intune Reporting Export API
+  title: Microsoft Endpoint Configuration Management Intune Reporting Export API
   description: >-
     Microsoft Graph API endpoints for exporting Intune reports
     programmatically. Supports exporting device, compliance, and app management
@@ -26,7 +26,7 @@ paths:
   /deviceManagement/reports/exportJobs:
     get:
       operationId: listExportJobs
-      summary: List export jobs
+      summary: Microsoft Endpoint Configuration Management List export jobs
       description: >-
         List properties and relationships of the deviceManagementExportJob
         objects. Returns all export jobs that have been created for the tenant.
@@ -64,7 +64,7 @@ paths:
           $ref: '#/components/responses/Forbidden'
     post:
       operationId: createExportJob
-      summary: Create export job
+      summary: Microsoft Endpoint Configuration Management Create export job
       description: >-
         Create a new deviceManagementExportJob object to initiate an
         asynchronous report export. The reportName parameter is required in the
@@ -97,7 +97,7 @@ paths:
   /deviceManagement/reports/exportJobs/{deviceManagementExportJobId}:
     get:
       operationId: getExportJob
-      summary: Get export job
+      summary: Microsoft Endpoint Configuration Management Get export job
       description: >-
         Read properties and relationships of a deviceManagementExportJob object.
         Use this endpoint to poll the status of an export job. When the status
@@ -130,7 +130,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteExportJob
-      summary: Delete export job
+      summary: Microsoft Endpoint Configuration Management Delete export job
       description: >-
         Delete a deviceManagementExportJob. Removes the export job record from
         the service.
@@ -154,7 +154,7 @@ paths:
   /deviceManagement/reports/getDeviceNonComplianceReport:
     post:
       operationId: getDeviceNonComplianceReport
-      summary: Get device non-compliance report
+      summary: Microsoft Endpoint Configuration Management Get device non-compliance report
       description: >-
         Retrieve a report of devices that are not compliant with compliance
         policies. This is a synchronous report endpoint that returns data
@@ -181,7 +181,7 @@ paths:
   /deviceManagement/reports/getCompliancePolicyNonComplianceReport:
     post:
       operationId: getCompliancePolicyNonComplianceReport
-      summary: Get compliance policy non-compliance report
+      summary: Microsoft Endpoint Configuration Management Get compliance policy non-compliance report
       description: >-
         Retrieve a report of non-compliant devices grouped by compliance policy.
       tags:
@@ -204,7 +204,7 @@ paths:
   /deviceManagement/reports/getComplianceSettingNonComplianceReport:
     post:
       operationId: getComplianceSettingNonComplianceReport
-      summary: Get compliance setting non-compliance report
+      summary: Microsoft Endpoint Configuration Management Get compliance setting non-compliance report
       description: >-
         Retrieve a report of non-compliant devices grouped by compliance
         setting.
@@ -228,7 +228,7 @@ paths:
   /deviceManagement/reports/getConfigurationPolicyNonComplianceReport:
     post:
       operationId: getConfigurationPolicyNonComplianceReport
-      summary: Get configuration policy non-compliance report
+      summary: Microsoft Endpoint Configuration Management Get configuration policy non-compliance report
       description: >-
         Retrieve a report of non-compliant devices grouped by configuration
         policy.
@@ -252,7 +252,7 @@ paths:
   /deviceManagement/reports/getHistoricalReport:
     post:
       operationId: getHistoricalReport
-      summary: Get historical report
+      summary: Microsoft Endpoint Configuration Management Get historical report
       description: >-
         Retrieve a historical report from the Intune reporting infrastructure.
         Returns report data for a specific time range.
@@ -276,7 +276,7 @@ paths:
   /deviceManagement/reports/getCachedReport:
     post:
       operationId: getCachedReport
-      summary: Get cached report
+      summary: Microsoft Endpoint Configuration Management Get cached report
       description: >-
         Retrieve a cached report from a previous export. The snapshotId or
         sessionId in the request body identifies the cached data to return.

@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Intune Data Warehouse API
+  title: Microsoft Endpoint Configuration Management Intune Data Warehouse API
   description: >-
     OData-based REST API that provides access to Intune reporting data in a
     machine-readable format. Enables building custom reports and analytics for
@@ -30,7 +30,7 @@ paths:
   /devices:
     get:
       operationId: listDevices
-      summary: List device records
+      summary: Microsoft Endpoint Configuration Management List device records
       description: >-
         Retrieve historical device records from the Data Warehouse. Returns
         daily snapshots of device properties including enrollment status,
@@ -63,7 +63,7 @@ paths:
   /dates:
     get:
       operationId: listDates
-      summary: List date dimension records
+      summary: Microsoft Endpoint Configuration Management List date dimension records
       description: >-
         Retrieve date dimension records used to correlate facts over time
         dimensions. Provides date keys with associated calendar attributes.
@@ -89,7 +89,7 @@ paths:
   /users:
     get:
       operationId: listUsers
-      summary: List user records
+      summary: Microsoft Endpoint Configuration Management List user records
       description: >-
         Retrieve user dimension records from the Data Warehouse. Provides
         historical snapshots of user information associated with device
@@ -118,7 +118,7 @@ paths:
   /devicePropertyHistories:
     get:
       operationId: listDevicePropertyHistories
-      summary: List device property histories
+      summary: Microsoft Endpoint Configuration Management List device property histories
       description: >-
         Retrieve historical device property snapshots. Contains daily snapshots
         of device-level data for the configured history window.
@@ -146,7 +146,7 @@ paths:
   /policies:
     get:
       operationId: listPolicies
-      summary: List policy records
+      summary: Microsoft Endpoint Configuration Management List policy records
       description: >-
         Retrieve compliance and configuration policy records from the Data
         Warehouse.
@@ -173,7 +173,7 @@ paths:
   /policyDeviceActivities:
     get:
       operationId: listPolicyDeviceActivities
-      summary: List policy device activities
+      summary: Microsoft Endpoint Configuration Management List policy device activities
       description: >-
         Retrieve policy device activity records showing device compliance
         status against policies over time.
@@ -201,7 +201,7 @@ paths:
   /policyUserActivities:
     get:
       operationId: listPolicyUserActivities
-      summary: List policy user activities
+      summary: Microsoft Endpoint Configuration Management List policy user activities
       description: >-
         Retrieve policy user activity records showing user compliance
         status against policies over time.
@@ -229,7 +229,7 @@ paths:
   /applications:
     get:
       operationId: listApplications
-      summary: List application records
+      summary: Microsoft Endpoint Configuration Management List application records
       description: >-
         Retrieve application inventory records from the Data Warehouse
         including discovered and managed applications.
@@ -256,7 +256,7 @@ paths:
   /mobileAppInstallStatuses:
     get:
       operationId: listMobileAppInstallStatuses
-      summary: List mobile app install statuses
+      summary: Microsoft Endpoint Configuration Management List mobile app install statuses
       description: >-
         Retrieve mobile application installation status records.
       tags:
@@ -283,7 +283,7 @@ paths:
   /userDeviceAssociations:
     get:
       operationId: listUserDeviceAssociations
-      summary: List user-device associations
+      summary: Microsoft Endpoint Configuration Management List user-device associations
       description: >-
         Retrieve records mapping users to their associated devices.
       tags:
@@ -310,7 +310,7 @@ paths:
   /intuneManagementExtensions:
     get:
       operationId: listIntuneManagementExtensions
-      summary: List Intune management extension records
+      summary: Microsoft Endpoint Configuration Management List Intune management extension records
       description: >-
         Retrieve Intune management extension activity records including
         script execution results.

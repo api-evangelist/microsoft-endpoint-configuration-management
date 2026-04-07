@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Configuration Manager REST API (AdminService)
+  title: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService)
   description: >-
     REST API for managing Configuration Manager resources including collections,
     deployments, applications, and device queries. The administration service is
@@ -29,7 +29,7 @@ paths:
   /wmi/SMS_Device:
     get:
       operationId: listDevicesWmi
-      summary: List devices via WMI route
+      summary: Microsoft Endpoint Configuration Management List devices via WMI route
       description: >-
         Retrieve a collection of devices managed by Configuration Manager using
         the WMI route. Supports OData query options for filtering and selecting.
@@ -61,7 +61,7 @@ paths:
   /wmi/SMS_R_System:
     get:
       operationId: listSystems
-      summary: List systems
+      summary: Microsoft Endpoint Configuration Management List systems
       description: >-
         Retrieve all discovered system resources, representing computers and
         devices discovered by Configuration Manager.
@@ -86,7 +86,7 @@ paths:
   /wmi/SMS_Collection:
     get:
       operationId: listCollections
-      summary: List collections
+      summary: Microsoft Endpoint Configuration Management List collections
       description: >-
         Retrieve all device and user collections defined in Configuration
         Manager.
@@ -111,7 +111,7 @@ paths:
                       $ref: '#/components/schemas/SMS_Collection'
     post:
       operationId: createCollection
-      summary: Create a collection
+      summary: Microsoft Endpoint Configuration Management Create a collection
       description: Create a new device or user collection.
       tags:
         - Collections
@@ -131,7 +131,7 @@ paths:
   /wmi/SMS_Collection('{collectionId}'):
     get:
       operationId: getCollection
-      summary: Get a collection
+      summary: Microsoft Endpoint Configuration Management Get a collection
       description: Retrieve a specific collection by its ID.
       tags:
         - Collections
@@ -154,7 +154,7 @@ paths:
   /wmi/SMS_Application:
     get:
       operationId: listApplications
-      summary: List applications
+      summary: Microsoft Endpoint Configuration Management List applications
       description: >-
         Retrieve all applications defined in Configuration Manager, including
         deployment types and content information.
@@ -179,7 +179,7 @@ paths:
                       $ref: '#/components/schemas/SMS_Application'
     post:
       operationId: createApplication
-      summary: Create an application
+      summary: Microsoft Endpoint Configuration Management Create an application
       description: Create a new application in Configuration Manager.
       tags:
         - Applications
@@ -195,7 +195,7 @@ paths:
   /wmi/SMS_Application('{applicationId}'):
     get:
       operationId: getApplication
-      summary: Get an application
+      summary: Microsoft Endpoint Configuration Management Get an application
       description: Retrieve a specific application by its CI_ID.
       tags:
         - Applications
@@ -215,7 +215,7 @@ paths:
   /wmi/SMS_ApplicationDeployment:
     get:
       operationId: listDeployments
-      summary: List application deployments
+      summary: Microsoft Endpoint Configuration Management List application deployments
       description: >-
         Retrieve all application deployments in Configuration Manager.
       tags:
@@ -239,7 +239,7 @@ paths:
   /wmi/SMS_Package:
     get:
       operationId: listPackages
-      summary: List packages
+      summary: Microsoft Endpoint Configuration Management List packages
       description: Retrieve all legacy packages in Configuration Manager.
       tags:
         - Packages
@@ -262,7 +262,7 @@ paths:
   /wmi/SMS_TaskSequence:
     get:
       operationId: listTaskSequences
-      summary: List task sequences
+      summary: Microsoft Endpoint Configuration Management List task sequences
       description: >-
         Retrieve all task sequences used for operating system deployment and
         other complex workflows.
@@ -287,7 +287,7 @@ paths:
   /wmi/SMS_SoftwareUpdate:
     get:
       operationId: listSoftwareUpdates
-      summary: List software updates
+      summary: Microsoft Endpoint Configuration Management List software updates
       description: >-
         Retrieve all software updates known to Configuration Manager.
       tags:
@@ -311,7 +311,7 @@ paths:
   /wmi/SMS_Site:
     get:
       operationId: listSites
-      summary: List sites
+      summary: Microsoft Endpoint Configuration Management List sites
       description: Retrieve Configuration Manager site information.
       tags:
         - Site Administration
@@ -332,7 +332,7 @@ paths:
   /wmi/SMS_BaselineAssignment:
     get:
       operationId: listBaselineAssignments
-      summary: List compliance baseline assignments
+      summary: Microsoft Endpoint Configuration Management List compliance baseline assignments
       description: >-
         Retrieve all configuration baseline assignments in Configuration
         Manager.
@@ -367,7 +367,7 @@ paths:
   /v1.0/Device:
     get:
       operationId: listDevicesV1
-      summary: List devices (versioned route)
+      summary: Microsoft Endpoint Configuration Management List devices (versioned route)
       description: >-
         Retrieve devices through the versioned OData v1.0 route which supports
         new Configuration Manager functionality.
@@ -392,7 +392,7 @@ paths:
   /v1.0/Device({deviceId}):
     get:
       operationId: getDeviceV1
-      summary: Get a device (versioned route)
+      summary: Microsoft Endpoint Configuration Management Get a device (versioned route)
       description: Retrieve a specific device by ID via the versioned route.
       tags:
         - Devices
@@ -412,7 +412,7 @@ paths:
   /v1.0/Collections:
     get:
       operationId: listCollectionsV1
-      summary: List collections (versioned route)
+      summary: Microsoft Endpoint Configuration Management List collections (versioned route)
       description: >-
         Retrieve collections through the versioned OData v1.0 route.
       tags:
@@ -436,7 +436,7 @@ paths:
   /v1.0/Scripts:
     get:
       operationId: listScripts
-      summary: List scripts
+      summary: Microsoft Endpoint Configuration Management List scripts
       description: >-
         Retrieve all PowerShell scripts available in Configuration Manager
         for remote execution.

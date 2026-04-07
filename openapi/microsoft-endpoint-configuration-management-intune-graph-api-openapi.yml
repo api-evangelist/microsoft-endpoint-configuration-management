@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Microsoft Intune Graph API
+  title: Microsoft Endpoint Configuration Management Microsoft Intune Graph API
   description: >-
     Microsoft Graph API endpoints for Intune device management, enabling
     programmatic access to manage devices, apps, compliance policies, and
@@ -24,7 +24,7 @@ paths:
   /deviceManagement/managedDevices:
     get:
       operationId: listManagedDevices
-      summary: List managed devices
+      summary: Microsoft Endpoint Configuration Management List managed devices
       description: >-
         List properties and relationships of the managedDevice objects enrolled
         in Intune.
@@ -61,7 +61,7 @@ paths:
           $ref: '#/components/responses/Forbidden'
     post:
       operationId: createManagedDevice
-      summary: Create managed device
+      summary: Microsoft Endpoint Configuration Management Create managed device
       description: Create a new managedDevice object.
       tags:
         - Devices
@@ -85,7 +85,7 @@ paths:
   /deviceManagement/managedDevices/{managedDeviceId}:
     get:
       operationId: getManagedDevice
-      summary: Get managed device
+      summary: Microsoft Endpoint Configuration Management Get managed device
       description: Read properties and relationships of a managedDevice object.
       tags:
         - Devices
@@ -108,7 +108,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: updateManagedDevice
-      summary: Update managed device
+      summary: Microsoft Endpoint Configuration Management Update managed device
       description: Update the properties of a managedDevice object.
       tags:
         - Devices
@@ -133,7 +133,7 @@ paths:
                 $ref: '#/components/schemas/ManagedDevice'
     delete:
       operationId: deleteManagedDevice
-      summary: Delete managed device
+      summary: Microsoft Endpoint Configuration Management Delete managed device
       description: Deletes a managedDevice.
       tags:
         - Devices
@@ -151,7 +151,7 @@ paths:
   /deviceManagement/managedDevices/{managedDeviceId}/retire:
     post:
       operationId: retireManagedDevice
-      summary: Retire a device
+      summary: Microsoft Endpoint Configuration Management Retire a device
       description: >-
         Retire a device, removing corporate data while leaving personal data
         intact.
@@ -169,7 +169,7 @@ paths:
   /deviceManagement/managedDevices/{managedDeviceId}/wipe:
     post:
       operationId: wipeManagedDevice
-      summary: Wipe a device
+      summary: Microsoft Endpoint Configuration Management Wipe a device
       description: Factory reset a device, removing all data.
       tags:
         - Device Actions
@@ -197,7 +197,7 @@ paths:
   /deviceManagement/managedDevices/{managedDeviceId}/syncDevice:
     post:
       operationId: syncManagedDevice
-      summary: Sync device
+      summary: Microsoft Endpoint Configuration Management Sync device
       description: Trigger a sync for the managed device with Intune.
       tags:
         - Device Actions
@@ -213,7 +213,7 @@ paths:
   /deviceManagement/managedDevices/{managedDeviceId}/remoteLock:
     post:
       operationId: remoteLockManagedDevice
-      summary: Remote lock a device
+      summary: Microsoft Endpoint Configuration Management Remote lock a device
       description: Remotely lock a managed device.
       tags:
         - Device Actions
@@ -229,7 +229,7 @@ paths:
   /deviceManagement/managedDevices/{managedDeviceId}/resetPasscode:
     post:
       operationId: resetPasscode
-      summary: Reset passcode
+      summary: Microsoft Endpoint Configuration Management Reset passcode
       description: Reset the passcode on a managed device.
       tags:
         - Device Actions
@@ -245,7 +245,7 @@ paths:
   /deviceManagement/managedDevices/{managedDeviceId}/rebootNow:
     post:
       operationId: rebootManagedDevice
-      summary: Reboot device
+      summary: Microsoft Endpoint Configuration Management Reboot device
       description: Remotely reboot a managed device.
       tags:
         - Device Actions
@@ -261,7 +261,7 @@ paths:
   /deviceManagement/deviceCompliancePolicies:
     get:
       operationId: listDeviceCompliancePolicies
-      summary: List device compliance policies
+      summary: Microsoft Endpoint Configuration Management List device compliance policies
       description: >-
         List properties and relationships of the deviceCompliancePolicy objects.
       tags:
@@ -288,7 +288,7 @@ paths:
                       $ref: '#/components/schemas/DeviceCompliancePolicy'
     post:
       operationId: createDeviceCompliancePolicy
-      summary: Create device compliance policy
+      summary: Microsoft Endpoint Configuration Management Create device compliance policy
       description: Create a new deviceCompliancePolicy object.
       tags:
         - Compliance Policies
@@ -308,7 +308,7 @@ paths:
   /deviceManagement/deviceCompliancePolicies/{deviceCompliancePolicyId}:
     get:
       operationId: getDeviceCompliancePolicy
-      summary: Get device compliance policy
+      summary: Microsoft Endpoint Configuration Management Get device compliance policy
       description: >-
         Read properties and relationships of a deviceCompliancePolicy object.
       tags:
@@ -329,7 +329,7 @@ paths:
                 $ref: '#/components/schemas/DeviceCompliancePolicy'
     patch:
       operationId: updateDeviceCompliancePolicy
-      summary: Update device compliance policy
+      summary: Microsoft Endpoint Configuration Management Update device compliance policy
       description: Update the properties of a deviceCompliancePolicy object.
       tags:
         - Compliance Policies
@@ -350,7 +350,7 @@ paths:
           description: Successfully updated compliance policy.
     delete:
       operationId: deleteDeviceCompliancePolicy
-      summary: Delete device compliance policy
+      summary: Microsoft Endpoint Configuration Management Delete device compliance policy
       description: Deletes a deviceCompliancePolicy.
       tags:
         - Compliance Policies
@@ -366,7 +366,7 @@ paths:
   /deviceManagement/deviceCompliancePolicies/{deviceCompliancePolicyId}/assign:
     post:
       operationId: assignDeviceCompliancePolicy
-      summary: Assign compliance policy
+      summary: Microsoft Endpoint Configuration Management Assign compliance policy
       description: Assign a device compliance policy to groups.
       tags:
         - Compliance Policies
@@ -393,7 +393,7 @@ paths:
   /deviceAppManagement/mobileApps:
     get:
       operationId: listMobileApps
-      summary: List mobile apps
+      summary: Microsoft Endpoint Configuration Management List mobile apps
       description: List properties and relationships of the mobileApp objects.
       tags:
         - Applications
@@ -419,7 +419,7 @@ paths:
                       $ref: '#/components/schemas/MobileApp'
     post:
       operationId: createMobileApp
-      summary: Create mobile app
+      summary: Microsoft Endpoint Configuration Management Create mobile app
       description: Create a new mobileApp object.
       tags:
         - Applications
@@ -439,7 +439,7 @@ paths:
   /deviceAppManagement/mobileApps/{mobileAppId}:
     get:
       operationId: getMobileApp
-      summary: Get mobile app
+      summary: Microsoft Endpoint Configuration Management Get mobile app
       description: Read properties and relationships of a mobileApp object.
       tags:
         - Applications
@@ -459,7 +459,7 @@ paths:
                 $ref: '#/components/schemas/MobileApp'
     patch:
       operationId: updateMobileApp
-      summary: Update mobile app
+      summary: Microsoft Endpoint Configuration Management Update mobile app
       description: Update the properties of a mobileApp object.
       tags:
         - Applications
@@ -480,7 +480,7 @@ paths:
           description: Successfully updated mobile app.
     delete:
       operationId: deleteMobileApp
-      summary: Delete mobile app
+      summary: Microsoft Endpoint Configuration Management Delete mobile app
       description: Deletes a mobileApp.
       tags:
         - Applications
@@ -496,7 +496,7 @@ paths:
   /deviceAppManagement/mobileApps/{mobileAppId}/assign:
     post:
       operationId: assignMobileApp
-      summary: Assign mobile app
+      summary: Microsoft Endpoint Configuration Management Assign mobile app
       description: Assign a mobile app to groups.
       tags:
         - Applications
@@ -523,7 +523,7 @@ paths:
   /deviceAppManagement/mobileApps/{mobileAppId}/deviceStatuses:
     get:
       operationId: listMobileAppDeviceStatuses
-      summary: List app device statuses
+      summary: Microsoft Endpoint Configuration Management List app device statuses
       description: >-
         Get the installation status of a mobile app across devices.
       tags:
@@ -560,7 +560,7 @@ paths:
   /deviceManagement/deviceConfigurations:
     get:
       operationId: listDeviceConfigurations
-      summary: List device configurations
+      summary: Microsoft Endpoint Configuration Management List device configurations
       description: >-
         List properties and relationships of the deviceConfiguration objects.
       tags:
@@ -587,7 +587,7 @@ paths:
                       $ref: '#/components/schemas/DeviceConfiguration'
     post:
       operationId: createDeviceConfiguration
-      summary: Create device configuration
+      summary: Microsoft Endpoint Configuration Management Create device configuration
       description: Create a new deviceConfiguration object.
       tags:
         - Configuration Profiles
@@ -607,7 +607,7 @@ paths:
   /deviceManagement/deviceConfigurations/{deviceConfigurationId}:
     get:
       operationId: getDeviceConfiguration
-      summary: Get device configuration
+      summary: Microsoft Endpoint Configuration Management Get device configuration
       description: >-
         Read properties and relationships of a deviceConfiguration object.
       tags:
@@ -628,7 +628,7 @@ paths:
                 $ref: '#/components/schemas/DeviceConfiguration'
     patch:
       operationId: updateDeviceConfiguration
-      summary: Update device configuration
+      summary: Microsoft Endpoint Configuration Management Update device configuration
       description: Update the properties of a deviceConfiguration object.
       tags:
         - Configuration Profiles
@@ -649,7 +649,7 @@ paths:
           description: Successfully updated device configuration.
     delete:
       operationId: deleteDeviceConfiguration
-      summary: Delete device configuration
+      summary: Microsoft Endpoint Configuration Management Delete device configuration
       description: Deletes a deviceConfiguration.
       tags:
         - Configuration Profiles
@@ -665,7 +665,7 @@ paths:
   /deviceManagement/deviceConfigurations/{deviceConfigurationId}/assign:
     post:
       operationId: assignDeviceConfiguration
-      summary: Assign device configuration
+      summary: Microsoft Endpoint Configuration Management Assign device configuration
       description: Assign a device configuration profile to groups.
       tags:
         - Configuration Profiles
@@ -692,7 +692,7 @@ paths:
   /deviceManagement/deviceCompliancePolicyDeviceStateSummary:
     get:
       operationId: getDeviceCompliancePolicyDeviceStateSummary
-      summary: Get compliance state summary
+      summary: Microsoft Endpoint Configuration Management Get compliance state summary
       description: >-
         Read properties of the deviceCompliancePolicyDeviceStateSummary object
         providing a summary of device compliance states across the tenant.
@@ -729,7 +729,7 @@ paths:
   /users/{userId}/ownedDevices:
     get:
       operationId: listUserOwnedDevices
-      summary: List user owned devices
+      summary: Microsoft Endpoint Configuration Management List user owned devices
       description: >-
         Get the list of devices registered to a user from Azure Active
         Directory.
