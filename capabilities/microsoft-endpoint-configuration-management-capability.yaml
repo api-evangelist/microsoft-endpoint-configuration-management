@@ -1,0 +1,629 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService)
+  description: REST API for managing Configuration Manager resources including collections, deployments, applications, and
+    device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData
+    routes. Class names are case-sensitive.
+  tags:
+  - Microsoft
+  - Endpoint
+  - Configuration
+  - Management
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: microsoft-endpoint-configuration-management
+    baseUri: https://smsproviderfqdn/AdminService
+    description: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) HTTP API.
+    resources:
+    - name: wmi-sms-device
+      path: /wmi/SMS_Device
+      operations:
+      - name: listdeviceswmi
+        method: GET
+        description: Microsoft Endpoint Configuration Management List devices via WMI route
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: wmi-sms-r-system
+      path: /wmi/SMS_R_System
+      operations:
+      - name: listsystems
+        method: GET
+        description: Microsoft Endpoint Configuration Management List systems
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: wmi-sms-collection
+      path: /wmi/SMS_Collection
+      operations:
+      - name: listcollections
+        method: GET
+        description: Microsoft Endpoint Configuration Management List collections
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createcollection
+        method: POST
+        description: Microsoft Endpoint Configuration Management Create a collection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: wmi-sms-collection-collectionid
+      path: /wmi/SMS_Collection('{collectionId}')
+      operations:
+      - name: getcollection
+        method: GET
+        description: Microsoft Endpoint Configuration Management Get a collection
+        inputParameters:
+        - name: collectionId
+          in: path
+          type: string
+          required: true
+          description: The unique identifier of the collection.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: wmi-sms-application
+      path: /wmi/SMS_Application
+      operations:
+      - name: listapplications
+        method: GET
+        description: Microsoft Endpoint Configuration Management List applications
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createapplication
+        method: POST
+        description: Microsoft Endpoint Configuration Management Create an application
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: wmi-sms-application-applicationid
+      path: /wmi/SMS_Application('{applicationId}')
+      operations:
+      - name: getapplication
+        method: GET
+        description: Microsoft Endpoint Configuration Management Get an application
+        inputParameters:
+        - name: applicationId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: wmi-sms-applicationdeployment
+      path: /wmi/SMS_ApplicationDeployment
+      operations:
+      - name: listdeployments
+        method: GET
+        description: Microsoft Endpoint Configuration Management List application deployments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: wmi-sms-package
+      path: /wmi/SMS_Package
+      operations:
+      - name: listpackages
+        method: GET
+        description: Microsoft Endpoint Configuration Management List packages
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: wmi-sms-tasksequence
+      path: /wmi/SMS_TaskSequence
+      operations:
+      - name: listtasksequences
+        method: GET
+        description: Microsoft Endpoint Configuration Management List task sequences
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: wmi-sms-softwareupdate
+      path: /wmi/SMS_SoftwareUpdate
+      operations:
+      - name: listsoftwareupdates
+        method: GET
+        description: Microsoft Endpoint Configuration Management List software updates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: wmi-sms-site
+      path: /wmi/SMS_Site
+      operations:
+      - name: listsites
+        method: GET
+        description: Microsoft Endpoint Configuration Management List sites
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: wmi-sms-baselineassignment
+      path: /wmi/SMS_BaselineAssignment
+      operations:
+      - name: listbaselineassignments
+        method: GET
+        description: Microsoft Endpoint Configuration Management List compliance baseline assignments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-0-device
+      path: /v1.0/Device
+      operations:
+      - name: listdevicesv1
+        method: GET
+        description: Microsoft Endpoint Configuration Management List devices (versioned route)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-0-device-deviceid
+      path: /v1.0/Device({deviceId})
+      operations:
+      - name: getdevicev1
+        method: GET
+        description: Microsoft Endpoint Configuration Management Get a device (versioned route)
+        inputParameters:
+        - name: deviceId
+          in: path
+          type: integer
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-0-collections
+      path: /v1.0/Collections
+      operations:
+      - name: listcollectionsv1
+        method: GET
+        description: Microsoft Endpoint Configuration Management List collections (versioned route)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-0-scripts
+      path: /v1.0/Scripts
+      operations:
+      - name: listscripts
+        method: GET
+        description: Microsoft Endpoint Configuration Management List scripts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: microsoft-endpoint-configuration-management-rest
+    description: REST adapter for Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService).
+    resources:
+    - path: /wmi/SMS_Device
+      name: listdeviceswmi
+      operations:
+      - method: GET
+        name: listdeviceswmi
+        description: Microsoft Endpoint Configuration Management List devices via WMI route
+        call: microsoft-endpoint-configuration-management.listdeviceswmi
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /wmi/SMS_R_System
+      name: listsystems
+      operations:
+      - method: GET
+        name: listsystems
+        description: Microsoft Endpoint Configuration Management List systems
+        call: microsoft-endpoint-configuration-management.listsystems
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /wmi/SMS_Collection
+      name: listcollections
+      operations:
+      - method: GET
+        name: listcollections
+        description: Microsoft Endpoint Configuration Management List collections
+        call: microsoft-endpoint-configuration-management.listcollections
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /wmi/SMS_Collection
+      name: createcollection
+      operations:
+      - method: POST
+        name: createcollection
+        description: Microsoft Endpoint Configuration Management Create a collection
+        call: microsoft-endpoint-configuration-management.createcollection
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /wmi/SMS_Collection('{collectionId}')
+      name: getcollection
+      operations:
+      - method: GET
+        name: getcollection
+        description: Microsoft Endpoint Configuration Management Get a collection
+        call: microsoft-endpoint-configuration-management.getcollection
+        with:
+          collectionId: rest.collectionId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /wmi/SMS_Application
+      name: listapplications
+      operations:
+      - method: GET
+        name: listapplications
+        description: Microsoft Endpoint Configuration Management List applications
+        call: microsoft-endpoint-configuration-management.listapplications
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /wmi/SMS_Application
+      name: createapplication
+      operations:
+      - method: POST
+        name: createapplication
+        description: Microsoft Endpoint Configuration Management Create an application
+        call: microsoft-endpoint-configuration-management.createapplication
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /wmi/SMS_Application('{applicationId}')
+      name: getapplication
+      operations:
+      - method: GET
+        name: getapplication
+        description: Microsoft Endpoint Configuration Management Get an application
+        call: microsoft-endpoint-configuration-management.getapplication
+        with:
+          applicationId: rest.applicationId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /wmi/SMS_ApplicationDeployment
+      name: listdeployments
+      operations:
+      - method: GET
+        name: listdeployments
+        description: Microsoft Endpoint Configuration Management List application deployments
+        call: microsoft-endpoint-configuration-management.listdeployments
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /wmi/SMS_Package
+      name: listpackages
+      operations:
+      - method: GET
+        name: listpackages
+        description: Microsoft Endpoint Configuration Management List packages
+        call: microsoft-endpoint-configuration-management.listpackages
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /wmi/SMS_TaskSequence
+      name: listtasksequences
+      operations:
+      - method: GET
+        name: listtasksequences
+        description: Microsoft Endpoint Configuration Management List task sequences
+        call: microsoft-endpoint-configuration-management.listtasksequences
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /wmi/SMS_SoftwareUpdate
+      name: listsoftwareupdates
+      operations:
+      - method: GET
+        name: listsoftwareupdates
+        description: Microsoft Endpoint Configuration Management List software updates
+        call: microsoft-endpoint-configuration-management.listsoftwareupdates
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /wmi/SMS_Site
+      name: listsites
+      operations:
+      - method: GET
+        name: listsites
+        description: Microsoft Endpoint Configuration Management List sites
+        call: microsoft-endpoint-configuration-management.listsites
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /wmi/SMS_BaselineAssignment
+      name: listbaselineassignments
+      operations:
+      - method: GET
+        name: listbaselineassignments
+        description: Microsoft Endpoint Configuration Management List compliance baseline assignments
+        call: microsoft-endpoint-configuration-management.listbaselineassignments
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1.0/Device
+      name: listdevicesv1
+      operations:
+      - method: GET
+        name: listdevicesv1
+        description: Microsoft Endpoint Configuration Management List devices (versioned route)
+        call: microsoft-endpoint-configuration-management.listdevicesv1
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1.0/Device({deviceId})
+      name: getdevicev1
+      operations:
+      - method: GET
+        name: getdevicev1
+        description: Microsoft Endpoint Configuration Management Get a device (versioned route)
+        call: microsoft-endpoint-configuration-management.getdevicev1
+        with:
+          deviceId: rest.deviceId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1.0/Collections
+      name: listcollectionsv1
+      operations:
+      - method: GET
+        name: listcollectionsv1
+        description: Microsoft Endpoint Configuration Management List collections (versioned route)
+        call: microsoft-endpoint-configuration-management.listcollectionsv1
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1.0/Scripts
+      name: listscripts
+      operations:
+      - method: GET
+        name: listscripts
+        description: Microsoft Endpoint Configuration Management List scripts
+        call: microsoft-endpoint-configuration-management.listscripts
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: microsoft-endpoint-configuration-management-mcp
+    transport: http
+    description: MCP adapter for Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService)
+      for AI agent use.
+    tools:
+    - name: listdeviceswmi
+      description: Microsoft Endpoint Configuration Management List devices via WMI route
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-endpoint-configuration-management.listdeviceswmi
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listsystems
+      description: Microsoft Endpoint Configuration Management List systems
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-endpoint-configuration-management.listsystems
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listcollections
+      description: Microsoft Endpoint Configuration Management List collections
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-endpoint-configuration-management.listcollections
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createcollection
+      description: Microsoft Endpoint Configuration Management Create a collection
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: microsoft-endpoint-configuration-management.createcollection
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcollection
+      description: Microsoft Endpoint Configuration Management Get a collection
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-endpoint-configuration-management.getcollection
+      with:
+        collectionId: tools.collectionId
+      inputParameters:
+      - name: collectionId
+        type: string
+        description: The unique identifier of the collection.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listapplications
+      description: Microsoft Endpoint Configuration Management List applications
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-endpoint-configuration-management.listapplications
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createapplication
+      description: Microsoft Endpoint Configuration Management Create an application
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: microsoft-endpoint-configuration-management.createapplication
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getapplication
+      description: Microsoft Endpoint Configuration Management Get an application
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-endpoint-configuration-management.getapplication
+      with:
+        applicationId: tools.applicationId
+      inputParameters:
+      - name: applicationId
+        type: string
+        description: applicationId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listdeployments
+      description: Microsoft Endpoint Configuration Management List application deployments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-endpoint-configuration-management.listdeployments
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listpackages
+      description: Microsoft Endpoint Configuration Management List packages
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-endpoint-configuration-management.listpackages
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listtasksequences
+      description: Microsoft Endpoint Configuration Management List task sequences
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-endpoint-configuration-management.listtasksequences
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listsoftwareupdates
+      description: Microsoft Endpoint Configuration Management List software updates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-endpoint-configuration-management.listsoftwareupdates
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listsites
+      description: Microsoft Endpoint Configuration Management List sites
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-endpoint-configuration-management.listsites
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listbaselineassignments
+      description: Microsoft Endpoint Configuration Management List compliance baseline assignments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-endpoint-configuration-management.listbaselineassignments
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listdevicesv1
+      description: Microsoft Endpoint Configuration Management List devices (versioned route)
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-endpoint-configuration-management.listdevicesv1
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getdevicev1
+      description: Microsoft Endpoint Configuration Management Get a device (versioned route)
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-endpoint-configuration-management.getdevicev1
+      with:
+        deviceId: tools.deviceId
+      inputParameters:
+      - name: deviceId
+        type: integer
+        description: deviceId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listcollectionsv1
+      description: Microsoft Endpoint Configuration Management List collections (versioned route)
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-endpoint-configuration-management.listcollectionsv1
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listscripts
+      description: Microsoft Endpoint Configuration Management List scripts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-endpoint-configuration-management.listscripts
+      outputParameters:
+      - type: object
+        mapping: $.
