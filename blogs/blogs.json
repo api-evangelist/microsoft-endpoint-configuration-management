@@ -1,0 +1,14 @@
+{
+  "repo": "microsoft-endpoint-configuration-management",
+  "feeds": [
+    {
+      "source": "https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/bg-p/MicrosoftEndpointManagerBlog",
+      "feed_url": "",
+      "title": "",
+      "saved": 0,
+      "error": "no_feed"
+    }
+  ],
+  "fetched": "2026-05-09T20:17:51Z",
+  "post_count": 0
+}
