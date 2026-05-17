@@ -35,7 +35,7 @@ apis:
     properties:
       - type: Documentation
         url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up
       - type: OpenAPI
         url: openapi/microsoft-endpoint-configuration-management-configmgr-rest-api-openapi.yml
@@ -43,7 +43,7 @@ apis:
         url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up#enable-secure-https-communication
       - type: Reference
         url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/usage
-      - type: Change Log
+      - type: ChangeLog
         url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/release-notes
   - name: Configuration Manager PowerShell Cmdlets
     description: >-
@@ -61,9 +61,9 @@ apis:
         url: https://learn.microsoft.com/en-us/powershell/sccm/overview?view=sccm-ps
       - type: Reference
         url: https://learn.microsoft.com/en-us/powershell/module/configurationmanager/?view=sccm-ps
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/intune/configmgr/core/servers/manage/admin-console
-      - type: Change Log
+      - type: ChangeLog
         url: https://learn.microsoft.com/en-us/intune/configmgr/core/plan-design/changes/whats-new-incremental-versions
   - name: Configuration Manager SDK
     description: >-
@@ -81,9 +81,9 @@ apis:
         url: https://learn.microsoft.com/en-us/intune/configmgr/develop/
       - type: Reference
         url: https://learn.microsoft.com/en-us/intune/configmgr/develop/reference/configuration-manager-reference
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/intune/configmgr/develop/core/understand/getting-started-with-configuration-manager-programming
-      - type: Change Log
+      - type: ChangeLog
         url: https://learn.microsoft.com/en-us/intune/configmgr/core/plan-design/changes/whats-new-incremental-versions
   - name: Microsoft Intune Graph API
     description: >-
@@ -100,7 +100,7 @@ apis:
     properties:
       - type: Documentation
         url: https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
       - type: OpenAPI
         url: openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml
@@ -118,7 +118,7 @@ apis:
         url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
       - type: Authentication
         url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
-      - type: Change Log
+      - type: ChangeLog
         url: https://developer.microsoft.com/en-us/graph/changelog
       - type: SDKs
         url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
@@ -141,13 +141,13 @@ apis:
         url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
       - type: OpenAPI
         url: openapi/microsoft-endpoint-configuration-management-intune-data-warehouse-api-openapi.yml
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-api-url
       - type: Authentication
         url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
       - type: Reference
         url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-proc-data-rest
-      - type: Change Log
+      - type: ChangeLog
         url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
   - name: Intune App SDK
     description: >-
@@ -163,11 +163,11 @@ apis:
     properties:
       - type: Documentation
         url: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-sdk
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-sdk-get-started
       - type: Reference
         url: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-sdk-ios-phase1
-      - type: GitHub Organization
+      - type: GitHubOrganization
         url: https://github.com/msintuneappsdk
   - name: Intune Reporting Export API
     description: >-
@@ -205,11 +205,11 @@ apis:
     properties:
       - type: Documentation
         url: https://learn.microsoft.com/en-us/intune/intune-service/developer/apps-prepare-mobile-application-management
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-wrapper-prepare-ios
       - type: Reference
         url: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-wrapper-prepare-android
-      - type: GitHub Organization
+      - type: GitHubOrganization
         url: https://github.com/microsoftconnect
   - name: Intune PowerShell SDK
     description: >-
@@ -225,7 +225,7 @@ apis:
     properties:
       - type: Documentation
         url: https://github.com/microsoft/Intune-PowerShell-SDK
-      - type: Getting Started
+      - type: GettingStarted
         url: https://github.com/microsoft/mggraph-intune-samples
       - type: SDKs
         url: https://learn.microsoft.com/en-us/graph/sdks/sdk-installation
@@ -236,7 +236,7 @@ common:
     url: https://intune.microsoft.com/
   - type: Documentation
     url: https://learn.microsoft.com/en-us/intune/intune-service/
-  - type: Getting Started
+  - type: GettingStarted
     url: https://learn.microsoft.com/en-us/intune/configmgr/core/understand/introduction
   - type: Authentication
     url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
@@ -244,21 +244,21 @@ common:
     url: https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/bg-p/MicrosoftEndpointManagerBlog
   - type: Support
     url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/contact-assisted-support
-  - type: Status
+  - type: StatusPage
     url: https://status.azure.com/
-  - type: Change Log
+  - type: ChangeLog
     url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
   - type: Pricing
     url: https://www.microsoft.com/en-us/security/business/microsoft-intune-pricing
-  - type: Sign Up
+  - type: SignUp
     url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/free-trial-sign-up
   - type: Login
     url: https://intune.microsoft.com/
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://privacy.microsoft.com/
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.microsoft.com/licensing/terms/
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/microsoftgraph
   - type: Community
     url: https://techcommunity.microsoft.com/category/microsoftintune/blog/microsoftintuneblog
