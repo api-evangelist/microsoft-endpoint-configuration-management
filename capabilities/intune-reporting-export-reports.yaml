@@ -1,0 +1,292 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Endpoint Configuration Management Intune Reporting Export API — Reports
+  description: 'Microsoft Endpoint Configuration Management Intune Reporting Export API — Reports. 6 operations. Lead operation:
+    Microsoft Endpoint Configuration Management Get cached report. Self-contained Naftiko capability covering one Microsoft
+    Endpoint Configuration Management business surface.'
+  tags:
+  - Microsoft Endpoint Configuration Management
+  - Reports
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_ENDPOINT_CONFIGURATION_MANAGEMENT_API_KEY: MICROSOFT_ENDPOINT_CONFIGURATION_MANAGEMENT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: intune-reporting-export-reports
+    baseUri: https://graph.microsoft.com/v1.0
+    description: Microsoft Endpoint Configuration Management Intune Reporting Export API — Reports business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: deviceManagement-reports-getCachedReport
+      path: /deviceManagement/reports/getCachedReport
+      operations:
+      - name: getcachedreport
+        method: POST
+        description: Microsoft Endpoint Configuration Management Get cached report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: deviceManagement-reports-getCompliancePolicyNonComplianceReport
+      path: /deviceManagement/reports/getCompliancePolicyNonComplianceReport
+      operations:
+      - name: getcompliancepolicynoncompliancereport
+        method: POST
+        description: Microsoft Endpoint Configuration Management Get compliance policy non-compliance report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: deviceManagement-reports-getComplianceSettingNonComplianceReport
+      path: /deviceManagement/reports/getComplianceSettingNonComplianceReport
+      operations:
+      - name: getcompliancesettingnoncompliancereport
+        method: POST
+        description: Microsoft Endpoint Configuration Management Get compliance setting non-compliance report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: deviceManagement-reports-getConfigurationPolicyNonComplianceReport
+      path: /deviceManagement/reports/getConfigurationPolicyNonComplianceReport
+      operations:
+      - name: getconfigurationpolicynoncompliancereport
+        method: POST
+        description: Microsoft Endpoint Configuration Management Get configuration policy non-compliance report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: deviceManagement-reports-getDeviceNonComplianceReport
+      path: /deviceManagement/reports/getDeviceNonComplianceReport
+      operations:
+      - name: getdevicenoncompliancereport
+        method: POST
+        description: Microsoft Endpoint Configuration Management Get device non-compliance report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: deviceManagement-reports-getHistoricalReport
+      path: /deviceManagement/reports/getHistoricalReport
+      operations:
+      - name: gethistoricalreport
+        method: POST
+        description: Microsoft Endpoint Configuration Management Get historical report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_ENDPOINT_CONFIGURATION_MANAGEMENT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: intune-reporting-export-reports-rest
+    port: 8080
+    description: REST adapter for Microsoft Endpoint Configuration Management Intune Reporting Export API — Reports. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/devicemanagement/reports/getcachedreport
+      name: devicemanagement-reports-getcachedreport
+      description: REST surface for deviceManagement-reports-getCachedReport.
+      operations:
+      - method: POST
+        name: getcachedreport
+        description: Microsoft Endpoint Configuration Management Get cached report
+        call: intune-reporting-export-reports.getcachedreport
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/devicemanagement/reports/getcompliancepolicynoncompliancereport
+      name: devicemanagement-reports-getcompliancepolicynoncompliancereport
+      description: REST surface for deviceManagement-reports-getCompliancePolicyNonComplianceReport.
+      operations:
+      - method: POST
+        name: getcompliancepolicynoncompliancereport
+        description: Microsoft Endpoint Configuration Management Get compliance policy non-compliance report
+        call: intune-reporting-export-reports.getcompliancepolicynoncompliancereport
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/devicemanagement/reports/getcompliancesettingnoncompliancereport
+      name: devicemanagement-reports-getcompliancesettingnoncompliancereport
+      description: REST surface for deviceManagement-reports-getComplianceSettingNonComplianceReport.
+      operations:
+      - method: POST
+        name: getcompliancesettingnoncompliancereport
+        description: Microsoft Endpoint Configuration Management Get compliance setting non-compliance report
+        call: intune-reporting-export-reports.getcompliancesettingnoncompliancereport
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/devicemanagement/reports/getconfigurationpolicynoncompliancereport
+      name: devicemanagement-reports-getconfigurationpolicynoncompliancereport
+      description: REST surface for deviceManagement-reports-getConfigurationPolicyNonComplianceReport.
+      operations:
+      - method: POST
+        name: getconfigurationpolicynoncompliancereport
+        description: Microsoft Endpoint Configuration Management Get configuration policy non-compliance report
+        call: intune-reporting-export-reports.getconfigurationpolicynoncompliancereport
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/devicemanagement/reports/getdevicenoncompliancereport
+      name: devicemanagement-reports-getdevicenoncompliancereport
+      description: REST surface for deviceManagement-reports-getDeviceNonComplianceReport.
+      operations:
+      - method: POST
+        name: getdevicenoncompliancereport
+        description: Microsoft Endpoint Configuration Management Get device non-compliance report
+        call: intune-reporting-export-reports.getdevicenoncompliancereport
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/devicemanagement/reports/gethistoricalreport
+      name: devicemanagement-reports-gethistoricalreport
+      description: REST surface for deviceManagement-reports-getHistoricalReport.
+      operations:
+      - method: POST
+        name: gethistoricalreport
+        description: Microsoft Endpoint Configuration Management Get historical report
+        call: intune-reporting-export-reports.gethistoricalreport
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: intune-reporting-export-reports-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Endpoint Configuration Management Intune Reporting Export API — Reports. One tool
+      per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-endpoint-configuration-management-get
+      description: Microsoft Endpoint Configuration Management Get cached report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: intune-reporting-export-reports.getcachedreport
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-endpoint-configuration-management-get-2
+      description: Microsoft Endpoint Configuration Management Get compliance policy non-compliance report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: intune-reporting-export-reports.getcompliancepolicynoncompliancereport
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-endpoint-configuration-management-get-3
+      description: Microsoft Endpoint Configuration Management Get compliance setting non-compliance report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: intune-reporting-export-reports.getcompliancesettingnoncompliancereport
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-endpoint-configuration-management-get-4
+      description: Microsoft Endpoint Configuration Management Get configuration policy non-compliance report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: intune-reporting-export-reports.getconfigurationpolicynoncompliancereport
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-endpoint-configuration-management-get-5
+      description: Microsoft Endpoint Configuration Management Get device non-compliance report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: intune-reporting-export-reports.getdevicenoncompliancereport
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-endpoint-configuration-management-get-6
+      description: Microsoft Endpoint Configuration Management Get historical report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: intune-reporting-export-reports.gethistoricalreport
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

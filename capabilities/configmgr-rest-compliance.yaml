@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) — Compliance
+  description: 'Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) — Compliance. 1
+    operations. Lead operation: Microsoft Endpoint Configuration Management List compliance baseline assignments. Self-contained
+    Naftiko capability covering one Microsoft Endpoint Configuration Management business surface.'
+  tags:
+  - Microsoft Endpoint Configuration Management
+  - Compliance
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_ENDPOINT_CONFIGURATION_MANAGEMENT_API_KEY: MICROSOFT_ENDPOINT_CONFIGURATION_MANAGEMENT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: configmgr-rest-compliance
+    baseUri: https://{siteserver}/AdminService
+    description: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) — Compliance business
+      capability. Self-contained, no shared references.
+    resources:
+    - name: wmi-SMS_BaselineAssignment
+      path: /wmi/SMS_BaselineAssignment
+      operations:
+      - name: listbaselineassignments
+        method: GET
+        description: Microsoft Endpoint Configuration Management List compliance baseline assignments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_ENDPOINT_CONFIGURATION_MANAGEMENT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: configmgr-rest-compliance-rest
+    port: 8080
+    description: REST adapter for Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService)
+      — Compliance. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/wmi/sms-baselineassignment
+      name: wmi-sms-baselineassignment
+      description: REST surface for wmi-SMS_BaselineAssignment.
+      operations:
+      - method: GET
+        name: listbaselineassignments
+        description: Microsoft Endpoint Configuration Management List compliance baseline assignments
+        call: configmgr-rest-compliance.listbaselineassignments
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: configmgr-rest-compliance-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService)
+      — Compliance. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-endpoint-configuration-management-list
+      description: Microsoft Endpoint Configuration Management List compliance baseline assignments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: configmgr-rest-compliance.listbaselineassignments
+      outputParameters:
+      - type: object
+        mapping: $.

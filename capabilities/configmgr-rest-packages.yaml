@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) — Packages
+  description: 'Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) — Packages. 1 operations.
+    Lead operation: Microsoft Endpoint Configuration Management List packages. Self-contained Naftiko capability covering
+    one Microsoft Endpoint Configuration Management business surface.'
+  tags:
+  - Microsoft Endpoint Configuration Management
+  - Packages
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_ENDPOINT_CONFIGURATION_MANAGEMENT_API_KEY: MICROSOFT_ENDPOINT_CONFIGURATION_MANAGEMENT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: configmgr-rest-packages
+    baseUri: https://{siteserver}/AdminService
+    description: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) — Packages business
+      capability. Self-contained, no shared references.
+    resources:
+    - name: wmi-SMS_Package
+      path: /wmi/SMS_Package
+      operations:
+      - name: listpackages
+        method: GET
+        description: Microsoft Endpoint Configuration Management List packages
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_ENDPOINT_CONFIGURATION_MANAGEMENT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: configmgr-rest-packages-rest
+    port: 8080
+    description: REST adapter for Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService)
+      — Packages. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/wmi/sms-package
+      name: wmi-sms-package
+      description: REST surface for wmi-SMS_Package.
+      operations:
+      - method: GET
+        name: listpackages
+        description: Microsoft Endpoint Configuration Management List packages
+        call: configmgr-rest-packages.listpackages
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: configmgr-rest-packages-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService)
+      — Packages. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-endpoint-configuration-management-list
+      description: Microsoft Endpoint Configuration Management List packages
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: configmgr-rest-packages.listpackages
+      outputParameters:
+      - type: object
+        mapping: $.

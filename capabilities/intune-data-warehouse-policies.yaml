@@ -1,0 +1,136 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Endpoint Configuration Management Intune Data Warehouse API — Policies
+  description: 'Microsoft Endpoint Configuration Management Intune Data Warehouse API — Policies. 3 operations. Lead operation:
+    Microsoft Endpoint Configuration Management List policy records. Self-contained Naftiko capability covering one Microsoft
+    Endpoint Configuration Management business surface.'
+  tags:
+  - Microsoft Endpoint Configuration Management
+  - Policies
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_ENDPOINT_CONFIGURATION_MANAGEMENT_API_KEY: MICROSOFT_ENDPOINT_CONFIGURATION_MANAGEMENT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: intune-data-warehouse-policies
+    baseUri: https://fef.{location}.manage.microsoft.com/ReportingService/DataWarehouseFEService
+    description: Microsoft Endpoint Configuration Management Intune Data Warehouse API — Policies business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: policies
+      path: /policies
+      operations:
+      - name: listpolicies
+        method: GET
+        description: Microsoft Endpoint Configuration Management List policy records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: policyDeviceActivities
+      path: /policyDeviceActivities
+      operations:
+      - name: listpolicydeviceactivities
+        method: GET
+        description: Microsoft Endpoint Configuration Management List policy device activities
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: policyUserActivities
+      path: /policyUserActivities
+      operations:
+      - name: listpolicyuseractivities
+        method: GET
+        description: Microsoft Endpoint Configuration Management List policy user activities
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_ENDPOINT_CONFIGURATION_MANAGEMENT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: intune-data-warehouse-policies-rest
+    port: 8080
+    description: REST adapter for Microsoft Endpoint Configuration Management Intune Data Warehouse API — Policies. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/policies
+      name: policies
+      description: REST surface for policies.
+      operations:
+      - method: GET
+        name: listpolicies
+        description: Microsoft Endpoint Configuration Management List policy records
+        call: intune-data-warehouse-policies.listpolicies
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/policydeviceactivities
+      name: policydeviceactivities
+      description: REST surface for policyDeviceActivities.
+      operations:
+      - method: GET
+        name: listpolicydeviceactivities
+        description: Microsoft Endpoint Configuration Management List policy device activities
+        call: intune-data-warehouse-policies.listpolicydeviceactivities
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/policyuseractivities
+      name: policyuseractivities
+      description: REST surface for policyUserActivities.
+      operations:
+      - method: GET
+        name: listpolicyuseractivities
+        description: Microsoft Endpoint Configuration Management List policy user activities
+        call: intune-data-warehouse-policies.listpolicyuseractivities
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: intune-data-warehouse-policies-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Endpoint Configuration Management Intune Data Warehouse API — Policies. One tool
+      per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-endpoint-configuration-management-list
+      description: Microsoft Endpoint Configuration Management List policy records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: intune-data-warehouse-policies.listpolicies
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-endpoint-configuration-management-list-2
+      description: Microsoft Endpoint Configuration Management List policy device activities
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: intune-data-warehouse-policies.listpolicydeviceactivities
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-endpoint-configuration-management-list-3
+      description: Microsoft Endpoint Configuration Management List policy user activities
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: intune-data-warehouse-policies.listpolicyuseractivities
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Endpoint Configuration Management Intune Data Warehouse API — Users
+  description: 'Microsoft Endpoint Configuration Management Intune Data Warehouse API — Users. 1 operations. Lead operation:
+    Microsoft Endpoint Configuration Management List user records. Self-contained Naftiko capability covering one Microsoft
+    Endpoint Configuration Management business surface.'
+  tags:
+  - Microsoft Endpoint Configuration Management
+  - Users
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_ENDPOINT_CONFIGURATION_MANAGEMENT_API_KEY: MICROSOFT_ENDPOINT_CONFIGURATION_MANAGEMENT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: intune-data-warehouse-users
+    baseUri: https://fef.{location}.manage.microsoft.com/ReportingService/DataWarehouseFEService
+    description: Microsoft Endpoint Configuration Management Intune Data Warehouse API — Users business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: users
+      path: /users
+      operations:
+      - name: listusers
+        method: GET
+        description: Microsoft Endpoint Configuration Management List user records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_ENDPOINT_CONFIGURATION_MANAGEMENT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: intune-data-warehouse-users-rest
+    port: 8080
+    description: REST adapter for Microsoft Endpoint Configuration Management Intune Data Warehouse API — Users. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/users
+      name: users
+      description: REST surface for users.
+      operations:
+      - method: GET
+        name: listusers
+        description: Microsoft Endpoint Configuration Management List user records
+        call: intune-data-warehouse-users.listusers
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: intune-data-warehouse-users-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Endpoint Configuration Management Intune Data Warehouse API — Users. One tool per
+      consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-endpoint-configuration-management-list
+      description: Microsoft Endpoint Configuration Management List user records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: intune-data-warehouse-users.listusers
+      outputParameters:
+      - type: object
+        mapping: $.

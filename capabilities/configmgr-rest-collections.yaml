@@ -1,0 +1,181 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) — Collections
+  description: 'Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) — Collections. 4
+    operations. Lead operation: Microsoft Endpoint Configuration Management List collections (versioned route). Self-contained
+    Naftiko capability covering one Microsoft Endpoint Configuration Management business surface.'
+  tags:
+  - Microsoft Endpoint Configuration Management
+  - Collections
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_ENDPOINT_CONFIGURATION_MANAGEMENT_API_KEY: MICROSOFT_ENDPOINT_CONFIGURATION_MANAGEMENT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: configmgr-rest-collections
+    baseUri: https://{siteserver}/AdminService
+    description: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) — Collections business
+      capability. Self-contained, no shared references.
+    resources:
+    - name: v1.0-Collections
+      path: /v1.0/Collections
+      operations:
+      - name: listcollectionsv1
+        method: GET
+        description: Microsoft Endpoint Configuration Management List collections (versioned route)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: wmi-SMS_Collection
+      path: /wmi/SMS_Collection
+      operations:
+      - name: listcollections
+        method: GET
+        description: Microsoft Endpoint Configuration Management List collections
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createcollection
+        method: POST
+        description: Microsoft Endpoint Configuration Management Create a collection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: wmi-SMS_Collection('{collectionId}')
+      path: /wmi/SMS_Collection('{collectionId}')
+      operations:
+      - name: getcollection
+        method: GET
+        description: Microsoft Endpoint Configuration Management Get a collection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: collectionId
+          in: path
+          type: string
+          description: The unique identifier of the collection.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_ENDPOINT_CONFIGURATION_MANAGEMENT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: configmgr-rest-collections-rest
+    port: 8080
+    description: REST adapter for Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService)
+      — Collections. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1-0/collections
+      name: v1-0-collections
+      description: REST surface for v1.0-Collections.
+      operations:
+      - method: GET
+        name: listcollectionsv1
+        description: Microsoft Endpoint Configuration Management List collections (versioned route)
+        call: configmgr-rest-collections.listcollectionsv1
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/wmi/sms-collection
+      name: wmi-sms-collection
+      description: REST surface for wmi-SMS_Collection.
+      operations:
+      - method: GET
+        name: listcollections
+        description: Microsoft Endpoint Configuration Management List collections
+        call: configmgr-rest-collections.listcollections
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcollection
+        description: Microsoft Endpoint Configuration Management Create a collection
+        call: configmgr-rest-collections.createcollection
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/wmi/sms-collection-collectionid
+      name: wmi-sms-collection-collectionid
+      description: REST surface for wmi-SMS_Collection('{collectionId}').
+      operations:
+      - method: GET
+        name: getcollection
+        description: Microsoft Endpoint Configuration Management Get a collection
+        call: configmgr-rest-collections.getcollection
+        with:
+          collectionId: rest.collectionId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: configmgr-rest-collections-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService)
+      — Collections. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-endpoint-configuration-management-list
+      description: Microsoft Endpoint Configuration Management List collections (versioned route)
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: configmgr-rest-collections.listcollectionsv1
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-endpoint-configuration-management-list-2
+      description: Microsoft Endpoint Configuration Management List collections
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: configmgr-rest-collections.listcollections
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-endpoint-configuration-management-create
+      description: Microsoft Endpoint Configuration Management Create a collection
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: configmgr-rest-collections.createcollection
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-endpoint-configuration-management-get
+      description: Microsoft Endpoint Configuration Management Get a collection
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: configmgr-rest-collections.getcollection
+      with:
+        collectionId: tools.collectionId
+      outputParameters:
+      - type: object
+        mapping: $.

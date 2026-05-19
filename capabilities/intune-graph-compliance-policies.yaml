@@ -1,0 +1,303 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Endpoint Configuration Management Microsoft Intune Graph API — Compliance Policies
+  description: 'Microsoft Endpoint Configuration Management Microsoft Intune Graph API — Compliance Policies. 7 operations.
+    Lead operation: Microsoft Endpoint Configuration Management List device compliance policies. Self-contained Naftiko capability
+    covering one Microsoft Endpoint Configuration Management business surface.'
+  tags:
+  - Microsoft Endpoint Configuration Management
+  - Compliance Policies
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_ENDPOINT_CONFIGURATION_MANAGEMENT_API_KEY: MICROSOFT_ENDPOINT_CONFIGURATION_MANAGEMENT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: intune-graph-compliance-policies
+    baseUri: https://graph.microsoft.com/v1.0
+    description: Microsoft Endpoint Configuration Management Microsoft Intune Graph API — Compliance Policies business capability.
+      Self-contained, no shared references.
+    resources:
+    - name: deviceManagement-deviceCompliancePolicies
+      path: /deviceManagement/deviceCompliancePolicies
+      operations:
+      - name: listdevicecompliancepolicies
+        method: GET
+        description: Microsoft Endpoint Configuration Management List device compliance policies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createdevicecompliancepolicy
+        method: POST
+        description: Microsoft Endpoint Configuration Management Create device compliance policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: deviceManagement-deviceCompliancePolicies-deviceCompliancePolicyId
+      path: /deviceManagement/deviceCompliancePolicies/{deviceCompliancePolicyId}
+      operations:
+      - name: getdevicecompliancepolicy
+        method: GET
+        description: Microsoft Endpoint Configuration Management Get device compliance policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: deviceCompliancePolicyId
+          in: path
+          type: string
+          required: true
+      - name: updatedevicecompliancepolicy
+        method: PATCH
+        description: Microsoft Endpoint Configuration Management Update device compliance policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: deviceCompliancePolicyId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletedevicecompliancepolicy
+        method: DELETE
+        description: Microsoft Endpoint Configuration Management Delete device compliance policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: deviceCompliancePolicyId
+          in: path
+          type: string
+          required: true
+    - name: deviceManagement-deviceCompliancePolicies-deviceCompliancePolicyId-assign
+      path: /deviceManagement/deviceCompliancePolicies/{deviceCompliancePolicyId}/assign
+      operations:
+      - name: assigndevicecompliancepolicy
+        method: POST
+        description: Microsoft Endpoint Configuration Management Assign compliance policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: deviceCompliancePolicyId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: deviceManagement-deviceCompliancePolicyDeviceStateSummary
+      path: /deviceManagement/deviceCompliancePolicyDeviceStateSummary
+      operations:
+      - name: getdevicecompliancepolicydevicestatesummary
+        method: GET
+        description: Microsoft Endpoint Configuration Management Get compliance state summary
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_ENDPOINT_CONFIGURATION_MANAGEMENT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: intune-graph-compliance-policies-rest
+    port: 8080
+    description: REST adapter for Microsoft Endpoint Configuration Management Microsoft Intune Graph API — Compliance Policies.
+      One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/devicemanagement/devicecompliancepolicies
+      name: devicemanagement-devicecompliancepolicies
+      description: REST surface for deviceManagement-deviceCompliancePolicies.
+      operations:
+      - method: GET
+        name: listdevicecompliancepolicies
+        description: Microsoft Endpoint Configuration Management List device compliance policies
+        call: intune-graph-compliance-policies.listdevicecompliancepolicies
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createdevicecompliancepolicy
+        description: Microsoft Endpoint Configuration Management Create device compliance policy
+        call: intune-graph-compliance-policies.createdevicecompliancepolicy
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/devicemanagement/devicecompliancepolicies/{devicecompliancepolicyid}
+      name: devicemanagement-devicecompliancepolicies-devicecompliancepolicyid
+      description: REST surface for deviceManagement-deviceCompliancePolicies-deviceCompliancePolicyId.
+      operations:
+      - method: GET
+        name: getdevicecompliancepolicy
+        description: Microsoft Endpoint Configuration Management Get device compliance policy
+        call: intune-graph-compliance-policies.getdevicecompliancepolicy
+        with:
+          deviceCompliancePolicyId: rest.deviceCompliancePolicyId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatedevicecompliancepolicy
+        description: Microsoft Endpoint Configuration Management Update device compliance policy
+        call: intune-graph-compliance-policies.updatedevicecompliancepolicy
+        with:
+          deviceCompliancePolicyId: rest.deviceCompliancePolicyId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletedevicecompliancepolicy
+        description: Microsoft Endpoint Configuration Management Delete device compliance policy
+        call: intune-graph-compliance-policies.deletedevicecompliancepolicy
+        with:
+          deviceCompliancePolicyId: rest.deviceCompliancePolicyId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/devicemanagement/devicecompliancepolicies/{devicecompliancepolicyid}/assign
+      name: devicemanagement-devicecompliancepolicies-devicecompliancepolicyid-assign
+      description: REST surface for deviceManagement-deviceCompliancePolicies-deviceCompliancePolicyId-assign.
+      operations:
+      - method: POST
+        name: assigndevicecompliancepolicy
+        description: Microsoft Endpoint Configuration Management Assign compliance policy
+        call: intune-graph-compliance-policies.assigndevicecompliancepolicy
+        with:
+          deviceCompliancePolicyId: rest.deviceCompliancePolicyId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/devicemanagement/devicecompliancepolicydevicestatesummary
+      name: devicemanagement-devicecompliancepolicydevicestatesummary
+      description: REST surface for deviceManagement-deviceCompliancePolicyDeviceStateSummary.
+      operations:
+      - method: GET
+        name: getdevicecompliancepolicydevicestatesummary
+        description: Microsoft Endpoint Configuration Management Get compliance state summary
+        call: intune-graph-compliance-policies.getdevicecompliancepolicydevicestatesummary
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: intune-graph-compliance-policies-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Endpoint Configuration Management Microsoft Intune Graph API — Compliance Policies.
+      One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-endpoint-configuration-management-list
+      description: Microsoft Endpoint Configuration Management List device compliance policies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: intune-graph-compliance-policies.listdevicecompliancepolicies
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-endpoint-configuration-management-create
+      description: Microsoft Endpoint Configuration Management Create device compliance policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: intune-graph-compliance-policies.createdevicecompliancepolicy
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-endpoint-configuration-management-get
+      description: Microsoft Endpoint Configuration Management Get device compliance policy
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: intune-graph-compliance-policies.getdevicecompliancepolicy
+      with:
+        deviceCompliancePolicyId: tools.deviceCompliancePolicyId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-endpoint-configuration-management-update
+      description: Microsoft Endpoint Configuration Management Update device compliance policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: intune-graph-compliance-policies.updatedevicecompliancepolicy
+      with:
+        deviceCompliancePolicyId: tools.deviceCompliancePolicyId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-endpoint-configuration-management-delete
+      description: Microsoft Endpoint Configuration Management Delete device compliance policy
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: intune-graph-compliance-policies.deletedevicecompliancepolicy
+      with:
+        deviceCompliancePolicyId: tools.deviceCompliancePolicyId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-endpoint-configuration-management-assign
+      description: Microsoft Endpoint Configuration Management Assign compliance policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: intune-graph-compliance-policies.assigndevicecompliancepolicy
+      with:
+        deviceCompliancePolicyId: tools.deviceCompliancePolicyId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-endpoint-configuration-management-get-2
+      description: Microsoft Endpoint Configuration Management Get compliance state summary
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: intune-graph-compliance-policies.getdevicecompliancepolicydevicestatesummary
+      outputParameters:
+      - type: object
+        mapping: $.
