@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Policy",
+  "title": "Policy",
+  "type": "object",
+  "description": "Policy entity representing compliance and configuration policies.",
+  "properties": {
+    "policyKey": {
+      "type": "integer",
+      "description": "Unique key for the policy in the Data Warehouse."
+    },
+    "policyId": {
+      "type": "string",
+      "description": "Unique identifier of the policy."
+    },
+    "policyName": {
+      "type": "string",
+      "description": "Name of the policy."
+    },
+    "policyVersion": {
+      "type": "integer",
+      "description": "Version of the policy."
+    },
+    "isDeleted": {
+      "type": "boolean",
+      "description": "Whether the policy has been deleted."
+    },
+    "policyTypeKey": {
+      "type": "integer",
+      "description": "Reference to the policy type."
+    },
+    "policyPlatformKey": {
+      "type": "integer",
+      "description": "Reference to the platform."
+    }
+  }
+}

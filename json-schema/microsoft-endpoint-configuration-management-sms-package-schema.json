@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SMS_Package",
+  "title": "SMS_Package",
+  "type": "object",
+  "description": "Represents a legacy package in Configuration Manager.",
+  "properties": {
+    "PackageID": {
+      "type": "string",
+      "description": "Unique package identifier."
+    },
+    "Name": {
+      "type": "string",
+      "description": "Package name."
+    },
+    "Description": {
+      "type": "string",
+      "description": "Package description."
+    },
+    "Manufacturer": {
+      "type": "string",
+      "description": "Manufacturer."
+    },
+    "Version": {
+      "type": "string",
+      "description": "Package version."
+    },
+    "SourceDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Source content date."
+    },
+    "PackageType": {
+      "type": "integer",
+      "description": "Type of package."
+    }
+  }
+}

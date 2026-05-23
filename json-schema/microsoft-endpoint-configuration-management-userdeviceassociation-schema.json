@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserDeviceAssociation",
+  "title": "UserDeviceAssociation",
+  "type": "object",
+  "description": "Record mapping a user to an associated device.",
+  "properties": {
+    "userDeviceAssociationKey": {
+      "type": "integer",
+      "description": "Unique key for the association."
+    },
+    "userKey": {
+      "type": "integer",
+      "description": "User key reference."
+    },
+    "deviceKey": {
+      "type": "integer",
+      "description": "Device key reference."
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date the association was created."
+    }
+  }
+}

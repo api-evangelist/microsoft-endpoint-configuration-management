@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReportRequest",
+  "title": "ReportRequest",
+  "type": "object",
+  "description": "Request body for retrieving inline Intune reports.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the report to retrieve."
+    },
+    "filter": {
+      "type": "string",
+      "description": "Filter expression to apply to the report data."
+    },
+    "select": {
+      "type": "array",
+      "description": "Columns to include in the report output.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "orderBy": {
+      "type": "array",
+      "description": "Columns to order the report by.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "skip": {
+      "type": "integer",
+      "description": "Number of records to skip."
+    },
+    "top": {
+      "type": "integer",
+      "description": "Number of records to return."
+    },
+    "sessionId": {
+      "type": "string",
+      "description": "Session ID for cached report access."
+    },
+    "search": {
+      "type": "string",
+      "description": "Search string to filter results."
+    }
+  }
+}

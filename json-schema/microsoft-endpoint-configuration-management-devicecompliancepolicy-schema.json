@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DeviceCompliancePolicy",
+  "title": "DeviceCompliancePolicy",
+  "type": "object",
+  "description": "Base class for compliance policy. Compliance policies are platform specific and individual per-platform compliance policies inherit from here.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Key of the entity."
+    },
+    "createdDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "DateTime the object was created.",
+      "readOnly": true
+    },
+    "description": {
+      "type": "string",
+      "description": "Admin provided description of the device configuration."
+    },
+    "lastModifiedDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "DateTime the object was last modified.",
+      "readOnly": true
+    },
+    "displayName": {
+      "type": "string",
+      "description": "Admin provided name of the device configuration."
+    },
+    "version": {
+      "type": "integer",
+      "description": "Version of the device configuration.",
+      "readOnly": true
+    }
+  }
+}

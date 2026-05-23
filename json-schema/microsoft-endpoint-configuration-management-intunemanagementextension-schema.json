@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/IntuneManagementExtension",
+  "title": "IntuneManagementExtension",
+  "type": "object",
+  "description": "Intune management extension activity record.",
+  "properties": {
+    "dateKey": {
+      "type": "integer",
+      "description": "Date key for the record."
+    },
+    "tenantKey": {
+      "type": "integer",
+      "description": "Tenant key reference."
+    },
+    "deviceKey": {
+      "type": "integer",
+      "description": "Device key reference."
+    },
+    "userKey": {
+      "type": "integer",
+      "description": "User key reference."
+    },
+    "extensionVersionKey": {
+      "type": "integer",
+      "description": "Extension version key."
+    },
+    "policyKey": {
+      "type": "integer",
+      "description": "Policy key reference."
+    },
+    "policyTypeKey": {
+      "type": "integer",
+      "description": "Policy type key reference."
+    },
+    "status": {
+      "type": "string",
+      "description": "Extension execution status."
+    }
+  }
+}

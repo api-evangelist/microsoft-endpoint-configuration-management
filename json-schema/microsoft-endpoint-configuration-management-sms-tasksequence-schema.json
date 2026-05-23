@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SMS_TaskSequence",
+  "title": "SMS_TaskSequence",
+  "type": "object",
+  "description": "Represents a task sequence used for OS deployment and complex automation workflows.",
+  "properties": {
+    "PackageID": {
+      "type": "string",
+      "description": "Task sequence package ID."
+    },
+    "Name": {
+      "type": "string",
+      "description": "Task sequence name."
+    },
+    "Description": {
+      "type": "string",
+      "description": "Task sequence description."
+    },
+    "BootImageID": {
+      "type": "string",
+      "description": "Associated boot image ID."
+    },
+    "Duration": {
+      "type": "integer",
+      "description": "Estimated duration in minutes."
+    },
+    "Type": {
+      "type": "integer",
+      "description": "Task sequence type."
+    }
+  }
+}

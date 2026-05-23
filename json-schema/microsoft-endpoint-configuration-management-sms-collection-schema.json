@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SMS_Collection",
+  "title": "SMS_Collection",
+  "type": "object",
+  "description": "Represents a device or user collection in Configuration Manager used for targeting deployments and policies.",
+  "properties": {
+    "CollectionID": {
+      "type": "string",
+      "description": "Unique collection identifier."
+    },
+    "Name": {
+      "type": "string",
+      "description": "Collection name."
+    },
+    "Comment": {
+      "type": "string",
+      "description": "Collection description/comment."
+    },
+    "CollectionType": {
+      "type": "integer",
+      "description": "Type of collection (1=User, 2=Device)."
+    },
+    "MemberCount": {
+      "type": "integer",
+      "description": "Number of members in the collection."
+    },
+    "LimitToCollectionID": {
+      "type": "string",
+      "description": "The collection ID that limits membership."
+    },
+    "LimitToCollectionName": {
+      "type": "string",
+      "description": "Name of the limiting collection."
+    },
+    "LastRefreshTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last time the collection membership was refreshed."
+    },
+    "CurrentStatus": {
+      "type": "integer",
+      "description": "Current evaluation status of the collection."
+    }
+  }
+}

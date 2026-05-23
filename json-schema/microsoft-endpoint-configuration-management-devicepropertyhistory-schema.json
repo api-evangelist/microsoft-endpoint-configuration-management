@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DevicePropertyHistory",
+  "title": "DevicePropertyHistory",
+  "type": "object",
+  "description": "Historical snapshot of device properties taken daily.",
+  "properties": {
+    "devicePropertyHistoryKey": {
+      "type": "integer",
+      "description": "Unique key for the history record."
+    },
+    "deviceKey": {
+      "type": "integer",
+      "description": "Reference to the device."
+    },
+    "dateKey": {
+      "type": "integer",
+      "description": "Date key for this snapshot."
+    },
+    "deviceName": {
+      "type": "string",
+      "description": "Device name at the time of snapshot."
+    },
+    "deviceRegistrationStateKey": {
+      "type": "integer",
+      "description": "Device registration state key."
+    },
+    "complianceStateKey": {
+      "type": "integer",
+      "description": "Compliance state key."
+    },
+    "osVersion": {
+      "type": "string",
+      "description": "OS version at the time of snapshot."
+    },
+    "storageTotal": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Total storage in bytes."
+    },
+    "storageFree": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Free storage in bytes."
+    }
+  }
+}

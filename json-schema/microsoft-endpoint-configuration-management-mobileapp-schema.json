@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MobileApp",
+  "title": "MobileApp",
+  "type": "object",
+  "description": "Abstract class containing the base properties for Intune mobile apps.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Key of the entity.",
+      "readOnly": true
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The admin provided or imported title of the app."
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of the app."
+    },
+    "publisher": {
+      "type": "string",
+      "description": "The publisher of the app."
+    },
+    "largeIcon": {
+      "type": "object",
+      "description": "The large icon for the app.",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "createdDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the app was created.",
+      "readOnly": true
+    },
+    "lastModifiedDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the app was last modified.",
+      "readOnly": true
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "description": "Whether the app is marked as featured by the admin."
+    },
+    "privacyInformationUrl": {
+      "type": "string",
+      "description": "The privacy statement URL."
+    },
+    "informationUrl": {
+      "type": "string",
+      "description": "The more information URL."
+    },
+    "owner": {
+      "type": "string",
+      "description": "The owner of the app."
+    },
+    "developer": {
+      "type": "string",
+      "description": "The developer of the app."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Notes for the app."
+    },
+    "publishingState": {
+      "type": "string",
+      "description": "The publishing state for the app.",
+      "enum": [
+        "notPublished",
+        "processing",
+        "published"
+      ],
+      "readOnly": true
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PolicyUserActivity",
+  "title": "PolicyUserActivity",
+  "type": "object",
+  "description": "User compliance activity record against a specific policy.",
+  "properties": {
+    "dateKey": {
+      "type": "integer",
+      "description": "Date key for the activity."
+    },
+    "policyKey": {
+      "type": "integer",
+      "description": "Policy key reference."
+    },
+    "pending": {
+      "type": "integer",
+      "description": "Number of users pending compliance evaluation."
+    },
+    "succeeded": {
+      "type": "integer",
+      "description": "Number of users in compliance."
+    },
+    "failed": {
+      "type": "integer",
+      "description": "Number of users out of compliance."
+    },
+    "error": {
+      "type": "integer",
+      "description": "Number of users in error state."
+    }
+  }
+}

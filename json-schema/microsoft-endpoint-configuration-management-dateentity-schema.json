@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DateEntity",
+  "title": "DateEntity",
+  "type": "object",
+  "description": "Date dimension entity used to correlate facts over time.",
+  "properties": {
+    "dateKey": {
+      "type": "integer",
+      "description": "Unique identifier for the date in YYYYMMDD format."
+    },
+    "fullDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Full date representation."
+    },
+    "dayOfWeek": {
+      "type": "integer",
+      "description": "Day of the week (1=Sunday, 7=Saturday)."
+    },
+    "dayOfMonth": {
+      "type": "integer",
+      "description": "Day of the month."
+    },
+    "dayOfYear": {
+      "type": "integer",
+      "description": "Day of the year."
+    },
+    "weekOfYear": {
+      "type": "integer",
+      "description": "Week of the year."
+    },
+    "monthOfYear": {
+      "type": "integer",
+      "description": "Month of the year."
+    },
+    "calendarQuarter": {
+      "type": "integer",
+      "description": "Calendar quarter."
+    },
+    "calendarYear": {
+      "type": "integer",
+      "description": "Calendar year."
+    }
+  }
+}

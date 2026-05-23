@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SMS_R_System",
+  "title": "SMS_R_System",
+  "type": "object",
+  "description": "Represents a discovered system resource (computer or device) in Configuration Manager.",
+  "properties": {
+    "ResourceID": {
+      "type": "integer",
+      "description": "Unique resource identifier."
+    },
+    "Name": {
+      "type": "string",
+      "description": "Computer name."
+    },
+    "SMSUniqueIdentifier": {
+      "type": "string",
+      "description": "SMS unique identifier."
+    },
+    "ResourceDomainORWorkgroup": {
+      "type": "string",
+      "description": "Domain or workgroup."
+    },
+    "Client": {
+      "type": "integer",
+      "description": "Whether the Configuration Manager client is installed (1=yes)."
+    },
+    "Active": {
+      "type": "integer",
+      "description": "Whether the resource is active."
+    },
+    "IPAddresses": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "IP addresses of the system."
+    },
+    "MACAddresses": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "MAC addresses of the system."
+    },
+    "OperatingSystemNameandVersion": {
+      "type": "string",
+      "description": "Full operating system name and version string."
+    },
+    "LastLogonUserName": {
+      "type": "string",
+      "description": "Last logged on user name."
+    },
+    "LastLogonTimestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last logon timestamp."
+    }
+  }
+}

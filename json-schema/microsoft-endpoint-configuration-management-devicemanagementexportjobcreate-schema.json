@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DeviceManagementExportJobCreate",
+  "title": "DeviceManagementExportJobCreate",
+  "type": "object",
+  "description": "Request body for creating a new deviceManagementExportJob.",
+  "required": [
+    "reportName"
+  ],
+  "properties": {
+    "reportName": {
+      "type": "string",
+      "description": "Name of the report to export (e.g., Devices, DevicesWithInventory, DeviceCompliance). The maximum length is 2000 characters."
+    },
+    "filter": {
+      "type": "string",
+      "description": "Filters applied on the report. The maximum length is 2000 characters."
+    },
+    "select": {
+      "type": "array",
+      "description": "Columns selected from the report. Only valid column names for the specified report are accepted. Maximum 256 column names, each up to 1000 characters.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "format": {
+      "type": "string",
+      "description": "Format of the exported report. Defaults to csv.",
+      "enum": [
+        "csv",
+        "json"
+      ]
+    },
+    "snapshotId": {
+      "type": "string",
+      "description": "A sessionId or CachedReportConfiguration id. When specified, Filter, Select, and OrderBy cannot also be specified. Maximum 128 characters."
+    },
+    "localizationType": {
+      "type": "string",
+      "description": "Configures how the export job is localized. Default is localizedValuesAsAdditionalColumn.",
+      "enum": [
+        "localizedValuesAsAdditionalColumn",
+        "replaceLocalizableValues"
+      ]
+    }
+  }
+}

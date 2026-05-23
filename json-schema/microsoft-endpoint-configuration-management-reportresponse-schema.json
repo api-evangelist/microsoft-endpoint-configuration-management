@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReportResponse",
+  "title": "ReportResponse",
+  "type": "object",
+  "description": "Response body for inline Intune reports. Contains report metadata and tabular data in a values array format.",
+  "properties": {
+    "totalRowCount": {
+      "type": "integer",
+      "description": "Total number of rows in the report."
+    },
+    "schema": {
+      "type": "array",
+      "description": "Array of column definitions describing the columns in the values array.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "column": {
+            "type": "string",
+            "description": "Column name."
+          },
+          "propertyType": {
+            "type": "integer",
+            "description": "Data type of the column. Common values include 1 for string, 2 for int32, 3 for dateTime, 4 for boolean."
+          }
+        }
+      }
+    },
+    "values": {
+      "type": "array",
+      "description": "Array of row data. Each row is an array of values corresponding to the columns defined in the schema.",
+      "items": {
+        "type": "array",
+        "items": {}
+      }
+    }
+  }
+}

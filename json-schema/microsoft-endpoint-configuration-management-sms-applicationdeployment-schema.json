@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SMS_ApplicationDeployment",
+  "title": "SMS_ApplicationDeployment",
+  "type": "object",
+  "description": "Represents an application deployment assignment in Configuration Manager.",
+  "properties": {
+    "AssignmentID": {
+      "type": "integer",
+      "description": "Unique assignment identifier."
+    },
+    "AssignmentName": {
+      "type": "string",
+      "description": "Name of the deployment."
+    },
+    "ApplicationName": {
+      "type": "string",
+      "description": "Name of the deployed application."
+    },
+    "TargetCollectionID": {
+      "type": "string",
+      "description": "Target collection for the deployment."
+    },
+    "StartTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Deployment start time."
+    },
+    "EnforcementDeadline": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Enforcement deadline."
+    },
+    "DesiredConfigType": {
+      "type": "integer",
+      "description": "Desired configuration type (1=Install, 2=Uninstall)."
+    },
+    "OfferTypeID": {
+      "type": "integer",
+      "description": "Offer type (0=Required, 2=Available)."
+    },
+    "Enabled": {
+      "type": "boolean",
+      "description": "Whether the deployment is enabled."
+    }
+  }
+}

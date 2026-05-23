@@ -1,0 +1,16 @@
+name: Microsoft Endpoint Configuration Management Domain Vocabulary
+provider: Microsoft Endpoint Configuration Management
+providerId: microsoft-endpoint-configuration-management
+description: Tag-derived vocabulary for the Microsoft Endpoint Configuration Management API surface; sourced from openapi/
+  tags.
+terms:
+- term: Applications
+  description: Manage mobile applications.
+- term: Compliance Policies
+  description: Manage device compliance policies.
+- term: Configuration Profiles
+  description: Manage device configuration profiles.
+- term: Device Actions
+  description: Remote device actions such as wipe, retire, sync, and lock.
+- term: Devices
+  description: Manage enrolled devices in Intune.

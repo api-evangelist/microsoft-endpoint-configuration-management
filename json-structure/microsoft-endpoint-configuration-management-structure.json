@@ -1,0 +1,348 @@
+{
+  "provider": "Microsoft Endpoint Configuration Management",
+  "providerId": "microsoft-endpoint-configuration-management",
+  "kind": "json-structure",
+  "description": "Structural overview of the Microsoft Endpoint Configuration Management API surface; extracted from openapi/.",
+  "schemaCount": 8,
+  "operationCount": 32,
+  "schemas": [
+    {
+      "name": "ManagedDevice",
+      "type": "object",
+      "propertyCount": 37,
+      "required": []
+    },
+    {
+      "name": "DeviceCompliancePolicy",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "DeviceCompliancePolicyAssignment",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "MobileApp",
+      "type": "object",
+      "propertyCount": 14,
+      "required": []
+    },
+    {
+      "name": "MobileAppAssignment",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "DeviceConfiguration",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "DeviceConfigurationAssignment",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ODataError",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/deviceManagement/managedDevices",
+      "operationId": "listManagedDevices",
+      "summary": "Microsoft Endpoint Configuration Management List managed devices",
+      "tags": [
+        "Devices"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/deviceManagement/managedDevices",
+      "operationId": "createManagedDevice",
+      "summary": "Microsoft Endpoint Configuration Management Create managed device",
+      "tags": [
+        "Devices"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/deviceManagement/managedDevices/{managedDeviceId}",
+      "operationId": "getManagedDevice",
+      "summary": "Microsoft Endpoint Configuration Management Get managed device",
+      "tags": [
+        "Devices"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/deviceManagement/managedDevices/{managedDeviceId}",
+      "operationId": "deleteManagedDevice",
+      "summary": "Microsoft Endpoint Configuration Management Delete managed device",
+      "tags": [
+        "Devices"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/deviceManagement/managedDevices/{managedDeviceId}",
+      "operationId": "updateManagedDevice",
+      "summary": "Microsoft Endpoint Configuration Management Update managed device",
+      "tags": [
+        "Devices"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/deviceManagement/managedDevices/{managedDeviceId}/retire",
+      "operationId": "retireManagedDevice",
+      "summary": "Microsoft Endpoint Configuration Management Retire a device",
+      "tags": [
+        "Device Actions"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/deviceManagement/managedDevices/{managedDeviceId}/wipe",
+      "operationId": "wipeManagedDevice",
+      "summary": "Microsoft Endpoint Configuration Management Wipe a device",
+      "tags": [
+        "Device Actions"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/deviceManagement/managedDevices/{managedDeviceId}/syncDevice",
+      "operationId": "syncManagedDevice",
+      "summary": "Microsoft Endpoint Configuration Management Sync device",
+      "tags": [
+        "Device Actions"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/deviceManagement/managedDevices/{managedDeviceId}/remoteLock",
+      "operationId": "remoteLockManagedDevice",
+      "summary": "Microsoft Endpoint Configuration Management Remote lock a device",
+      "tags": [
+        "Device Actions"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/deviceManagement/managedDevices/{managedDeviceId}/resetPasscode",
+      "operationId": "resetPasscode",
+      "summary": "Microsoft Endpoint Configuration Management Reset passcode",
+      "tags": [
+        "Device Actions"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/deviceManagement/managedDevices/{managedDeviceId}/rebootNow",
+      "operationId": "rebootManagedDevice",
+      "summary": "Microsoft Endpoint Configuration Management Reboot device",
+      "tags": [
+        "Device Actions"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/deviceManagement/deviceCompliancePolicies",
+      "operationId": "listDeviceCompliancePolicies",
+      "summary": "Microsoft Endpoint Configuration Management List device compliance policies",
+      "tags": [
+        "Compliance Policies"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/deviceManagement/deviceCompliancePolicies",
+      "operationId": "createDeviceCompliancePolicy",
+      "summary": "Microsoft Endpoint Configuration Management Create device compliance policy",
+      "tags": [
+        "Compliance Policies"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/deviceManagement/deviceCompliancePolicies/{deviceCompliancePolicyId}",
+      "operationId": "getDeviceCompliancePolicy",
+      "summary": "Microsoft Endpoint Configuration Management Get device compliance policy",
+      "tags": [
+        "Compliance Policies"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/deviceManagement/deviceCompliancePolicies/{deviceCompliancePolicyId}",
+      "operationId": "deleteDeviceCompliancePolicy",
+      "summary": "Microsoft Endpoint Configuration Management Delete device compliance policy",
+      "tags": [
+        "Compliance Policies"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/deviceManagement/deviceCompliancePolicies/{deviceCompliancePolicyId}",
+      "operationId": "updateDeviceCompliancePolicy",
+      "summary": "Microsoft Endpoint Configuration Management Update device compliance policy",
+      "tags": [
+        "Compliance Policies"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/deviceManagement/deviceCompliancePolicies/{deviceCompliancePolicyId}/assign",
+      "operationId": "assignDeviceCompliancePolicy",
+      "summary": "Microsoft Endpoint Configuration Management Assign compliance policy",
+      "tags": [
+        "Compliance Policies"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/deviceAppManagement/mobileApps",
+      "operationId": "listMobileApps",
+      "summary": "Microsoft Endpoint Configuration Management List mobile apps",
+      "tags": [
+        "Applications"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/deviceAppManagement/mobileApps",
+      "operationId": "createMobileApp",
+      "summary": "Microsoft Endpoint Configuration Management Create mobile app",
+      "tags": [
+        "Applications"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/deviceAppManagement/mobileApps/{mobileAppId}",
+      "operationId": "getMobileApp",
+      "summary": "Microsoft Endpoint Configuration Management Get mobile app",
+      "tags": [
+        "Applications"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/deviceAppManagement/mobileApps/{mobileAppId}",
+      "operationId": "deleteMobileApp",
+      "summary": "Microsoft Endpoint Configuration Management Delete mobile app",
+      "tags": [
+        "Applications"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/deviceAppManagement/mobileApps/{mobileAppId}",
+      "operationId": "updateMobileApp",
+      "summary": "Microsoft Endpoint Configuration Management Update mobile app",
+      "tags": [
+        "Applications"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/deviceAppManagement/mobileApps/{mobileAppId}/assign",
+      "operationId": "assignMobileApp",
+      "summary": "Microsoft Endpoint Configuration Management Assign mobile app",
+      "tags": [
+        "Applications"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/deviceAppManagement/mobileApps/{mobileAppId}/deviceStatuses",
+      "operationId": "listMobileAppDeviceStatuses",
+      "summary": "Microsoft Endpoint Configuration Management List app device statuses",
+      "tags": [
+        "Applications"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/deviceManagement/deviceConfigurations",
+      "operationId": "listDeviceConfigurations",
+      "summary": "Microsoft Endpoint Configuration Management List device configurations",
+      "tags": [
+        "Configuration Profiles"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/deviceManagement/deviceConfigurations",
+      "operationId": "createDeviceConfiguration",
+      "summary": "Microsoft Endpoint Configuration Management Create device configuration",
+      "tags": [
+        "Configuration Profiles"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/deviceManagement/deviceConfigurations/{deviceConfigurationId}",
+      "operationId": "getDeviceConfiguration",
+      "summary": "Microsoft Endpoint Configuration Management Get device configuration",
+      "tags": [
+        "Configuration Profiles"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/deviceManagement/deviceConfigurations/{deviceConfigurationId}",
+      "operationId": "deleteDeviceConfiguration",
+      "summary": "Microsoft Endpoint Configuration Management Delete device configuration",
+      "tags": [
+        "Configuration Profiles"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/deviceManagement/deviceConfigurations/{deviceConfigurationId}",
+      "operationId": "updateDeviceConfiguration",
+      "summary": "Microsoft Endpoint Configuration Management Update device configuration",
+      "tags": [
+        "Configuration Profiles"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/deviceManagement/deviceConfigurations/{deviceConfigurationId}/assign",
+      "operationId": "assignDeviceConfiguration",
+      "summary": "Microsoft Endpoint Configuration Management Assign device configuration",
+      "tags": [
+        "Configuration Profiles"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/deviceManagement/deviceCompliancePolicyDeviceStateSummary",
+      "operationId": "getDeviceCompliancePolicyDeviceStateSummary",
+      "summary": "Microsoft Endpoint Configuration Management Get compliance state summary",
+      "tags": [
+        "Compliance Policies"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users/{userId}/ownedDevices",
+      "operationId": "listUserOwnedDevices",
+      "summary": "Microsoft Endpoint Configuration Management List user owned devices",
+      "tags": [
+        "Devices"
+      ]
+    }
+  ]
+}

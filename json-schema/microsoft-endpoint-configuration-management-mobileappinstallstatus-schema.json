@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MobileAppInstallStatus",
+  "title": "MobileAppInstallStatus",
+  "type": "object",
+  "description": "Mobile application installation status record.",
+  "properties": {
+    "dateKey": {
+      "type": "integer",
+      "description": "Date key for the status."
+    },
+    "deviceKey": {
+      "type": "integer",
+      "description": "Device key reference."
+    },
+    "userKey": {
+      "type": "integer",
+      "description": "User key reference."
+    },
+    "applicationKey": {
+      "type": "integer",
+      "description": "Application key reference."
+    },
+    "installState": {
+      "type": "string",
+      "description": "Installation state."
+    },
+    "errorCode": {
+      "type": "integer",
+      "description": "Error code if installation failed."
+    }
+  }
+}

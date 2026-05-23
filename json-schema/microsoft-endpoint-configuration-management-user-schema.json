@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/User",
+  "title": "User",
+  "type": "object",
+  "description": "User dimension entity representing user information associated with device enrollments.",
+  "properties": {
+    "userKey": {
+      "type": "integer",
+      "description": "Unique identifier of the user in the Data Warehouse."
+    },
+    "userId": {
+      "type": "string",
+      "description": "Unique identifier of the user."
+    },
+    "userEmail": {
+      "type": "string",
+      "description": "Email address of the user."
+    },
+    "userPrincipalName": {
+      "type": "string",
+      "description": "User principal name."
+    },
+    "displayName": {
+      "type": "string",
+      "description": "Display name of the user."
+    },
+    "isDeleted": {
+      "type": "boolean",
+      "description": "Whether the user has been deleted."
+    },
+    "startDateInclusiveUTC": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Start of the record validity period."
+    },
+    "endDateExclusiveUTC": {
+      "type": "string",
+      "format": "date-time",
+      "description": "End of the record validity period."
+    },
+    "isCurrent": {
+      "type": "boolean",
+      "description": "Whether this is the current record."
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SMS_Device",
+  "title": "SMS_Device",
+  "type": "object",
+  "description": "Represents a device discovered and managed by Configuration Manager via the WMI route.",
+  "properties": {
+    "DeviceID": {
+      "type": "integer",
+      "description": "Unique device identifier."
+    },
+    "Name": {
+      "type": "string",
+      "description": "Device name."
+    },
+    "Domain": {
+      "type": "string",
+      "description": "Domain the device belongs to."
+    },
+    "SMSID": {
+      "type": "string",
+      "description": "SMS unique identifier."
+    },
+    "IsActive": {
+      "type": "boolean",
+      "description": "Whether the device is currently active."
+    },
+    "DeviceOS": {
+      "type": "string",
+      "description": "Operating system of the device."
+    },
+    "DeviceOSVersion": {
+      "type": "string",
+      "description": "Operating system version."
+    },
+    "DeviceType": {
+      "type": "integer",
+      "description": "Type of device (1=Desktop, 2=Laptop, etc.)."
+    },
+    "IsBlocked": {
+      "type": "boolean",
+      "description": "Whether the device is blocked."
+    },
+    "LastActiveTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last time the device was active."
+    }
+  }
+}

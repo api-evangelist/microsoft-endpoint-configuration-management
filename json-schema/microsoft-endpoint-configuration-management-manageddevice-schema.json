@@ -1,0 +1,259 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ManagedDevice",
+  "title": "ManagedDevice",
+  "type": "object",
+  "description": "Devices that are managed or pre-enrolled through Intune.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the device.",
+      "readOnly": true
+    },
+    "userId": {
+      "type": "string",
+      "description": "Unique identifier for the user associated with the device.",
+      "readOnly": true
+    },
+    "deviceName": {
+      "type": "string",
+      "description": "Name of the device.",
+      "readOnly": true
+    },
+    "managedDeviceOwnerType": {
+      "type": "string",
+      "description": "Ownership of the device.",
+      "enum": [
+        "unknown",
+        "company",
+        "personal"
+      ]
+    },
+    "enrolledDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Enrollment time of the device.",
+      "readOnly": true
+    },
+    "lastSyncDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time that the device last completed a successful sync with Intune.",
+      "readOnly": true
+    },
+    "operatingSystem": {
+      "type": "string",
+      "description": "Operating system of the device (Windows, iOS, etc.).",
+      "readOnly": true
+    },
+    "complianceState": {
+      "type": "string",
+      "description": "Compliance state of the device.",
+      "enum": [
+        "unknown",
+        "compliant",
+        "noncompliant",
+        "conflict",
+        "error",
+        "inGracePeriod",
+        "configManager"
+      ]
+    },
+    "jailBroken": {
+      "type": "string",
+      "description": "Whether the device is jail broken or rooted.",
+      "readOnly": true
+    },
+    "managementAgent": {
+      "type": "string",
+      "description": "Management channel of the device.",
+      "enum": [
+        "eas",
+        "mdm",
+        "easMdm",
+        "intuneClient",
+        "easIntuneClient",
+        "configurationManagerClient",
+        "configurationManagerClientMdm",
+        "configurationManagerClientMdmEas",
+        "unknown",
+        "jamf",
+        "googleCloudDevicePolicyController"
+      ]
+    },
+    "osVersion": {
+      "type": "string",
+      "description": "Operating system version of the device.",
+      "readOnly": true
+    },
+    "easActivated": {
+      "type": "boolean",
+      "description": "Whether the device is Exchange ActiveSync activated.",
+      "readOnly": true
+    },
+    "easDeviceId": {
+      "type": "string",
+      "description": "Exchange ActiveSync Id of the device.",
+      "readOnly": true
+    },
+    "azureADRegistered": {
+      "type": "boolean",
+      "description": "Whether the device is Azure Active Directory registered.",
+      "readOnly": true
+    },
+    "deviceEnrollmentType": {
+      "type": "string",
+      "description": "Enrollment type of the device.",
+      "enum": [
+        "unknown",
+        "userEnrollment",
+        "deviceEnrollmentManager",
+        "appleBulkWithUser",
+        "appleBulkWithoutUser",
+        "windowsAzureADJoin",
+        "windowsBulkUserless",
+        "windowsAutoEnrollment",
+        "windowsBulkAzureDomainJoin",
+        "windowsCoManagement",
+        "windowsAzureADJoinUsingDeviceAuth",
+        "appleUserEnrollment",
+        "appleUserEnrollmentWithServiceAccount"
+      ],
+      "readOnly": true
+    },
+    "emailAddress": {
+      "type": "string",
+      "description": "Email(s) for the user associated with the device.",
+      "readOnly": true
+    },
+    "azureADDeviceId": {
+      "type": "string",
+      "description": "The unique identifier for the Azure Active Directory device.",
+      "readOnly": true
+    },
+    "deviceRegistrationState": {
+      "type": "string",
+      "description": "Device registration state.",
+      "enum": [
+        "notRegistered",
+        "registered",
+        "revoked",
+        "keyConflict",
+        "approvalPending",
+        "certificateReset",
+        "notRegisteredPendingEnrollment",
+        "unknown"
+      ],
+      "readOnly": true
+    },
+    "isSupervised": {
+      "type": "boolean",
+      "description": "Device supervised status.",
+      "readOnly": true
+    },
+    "isEncrypted": {
+      "type": "boolean",
+      "description": "Device encryption status.",
+      "readOnly": true
+    },
+    "userPrincipalName": {
+      "type": "string",
+      "description": "Device user principal name.",
+      "readOnly": true
+    },
+    "model": {
+      "type": "string",
+      "description": "Model of the device.",
+      "readOnly": true
+    },
+    "manufacturer": {
+      "type": "string",
+      "description": "Manufacturer of the device.",
+      "readOnly": true
+    },
+    "imei": {
+      "type": "string",
+      "description": "IMEI.",
+      "readOnly": true
+    },
+    "serialNumber": {
+      "type": "string",
+      "description": "Serial number of the device.",
+      "readOnly": true
+    },
+    "phoneNumber": {
+      "type": "string",
+      "description": "Phone number of the device.",
+      "readOnly": true
+    },
+    "androidSecurityPatchLevel": {
+      "type": "string",
+      "description": "Android security patch level.",
+      "readOnly": true
+    },
+    "userDisplayName": {
+      "type": "string",
+      "description": "User display name.",
+      "readOnly": true
+    },
+    "wiFiMacAddress": {
+      "type": "string",
+      "description": "Wi-Fi MAC address.",
+      "readOnly": true
+    },
+    "subscriberCarrier": {
+      "type": "string",
+      "description": "Subscriber carrier.",
+      "readOnly": true
+    },
+    "meid": {
+      "type": "string",
+      "description": "MEID.",
+      "readOnly": true
+    },
+    "totalStorageSpaceInBytes": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Total storage in bytes.",
+      "readOnly": true
+    },
+    "freeStorageSpaceInBytes": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Free storage in bytes.",
+      "readOnly": true
+    },
+    "managedDeviceName": {
+      "type": "string",
+      "description": "Automatically generated name to identify a device. Can be overwritten to a user friendly name."
+    },
+    "partnerReportedThreatState": {
+      "type": "string",
+      "description": "Threat state of a device when a Mobile Threat Defense partner is in use.",
+      "enum": [
+        "unknown",
+        "activated",
+        "deactivated",
+        "secured",
+        "lowSeverity",
+        "mediumSeverity",
+        "highSeverity",
+        "unresponsive",
+        "compromised",
+        "misconfigured"
+      ],
+      "readOnly": true
+    },
+    "physicalMemoryInBytes": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Total memory in bytes.",
+      "readOnly": true
+    },
+    "enrollmentProfileName": {
+      "type": "string",
+      "description": "Name of the enrollment profile assigned to the device.",
+      "readOnly": true
+    }
+  }
+}

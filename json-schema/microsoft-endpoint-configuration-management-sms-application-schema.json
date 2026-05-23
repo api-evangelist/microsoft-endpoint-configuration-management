@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SMS_Application",
+  "title": "SMS_Application",
+  "type": "object",
+  "description": "Represents an application in Configuration Manager with deployment types, requirements, and detection methods.",
+  "properties": {
+    "CI_ID": {
+      "type": "integer",
+      "description": "Configuration item ID."
+    },
+    "CI_UniqueID": {
+      "type": "string",
+      "description": "Unique configuration item identifier."
+    },
+    "LocalizedDisplayName": {
+      "type": "string",
+      "description": "Display name of the application."
+    },
+    "LocalizedDescription": {
+      "type": "string",
+      "description": "Description of the application."
+    },
+    "Manufacturer": {
+      "type": "string",
+      "description": "Application manufacturer/publisher."
+    },
+    "SoftwareVersion": {
+      "type": "string",
+      "description": "Software version."
+    },
+    "DateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date the application was created."
+    },
+    "DateLastModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date the application was last modified."
+    },
+    "IsDeployed": {
+      "type": "boolean",
+      "description": "Whether the application is currently deployed."
+    },
+    "IsSuperseded": {
+      "type": "boolean",
+      "description": "Whether the application has been superseded."
+    },
+    "IsLatest": {
+      "type": "boolean",
+      "description": "Whether this is the latest version."
+    },
+    "NumberOfDeploymentTypes": {
+      "type": "integer",
+      "description": "Number of deployment types."
+    },
+    "NumberOfDeployments": {
+      "type": "integer",
+      "description": "Number of active deployments."
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DeviceConfigurationAssignment",
+  "title": "DeviceConfigurationAssignment",
+  "type": "object",
+  "description": "Assignment of a device configuration profile to a group.",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "target": {
+      "type": "object",
+      "properties": {
+        "@odata.type": {
+          "type": "string"
+        },
+        "groupId": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

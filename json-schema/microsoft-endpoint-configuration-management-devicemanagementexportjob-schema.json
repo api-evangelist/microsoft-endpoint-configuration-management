@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DeviceManagementExportJob",
+  "title": "DeviceManagementExportJob",
+  "type": "object",
+  "description": "Entity representing a job to export a report. Tracks the status of an asynchronous report export including the download URL when complete.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for this entity.",
+      "readOnly": true
+    },
+    "reportName": {
+      "type": "string",
+      "description": "Name of the report. The maximum length allowed for this property is 2000 characters."
+    },
+    "filter": {
+      "type": "string",
+      "description": "Filters applied on the report. The maximum length allowed for this property is 2000 characters."
+    },
+    "select": {
+      "type": "array",
+      "description": "Columns selected from the report. The maximum number of allowed column names is 256. The maximum length allowed for each column name is 1000 characters.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "format": {
+      "type": "string",
+      "description": "Format of the exported report.",
+      "enum": [
+        "csv",
+        "pdf",
+        "json",
+        "unknownFutureValue"
+      ]
+    },
+    "snapshotId": {
+      "type": "string",
+      "description": "An identifiable subset of the dataset represented by the ReportName. A sessionId or CachedReportConfiguration id can be used here. The maximum length allowed is 128 characters."
+    },
+    "localizationType": {
+      "type": "string",
+      "description": "Configures how the requested export job is localized.",
+      "enum": [
+        "localizedValuesAsAdditionalColumn",
+        "replaceLocalizableValues"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "description": "Status of the export job.",
+      "enum": [
+        "unknown",
+        "notStarted",
+        "inProgress",
+        "completed",
+        "failed"
+      ],
+      "readOnly": true
+    },
+    "url": {
+      "type": "string",
+      "description": "Temporary location of the exported report. Available when status is completed. The URL is a SAS-signed Azure Blob Storage URL.",
+      "readOnly": true
+    },
+    "requestDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Time that the exported report was requested.",
+      "readOnly": true
+    },
+    "expirationDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Time that the exported report expires.",
+      "readOnly": true
+    }
+  }
+}

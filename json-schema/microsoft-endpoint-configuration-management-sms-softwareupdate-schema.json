@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SMS_SoftwareUpdate",
+  "title": "SMS_SoftwareUpdate",
+  "type": "object",
+  "description": "Represents a software update known to Configuration Manager.",
+  "properties": {
+    "CI_ID": {
+      "type": "integer",
+      "description": "Configuration item ID."
+    },
+    "ArticleID": {
+      "type": "string",
+      "description": "Knowledge base article ID."
+    },
+    "BulletinID": {
+      "type": "string",
+      "description": "Security bulletin ID."
+    },
+    "LocalizedDisplayName": {
+      "type": "string",
+      "description": "Display name of the update."
+    },
+    "LocalizedDescription": {
+      "type": "string",
+      "description": "Description of the update."
+    },
+    "DatePosted": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date the update was posted."
+    },
+    "DateRevised": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date the update was revised."
+    },
+    "IsDeployed": {
+      "type": "boolean",
+      "description": "Whether the update is deployed."
+    },
+    "IsSuperseded": {
+      "type": "boolean",
+      "description": "Whether the update is superseded."
+    },
+    "NumMissing": {
+      "type": "integer",
+      "description": "Number of systems missing this update."
+    },
+    "NumPresent": {
+      "type": "integer",
+      "description": "Number of systems with this update installed."
+    },
+    "SeverityName": {
+      "type": "string",
+      "description": "Severity rating."
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MobileAppAssignment",
+  "title": "MobileAppAssignment",
+  "type": "object",
+  "description": "Assignment of a mobile app to a group.",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "intent": {
+      "type": "string",
+      "enum": [
+        "available",
+        "required",
+        "uninstall",
+        "availableWithoutEnrollment"
+      ]
+    },
+    "target": {
+      "type": "object",
+      "properties": {
+        "@odata.type": {
+          "type": "string"
+        },
+        "groupId": {
+          "type": "string"
+        }
+      }
+    },
+    "settings": {
+      "type": "object"
+    }
+  }
+}
