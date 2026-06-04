@@ -1,0 +1,103 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Endpoint Configuration Management Create and Assign Compliance Policy
+  summary: Create a device compliance policy in Intune and assign it to a target group.
+  description: >-
+    A foundational Intune governance flow. The workflow creates a new device
+    compliance policy through the Microsoft Graph API, confirms it was
+    persisted by reading it back, and then assigns the policy to an Azure AD
+    group so enrolled devices begin evaluating against it. Every step spells
+    out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: intuneGraphApi
+  url: ../openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-and-assign-compliance-policy
+  summary: Create a compliance policy, verify it, and assign it to a group.
+  description: >-
+    Creates a deviceCompliancePolicy with the supplied display name and
+    description, reads the created policy back to confirm persistence, and
+    posts an assignment that targets the supplied Azure AD group.
+  inputs:
+    type: object
+    required:
+    - displayName
+    - groupId
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for Microsoft Graph (DeviceManagementConfiguration.ReadWrite.All).
+      displayName:
+        type: string
+        description: Admin provided name for the new compliance policy.
+      description:
+        type: string
+        description: Admin provided description of the compliance policy.
+      groupId:
+        type: string
+        description: The Azure AD group id the policy assignment targets.
+  steps:
+  - stepId: createPolicy
+    description: >-
+      Create a new device compliance policy with the supplied display name
+      and description.
+    operationId: createDeviceCompliancePolicy
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    requestBody:
+      contentType: application/json
+      payload:
+        displayName: $inputs.displayName
+        description: $inputs.description
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      policyId: $response.body#/id
+  - stepId: verifyPolicy
+    description: >-
+      Read the created compliance policy back by id to confirm it was
+      persisted before assigning it.
+    operationId: getDeviceCompliancePolicy
+    parameters:
+    - name: deviceCompliancePolicyId
+      in: path
+      value: $steps.createPolicy.outputs.policyId
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      verifiedDisplayName: $response.body#/displayName
+  - stepId: assignPolicy
+    description: >-
+      Assign the compliance policy to the supplied Azure AD group so enrolled
+      devices begin evaluating against it.
+    operationId: assignDeviceCompliancePolicy
+    parameters:
+    - name: deviceCompliancePolicyId
+      in: path
+      value: $steps.createPolicy.outputs.policyId
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    requestBody:
+      contentType: application/json
+      payload:
+        assignments:
+        - target:
+            '@odata.type': "#microsoft.graph.groupAssignmentTarget"
+            groupId: $inputs.groupId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      assignmentStatus: $statusCode
+  outputs:
+    policyId: $steps.createPolicy.outputs.policyId
+    verifiedDisplayName: $steps.verifyPolicy.outputs.verifiedDisplayName
+    assignmentStatus: $steps.assignPolicy.outputs.assignmentStatus

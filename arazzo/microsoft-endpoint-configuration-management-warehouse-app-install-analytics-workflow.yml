@@ -1,0 +1,102 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Endpoint Configuration Management Data Warehouse App Install Analytics
+  summary: Correlate Data Warehouse application inventory with install statuses and user-device associations.
+  description: >-
+    A historical application analytics flow over the Intune Data Warehouse. The
+    workflow lists the application inventory, pulls the mobile app install
+    status facts, and lists the user-device associations so installs can be
+    attributed back to users and devices. Together these give an analyst the
+    inputs to report on application adoption. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: intuneDataWarehouseApi
+  url: ../openapi/microsoft-endpoint-configuration-management-intune-data-warehouse-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: warehouse-app-install-analytics
+  summary: List applications, mobile app install statuses, and user-device associations.
+  description: >-
+    Lists the application inventory, lists mobile app install status facts, and
+    lists user-device associations, all bounded by the supplied history window.
+  inputs:
+    type: object
+    required:
+    - apiVersion
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for the Intune Data Warehouse resource.
+      apiVersion:
+        type: string
+        description: API version to use (v1.0 or beta).
+      maxHistoryDays:
+        type: integer
+        description: Maximum number of days of history to retrieve.
+      top:
+        type: integer
+        description: Maximum number of records to return per list.
+  steps:
+  - stepId: listApplications
+    description: List the Data Warehouse application inventory.
+    operationId: $sourceDescriptions.intuneDataWarehouseApi.listApplications
+    parameters:
+    - name: api-version
+      in: query
+      value: $inputs.apiVersion
+    - name: $top
+      in: query
+      value: $inputs.top
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      applications: $response.body#/value
+  - stepId: listInstallStatuses
+    description: List mobile app install status facts.
+    operationId: listMobileAppInstallStatuses
+    parameters:
+    - name: api-version
+      in: query
+      value: $inputs.apiVersion
+    - name: maxhistorydays
+      in: query
+      value: $inputs.maxHistoryDays
+    - name: $top
+      in: query
+      value: $inputs.top
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      installStatuses: $response.body#/value
+  - stepId: listAssociations
+    description: List user-device associations to attribute installs to users and devices.
+    operationId: listUserDeviceAssociations
+    parameters:
+    - name: api-version
+      in: query
+      value: $inputs.apiVersion
+    - name: maxhistorydays
+      in: query
+      value: $inputs.maxHistoryDays
+    - name: $top
+      in: query
+      value: $inputs.top
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      associations: $response.body#/value
+  outputs:
+    applications: $steps.listApplications.outputs.applications
+    installStatuses: $steps.listInstallStatuses.outputs.installStatuses
+    associations: $steps.listAssociations.outputs.associations

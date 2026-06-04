@@ -1,0 +1,97 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Endpoint Configuration Management Create and Assign Device Configuration
+  summary: Create a device configuration profile in Intune and assign it to a target group.
+  description: >-
+    A core Intune configuration management flow. The workflow creates a new
+    device configuration profile through the Microsoft Graph API, reads it
+    back to confirm persistence, and then posts an assignment that targets an
+    Azure AD group so the profile is delivered to enrolled devices. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: intuneGraphApi
+  url: ../openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-and-assign-device-configuration
+  summary: Create a device configuration profile, verify it, and assign it to a group.
+  description: >-
+    Creates a deviceConfiguration with the supplied display name and
+    description, reads the created profile back by id, and assigns it to the
+    supplied Azure AD group.
+  inputs:
+    type: object
+    required:
+    - displayName
+    - groupId
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for Microsoft Graph (DeviceManagementConfiguration.ReadWrite.All).
+      displayName:
+        type: string
+        description: Admin provided name for the configuration profile.
+      description:
+        type: string
+        description: Admin provided description of the configuration profile.
+      groupId:
+        type: string
+        description: The Azure AD group id the configuration assignment targets.
+  steps:
+  - stepId: createConfiguration
+    description: Create a new device configuration profile.
+    operationId: createDeviceConfiguration
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    requestBody:
+      contentType: application/json
+      payload:
+        displayName: $inputs.displayName
+        description: $inputs.description
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      configurationId: $response.body#/id
+  - stepId: verifyConfiguration
+    description: Read the created configuration profile back by id to confirm persistence.
+    operationId: getDeviceConfiguration
+    parameters:
+    - name: deviceConfigurationId
+      in: path
+      value: $steps.createConfiguration.outputs.configurationId
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      verifiedDisplayName: $response.body#/displayName
+  - stepId: assignConfiguration
+    description: Assign the configuration profile to the supplied Azure AD group.
+    operationId: assignDeviceConfiguration
+    parameters:
+    - name: deviceConfigurationId
+      in: path
+      value: $steps.createConfiguration.outputs.configurationId
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    requestBody:
+      contentType: application/json
+      payload:
+        assignments:
+        - target:
+            '@odata.type': "#microsoft.graph.groupAssignmentTarget"
+            groupId: $inputs.groupId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      assignmentStatus: $statusCode
+  outputs:
+    configurationId: $steps.createConfiguration.outputs.configurationId
+    verifiedDisplayName: $steps.verifyConfiguration.outputs.verifiedDisplayName
+    assignmentStatus: $steps.assignConfiguration.outputs.assignmentStatus

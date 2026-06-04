@@ -1,0 +1,108 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Endpoint Configuration Management Report Export Job
+  summary: Create an Intune report export job, poll it, and capture the download URL when complete.
+  description: >-
+    The asynchronous Intune reporting export pattern. The workflow creates an
+    export job for a named report, polls the job by id, and branches on the
+    returned status: when the job has completed it captures the SAS-signed
+    download URL, otherwise it ends so the caller can poll again. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: intuneReportingExportApi
+  url: ../openapi/microsoft-endpoint-configuration-management-intune-reporting-export-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: report-export-job
+  summary: Create a report export job and resolve its download URL when complete.
+  description: >-
+    Creates a deviceManagementExportJob for the supplied report name and
+    format, reads the job back by id, and branches on the status to capture
+    the download URL when the export has completed.
+  inputs:
+    type: object
+    required:
+    - reportName
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for Microsoft Graph (DeviceManagementConfiguration.Read.All).
+      reportName:
+        type: string
+        description: Name of the report to export (e.g. Devices, DeviceCompliance).
+      filter:
+        type: string
+        description: Optional OData filter applied to the report.
+      format:
+        type: string
+        description: Format of the exported report (csv or json).
+  steps:
+  - stepId: createExport
+    description: Create an export job for the named report.
+    operationId: createExportJob
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    requestBody:
+      contentType: application/json
+      payload:
+        reportName: $inputs.reportName
+        filter: $inputs.filter
+        format: $inputs.format
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      exportJobId: $response.body#/id
+      initialStatus: $response.body#/status
+  - stepId: pollExport
+    description: Read the export job by id to check its current status.
+    operationId: getExportJob
+    parameters:
+    - name: deviceManagementExportJobId
+      in: path
+      value: $steps.createExport.outputs.exportJobId
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      status: $response.body#/status
+      downloadUrl: $response.body#/url
+    onSuccess:
+    - name: exportComplete
+      type: goto
+      stepId: captureUrl
+      criteria:
+      - context: $response.body
+        condition: $.status == "completed"
+        type: jsonpath
+    - name: exportPending
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.status != "completed"
+        type: jsonpath
+  - stepId: captureUrl
+    description: Re-read the completed export job to capture the SAS-signed download URL.
+    operationId: getExportJob
+    parameters:
+    - name: deviceManagementExportJobId
+      in: path
+      value: $steps.createExport.outputs.exportJobId
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    successCriteria:
+    - condition: $statusCode == 200
+    - condition: $response.body#/status == "completed"
+    outputs:
+      downloadUrl: $response.body#/url
+      expirationDateTime: $response.body#/expirationDateTime
+  outputs:
+    exportJobId: $steps.createExport.outputs.exportJobId
+    status: $steps.pollExport.outputs.status
+    downloadUrl: $steps.captureUrl.outputs.downloadUrl

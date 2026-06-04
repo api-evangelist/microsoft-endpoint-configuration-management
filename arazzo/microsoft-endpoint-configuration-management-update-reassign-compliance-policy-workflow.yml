@@ -1,0 +1,103 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Endpoint Configuration Management Update and Reassign Compliance Policy
+  summary: Read an existing compliance policy, update its metadata, and reassign it to a group.
+  description: >-
+    A change-management flow for an existing Intune compliance policy. The
+    workflow reads the policy by id, patches its description and display name,
+    and then reassigns it to an Azure AD group so the updated policy takes
+    effect on the intended population. Every step spells out its request inline
+    so the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: intuneGraphApi
+  url: ../openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: update-and-reassign-compliance-policy
+  summary: Read, update, and reassign an existing compliance policy.
+  description: >-
+    Reads the deviceCompliancePolicy by id, patches its metadata, and posts a
+    new assignment targeting the supplied Azure AD group.
+  inputs:
+    type: object
+    required:
+    - deviceCompliancePolicyId
+    - displayName
+    - groupId
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for Microsoft Graph (DeviceManagementConfiguration.ReadWrite.All).
+      deviceCompliancePolicyId:
+        type: string
+        description: The id of the compliance policy to update.
+      displayName:
+        type: string
+        description: The new display name for the policy.
+      description:
+        type: string
+        description: The new description for the policy.
+      groupId:
+        type: string
+        description: The Azure AD group id to reassign the policy to.
+  steps:
+  - stepId: getPolicy
+    description: Read the existing compliance policy by id.
+    operationId: getDeviceCompliancePolicy
+    parameters:
+    - name: deviceCompliancePolicyId
+      in: path
+      value: $inputs.deviceCompliancePolicyId
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      currentDisplayName: $response.body#/displayName
+  - stepId: updatePolicy
+    description: Patch the policy display name and description.
+    operationId: updateDeviceCompliancePolicy
+    parameters:
+    - name: deviceCompliancePolicyId
+      in: path
+      value: $inputs.deviceCompliancePolicyId
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    requestBody:
+      contentType: application/json
+      payload:
+        displayName: $inputs.displayName
+        description: $inputs.description
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      updateStatus: $statusCode
+  - stepId: reassignPolicy
+    description: Reassign the updated policy to the supplied Azure AD group.
+    operationId: assignDeviceCompliancePolicy
+    parameters:
+    - name: deviceCompliancePolicyId
+      in: path
+      value: $inputs.deviceCompliancePolicyId
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    requestBody:
+      contentType: application/json
+      payload:
+        assignments:
+        - target:
+            '@odata.type': "#microsoft.graph.groupAssignmentTarget"
+            groupId: $inputs.groupId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      assignmentStatus: $statusCode
+  outputs:
+    currentDisplayName: $steps.getPolicy.outputs.currentDisplayName
+    updateStatus: $steps.updatePolicy.outputs.updateStatus
+    assignmentStatus: $steps.reassignPolicy.outputs.assignmentStatus

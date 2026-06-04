@@ -1,0 +1,81 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Endpoint Configuration Management Retire Unpublished App
+  summary: Inspect a mobile app and delete it only when it is still unpublished.
+  description: >-
+    An application catalog cleanup flow over the Microsoft Graph API. The
+    workflow reads a mobile app by id and branches on its publishingState: an
+    app that is still notPublished is safe to delete and is removed, while a
+    published app is left untouched so it stays available to assigned users.
+    Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: intuneGraphApi
+  url: ../openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: retire-unpublished-app
+  summary: Read a mobile app and delete it only if it remains unpublished.
+  description: >-
+    Reads the mobileApp by id and branches on publishingState, deleting the app
+    when it is notPublished and ending otherwise.
+  inputs:
+    type: object
+    required:
+    - mobileAppId
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for Microsoft Graph (DeviceManagementApps.ReadWrite.All).
+      mobileAppId:
+        type: string
+        description: The id of the mobile app to inspect.
+  steps:
+  - stepId: getApp
+    description: Read the mobile app by id to obtain its publishing state.
+    operationId: getMobileApp
+    parameters:
+    - name: mobileAppId
+      in: path
+      value: $inputs.mobileAppId
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      publishingState: $response.body#/publishingState
+      displayName: $response.body#/displayName
+    onSuccess:
+    - name: notPublished
+      type: goto
+      stepId: deleteApp
+      criteria:
+      - context: $response.body
+        condition: $.publishingState == "notPublished"
+        type: jsonpath
+    - name: published
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.publishingState != "notPublished"
+        type: jsonpath
+  - stepId: deleteApp
+    description: Delete the unpublished mobile app.
+    operationId: deleteMobileApp
+    parameters:
+    - name: mobileAppId
+      in: path
+      value: $inputs.mobileAppId
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      deleteStatus: $statusCode
+  outputs:
+    displayName: $steps.getApp.outputs.displayName
+    publishingState: $steps.getApp.outputs.publishingState
+    deleteStatus: $steps.deleteApp.outputs.deleteStatus

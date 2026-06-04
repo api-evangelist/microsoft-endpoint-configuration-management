@@ -1,0 +1,80 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Endpoint Configuration Management Lost Device Lockdown
+  summary: Locate a managed device, remotely lock it, and reset its passcode.
+  description: >-
+    A security response flow for a reported lost or stolen device. The
+    workflow reads the managed device to confirm it exists, issues a remote
+    lock to immediately secure it, and then resets the passcode so the device
+    cannot be unlocked with the previously known code. Every step spells out
+    its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: intuneGraphApi
+  url: ../openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: lost-device-lockdown
+  summary: Confirm a device, remote lock it, then reset its passcode.
+  description: >-
+    Reads the managedDevice by id, issues a remote lock, and resets the
+    passcode to secure a lost or stolen device.
+  inputs:
+    type: object
+    required:
+    - managedDeviceId
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for Microsoft Graph (DeviceManagementManagedDevices.ReadWrite.All).
+      managedDeviceId:
+        type: string
+        description: The unique identifier of the managed device to secure.
+  steps:
+  - stepId: confirmDevice
+    description: Read the managed device to confirm it exists before taking action.
+    operationId: getManagedDevice
+    parameters:
+    - name: managedDeviceId
+      in: path
+      value: $inputs.managedDeviceId
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      deviceName: $response.body#/deviceName
+  - stepId: remoteLock
+    description: Remotely lock the device to immediately secure it.
+    operationId: remoteLockManagedDevice
+    parameters:
+    - name: managedDeviceId
+      in: path
+      value: $inputs.managedDeviceId
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      lockStatus: $statusCode
+  - stepId: resetPasscode
+    description: Reset the passcode so the device cannot be unlocked with the previously known code.
+    operationId: resetPasscode
+    parameters:
+    - name: managedDeviceId
+      in: path
+      value: $inputs.managedDeviceId
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      resetStatus: $statusCode
+  outputs:
+    deviceName: $steps.confirmDevice.outputs.deviceName
+    lockStatus: $steps.remoteLock.outputs.lockStatus
+    resetStatus: $steps.resetPasscode.outputs.resetStatus

@@ -257,6 +257,63 @@ apis:
   - type: SDKs
     url: https://learn.microsoft.com/en-us/graph/sdks/sdk-installation
 common:
+- type: ArazzoWorkflows
+  url: arazzo/
+  workflows:
+  - url: arazzo/microsoft-endpoint-configuration-management-configmgr-create-application-workflow.yml
+    name: Microsoft Endpoint Configuration Management ConfigMgr Create Application
+    summary: Create a Configuration Manager application and confirm it within the application inventory.
+  - url: arazzo/microsoft-endpoint-configuration-management-configmgr-create-collection-review-deployments-workflow.yml
+    name: Microsoft Endpoint Configuration Management ConfigMgr Create Collection and Review Deployments
+    summary: Create a Configuration Manager collection, read it back, and review application deployments targeting collections.
+  - url: arazzo/microsoft-endpoint-configuration-management-configmgr-device-lookup-workflow.yml
+    name: Microsoft Endpoint Configuration Management ConfigMgr Device Lookup
+    summary: Find a Configuration Manager device by name and read its full record and discovered system.
+  - url: arazzo/microsoft-endpoint-configuration-management-configmgr-update-compliance-review-workflow.yml
+    name: Microsoft Endpoint Configuration Management ConfigMgr Update Compliance Review
+    summary: Review pending software updates, configuration baseline assignments, and target collections.
+  - url: arazzo/microsoft-endpoint-configuration-management-create-assign-compliance-policy-workflow.yml
+    name: Microsoft Endpoint Configuration Management Create and Assign Compliance Policy
+    summary: Create a device compliance policy in Intune and assign it to a target group.
+  - url: arazzo/microsoft-endpoint-configuration-management-create-assign-device-configuration-workflow.yml
+    name: Microsoft Endpoint Configuration Management Create and Assign Device Configuration
+    summary: Create a device configuration profile in Intune and assign it to a target group.
+  - url: arazzo/microsoft-endpoint-configuration-management-decommission-device-workflow.yml
+    name: Microsoft Endpoint Configuration Management Decommission Device
+    summary: Confirm a managed device, factory wipe it, and remove it from Intune.
+  - url: arazzo/microsoft-endpoint-configuration-management-deploy-mobile-app-workflow.yml
+    name: Microsoft Endpoint Configuration Management Deploy Mobile App
+    summary: Create a mobile app in Intune, assign it to a group, and inspect its install status.
+  - url: arazzo/microsoft-endpoint-configuration-management-device-compliance-triage-workflow.yml
+    name: Microsoft Endpoint Configuration Management Device Compliance Triage
+    summary: Inspect a managed device and branch on its compliance state to either sync or retire it.
+  - url: arazzo/microsoft-endpoint-configuration-management-lost-device-lockdown-workflow.yml
+    name: Microsoft Endpoint Configuration Management Lost Device Lockdown
+    summary: Locate a managed device, remotely lock it, and reset its passcode.
+  - url: arazzo/microsoft-endpoint-configuration-management-noncompliance-report-drilldown-workflow.yml
+    name: Microsoft Endpoint Configuration Management Non-Compliance Report Drilldown
+    summary: Pull the device, policy, and setting non-compliance reports inline in one pass.
+  - url: arazzo/microsoft-endpoint-configuration-management-report-export-job-workflow.yml
+    name: Microsoft Endpoint Configuration Management Report Export Job
+    summary: Create an Intune report export job, poll it, and capture the download URL when complete.
+  - url: arazzo/microsoft-endpoint-configuration-management-retire-unpublished-app-workflow.yml
+    name: Microsoft Endpoint Configuration Management Retire Unpublished App
+    summary: Inspect a mobile app and delete it only when it is still unpublished.
+  - url: arazzo/microsoft-endpoint-configuration-management-tenant-compliance-posture-workflow.yml
+    name: Microsoft Endpoint Configuration Management Tenant Compliance Posture
+    summary: Read the tenant compliance summary and, when devices are non-compliant, enumerate them.
+  - url: arazzo/microsoft-endpoint-configuration-management-update-reassign-compliance-policy-workflow.yml
+    name: Microsoft Endpoint Configuration Management Update and Reassign Compliance Policy
+    summary: Read an existing compliance policy, update its metadata, and reassign it to a group.
+  - url: arazzo/microsoft-endpoint-configuration-management-user-device-inventory-workflow.yml
+    name: Microsoft Endpoint Configuration Management User Device Inventory
+    summary: List a user's Azure AD owned devices and correlate them with their Intune managed devices.
+  - url: arazzo/microsoft-endpoint-configuration-management-warehouse-app-install-analytics-workflow.yml
+    name: Microsoft Endpoint Configuration Management Data Warehouse App Install Analytics
+    summary: Correlate Data Warehouse application inventory with install statuses and user-device associations.
+  - url: arazzo/microsoft-endpoint-configuration-management-warehouse-policy-compliance-analytics-workflow.yml
+    name: Microsoft Endpoint Configuration Management Data Warehouse Policy Compliance Analytics
+    summary: Correlate Data Warehouse policies with their device activity and the device population.
 - type: Portal
   url: https://endpoint.microsoft.com/
 - type: Console

@@ -1,0 +1,93 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Endpoint Configuration Management ConfigMgr Create Application
+  summary: Create a Configuration Manager application and confirm it within the application inventory.
+  description: >-
+    A Configuration Manager AdminService application authoring flow. The
+    workflow creates a new application through the WMI route, then lists the
+    application inventory filtered to the new application's display name to
+    confirm it appears, and finally reads the legacy package inventory for
+    additional context. Because the AdminService create route does not return
+    a body, this flow confirms creation by listing rather than by id. Every
+    step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: configMgrRestApi
+  url: ../openapi/microsoft-endpoint-configuration-management-configmgr-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: configmgr-create-application
+  summary: Create an application and confirm it in the application inventory.
+  description: >-
+    Creates an SMS_Application via the WMI route, lists applications filtered to
+    the new display name to confirm creation, and lists packages for context.
+  inputs:
+    type: object
+    required:
+    - displayName
+    properties:
+      displayName:
+        type: string
+        description: Display name of the new application.
+      description:
+        type: string
+        description: Description of the application.
+      manufacturer:
+        type: string
+        description: Application manufacturer or publisher.
+      softwareVersion:
+        type: string
+        description: Software version.
+  steps:
+  - stepId: createApplication
+    description: Create a new application via the WMI route.
+    operationId: createApplication
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Negotiate"
+    requestBody:
+      contentType: application/json
+      payload:
+        LocalizedDisplayName: $inputs.displayName
+        LocalizedDescription: $inputs.description
+        Manufacturer: $inputs.manufacturer
+        SoftwareVersion: $inputs.softwareVersion
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      createStatus: $statusCode
+  - stepId: confirmApplication
+    description: List applications filtered to the new display name to confirm it was created.
+    operationId: listApplications
+    parameters:
+    - name: $filter
+      in: query
+      value: "LocalizedDisplayName eq '$inputs.displayName'"
+    - name: Authorization
+      in: header
+      value: "Negotiate"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      matchedApplicationId: $response.body#/value/0/CI_ID
+      applications: $response.body#/value
+  - stepId: listPackagesContext
+    description: List legacy packages to provide additional content context.
+    operationId: listPackages
+    parameters:
+    - name: $top
+      in: query
+      value: 50
+    - name: Authorization
+      in: header
+      value: "Negotiate"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      packages: $response.body#/value
+  outputs:
+    createStatus: $steps.createApplication.outputs.createStatus
+    matchedApplicationId: $steps.confirmApplication.outputs.matchedApplicationId
+    packages: $steps.listPackagesContext.outputs.packages

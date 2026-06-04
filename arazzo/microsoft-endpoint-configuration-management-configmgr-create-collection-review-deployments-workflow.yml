@@ -1,0 +1,96 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Endpoint Configuration Management ConfigMgr Create Collection and Review Deployments
+  summary: Create a Configuration Manager collection, read it back, and review application deployments targeting collections.
+  description: >-
+    A Configuration Manager AdminService flow. The workflow creates a new
+    device or user collection through the WMI route, reads the collection back
+    by id to confirm it was created, and then lists the application deployments
+    so an administrator can see what is already targeted at collections before
+    deploying to the new one. Because the AdminService exposes no create route
+    for application deployments, this flow adapts the deploy-application theme to
+    a create-collection then review-deployments pattern. Every step spells out
+    its request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: configMgrRestApi
+  url: ../openapi/microsoft-endpoint-configuration-management-configmgr-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: configmgr-create-collection-review-deployments
+  summary: Create a collection, verify it, and list application deployments.
+  description: >-
+    Creates an SMS_Collection via the WMI route, reads it back by CollectionID,
+    and lists application deployments across the site.
+  inputs:
+    type: object
+    required:
+    - name
+    - collectionType
+    - limitToCollectionId
+    properties:
+      name:
+        type: string
+        description: Name of the new collection.
+      comment:
+        type: string
+        description: Description or comment for the collection.
+      collectionType:
+        type: integer
+        description: Type of collection (1=User, 2=Device).
+      limitToCollectionId:
+        type: string
+        description: The collection ID that limits membership of the new collection.
+  steps:
+  - stepId: createCollection
+    description: Create a new device or user collection via the WMI route.
+    operationId: createCollection
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Negotiate"
+    requestBody:
+      contentType: application/json
+      payload:
+        Name: $inputs.name
+        Comment: $inputs.comment
+        CollectionType: $inputs.collectionType
+        LimitToCollectionID: $inputs.limitToCollectionId
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      collectionId: $response.body#/CollectionID
+  - stepId: verifyCollection
+    description: Read the new collection back by CollectionID to confirm it was created.
+    operationId: getCollection
+    parameters:
+    - name: collectionId
+      in: path
+      value: $steps.createCollection.outputs.collectionId
+    - name: Authorization
+      in: header
+      value: "Negotiate"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      verifiedName: $response.body#/Name
+      memberCount: $response.body#/MemberCount
+  - stepId: reviewDeployments
+    description: List application deployments across the site to review existing collection targeting.
+    operationId: listDeployments
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Negotiate"
+    - name: $top
+      in: query
+      value: 100
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      deployments: $response.body#/value
+  outputs:
+    collectionId: $steps.createCollection.outputs.collectionId
+    verifiedName: $steps.verifyCollection.outputs.verifiedName
+    deployments: $steps.reviewDeployments.outputs.deployments

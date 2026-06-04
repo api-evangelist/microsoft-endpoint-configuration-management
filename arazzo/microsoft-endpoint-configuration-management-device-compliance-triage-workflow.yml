@@ -1,0 +1,101 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Endpoint Configuration Management Device Compliance Triage
+  summary: Inspect a managed device and branch on its compliance state to either sync or retire it.
+  description: >-
+    A remediation flow for a single Intune managed device. The workflow reads
+    the device, then branches on its complianceState: a compliant device is
+    given a sync to refresh its policy state, while a non-compliant device is
+    retired to remove corporate data. Every step spells out its request inline
+    so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: intuneGraphApi
+  url: ../openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: device-compliance-triage
+  summary: Read a managed device and remediate based on its compliance state.
+  description: >-
+    Reads the managedDevice by id, branches on the complianceState property,
+    and either triggers a device sync for compliant devices or retires
+    non-compliant devices.
+  inputs:
+    type: object
+    required:
+    - managedDeviceId
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for Microsoft Graph (DeviceManagementManagedDevices.ReadWrite.All).
+      managedDeviceId:
+        type: string
+        description: The unique identifier of the managed device to triage.
+  steps:
+  - stepId: getDevice
+    description: Read the managed device to obtain its current compliance state.
+    operationId: getManagedDevice
+    parameters:
+    - name: managedDeviceId
+      in: path
+      value: $inputs.managedDeviceId
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      complianceState: $response.body#/complianceState
+      deviceName: $response.body#/deviceName
+    onSuccess:
+    - name: deviceCompliant
+      type: goto
+      stepId: syncDevice
+      criteria:
+      - context: $response.body
+        condition: $.complianceState == "compliant"
+        type: jsonpath
+    - name: deviceNonCompliant
+      type: goto
+      stepId: retireDevice
+      criteria:
+      - context: $response.body
+        condition: $.complianceState != "compliant"
+        type: jsonpath
+  - stepId: syncDevice
+    description: Trigger a sync for a compliant device to refresh its policy state.
+    operationId: syncManagedDevice
+    parameters:
+    - name: managedDeviceId
+      in: path
+      value: $inputs.managedDeviceId
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      syncStatus: $statusCode
+    onSuccess:
+    - name: doneSync
+      type: end
+  - stepId: retireDevice
+    description: Retire a non-compliant device, removing corporate data while leaving personal data intact.
+    operationId: retireManagedDevice
+    parameters:
+    - name: managedDeviceId
+      in: path
+      value: $inputs.managedDeviceId
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      retireStatus: $statusCode
+  outputs:
+    deviceName: $steps.getDevice.outputs.deviceName
+    complianceState: $steps.getDevice.outputs.complianceState
+    syncStatus: $steps.syncDevice.outputs.syncStatus
+    retireStatus: $steps.retireDevice.outputs.retireStatus

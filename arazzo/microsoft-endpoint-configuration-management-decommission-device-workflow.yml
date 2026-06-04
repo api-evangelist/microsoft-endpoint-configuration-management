@@ -1,0 +1,91 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Endpoint Configuration Management Decommission Device
+  summary: Confirm a managed device, factory wipe it, and remove it from Intune.
+  description: >-
+    An offboarding flow that fully decommissions an Intune managed device. The
+    workflow reads the device to confirm it exists, issues a wipe to factory
+    reset it and remove all data, and then deletes the managedDevice record so
+    it no longer appears in the console. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: intuneGraphApi
+  url: ../openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: decommission-device
+  summary: Confirm a device, wipe it, then delete the device record.
+  description: >-
+    Reads the managedDevice by id, issues a factory wipe controlled by the
+    supplied retention flags, and deletes the device record from Intune.
+  inputs:
+    type: object
+    required:
+    - managedDeviceId
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for Microsoft Graph (DeviceManagementManagedDevices.ReadWrite.All).
+      managedDeviceId:
+        type: string
+        description: The unique identifier of the managed device to decommission.
+      keepEnrollmentData:
+        type: boolean
+        description: Whether to keep enrollment data through the wipe.
+      keepUserData:
+        type: boolean
+        description: Whether to keep user data through the wipe.
+  steps:
+  - stepId: confirmDevice
+    description: Read the managed device to confirm it exists before wiping it.
+    operationId: getManagedDevice
+    parameters:
+    - name: managedDeviceId
+      in: path
+      value: $inputs.managedDeviceId
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      deviceName: $response.body#/deviceName
+  - stepId: wipeDevice
+    description: Factory reset the device, removing data per the supplied retention flags.
+    operationId: wipeManagedDevice
+    parameters:
+    - name: managedDeviceId
+      in: path
+      value: $inputs.managedDeviceId
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    requestBody:
+      contentType: application/json
+      payload:
+        keepEnrollmentData: $inputs.keepEnrollmentData
+        keepUserData: $inputs.keepUserData
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      wipeStatus: $statusCode
+  - stepId: deleteDevice
+    description: Delete the managed device record from Intune.
+    operationId: deleteManagedDevice
+    parameters:
+    - name: managedDeviceId
+      in: path
+      value: $inputs.managedDeviceId
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      deleteStatus: $statusCode
+  outputs:
+    deviceName: $steps.confirmDevice.outputs.deviceName
+    wipeStatus: $steps.wipeDevice.outputs.wipeStatus
+    deleteStatus: $steps.deleteDevice.outputs.deleteStatus

@@ -1,0 +1,92 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Endpoint Configuration Management ConfigMgr Device Lookup
+  summary: Find a Configuration Manager device by name and read its full record and discovered system.
+  description: >-
+    A Configuration Manager AdminService device investigation flow. The
+    workflow lists devices via the versioned route filtered by name, reads the
+    matched device's full record by id, and then queries the discovered system
+    resources to correlate the device with its underlying SMS_R_System
+    discovery data. Every step spells out its request inline so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: configMgrRestApi
+  url: ../openapi/microsoft-endpoint-configuration-management-configmgr-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: configmgr-device-lookup
+  summary: Resolve a device by name, read it by id, and correlate its discovered system.
+  description: >-
+    Lists devices via the versioned route filtered by name, reads the matched
+    device by id, and lists discovered systems filtered by the same name.
+  inputs:
+    type: object
+    required:
+    - deviceName
+    properties:
+      deviceName:
+        type: string
+        description: The name of the device to resolve.
+  steps:
+  - stepId: findDevice
+    description: List devices via the versioned route filtered to the supplied name.
+    operationId: listDevicesV1
+    parameters:
+    - name: $filter
+      in: query
+      value: "Name eq '$inputs.deviceName'"
+    - name: Authorization
+      in: header
+      value: "Negotiate"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      matchedDeviceId: $response.body#/value/0/MachineId
+      devices: $response.body#/value
+    onSuccess:
+    - name: deviceFound
+      type: goto
+      stepId: getDevice
+      criteria:
+      - context: $response.body
+        condition: $.value.length > 0
+        type: jsonpath
+    - name: deviceNotFound
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.value.length == 0
+        type: jsonpath
+  - stepId: getDevice
+    description: Read the matched device's full record by id via the versioned route.
+    operationId: getDeviceV1
+    parameters:
+    - name: deviceId
+      in: path
+      value: $steps.findDevice.outputs.matchedDeviceId
+    - name: Authorization
+      in: header
+      value: "Negotiate"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      device: $response.body
+  - stepId: correlateSystem
+    description: Query discovered system resources filtered by the same name to correlate discovery data.
+    operationId: listSystems
+    parameters:
+    - name: $filter
+      in: query
+      value: "Name eq '$inputs.deviceName'"
+    - name: Authorization
+      in: header
+      value: "Negotiate"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      systems: $response.body#/value
+  outputs:
+    matchedDeviceId: $steps.findDevice.outputs.matchedDeviceId
+    device: $steps.getDevice.outputs.device
+    systems: $steps.correlateSystem.outputs.systems

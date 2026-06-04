@@ -1,0 +1,93 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Endpoint Configuration Management Tenant Compliance Posture
+  summary: Read the tenant compliance summary and, when devices are non-compliant, enumerate them.
+  description: >-
+    A reporting flow that assesses the overall device compliance posture of an
+    Intune tenant. The workflow reads the compliance state summary, lists the
+    compliance policies in effect, and then branches: when the summary reports
+    non-compliant devices it enumerates those devices via an OData filter,
+    otherwise it ends cleanly. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: intuneGraphApi
+  url: ../openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: tenant-compliance-posture
+  summary: Summarize tenant compliance and enumerate non-compliant devices when present.
+  description: >-
+    Reads the deviceCompliancePolicyDeviceStateSummary, lists the compliance
+    policies, and branches on the nonCompliantDeviceCount to either list the
+    non-compliant managed devices or finish.
+  inputs:
+    type: object
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for Microsoft Graph (DeviceManagementManagedDevices.Read.All).
+  steps:
+  - stepId: getSummary
+    description: Read the tenant-wide device compliance state summary.
+    operationId: getDeviceCompliancePolicyDeviceStateSummary
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      nonCompliantDeviceCount: $response.body#/nonCompliantDeviceCount
+      compliantDeviceCount: $response.body#/compliantDeviceCount
+    onSuccess:
+    - name: hasNonCompliant
+      type: goto
+      stepId: listPolicies
+      criteria:
+      - context: $response.body
+        condition: $.nonCompliantDeviceCount > 0
+        type: jsonpath
+    - name: allCompliant
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.nonCompliantDeviceCount == 0
+        type: jsonpath
+  - stepId: listPolicies
+    description: List the compliance policies in effect for the tenant.
+    operationId: listDeviceCompliancePolicies
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: $top
+      in: query
+      value: 100
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      policies: $response.body#/value
+  - stepId: listNonCompliantDevices
+    description: Enumerate the managed devices whose compliance state is noncompliant.
+    operationId: listManagedDevices
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: $filter
+      in: query
+      value: "complianceState eq 'noncompliant'"
+    - name: $top
+      in: query
+      value: 100
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      nonCompliantDevices: $response.body#/value
+  outputs:
+    nonCompliantDeviceCount: $steps.getSummary.outputs.nonCompliantDeviceCount
+    compliantDeviceCount: $steps.getSummary.outputs.compliantDeviceCount
+    policies: $steps.listPolicies.outputs.policies
+    nonCompliantDevices: $steps.listNonCompliantDevices.outputs.nonCompliantDevices

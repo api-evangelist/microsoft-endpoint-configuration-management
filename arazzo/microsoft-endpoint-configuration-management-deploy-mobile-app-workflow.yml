@@ -1,0 +1,110 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Endpoint Configuration Management Deploy Mobile App
+  summary: Create a mobile app in Intune, assign it to a group, and inspect its install status.
+  description: >-
+    An end-to-end Intune application deployment flow. The workflow creates a
+    new mobileApp through the Microsoft Graph API, assigns it to an Azure AD
+    group with the requested install intent, and then reads the per-device
+    install statuses so the operator can confirm the rollout has begun. Every
+    step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: intuneGraphApi
+  url: ../openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: deploy-mobile-app
+  summary: Create a mobile app, assign it to a group, and read install statuses.
+  description: >-
+    Creates a mobileApp with the supplied display name and publisher, assigns
+    it to the supplied Azure AD group with the requested intent, and lists the
+    per-device install statuses for the new app.
+  inputs:
+    type: object
+    required:
+    - displayName
+    - groupId
+    - intent
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for Microsoft Graph (DeviceManagementApps.ReadWrite.All).
+      displayName:
+        type: string
+        description: The title of the app.
+      publisher:
+        type: string
+        description: The publisher of the app.
+      description:
+        type: string
+        description: The description of the app.
+      groupId:
+        type: string
+        description: The Azure AD group id the app assignment targets.
+      intent:
+        type: string
+        description: The install intent for the assignment (available, required, uninstall, availableWithoutEnrollment).
+  steps:
+  - stepId: createApp
+    description: Create a new mobile app with the supplied metadata.
+    operationId: createMobileApp
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    requestBody:
+      contentType: application/json
+      payload:
+        displayName: $inputs.displayName
+        publisher: $inputs.publisher
+        description: $inputs.description
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      appId: $response.body#/id
+      publishingState: $response.body#/publishingState
+  - stepId: assignApp
+    description: Assign the mobile app to the supplied Azure AD group with the requested intent.
+    operationId: assignMobileApp
+    parameters:
+    - name: mobileAppId
+      in: path
+      value: $steps.createApp.outputs.appId
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    requestBody:
+      contentType: application/json
+      payload:
+        mobileAppAssignments:
+        - intent: $inputs.intent
+          target:
+            '@odata.type': "#microsoft.graph.groupAssignmentTarget"
+            groupId: $inputs.groupId
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      assignmentStatus: $statusCode
+  - stepId: readInstallStatuses
+    description: Read the per-device install statuses for the newly assigned app.
+    operationId: listMobileAppDeviceStatuses
+    parameters:
+    - name: mobileAppId
+      in: path
+      value: $steps.createApp.outputs.appId
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: $top
+      in: query
+      value: 50
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      deviceStatuses: $response.body#/value
+  outputs:
+    appId: $steps.createApp.outputs.appId
+    publishingState: $steps.createApp.outputs.publishingState
+    deviceStatuses: $steps.readInstallStatuses.outputs.deviceStatuses
