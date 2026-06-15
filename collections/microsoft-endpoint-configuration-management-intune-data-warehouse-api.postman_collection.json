@@ -1,0 +1,1932 @@
+{
+  "item": [
+    {
+      "id": "1e6e0cc3-84d3-47c9-a14c-938ea1b3c71f",
+      "name": "Applications",
+      "description": {
+        "content": "Application inventory and install status.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3db986df-5c40-44a7-9824-5a80abeed0fc",
+          "name": "Microsoft Endpoint Configuration Management List application records",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List application records",
+            "description": {
+              "content": "Retrieve application inventory records from the Data Warehouse including discovered and managed applications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "applications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "v1.0",
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of items to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.",
+                  "type": "any",
+                  "value": "{{location}}",
+                  "key": "location"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8bb49d87-8ec5-4c2d-bd4e-9cafb8bc0c2d",
+              "name": "Successful response returning application records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.",
+                      "type": "any",
+                      "value": "{{location}}",
+                      "key": "location"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"applicationKey\": 5943,\n      \"applicationId\": \"string\",\n      \"applicationName\": \"string\",\n      \"applicationVersion\": \"string\",\n      \"applicationPublisher\": \"string\",\n      \"isDeleted\": false\n    },\n    {\n      \"applicationKey\": 5149,\n      \"applicationId\": \"string\",\n      \"applicationName\": \"string\",\n      \"applicationVersion\": \"string\",\n      \"applicationPublisher\": \"string\",\n      \"isDeleted\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6dffc495-498f-4ac4-a9de-1f6c7db50a8e",
+          "name": "Microsoft Endpoint Configuration Management List mobile app install statuses",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List mobile app install statuses",
+            "description": {
+              "content": "Retrieve mobile application installation status records.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mobileAppInstallStatuses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "v1.0",
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of items to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxhistorydays",
+                  "value": "7",
+                  "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.",
+                  "type": "any",
+                  "value": "{{location}}",
+                  "key": "location"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "55bf46b8-aba8-4203-815f-b359345196a9",
+              "name": "Successful response returning install statuses.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mobileAppInstallStatuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.",
+                      "type": "any",
+                      "value": "{{location}}",
+                      "key": "location"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"dateKey\": 4011,\n      \"deviceKey\": 29,\n      \"userKey\": 9487,\n      \"applicationKey\": 6891,\n      \"installState\": \"string\",\n      \"errorCode\": 6097\n    },\n    {\n      \"dateKey\": 2368,\n      \"deviceKey\": 2238,\n      \"userKey\": 3021,\n      \"applicationKey\": 7061,\n      \"installState\": \"string\",\n      \"errorCode\": 5080\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "27def099-d871-4b02-b7ec-1ada4b308f5f",
+      "name": "Dates",
+      "description": {
+        "content": "Date dimension for time-based reporting.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2fe287df-6db2-4817-8ba4-c6b6942fe2b0",
+          "name": "Microsoft Endpoint Configuration Management List date dimension records",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List date dimension records",
+            "description": {
+              "content": "Retrieve date dimension records used to correlate facts over time dimensions. Provides date keys with associated calendar attributes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "v1.0",
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.",
+                  "type": "any",
+                  "value": "{{location}}",
+                  "key": "location"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c3f92564-9bac-4e4b-b1d7-158fc8bd5b5d",
+              "name": "Successful response returning date records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.",
+                      "type": "any",
+                      "value": "{{location}}",
+                      "key": "location"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"dateKey\": 9858,\n      \"fullDate\": \"1958-09-17\",\n      \"dayOfWeek\": 9625,\n      \"dayOfMonth\": 197,\n      \"dayOfYear\": 8959,\n      \"weekOfYear\": 8956,\n      \"monthOfYear\": 4052,\n      \"calendarQuarter\": 9551,\n      \"calendarYear\": 2199\n    },\n    {\n      \"dateKey\": 4298,\n      \"fullDate\": \"2005-03-23\",\n      \"dayOfWeek\": 8323,\n      \"dayOfMonth\": 5009,\n      \"dayOfYear\": 3620,\n      \"weekOfYear\": 9437,\n      \"monthOfYear\": 3530,\n      \"calendarQuarter\": 1354,\n      \"calendarYear\": 7287\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "286341fd-70d6-4a7c-8f87-2dd402202baa",
+      "name": "Devices",
+      "description": {
+        "content": "Device entity collections and property histories.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "88c5690e-9cce-41d9-ae23-bdc1ed571819",
+          "name": "Microsoft Endpoint Configuration Management List device records",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List device records",
+            "description": {
+              "content": "Retrieve historical device records from the Data Warehouse. Returns daily snapshots of device properties including enrollment status, compliance state, and OS information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "v1.0",
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of items to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxhistorydays",
+                  "value": "7",
+                  "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.",
+                  "type": "any",
+                  "value": "{{location}}",
+                  "key": "location"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "64b1f709-6b35-4ff3-8298-81c810db983b",
+              "name": "Successful response returning device records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.",
+                      "type": "any",
+                      "value": "{{location}}",
+                      "key": "location"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"deviceKey\": 1502,\n      \"deviceId\": \"string\",\n      \"deviceName\": \"string\",\n      \"deviceType\": \"string\",\n      \"operatingSystem\": \"string\",\n      \"osVersion\": \"string\",\n      \"ownerType\": \"string\",\n      \"enrolledDateTime\": \"1957-11-21T22:58:11.037Z\",\n      \"lastSyncDateTime\": \"2006-04-28T02:45:16.148Z\",\n      \"managementAgent\": \"string\",\n      \"managementState\": \"string\",\n      \"referenceId\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"serialNumber\": \"string\",\n      \"isSupervised\": true,\n      \"isEncrypted\": false,\n      \"dateKey\": 7839,\n      \"complianceState\": \"string\"\n    },\n    {\n      \"deviceKey\": 1359,\n      \"deviceId\": \"string\",\n      \"deviceName\": \"string\",\n      \"deviceType\": \"string\",\n      \"operatingSystem\": \"string\",\n      \"osVersion\": \"string\",\n      \"ownerType\": \"string\",\n      \"enrolledDateTime\": \"1990-05-18T12:13:59.917Z\",\n      \"lastSyncDateTime\": \"1989-06-08T02:53:17.348Z\",\n      \"managementAgent\": \"string\",\n      \"managementState\": \"string\",\n      \"referenceId\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"serialNumber\": \"string\",\n      \"isSupervised\": false,\n      \"isEncrypted\": true,\n      \"dateKey\": 1159,\n      \"complianceState\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "605a1c07-888c-4a2a-a742-9479d11b5214",
+              "name": "Unauthorized. Microsoft Entra ID authentication with OAuth 2.0 is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.",
+                      "type": "any",
+                      "value": "{{location}}",
+                      "key": "location"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc7c9a13-5f39-437c-8116-4f93d1316bcd",
+              "name": "Forbidden. User must have Intune service administrator role or role-based access to the Intune data warehouse resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.",
+                      "type": "any",
+                      "value": "{{location}}",
+                      "key": "location"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6edaa40f-217a-4d69-b026-11a872b03310",
+          "name": "Microsoft Endpoint Configuration Management List device property histories",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List device property histories",
+            "description": {
+              "content": "Retrieve historical device property snapshots. Contains daily snapshots of device-level data for the configured history window.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "devicePropertyHistories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "v1.0",
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of items to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxhistorydays",
+                  "value": "7",
+                  "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.",
+                  "type": "any",
+                  "value": "{{location}}",
+                  "key": "location"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b37a76d4-353a-4481-a912-9bba72f3fe0c",
+              "name": "Successful response returning device property history.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devicePropertyHistories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.",
+                      "type": "any",
+                      "value": "{{location}}",
+                      "key": "location"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"devicePropertyHistoryKey\": 5028,\n      \"deviceKey\": 487,\n      \"dateKey\": 1993,\n      \"deviceName\": \"string\",\n      \"deviceRegistrationStateKey\": 6000,\n      \"complianceStateKey\": 6086,\n      \"osVersion\": \"string\",\n      \"storageTotal\": 527,\n      \"storageFree\": 5139\n    },\n    {\n      \"devicePropertyHistoryKey\": 5068,\n      \"deviceKey\": 5927,\n      \"dateKey\": 8830,\n      \"deviceName\": \"string\",\n      \"deviceRegistrationStateKey\": 6300,\n      \"complianceStateKey\": 1244,\n      \"osVersion\": \"string\",\n      \"storageTotal\": 5016,\n      \"storageFree\": 4123\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "5a0f66b5-4e7a-4a4d-a288-d90ed31eaa9b",
+      "name": "Management Extensions",
+      "description": {
+        "content": "Intune management extension activities.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "078b1b5d-aa49-4f2e-8095-36d33c5e311c",
+          "name": "Microsoft Endpoint Configuration Management List Intune management extension records",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List Intune management extension records",
+            "description": {
+              "content": "Retrieve Intune management extension activity records including script execution results.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "intuneManagementExtensions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "v1.0",
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of items to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxhistorydays",
+                  "value": "7",
+                  "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.",
+                  "type": "any",
+                  "value": "{{location}}",
+                  "key": "location"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "989ba59c-95f2-4424-ad00-e70f25d158d0",
+              "name": "Successful response returning management extension records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "intuneManagementExtensions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.",
+                      "type": "any",
+                      "value": "{{location}}",
+                      "key": "location"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"dateKey\": 1051,\n      \"tenantKey\": 921,\n      \"deviceKey\": 7222,\n      \"userKey\": 9910,\n      \"extensionVersionKey\": 9811,\n      \"policyKey\": 2580,\n      \"policyTypeKey\": 4882,\n      \"status\": \"string\"\n    },\n    {\n      \"dateKey\": 6905,\n      \"tenantKey\": 9448,\n      \"deviceKey\": 4901,\n      \"userKey\": 7290,\n      \"extensionVersionKey\": 9111,\n      \"policyKey\": 2521,\n      \"policyTypeKey\": 5377,\n      \"status\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "5963475f-1307-4fdb-ad76-c6ecb87387d2",
+      "name": "Policies",
+      "description": {
+        "content": "Policy records and compliance activities.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e579f046-5937-418d-9aac-0c5423bd6350",
+          "name": "Microsoft Endpoint Configuration Management List policy records",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List policy records",
+            "description": {
+              "content": "Retrieve compliance and configuration policy records from the Data Warehouse.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "policies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "v1.0",
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of items to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.",
+                  "type": "any",
+                  "value": "{{location}}",
+                  "key": "location"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8204e307-170f-49cd-bfc6-a6cab8099f3e",
+              "name": "Successful response returning policy records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.",
+                      "type": "any",
+                      "value": "{{location}}",
+                      "key": "location"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"policyKey\": 316,\n      \"policyId\": \"string\",\n      \"policyName\": \"string\",\n      \"policyVersion\": 8641,\n      \"isDeleted\": true,\n      \"policyTypeKey\": 1099,\n      \"policyPlatformKey\": 1332\n    },\n    {\n      \"policyKey\": 5216,\n      \"policyId\": \"string\",\n      \"policyName\": \"string\",\n      \"policyVersion\": 8264,\n      \"isDeleted\": true,\n      \"policyTypeKey\": 7179,\n      \"policyPlatformKey\": 3454\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e5c16d3d-260e-426c-a945-40bde2efddc0",
+          "name": "Microsoft Endpoint Configuration Management List policy device activities",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List policy device activities",
+            "description": {
+              "content": "Retrieve policy device activity records showing device compliance status against policies over time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "policyDeviceActivities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "v1.0",
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of items to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxhistorydays",
+                  "value": "7",
+                  "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.",
+                  "type": "any",
+                  "value": "{{location}}",
+                  "key": "location"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aefe6096-aff9-409d-a89c-089553c10f5c",
+              "name": "Successful response returning policy device activities.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policyDeviceActivities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.",
+                      "type": "any",
+                      "value": "{{location}}",
+                      "key": "location"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"dateKey\": 6558,\n      \"policyKey\": 7347,\n      \"pending\": 996,\n      \"succeeded\": 1196,\n      \"failed\": 7223,\n      \"error\": 9816\n    },\n    {\n      \"dateKey\": 3750,\n      \"policyKey\": 6398,\n      \"pending\": 7373,\n      \"succeeded\": 2550,\n      \"failed\": 2726,\n      \"error\": 7290\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9bd28e56-2295-450e-bf1f-253a55fae95f",
+          "name": "Microsoft Endpoint Configuration Management List policy user activities",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List policy user activities",
+            "description": {
+              "content": "Retrieve policy user activity records showing user compliance status against policies over time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "policyUserActivities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "v1.0",
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of items to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxhistorydays",
+                  "value": "7",
+                  "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.",
+                  "type": "any",
+                  "value": "{{location}}",
+                  "key": "location"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "94be83d6-c8df-4f75-b368-763810257d73",
+              "name": "Successful response returning policy user activities.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policyUserActivities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.",
+                      "type": "any",
+                      "value": "{{location}}",
+                      "key": "location"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"dateKey\": 8074,\n      \"policyKey\": 3668,\n      \"pending\": 4305,\n      \"succeeded\": 8269,\n      \"failed\": 8158,\n      \"error\": 7068\n    },\n    {\n      \"dateKey\": 9852,\n      \"policyKey\": 2819,\n      \"pending\": 480,\n      \"succeeded\": 6674,\n      \"failed\": 1480,\n      \"error\": 4846\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "1cbe40ff-2286-461e-82ba-3d6090312504",
+      "name": "User Device Associations",
+      "description": {
+        "content": "User-to-device mapping records.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "77c4c8df-7a7a-4766-b112-aba53669eadd",
+          "name": "Microsoft Endpoint Configuration Management List user-device associations",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List user-device associations",
+            "description": {
+              "content": "Retrieve records mapping users to their associated devices.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "userDeviceAssociations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "v1.0",
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of items to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxhistorydays",
+                  "value": "7",
+                  "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.",
+                  "type": "any",
+                  "value": "{{location}}",
+                  "key": "location"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9acd315c-457d-47f3-a487-1812b57762a1",
+              "name": "Successful response returning user-device associations.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userDeviceAssociations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.",
+                      "type": "any",
+                      "value": "{{location}}",
+                      "key": "location"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"userDeviceAssociationKey\": 833,\n      \"userKey\": 533,\n      \"deviceKey\": 4966,\n      \"createdDate\": \"2005-12-07T10:22:56.010Z\"\n    },\n    {\n      \"userDeviceAssociationKey\": 1317,\n      \"userKey\": 4597,\n      \"deviceKey\": 3955,\n      \"createdDate\": \"1953-04-30T08:33:43.868Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "b04fefc8-2998-463c-9993-7f9b19b096eb",
+      "name": "Users",
+      "description": {
+        "content": "User dimension records.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "420dd92f-fcbb-4843-90ee-6378a40359e8",
+          "name": "Microsoft Endpoint Configuration Management List user records",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List user records",
+            "description": {
+              "content": "Retrieve user dimension records from the Data Warehouse. Provides historical snapshots of user information associated with device enrollments.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "v1.0",
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of items to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxhistorydays",
+                  "value": "7",
+                  "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.",
+                  "type": "any",
+                  "value": "{{location}}",
+                  "key": "location"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "02b561ff-f3a9-424b-9c30-f3b668f22774",
+              "name": "Successful response returning user records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.",
+                      "type": "any",
+                      "value": "{{location}}",
+                      "key": "location"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"userKey\": 6249,\n      \"userId\": \"string\",\n      \"userEmail\": \"string\",\n      \"userPrincipalName\": \"string\",\n      \"displayName\": \"string\",\n      \"isDeleted\": true,\n      \"startDateInclusiveUTC\": \"1969-10-02T06:06:22.348Z\",\n      \"endDateExclusiveUTC\": \"1975-01-27T07:30:47.842Z\",\n      \"isCurrent\": true\n    },\n    {\n      \"userKey\": 9732,\n      \"userId\": \"string\",\n      \"userEmail\": \"string\",\n      \"userPrincipalName\": \"string\",\n      \"displayName\": \"string\",\n      \"isDeleted\": true,\n      \"startDateInclusiveUTC\": \"2005-07-08T20:11:41.619Z\",\n      \"endDateExclusiveUTC\": \"1968-04-16T10:38:09.042Z\",\n      \"isCurrent\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "msua06",
+      "key": "location"
+    },
+    {
+      "type": "string",
+      "value": "https://fef.{{location}}.manage.microsoft.com/ReportingService/DataWarehouseFEService",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://api.manage.microsoft.com/.default"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3cd3df39-1bc3-4055-a131-193e3b29524c",
+    "name": "Microsoft Endpoint Configuration Management Intune Data Warehouse API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OData-based REST API that provides access to Intune reporting data in a machine-readable format. Enables building custom reports and analytics for enterprise mobile environment insights. Uses OData v4.0 protocol with standard patterns for request/response headers, status codes, HTTP methods, URL conventions, and query options. Data is sampled daily to provide a historical view of the mobile device environment.\n\nContact Support:\n Name: Microsoft Intune Support",
+      "type": "text/plain"
+    }
+  }
+}

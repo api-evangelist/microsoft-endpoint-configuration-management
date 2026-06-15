@@ -1,0 +1,236 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Endpoint Configuration Management Intune Reporting Export API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+      "accessTokenUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Export Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List export jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/deviceManagement/reports/exportJobs",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response."
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Order results by a property."
+              },
+              {
+                "name": "$count",
+                "value": "",
+                "type": "query",
+                "description": "Include count of items."
+              }
+            ]
+          },
+          "docs": "List properties and relationships of the deviceManagementExportJob objects. Returns all export jobs that have been created for the tenant."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Create export job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/deviceManagement/reports/exportJobs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new deviceManagementExportJob object to initiate an asynchronous report export. The reportName parameter is required in the request body and identifies which report to export. After creation, poll the export job by ID until the status changes to completed, then download the report from the url property."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Get export job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/deviceManagement/reports/exportJobs/:deviceManagementExportJobId",
+            "params": [
+              {
+                "name": "deviceManagementExportJobId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the deviceManagementExportJob."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response."
+              }
+            ]
+          },
+          "docs": "Read properties and relationships of a deviceManagementExportJob object. Use this endpoint to poll the status of an export job. When the status property is completed, the url property contains the download location for the exported report file."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Delete export job",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://graph.microsoft.com/v1.0/deviceManagement/reports/exportJobs/:deviceManagementExportJobId",
+            "params": [
+              {
+                "name": "deviceManagementExportJobId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the deviceManagementExportJob."
+              }
+            ]
+          },
+          "docs": "Delete a deviceManagementExportJob. Removes the export job record from the service."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Get device non-compliance report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/deviceManagement/reports/getDeviceNonComplianceReport",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve a report of devices that are not compliant with compliance policies. This is a synchronous report endpoint that returns data directly in the response body."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Get compliance policy non-compliance report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/deviceManagement/reports/getCompliancePolicyNonComplianceReport",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve a report of non-compliant devices grouped by compliance policy."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Get compliance setting non-compliance report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/deviceManagement/reports/getComplianceSettingNonComplianceReport",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve a report of non-compliant devices grouped by compliance setting."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Get configuration policy non-compliance report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/deviceManagement/reports/getConfigurationPolicyNonComplianceReport",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve a report of non-compliant devices grouped by configuration policy."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Get historical report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/deviceManagement/reports/getHistoricalReport",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve a historical report from the Intune reporting infrastructure. Returns report data for a specific time range."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Get cached report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/deviceManagement/reports/getCachedReport",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve a cached report from a previous export. The snapshotId or sessionId in the request body identifies the cached data to return."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

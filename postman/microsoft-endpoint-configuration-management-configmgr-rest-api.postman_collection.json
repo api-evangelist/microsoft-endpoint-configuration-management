@@ -1,0 +1,2226 @@
+{
+  "info": {
+    "_postman_id": "bde8dd49-9546-4f8c-b91f-6511fd827e7c",
+    "name": "Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService)",
+    "description": "REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData routes. Class names are case-sensitive.\n\nContact Support:\n Name: Microsoft Configuration Manager Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:11:43.000Z",
+    "updatedAt": "2026-06-05T15:11:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bde8dd49-9546-4f8c-b91f-6511fd827e7c"
+  },
+  "item": [
+    {
+      "name": "wmi",
+      "item": [
+        {
+          "name": "SMS_Device",
+          "item": [
+            {
+              "name": "Microsoft Endpoint Configuration Management List devices via WMI route",
+              "id": "57b4fa76-c88b-47de-9a16-692784c76629",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/wmi/SMS_Device?$top=<integer>&$filter=<string>&$select=<string>&$orderby=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "wmi",
+                    "SMS_Device"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Order results by a property.",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieve a collection of devices managed by Configuration Manager using the WMI route. Supports OData query options for filtering and selecting."
+              },
+              "response": [
+                {
+                  "id": "5db6f6d6-2821-436a-9460-811f893f3d25",
+                  "name": "Successful response returning a collection of devices.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wmi/SMS_Device?$top=<integer>&$filter=<string>&$select=<string>&$orderby=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wmi",
+                        "SMS_Device"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Order results by a property.",
+                          "key": "$orderby",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"@odata.context\": \"<string>\",\n  \"value\": [\n    {\n      \"DeviceID\": \"<integer>\",\n      \"Name\": \"<string>\",\n      \"Domain\": \"<string>\",\n      \"SMSID\": \"<string>\",\n      \"IsActive\": \"<boolean>\",\n      \"DeviceOS\": \"<string>\",\n      \"DeviceOSVersion\": \"<string>\",\n      \"DeviceType\": \"<integer>\",\n      \"IsBlocked\": \"<boolean>\",\n      \"LastActiveTime\": \"<dateTime>\"\n    },\n    {\n      \"DeviceID\": \"<integer>\",\n      \"Name\": \"<string>\",\n      \"Domain\": \"<string>\",\n      \"SMSID\": \"<string>\",\n      \"IsActive\": \"<boolean>\",\n      \"DeviceOS\": \"<string>\",\n      \"DeviceOSVersion\": \"<string>\",\n      \"DeviceType\": \"<integer>\",\n      \"IsBlocked\": \"<boolean>\",\n      \"LastActiveTime\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:11:43.000Z",
+                  "updatedAt": "2026-06-05T15:11:43.000Z",
+                  "uid": "35240-5db6f6d6-2821-436a-9460-811f893f3d25"
+                },
+                {
+                  "id": "22d74828-e138-483a-ada2-72089c004462",
+                  "name": "Unauthorized. Authentication is required.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wmi/SMS_Device?$top=<integer>&$filter=<string>&$select=<string>&$orderby=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wmi",
+                        "SMS_Device"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Order results by a property.",
+                          "key": "$orderby",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:11:43.000Z",
+                  "updatedAt": "2026-06-05T15:11:43.000Z",
+                  "uid": "35240-22d74828-e138-483a-ada2-72089c004462"
+                },
+                {
+                  "id": "7d0f1837-7563-4c20-9a32-c61f9ea21a70",
+                  "name": "Forbidden. The user account must be an administrative user in Configuration Manager.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wmi/SMS_Device?$top=<integer>&$filter=<string>&$select=<string>&$orderby=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wmi",
+                        "SMS_Device"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Order results by a property.",
+                          "key": "$orderby",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:11:43.000Z",
+                  "updatedAt": "2026-06-05T15:11:43.000Z",
+                  "uid": "35240-7d0f1837-7563-4c20-9a32-c61f9ea21a70"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:43.000Z",
+              "updatedAt": "2026-06-05T15:11:43.000Z",
+              "uid": "35240-57b4fa76-c88b-47de-9a16-692784c76629"
+            }
+          ],
+          "id": "ca6ea6a2-1b8d-43a6-8c74-20c7c69c4d05",
+          "createdAt": "2026-06-05T15:11:43.000Z",
+          "updatedAt": "2026-06-05T15:11:43.000Z",
+          "uid": "35240-ca6ea6a2-1b8d-43a6-8c74-20c7c69c4d05"
+        },
+        {
+          "name": "SMS_R_System",
+          "item": [
+            {
+              "name": "Microsoft Endpoint Configuration Management List systems",
+              "id": "a25aa75a-182b-4f67-b520-2a0502cafde7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/wmi/SMS_R_System?$top=<integer>&$filter=<string>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "wmi",
+                    "SMS_R_System"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieve all discovered system resources, representing computers and devices discovered by Configuration Manager."
+              },
+              "response": [
+                {
+                  "id": "c040fd7b-72d6-4299-9fbd-ed73ff4921a5",
+                  "name": "Successful response returning discovered systems.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wmi/SMS_R_System?$top=<integer>&$filter=<string>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wmi",
+                        "SMS_R_System"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include.",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": [\n    {\n      \"ResourceID\": \"<integer>\",\n      \"Name\": \"<string>\",\n      \"SMSUniqueIdentifier\": \"<string>\",\n      \"ResourceDomainORWorkgroup\": \"<string>\",\n      \"Client\": \"<integer>\",\n      \"Active\": \"<integer>\",\n      \"IPAddresses\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"MACAddresses\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"OperatingSystemNameandVersion\": \"<string>\",\n      \"LastLogonUserName\": \"<string>\",\n      \"LastLogonTimestamp\": \"<dateTime>\"\n    },\n    {\n      \"ResourceID\": \"<integer>\",\n      \"Name\": \"<string>\",\n      \"SMSUniqueIdentifier\": \"<string>\",\n      \"ResourceDomainORWorkgroup\": \"<string>\",\n      \"Client\": \"<integer>\",\n      \"Active\": \"<integer>\",\n      \"IPAddresses\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"MACAddresses\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"OperatingSystemNameandVersion\": \"<string>\",\n      \"LastLogonUserName\": \"<string>\",\n      \"LastLogonTimestamp\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:11:43.000Z",
+                  "updatedAt": "2026-06-05T15:11:43.000Z",
+                  "uid": "35240-c040fd7b-72d6-4299-9fbd-ed73ff4921a5"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:43.000Z",
+              "updatedAt": "2026-06-05T15:11:43.000Z",
+              "uid": "35240-a25aa75a-182b-4f67-b520-2a0502cafde7"
+            }
+          ],
+          "id": "417438c5-fd1f-4d90-a839-570e738e8cf5",
+          "createdAt": "2026-06-05T15:11:43.000Z",
+          "updatedAt": "2026-06-05T15:11:43.000Z",
+          "uid": "35240-417438c5-fd1f-4d90-a839-570e738e8cf5"
+        },
+        {
+          "name": "SMS_Collection",
+          "item": [
+            {
+              "name": "Microsoft Endpoint Configuration Management List collections",
+              "id": "f32de3f0-7b0d-4d4b-9467-1dc91b0fc30f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/wmi/SMS_Collection?$top=<integer>&$filter=<string>&$select=<string>&$orderby=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "wmi",
+                    "SMS_Collection"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Order results by a property.",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieve all device and user collections defined in Configuration Manager."
+              },
+              "response": [
+                {
+                  "id": "b4ec3bfe-8714-446c-9854-90e581d405b0",
+                  "name": "Successful response returning collections.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wmi/SMS_Collection?$top=<integer>&$filter=<string>&$select=<string>&$orderby=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wmi",
+                        "SMS_Collection"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Order results by a property.",
+                          "key": "$orderby",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": [\n    {\n      \"CollectionID\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Comment\": \"<string>\",\n      \"CollectionType\": \"<integer>\",\n      \"MemberCount\": \"<integer>\",\n      \"LimitToCollectionID\": \"<string>\",\n      \"LimitToCollectionName\": \"<string>\",\n      \"LastRefreshTime\": \"<dateTime>\",\n      \"CurrentStatus\": \"<integer>\"\n    },\n    {\n      \"CollectionID\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Comment\": \"<string>\",\n      \"CollectionType\": \"<integer>\",\n      \"MemberCount\": \"<integer>\",\n      \"LimitToCollectionID\": \"<string>\",\n      \"LimitToCollectionName\": \"<string>\",\n      \"LastRefreshTime\": \"<dateTime>\",\n      \"CurrentStatus\": \"<integer>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:11:43.000Z",
+                  "updatedAt": "2026-06-05T15:11:43.000Z",
+                  "uid": "35240-b4ec3bfe-8714-446c-9854-90e581d405b0"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:43.000Z",
+              "updatedAt": "2026-06-05T15:11:43.000Z",
+              "uid": "35240-f32de3f0-7b0d-4d4b-9467-1dc91b0fc30f"
+            },
+            {
+              "name": "Microsoft Endpoint Configuration Management Create a collection",
+              "id": "8d66b3fb-f2d9-4473-b8f9-644e411f4206",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CollectionID\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"Comment\": \"<string>\",\n  \"CollectionType\": \"<integer>\",\n  \"MemberCount\": \"<integer>\",\n  \"LimitToCollectionID\": \"<string>\",\n  \"LimitToCollectionName\": \"<string>\",\n  \"LastRefreshTime\": \"<dateTime>\",\n  \"CurrentStatus\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/wmi/SMS_Collection",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "wmi",
+                    "SMS_Collection"
+                  ]
+                },
+                "description": "Create a new device or user collection."
+              },
+              "response": [
+                {
+                  "id": "9dac3215-919f-415d-9307-da4a1c5679f8",
+                  "name": "Successfully created collection.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"CollectionID\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"Comment\": \"<string>\",\n  \"CollectionType\": \"<integer>\",\n  \"MemberCount\": \"<integer>\",\n  \"LimitToCollectionID\": \"<string>\",\n  \"LimitToCollectionName\": \"<string>\",\n  \"LastRefreshTime\": \"<dateTime>\",\n  \"CurrentStatus\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/wmi/SMS_Collection",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wmi",
+                        "SMS_Collection"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"CollectionID\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"Comment\": \"<string>\",\n  \"CollectionType\": \"<integer>\",\n  \"MemberCount\": \"<integer>\",\n  \"LimitToCollectionID\": \"<string>\",\n  \"LimitToCollectionName\": \"<string>\",\n  \"LastRefreshTime\": \"<dateTime>\",\n  \"CurrentStatus\": \"<integer>\"\n}",
+                  "createdAt": "2026-06-05T15:11:43.000Z",
+                  "updatedAt": "2026-06-05T15:11:43.000Z",
+                  "uid": "35240-9dac3215-919f-415d-9307-da4a1c5679f8"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:43.000Z",
+              "updatedAt": "2026-06-05T15:11:43.000Z",
+              "uid": "35240-8d66b3fb-f2d9-4473-b8f9-644e411f4206"
+            }
+          ],
+          "id": "7e14541e-c409-483d-be59-eae567728b9e",
+          "createdAt": "2026-06-05T15:11:43.000Z",
+          "updatedAt": "2026-06-05T15:11:43.000Z",
+          "uid": "35240-7e14541e-c409-483d-be59-eae567728b9e"
+        },
+        {
+          "name": "SMS_Collection('{collectionId}')",
+          "item": [
+            {
+              "name": "Microsoft Endpoint Configuration Management Get a collection",
+              "id": "8de37334-b687-4c4c-a000-0deba67d8af5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/wmi/SMS_Collection('{{collectionId}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "wmi",
+                    "SMS_Collection('{{collectionId}}')"
+                  ]
+                },
+                "description": "Retrieve a specific collection by its ID."
+              },
+              "response": [
+                {
+                  "id": "08c677fd-3d3d-45e5-8826-18daf1a93514",
+                  "name": "Successful response returning the collection.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wmi/SMS_Collection('{{collectionId}}')",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wmi",
+                        "SMS_Collection('{{collectionId}}')"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"CollectionID\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"Comment\": \"<string>\",\n  \"CollectionType\": \"<integer>\",\n  \"MemberCount\": \"<integer>\",\n  \"LimitToCollectionID\": \"<string>\",\n  \"LimitToCollectionName\": \"<string>\",\n  \"LastRefreshTime\": \"<dateTime>\",\n  \"CurrentStatus\": \"<integer>\"\n}",
+                  "createdAt": "2026-06-05T15:11:43.000Z",
+                  "updatedAt": "2026-06-05T15:11:43.000Z",
+                  "uid": "35240-08c677fd-3d3d-45e5-8826-18daf1a93514"
+                },
+                {
+                  "id": "d8a2e089-59af-486c-8176-914136877f28",
+                  "name": "Not found. The specified resource does not exist.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wmi/SMS_Collection('{{collectionId}}')",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wmi",
+                        "SMS_Collection('{{collectionId}}')"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:11:43.000Z",
+                  "updatedAt": "2026-06-05T15:11:43.000Z",
+                  "uid": "35240-d8a2e089-59af-486c-8176-914136877f28"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:43.000Z",
+              "updatedAt": "2026-06-05T15:11:43.000Z",
+              "uid": "35240-8de37334-b687-4c4c-a000-0deba67d8af5"
+            }
+          ],
+          "id": "c2bf5a24-762c-47e6-8534-b30d7961e524",
+          "createdAt": "2026-06-05T15:11:43.000Z",
+          "updatedAt": "2026-06-05T15:11:43.000Z",
+          "uid": "35240-c2bf5a24-762c-47e6-8534-b30d7961e524"
+        },
+        {
+          "name": "SMS_Application",
+          "item": [
+            {
+              "name": "Microsoft Endpoint Configuration Management List applications",
+              "id": "c5cda98d-069c-42b8-a681-e89dfec47f8b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/wmi/SMS_Application?$top=<integer>&$filter=<string>&$select=<string>&$orderby=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "wmi",
+                    "SMS_Application"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Order results by a property.",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieve all applications defined in Configuration Manager, including deployment types and content information."
+              },
+              "response": [
+                {
+                  "id": "c8011b0b-8473-467d-b6d3-63c71d1b8566",
+                  "name": "Successful response returning applications.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wmi/SMS_Application?$top=<integer>&$filter=<string>&$select=<string>&$orderby=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wmi",
+                        "SMS_Application"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Order results by a property.",
+                          "key": "$orderby",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": [\n    {\n      \"CI_ID\": \"<integer>\",\n      \"CI_UniqueID\": \"<string>\",\n      \"LocalizedDisplayName\": \"<string>\",\n      \"LocalizedDescription\": \"<string>\",\n      \"Manufacturer\": \"<string>\",\n      \"SoftwareVersion\": \"<string>\",\n      \"DateCreated\": \"<dateTime>\",\n      \"DateLastModified\": \"<dateTime>\",\n      \"IsDeployed\": \"<boolean>\",\n      \"IsSuperseded\": \"<boolean>\",\n      \"IsLatest\": \"<boolean>\",\n      \"NumberOfDeploymentTypes\": \"<integer>\",\n      \"NumberOfDeployments\": \"<integer>\"\n    },\n    {\n      \"CI_ID\": \"<integer>\",\n      \"CI_UniqueID\": \"<string>\",\n      \"LocalizedDisplayName\": \"<string>\",\n      \"LocalizedDescription\": \"<string>\",\n      \"Manufacturer\": \"<string>\",\n      \"SoftwareVersion\": \"<string>\",\n      \"DateCreated\": \"<dateTime>\",\n      \"DateLastModified\": \"<dateTime>\",\n      \"IsDeployed\": \"<boolean>\",\n      \"IsSuperseded\": \"<boolean>\",\n      \"IsLatest\": \"<boolean>\",\n      \"NumberOfDeploymentTypes\": \"<integer>\",\n      \"NumberOfDeployments\": \"<integer>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:11:43.000Z",
+                  "updatedAt": "2026-06-05T15:11:43.000Z",
+                  "uid": "35240-c8011b0b-8473-467d-b6d3-63c71d1b8566"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:43.000Z",
+              "updatedAt": "2026-06-05T15:11:43.000Z",
+              "uid": "35240-c5cda98d-069c-42b8-a681-e89dfec47f8b"
+            },
+            {
+              "name": "Microsoft Endpoint Configuration Management Create an application",
+              "id": "8c6cc51d-f7ce-4e97-a125-fa674475cc4f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CI_ID\": \"<integer>\",\n  \"CI_UniqueID\": \"<string>\",\n  \"LocalizedDisplayName\": \"<string>\",\n  \"LocalizedDescription\": \"<string>\",\n  \"Manufacturer\": \"<string>\",\n  \"SoftwareVersion\": \"<string>\",\n  \"DateCreated\": \"<dateTime>\",\n  \"DateLastModified\": \"<dateTime>\",\n  \"IsDeployed\": \"<boolean>\",\n  \"IsSuperseded\": \"<boolean>\",\n  \"IsLatest\": \"<boolean>\",\n  \"NumberOfDeploymentTypes\": \"<integer>\",\n  \"NumberOfDeployments\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/wmi/SMS_Application",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "wmi",
+                    "SMS_Application"
+                  ]
+                },
+                "description": "Create a new application in Configuration Manager."
+              },
+              "response": [
+                {
+                  "id": "02969db6-03da-479e-b375-b8e27cbb312d",
+                  "name": "Successfully created application.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"CI_ID\": \"<integer>\",\n  \"CI_UniqueID\": \"<string>\",\n  \"LocalizedDisplayName\": \"<string>\",\n  \"LocalizedDescription\": \"<string>\",\n  \"Manufacturer\": \"<string>\",\n  \"SoftwareVersion\": \"<string>\",\n  \"DateCreated\": \"<dateTime>\",\n  \"DateLastModified\": \"<dateTime>\",\n  \"IsDeployed\": \"<boolean>\",\n  \"IsSuperseded\": \"<boolean>\",\n  \"IsLatest\": \"<boolean>\",\n  \"NumberOfDeploymentTypes\": \"<integer>\",\n  \"NumberOfDeployments\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/wmi/SMS_Application",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wmi",
+                        "SMS_Application"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:11:43.000Z",
+                  "updatedAt": "2026-06-05T15:11:43.000Z",
+                  "uid": "35240-02969db6-03da-479e-b375-b8e27cbb312d"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:43.000Z",
+              "updatedAt": "2026-06-05T15:11:43.000Z",
+              "uid": "35240-8c6cc51d-f7ce-4e97-a125-fa674475cc4f"
+            }
+          ],
+          "id": "4d4b0860-6e69-4222-8d73-ed0509cfc599",
+          "createdAt": "2026-06-05T15:11:43.000Z",
+          "updatedAt": "2026-06-05T15:11:43.000Z",
+          "uid": "35240-4d4b0860-6e69-4222-8d73-ed0509cfc599"
+        },
+        {
+          "name": "SMS_Application('{applicationId}')",
+          "item": [
+            {
+              "name": "Microsoft Endpoint Configuration Management Get an application",
+              "id": "015c0a1c-94e8-4c02-b273-da8ed094291d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/wmi/SMS_Application('{{applicationId}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "wmi",
+                    "SMS_Application('{{applicationId}}')"
+                  ]
+                },
+                "description": "Retrieve a specific application by its CI_ID."
+              },
+              "response": [
+                {
+                  "id": "1afed872-b4c0-4e3d-828a-5f1b1b949891",
+                  "name": "Successful response returning the application.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wmi/SMS_Application('{{applicationId}}')",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wmi",
+                        "SMS_Application('{{applicationId}}')"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"CI_ID\": \"<integer>\",\n  \"CI_UniqueID\": \"<string>\",\n  \"LocalizedDisplayName\": \"<string>\",\n  \"LocalizedDescription\": \"<string>\",\n  \"Manufacturer\": \"<string>\",\n  \"SoftwareVersion\": \"<string>\",\n  \"DateCreated\": \"<dateTime>\",\n  \"DateLastModified\": \"<dateTime>\",\n  \"IsDeployed\": \"<boolean>\",\n  \"IsSuperseded\": \"<boolean>\",\n  \"IsLatest\": \"<boolean>\",\n  \"NumberOfDeploymentTypes\": \"<integer>\",\n  \"NumberOfDeployments\": \"<integer>\"\n}",
+                  "createdAt": "2026-06-05T15:11:43.000Z",
+                  "updatedAt": "2026-06-05T15:11:43.000Z",
+                  "uid": "35240-1afed872-b4c0-4e3d-828a-5f1b1b949891"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:43.000Z",
+              "updatedAt": "2026-06-05T15:11:43.000Z",
+              "uid": "35240-015c0a1c-94e8-4c02-b273-da8ed094291d"
+            }
+          ],
+          "id": "fb8613d3-0d33-415c-b25d-ef317d0df179",
+          "createdAt": "2026-06-05T15:11:43.000Z",
+          "updatedAt": "2026-06-05T15:11:43.000Z",
+          "uid": "35240-fb8613d3-0d33-415c-b25d-ef317d0df179"
+        },
+        {
+          "name": "SMS_ApplicationDeployment",
+          "item": [
+            {
+              "name": "Microsoft Endpoint Configuration Management List application deployments",
+              "id": "f89098cf-3202-45c9-90da-f52dc094bef4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/wmi/SMS_ApplicationDeployment?$top=<integer>&$filter=<string>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "wmi",
+                    "SMS_ApplicationDeployment"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieve all application deployments in Configuration Manager."
+              },
+              "response": [
+                {
+                  "id": "a5f393a2-2d80-485b-a5cf-5e591b11dbdf",
+                  "name": "Successful response returning deployments.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wmi/SMS_ApplicationDeployment?$top=<integer>&$filter=<string>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wmi",
+                        "SMS_ApplicationDeployment"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include.",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": [\n    {\n      \"AssignmentID\": \"<integer>\",\n      \"AssignmentName\": \"<string>\",\n      \"ApplicationName\": \"<string>\",\n      \"TargetCollectionID\": \"<string>\",\n      \"StartTime\": \"<dateTime>\",\n      \"EnforcementDeadline\": \"<dateTime>\",\n      \"DesiredConfigType\": \"<integer>\",\n      \"OfferTypeID\": \"<integer>\",\n      \"Enabled\": \"<boolean>\"\n    },\n    {\n      \"AssignmentID\": \"<integer>\",\n      \"AssignmentName\": \"<string>\",\n      \"ApplicationName\": \"<string>\",\n      \"TargetCollectionID\": \"<string>\",\n      \"StartTime\": \"<dateTime>\",\n      \"EnforcementDeadline\": \"<dateTime>\",\n      \"DesiredConfigType\": \"<integer>\",\n      \"OfferTypeID\": \"<integer>\",\n      \"Enabled\": \"<boolean>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:11:43.000Z",
+                  "updatedAt": "2026-06-05T15:11:43.000Z",
+                  "uid": "35240-a5f393a2-2d80-485b-a5cf-5e591b11dbdf"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:43.000Z",
+              "updatedAt": "2026-06-05T15:11:43.000Z",
+              "uid": "35240-f89098cf-3202-45c9-90da-f52dc094bef4"
+            }
+          ],
+          "id": "36eef7ee-3fce-42cb-91f6-ce7dc1897bb0",
+          "createdAt": "2026-06-05T15:11:43.000Z",
+          "updatedAt": "2026-06-05T15:11:43.000Z",
+          "uid": "35240-36eef7ee-3fce-42cb-91f6-ce7dc1897bb0"
+        },
+        {
+          "name": "SMS_Package",
+          "item": [
+            {
+              "name": "Microsoft Endpoint Configuration Management List packages",
+              "id": "6f6a1d3e-2e09-45f7-950e-fb3417055991",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/wmi/SMS_Package?$top=<integer>&$filter=<string>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "wmi",
+                    "SMS_Package"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieve all legacy packages in Configuration Manager."
+              },
+              "response": [
+                {
+                  "id": "b4b4e883-3ea3-4edd-985a-bd4ff7d2ae76",
+                  "name": "Successful response returning packages.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wmi/SMS_Package?$top=<integer>&$filter=<string>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wmi",
+                        "SMS_Package"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include.",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": [\n    {\n      \"PackageID\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"Manufacturer\": \"<string>\",\n      \"Version\": \"<string>\",\n      \"SourceDate\": \"<dateTime>\",\n      \"PackageType\": \"<integer>\"\n    },\n    {\n      \"PackageID\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"Manufacturer\": \"<string>\",\n      \"Version\": \"<string>\",\n      \"SourceDate\": \"<dateTime>\",\n      \"PackageType\": \"<integer>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:11:43.000Z",
+                  "updatedAt": "2026-06-05T15:11:43.000Z",
+                  "uid": "35240-b4b4e883-3ea3-4edd-985a-bd4ff7d2ae76"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:43.000Z",
+              "updatedAt": "2026-06-05T15:11:43.000Z",
+              "uid": "35240-6f6a1d3e-2e09-45f7-950e-fb3417055991"
+            }
+          ],
+          "id": "b5ec7f0e-115f-45fb-999e-53f81c934139",
+          "createdAt": "2026-06-05T15:11:43.000Z",
+          "updatedAt": "2026-06-05T15:11:43.000Z",
+          "uid": "35240-b5ec7f0e-115f-45fb-999e-53f81c934139"
+        },
+        {
+          "name": "SMS_TaskSequence",
+          "item": [
+            {
+              "name": "Microsoft Endpoint Configuration Management List task sequences",
+              "id": "8bb3ce7d-cb65-4868-bdb5-c4e47d1803f5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/wmi/SMS_TaskSequence?$top=<integer>&$filter=<string>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "wmi",
+                    "SMS_TaskSequence"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieve all task sequences used for operating system deployment and other complex workflows."
+              },
+              "response": [
+                {
+                  "id": "fa1a8d0f-b80d-455e-8ef8-2de3de2556c7",
+                  "name": "Successful response returning task sequences.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wmi/SMS_TaskSequence?$top=<integer>&$filter=<string>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wmi",
+                        "SMS_TaskSequence"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include.",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": [\n    {\n      \"PackageID\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"BootImageID\": \"<string>\",\n      \"Duration\": \"<integer>\",\n      \"Type\": \"<integer>\"\n    },\n    {\n      \"PackageID\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"BootImageID\": \"<string>\",\n      \"Duration\": \"<integer>\",\n      \"Type\": \"<integer>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:11:43.000Z",
+                  "updatedAt": "2026-06-05T15:11:43.000Z",
+                  "uid": "35240-fa1a8d0f-b80d-455e-8ef8-2de3de2556c7"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:43.000Z",
+              "updatedAt": "2026-06-05T15:11:43.000Z",
+              "uid": "35240-8bb3ce7d-cb65-4868-bdb5-c4e47d1803f5"
+            }
+          ],
+          "id": "cc5bc49a-9763-4206-8b85-1e12ee4a0c59",
+          "createdAt": "2026-06-05T15:11:43.000Z",
+          "updatedAt": "2026-06-05T15:11:43.000Z",
+          "uid": "35240-cc5bc49a-9763-4206-8b85-1e12ee4a0c59"
+        },
+        {
+          "name": "SMS_SoftwareUpdate",
+          "item": [
+            {
+              "name": "Microsoft Endpoint Configuration Management List software updates",
+              "id": "63726d71-ca8d-4412-a191-8e5b175bc90d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/wmi/SMS_SoftwareUpdate?$top=<integer>&$filter=<string>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "wmi",
+                    "SMS_SoftwareUpdate"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieve all software updates known to Configuration Manager."
+              },
+              "response": [
+                {
+                  "id": "102905c6-20fa-499f-9dcd-880e4fd661a3",
+                  "name": "Successful response returning software updates.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wmi/SMS_SoftwareUpdate?$top=<integer>&$filter=<string>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wmi",
+                        "SMS_SoftwareUpdate"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include.",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": [\n    {\n      \"CI_ID\": \"<integer>\",\n      \"ArticleID\": \"<string>\",\n      \"BulletinID\": \"<string>\",\n      \"LocalizedDisplayName\": \"<string>\",\n      \"LocalizedDescription\": \"<string>\",\n      \"DatePosted\": \"<dateTime>\",\n      \"DateRevised\": \"<dateTime>\",\n      \"IsDeployed\": \"<boolean>\",\n      \"IsSuperseded\": \"<boolean>\",\n      \"NumMissing\": \"<integer>\",\n      \"NumPresent\": \"<integer>\",\n      \"SeverityName\": \"<string>\"\n    },\n    {\n      \"CI_ID\": \"<integer>\",\n      \"ArticleID\": \"<string>\",\n      \"BulletinID\": \"<string>\",\n      \"LocalizedDisplayName\": \"<string>\",\n      \"LocalizedDescription\": \"<string>\",\n      \"DatePosted\": \"<dateTime>\",\n      \"DateRevised\": \"<dateTime>\",\n      \"IsDeployed\": \"<boolean>\",\n      \"IsSuperseded\": \"<boolean>\",\n      \"NumMissing\": \"<integer>\",\n      \"NumPresent\": \"<integer>\",\n      \"SeverityName\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:11:43.000Z",
+                  "updatedAt": "2026-06-05T15:11:43.000Z",
+                  "uid": "35240-102905c6-20fa-499f-9dcd-880e4fd661a3"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:43.000Z",
+              "updatedAt": "2026-06-05T15:11:43.000Z",
+              "uid": "35240-63726d71-ca8d-4412-a191-8e5b175bc90d"
+            }
+          ],
+          "id": "a3097361-39e0-49a1-be62-98e375298c4b",
+          "createdAt": "2026-06-05T15:11:43.000Z",
+          "updatedAt": "2026-06-05T15:11:43.000Z",
+          "uid": "35240-a3097361-39e0-49a1-be62-98e375298c4b"
+        },
+        {
+          "name": "SMS_Site",
+          "item": [
+            {
+              "name": "Microsoft Endpoint Configuration Management List sites",
+              "id": "16c7d4a3-44ee-444f-95d1-05a3946647e5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/wmi/SMS_Site?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "wmi",
+                    "SMS_Site"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieve Configuration Manager site information."
+              },
+              "response": [
+                {
+                  "id": "c8844e52-b588-4a8d-a7a5-208597682548",
+                  "name": "Successful response returning site information.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wmi/SMS_Site?$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wmi",
+                        "SMS_Site"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of properties to include.",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": [\n    {\n      \"SiteCode\": \"<string>\",\n      \"SiteName\": \"<string>\",\n      \"Type\": \"<integer>\",\n      \"Version\": \"<string>\",\n      \"BuildNumber\": \"<string>\",\n      \"ServerName\": \"<string>\",\n      \"Status\": \"<integer>\"\n    },\n    {\n      \"SiteCode\": \"<string>\",\n      \"SiteName\": \"<string>\",\n      \"Type\": \"<integer>\",\n      \"Version\": \"<string>\",\n      \"BuildNumber\": \"<string>\",\n      \"ServerName\": \"<string>\",\n      \"Status\": \"<integer>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:11:43.000Z",
+                  "updatedAt": "2026-06-05T15:11:43.000Z",
+                  "uid": "35240-c8844e52-b588-4a8d-a7a5-208597682548"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:43.000Z",
+              "updatedAt": "2026-06-05T15:11:43.000Z",
+              "uid": "35240-16c7d4a3-44ee-444f-95d1-05a3946647e5"
+            }
+          ],
+          "id": "b9125fd7-187d-4ff4-875b-e398f0393077",
+          "createdAt": "2026-06-05T15:11:43.000Z",
+          "updatedAt": "2026-06-05T15:11:43.000Z",
+          "uid": "35240-b9125fd7-187d-4ff4-875b-e398f0393077"
+        },
+        {
+          "name": "SMS_BaselineAssignment",
+          "item": [
+            {
+              "name": "Microsoft Endpoint Configuration Management List compliance baseline assignments",
+              "id": "c477f6ac-36c6-4714-9b41-e9269a155b67",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/wmi/SMS_BaselineAssignment?$top=<integer>&$filter=<string>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "wmi",
+                    "SMS_BaselineAssignment"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieve all configuration baseline assignments in Configuration Manager."
+              },
+              "response": [
+                {
+                  "id": "5828aabf-6d63-469e-8f91-fc31868ac3ff",
+                  "name": "Successful response returning baseline assignments.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wmi/SMS_BaselineAssignment?$top=<integer>&$filter=<string>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wmi",
+                        "SMS_BaselineAssignment"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include.",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": [\n    {\n      \"AssignmentID\": \"<integer>\",\n      \"AssignmentName\": \"<string>\",\n      \"TargetCollectionID\": \"<string>\",\n      \"StartTime\": \"<dateTime>\"\n    },\n    {\n      \"AssignmentID\": \"<integer>\",\n      \"AssignmentName\": \"<string>\",\n      \"TargetCollectionID\": \"<string>\",\n      \"StartTime\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:11:43.000Z",
+                  "updatedAt": "2026-06-05T15:11:43.000Z",
+                  "uid": "35240-5828aabf-6d63-469e-8f91-fc31868ac3ff"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:43.000Z",
+              "updatedAt": "2026-06-05T15:11:43.000Z",
+              "uid": "35240-c477f6ac-36c6-4714-9b41-e9269a155b67"
+            }
+          ],
+          "id": "16d6b6d8-9657-4496-8d87-3be43707fc7f",
+          "createdAt": "2026-06-05T15:11:43.000Z",
+          "updatedAt": "2026-06-05T15:11:43.000Z",
+          "uid": "35240-16d6b6d8-9657-4496-8d87-3be43707fc7f"
+        }
+      ],
+      "id": "9973423f-07fe-4578-8429-075003ea2d0a",
+      "createdAt": "2026-06-05T15:11:43.000Z",
+      "updatedAt": "2026-06-05T15:11:43.000Z",
+      "uid": "35240-9973423f-07fe-4578-8429-075003ea2d0a"
+    },
+    {
+      "name": "v1.0",
+      "item": [
+        {
+          "name": "Device",
+          "item": [
+            {
+              "name": "Microsoft Endpoint Configuration Management List devices (versioned route)",
+              "id": "c8d5c0f6-ebc7-4069-b415-e4e17f78b98c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1.0/Device?$top=<integer>&$filter=<string>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1.0",
+                    "Device"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieve devices through the versioned OData v1.0 route which supports new Configuration Manager functionality."
+              },
+              "response": [
+                {
+                  "id": "666fd3eb-901d-4a33-b6f7-8a513bf5d529",
+                  "name": "Successful response returning devices.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1.0/Device?$top=<integer>&$filter=<string>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1.0",
+                        "Device"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include.",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": [\n    {\n      \"MachineId\": \"<integer>\",\n      \"Name\": \"<string>\",\n      \"Domain\": \"<string>\",\n      \"IsActive\": \"<boolean>\",\n      \"LastActiveTime\": \"<dateTime>\",\n      \"DeviceOS\": \"<string>\",\n      \"Status\": \"<string>\",\n      \"SiteCode\": \"<string>\"\n    },\n    {\n      \"MachineId\": \"<integer>\",\n      \"Name\": \"<string>\",\n      \"Domain\": \"<string>\",\n      \"IsActive\": \"<boolean>\",\n      \"LastActiveTime\": \"<dateTime>\",\n      \"DeviceOS\": \"<string>\",\n      \"Status\": \"<string>\",\n      \"SiteCode\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:11:43.000Z",
+                  "updatedAt": "2026-06-05T15:11:43.000Z",
+                  "uid": "35240-666fd3eb-901d-4a33-b6f7-8a513bf5d529"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:43.000Z",
+              "updatedAt": "2026-06-05T15:11:43.000Z",
+              "uid": "35240-c8d5c0f6-ebc7-4069-b415-e4e17f78b98c"
+            }
+          ],
+          "id": "3d2e3b8d-b245-404a-a5d6-3b2c6dd74fa0",
+          "createdAt": "2026-06-05T15:11:43.000Z",
+          "updatedAt": "2026-06-05T15:11:43.000Z",
+          "uid": "35240-3d2e3b8d-b245-404a-a5d6-3b2c6dd74fa0"
+        },
+        {
+          "name": "Device({deviceId})",
+          "item": [
+            {
+              "name": "Microsoft Endpoint Configuration Management Get a device (versioned route)",
+              "id": "362cce99-1919-41a3-baf1-5dd85709d566",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1.0/Device({{deviceId}})",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1.0",
+                    "Device({{deviceId}})"
+                  ]
+                },
+                "description": "Retrieve a specific device by ID via the versioned route."
+              },
+              "response": [
+                {
+                  "id": "90f56df7-cd9e-428b-959e-cf1e7b9b0920",
+                  "name": "Successful response returning the device.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1.0/Device({{deviceId}})",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1.0",
+                        "Device({{deviceId}})"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"MachineId\": \"<integer>\",\n  \"Name\": \"<string>\",\n  \"Domain\": \"<string>\",\n  \"IsActive\": \"<boolean>\",\n  \"LastActiveTime\": \"<dateTime>\",\n  \"DeviceOS\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"SiteCode\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:11:43.000Z",
+                  "updatedAt": "2026-06-05T15:11:43.000Z",
+                  "uid": "35240-90f56df7-cd9e-428b-959e-cf1e7b9b0920"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:43.000Z",
+              "updatedAt": "2026-06-05T15:11:43.000Z",
+              "uid": "35240-362cce99-1919-41a3-baf1-5dd85709d566"
+            }
+          ],
+          "id": "8f1b298c-8d39-4797-85b4-ebf5a91508f8",
+          "createdAt": "2026-06-05T15:11:43.000Z",
+          "updatedAt": "2026-06-05T15:11:43.000Z",
+          "uid": "35240-8f1b298c-8d39-4797-85b4-ebf5a91508f8"
+        },
+        {
+          "name": "Collections",
+          "item": [
+            {
+              "name": "Microsoft Endpoint Configuration Management List collections (versioned route)",
+              "id": "ba7b0018-c56c-4fc5-af42-002e121407c4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1.0/Collections?$top=<integer>&$filter=<string>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1.0",
+                    "Collections"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieve collections through the versioned OData v1.0 route."
+              },
+              "response": [
+                {
+                  "id": "664ce713-195f-41d5-ae4d-8bcf1a3009f2",
+                  "name": "Successful response returning collections.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1.0/Collections?$top=<integer>&$filter=<string>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1.0",
+                        "Collections"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include.",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": [\n    {\n      \"CollectionID\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Comment\": \"<string>\",\n      \"CollectionType\": \"<integer>\",\n      \"MemberCount\": \"<integer>\",\n      \"LimitToCollectionID\": \"<string>\",\n      \"LimitToCollectionName\": \"<string>\",\n      \"LastRefreshTime\": \"<dateTime>\",\n      \"CurrentStatus\": \"<integer>\"\n    },\n    {\n      \"CollectionID\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Comment\": \"<string>\",\n      \"CollectionType\": \"<integer>\",\n      \"MemberCount\": \"<integer>\",\n      \"LimitToCollectionID\": \"<string>\",\n      \"LimitToCollectionName\": \"<string>\",\n      \"LastRefreshTime\": \"<dateTime>\",\n      \"CurrentStatus\": \"<integer>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:11:43.000Z",
+                  "updatedAt": "2026-06-05T15:11:43.000Z",
+                  "uid": "35240-664ce713-195f-41d5-ae4d-8bcf1a3009f2"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:43.000Z",
+              "updatedAt": "2026-06-05T15:11:43.000Z",
+              "uid": "35240-ba7b0018-c56c-4fc5-af42-002e121407c4"
+            }
+          ],
+          "id": "990736c7-8b0d-4bc7-ac61-c4b0fa440bff",
+          "createdAt": "2026-06-05T15:11:43.000Z",
+          "updatedAt": "2026-06-05T15:11:43.000Z",
+          "uid": "35240-990736c7-8b0d-4bc7-ac61-c4b0fa440bff"
+        },
+        {
+          "name": "Scripts",
+          "item": [
+            {
+              "name": "Microsoft Endpoint Configuration Management List scripts",
+              "id": "72712597-6e99-448a-a454-62a31a1b40c9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1.0/Scripts?$top=<integer>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1.0",
+                    "Scripts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieve all PowerShell scripts available in Configuration Manager for remote execution."
+              },
+              "response": [
+                {
+                  "id": "27cd947e-8731-42b8-bd3e-975b0467a45e",
+                  "name": "Successful response returning scripts.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1.0/Scripts?$top=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1.0",
+                        "Scripts"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include.",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": [\n    {\n      \"ScriptGuid\": \"<string>\",\n      \"ScriptName\": \"<string>\",\n      \"Author\": \"<string>\",\n      \"ApprovalState\": \"<string>\",\n      \"ScriptType\": \"<integer>\"\n    },\n    {\n      \"ScriptGuid\": \"<string>\",\n      \"ScriptName\": \"<string>\",\n      \"Author\": \"<string>\",\n      \"ApprovalState\": \"<string>\",\n      \"ScriptType\": \"<integer>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:11:43.000Z",
+                  "updatedAt": "2026-06-05T15:11:43.000Z",
+                  "uid": "35240-27cd947e-8731-42b8-bd3e-975b0467a45e"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:43.000Z",
+              "updatedAt": "2026-06-05T15:11:43.000Z",
+              "uid": "35240-72712597-6e99-448a-a454-62a31a1b40c9"
+            }
+          ],
+          "id": "407d64fa-4299-4f3d-b9d4-8121cd6932b0",
+          "createdAt": "2026-06-05T15:11:43.000Z",
+          "updatedAt": "2026-06-05T15:11:43.000Z",
+          "uid": "35240-407d64fa-4299-4f3d-b9d4-8121cd6932b0"
+        }
+      ],
+      "id": "627ac210-ac3a-4a9e-a9dd-c1b44bd16a63",
+      "createdAt": "2026-06-05T15:11:43.000Z",
+      "updatedAt": "2026-06-05T15:11:43.000Z",
+      "uid": "35240-627ac210-ac3a-4a9e-a9dd-c1b44bd16a63"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "siteserver",
+      "value": "smsproviderfqdn"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{siteserver}}/AdminService"
+    },
+    {
+      "key": "collectionId",
+      "value": "<string>"
+    },
+    {
+      "key": "applicationId",
+      "value": "<string>"
+    },
+    {
+      "key": "deviceId",
+      "value": "<integer>"
+    }
+  ]
+}

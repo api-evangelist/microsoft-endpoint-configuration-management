@@ -1,0 +1,593 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Endpoint Configuration Management Intune Data Warehouse API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+      "accessTokenUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List device records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://fef.{location}.manage.microsoft.com/ReportingService/DataWarehouseFEService/devices",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "API version. Use 'v1.0' for stable or 'beta' for preview features."
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include."
+              },
+              {
+                "name": "maxhistorydays",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property."
+              }
+            ]
+          },
+          "docs": "Retrieve historical device records from the Data Warehouse. Returns daily snapshots of device properties including enrollment status, compliance state, and OS information."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List device property histories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://fef.{location}.manage.microsoft.com/ReportingService/DataWarehouseFEService/devicePropertyHistories",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "API version. Use 'v1.0' for stable or 'beta' for preview features."
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include."
+              },
+              {
+                "name": "maxhistorydays",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property."
+              }
+            ]
+          },
+          "docs": "Retrieve historical device property snapshots. Contains daily snapshots of device-level data for the configured history window."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Dates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List date dimension records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://fef.{location}.manage.microsoft.com/ReportingService/DataWarehouseFEService/dates",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "API version. Use 'v1.0' for stable or 'beta' for preview features."
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include."
+              }
+            ]
+          },
+          "docs": "Retrieve date dimension records used to correlate facts over time dimensions. Provides date keys with associated calendar attributes."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List user records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://fef.{location}.manage.microsoft.com/ReportingService/DataWarehouseFEService/users",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "API version. Use 'v1.0' for stable or 'beta' for preview features."
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include."
+              },
+              {
+                "name": "maxhistorydays",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property."
+              }
+            ]
+          },
+          "docs": "Retrieve user dimension records from the Data Warehouse. Provides historical snapshots of user information associated with device enrollments."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Policies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List policy records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://fef.{location}.manage.microsoft.com/ReportingService/DataWarehouseFEService/policies",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "API version. Use 'v1.0' for stable or 'beta' for preview features."
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include."
+              }
+            ]
+          },
+          "docs": "Retrieve compliance and configuration policy records from the Data Warehouse."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List policy device activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://fef.{location}.manage.microsoft.com/ReportingService/DataWarehouseFEService/policyDeviceActivities",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "API version. Use 'v1.0' for stable or 'beta' for preview features."
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include."
+              },
+              {
+                "name": "maxhistorydays",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property."
+              }
+            ]
+          },
+          "docs": "Retrieve policy device activity records showing device compliance status against policies over time."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List policy user activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://fef.{location}.manage.microsoft.com/ReportingService/DataWarehouseFEService/policyUserActivities",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "API version. Use 'v1.0' for stable or 'beta' for preview features."
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include."
+              },
+              {
+                "name": "maxhistorydays",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property."
+              }
+            ]
+          },
+          "docs": "Retrieve policy user activity records showing user compliance status against policies over time."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Applications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List application records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://fef.{location}.manage.microsoft.com/ReportingService/DataWarehouseFEService/applications",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "API version. Use 'v1.0' for stable or 'beta' for preview features."
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include."
+              }
+            ]
+          },
+          "docs": "Retrieve application inventory records from the Data Warehouse including discovered and managed applications."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List mobile app install statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://fef.{location}.manage.microsoft.com/ReportingService/DataWarehouseFEService/mobileAppInstallStatuses",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "API version. Use 'v1.0' for stable or 'beta' for preview features."
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include."
+              },
+              {
+                "name": "maxhistorydays",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property."
+              }
+            ]
+          },
+          "docs": "Retrieve mobile application installation status records."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "User Device Associations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List user-device associations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://fef.{location}.manage.microsoft.com/ReportingService/DataWarehouseFEService/userDeviceAssociations",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "API version. Use 'v1.0' for stable or 'beta' for preview features."
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include."
+              },
+              {
+                "name": "maxhistorydays",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property."
+              }
+            ]
+          },
+          "docs": "Retrieve records mapping users to their associated devices."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Management Extensions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List Intune management extension records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://fef.{location}.manage.microsoft.com/ReportingService/DataWarehouseFEService/intuneManagementExtensions",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "API version. Use 'v1.0' for stable or 'beta' for preview features."
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include."
+              },
+              {
+                "name": "maxhistorydays",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property."
+              }
+            ]
+          },
+          "docs": "Retrieve Intune management extension activity records including script execution results."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

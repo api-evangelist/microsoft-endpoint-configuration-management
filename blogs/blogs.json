@@ -2,13 +2,17 @@
   "repo": "microsoft-endpoint-configuration-management",
   "feeds": [
     {
-      "source": "https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis",
-      "feed_url": "https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis",
+      "source": "https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/bg-p/MicrosoftEndpointManagerBlog",
+      "feed_url": "https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/bg-p/MicrosoftEndpointManagerBlog",
       "title": "",
       "saved": 0,
       "method": "none"
+    },
+    {
+      "source": "https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis",
+      "error": "HTTPError"
     }
   ],
-  "fetched": "2026-06-01T23:35:02Z",
-  "post_count": 0
+  "post_count": 0,
+  "fetched": "2026-06-14T20:42:17Z"
 }

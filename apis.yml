@@ -1,353 +1,321 @@
 name: Microsoft Endpoint Configuration Management
-description: Microsoft Endpoint Configuration Management (formerly System Center Configuration Manager) provides comprehensive
-  management of devices and applications across an enterprise. It enables IT administrators to manage PCs, servers, and mobile
-  devices, deploy software, manage compliance, and protect data.
+description: >-
+  Microsoft Endpoint Configuration Management (formerly System Center Configuration Manager) provides comprehensive
+  management of devices and applications across an enterprise. It enables IT administrators to manage PCs, servers, and
+  mobile devices, deploy software, manage compliance, and protect data.
 image: https://docs.microsoft.com/en-us/mem/configmgr/core/media/configmgr-logo.png
 url: https://learn.microsoft.com/en-us/intune/configmgr/
 created: '2024'
 modified: '2026-05-19'
 specificationVersion: '0.18'
 tags:
-- Compliance
-- Configuration Management
-- Device Management
-- Endpoint Management
-- Mobile Device Management
-- Patch Management
-- Software Deployment
-apis:
-- name: Configuration Manager REST API
-  description: REST API for managing Configuration Manager resources including collections, deployments, applications, and
-    device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData
-    routes.
-  image: https://docs.microsoft.com/en-us/mem/configmgr/core/media/configmgr-logo.png
-  humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
-  baseURL: https://{siteserver}/AdminService
-  tags:
-  - Admin Service
-  - Configuration Manager
-  - REST API
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
-  - type: GettingStarted
-    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up
-  - type: OpenAPI
-    url: openapi/microsoft-endpoint-configuration-management-configmgr-rest-api-openapi.yml
-  - type: Authentication
-    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up#enable-secure-https-communication
-  - type: Reference
-    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/usage
-  - type: ChangeLog
-    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/release-notes
-  - type: NaftikoCapability
-    url: capabilities/configmgr-rest-applications.yaml
-  - type: NaftikoCapability
-    url: capabilities/configmgr-rest-collections.yaml
-  - type: NaftikoCapability
-    url: capabilities/configmgr-rest-compliance.yaml
-  - type: NaftikoCapability
-    url: capabilities/configmgr-rest-deployments.yaml
-  - type: NaftikoCapability
-    url: capabilities/configmgr-rest-devices.yaml
-  - type: NaftikoCapability
-    url: capabilities/configmgr-rest-packages.yaml
-  - type: NaftikoCapability
-    url: capabilities/configmgr-rest-scripts.yaml
-  - type: NaftikoCapability
-    url: capabilities/configmgr-rest-site-administration.yaml
-  - type: NaftikoCapability
-    url: capabilities/configmgr-rest-software-updates.yaml
-  - type: NaftikoCapability
-    url: capabilities/configmgr-rest-task-sequences.yaml
-- name: Configuration Manager PowerShell Cmdlets
-  description: PowerShell module for Configuration Manager automation and scripting, providing over 1100 cmdlets for all major
-    management tasks including device collections, software deployment, and compliance settings.
-  humanURL: https://learn.microsoft.com/en-us/powershell/sccm/overview?view=sccm-ps
-  tags:
-  - Automation
-  - Configuration Manager
-  - PowerShell
-  - Scripting
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/powershell/sccm/overview?view=sccm-ps
-  - type: Reference
-    url: https://learn.microsoft.com/en-us/powershell/module/configurationmanager/?view=sccm-ps
-  - type: GettingStarted
-    url: https://learn.microsoft.com/en-us/intune/configmgr/core/servers/manage/admin-console
-  - type: ChangeLog
-    url: https://learn.microsoft.com/en-us/intune/configmgr/core/plan-design/changes/whats-new-incremental-versions
-- name: Configuration Manager SDK
-  description: Software Development Kit for extending and integrating with Configuration Manager, including WMI providers,
-    class schemas, and programming interfaces for custom solutions.
-  humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/
-  tags:
-  - Configuration Manager
-  - Development
-  - SDK
-  - WMI
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/
-  - type: Reference
-    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/reference/configuration-manager-reference
-  - type: GettingStarted
-    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/core/understand/getting-started-with-configuration-manager-programming
-  - type: ChangeLog
-    url: https://learn.microsoft.com/en-us/intune/configmgr/core/plan-design/changes/whats-new-incremental-versions
-- name: Microsoft Intune Graph API
-  description: Microsoft Graph API endpoints for Intune device management, enabling programmatic access to manage devices,
-    apps, compliance policies, and configuration profiles. Supports both v1.0 and beta endpoints.
-  humanURL: https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
-  baseURL: https://graph.microsoft.com/v1.0
-  tags:
   - Compliance
+  - Configuration Management
   - Device Management
-  - Intune
-  - Microsoft Graph
-  properties:
+  - Endpoint Management
+  - Mobile Device Management
+  - Patch Management
+  - Software Deployment
+apis:
+  - name: Configuration Manager REST API
+    description: >-
+      REST API for managing Configuration Manager resources including collections, deployments, applications, and device
+      queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData
+      routes.
+    image: https://docs.microsoft.com/en-us/mem/configmgr/core/media/configmgr-logo.png
+    humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+    baseURL: https://{siteserver}/AdminService
+    tags:
+      - Admin Service
+      - Configuration Manager
+      - REST API
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+      - type: GettingStarted
+        url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up
+      - type: OpenAPI
+        url: openapi/microsoft-endpoint-configuration-management-configmgr-rest-api-openapi.yml
+      - type: Authentication
+        url: >-
+          https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up#enable-secure-https-communication
+      - type: Reference
+        url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/usage
+      - type: ChangeLog
+        url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/release-notes
+  - name: Configuration Manager PowerShell Cmdlets
+    description: >-
+      PowerShell module for Configuration Manager automation and scripting, providing over 1100 cmdlets for all major
+      management tasks including device collections, software deployment, and compliance settings.
+    humanURL: https://learn.microsoft.com/en-us/powershell/sccm/overview?view=sccm-ps
+    tags:
+      - Automation
+      - Configuration Manager
+      - PowerShell
+      - Scripting
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/powershell/sccm/overview?view=sccm-ps
+      - type: Reference
+        url: https://learn.microsoft.com/en-us/powershell/module/configurationmanager/?view=sccm-ps
+      - type: GettingStarted
+        url: https://learn.microsoft.com/en-us/intune/configmgr/core/servers/manage/admin-console
+      - type: ChangeLog
+        url: https://learn.microsoft.com/en-us/intune/configmgr/core/plan-design/changes/whats-new-incremental-versions
+  - name: Configuration Manager SDK
+    description: >-
+      Software Development Kit for extending and integrating with Configuration Manager, including WMI providers, class
+      schemas, and programming interfaces for custom solutions.
+    humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/
+    tags:
+      - Configuration Manager
+      - Development
+      - SDK
+      - WMI
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/intune/configmgr/develop/
+      - type: Reference
+        url: https://learn.microsoft.com/en-us/intune/configmgr/develop/reference/configuration-manager-reference
+      - type: GettingStarted
+        url: >-
+          https://learn.microsoft.com/en-us/intune/configmgr/develop/core/understand/getting-started-with-configuration-manager-programming
+      - type: ChangeLog
+        url: https://learn.microsoft.com/en-us/intune/configmgr/core/plan-design/changes/whats-new-incremental-versions
+  - name: Microsoft Intune Graph API
+    description: >-
+      Microsoft Graph API endpoints for Intune device management, enabling programmatic access to manage devices, apps,
+      compliance policies, and configuration profiles. Supports both v1.0 and beta endpoints.
+    humanURL: https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
+    baseURL: https://graph.microsoft.com/v1.0
+    tags:
+      - Compliance
+      - Device Management
+      - Intune
+      - Microsoft Graph
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
+      - type: GettingStarted
+        url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+      - type: OpenAPI
+        url: openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml
+      - type: JSONSchema
+        url: json-schema/microsoft-endpoint-configuration-management-device-schema.json
+      - type: JSONSchema
+        url: json-schema/microsoft-endpoint-configuration-management-compliance-policy-schema.json
+      - type: JSONSchema
+        url: json-schema/microsoft-endpoint-configuration-management-application-schema.json
+      - type: JSONSchema
+        url: json-schema/microsoft-endpoint-configuration-management-configuration-profile-schema.json
+      - type: JSONLD
+        url: json-ld/microsoft-endpoint-configuration-management-context.jsonld
+      - type: Reference
+        url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+      - type: Authentication
+        url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
+      - type: ChangeLog
+        url: https://developer.microsoft.com/en-us/graph/changelog
+      - type: SDKs
+        url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+      - type: PostmanCollection
+        url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - name: Intune Data Warehouse API
+    description: >-
+      OData-based REST API that provides access to Intune reporting data in a machine-readable format. Enables building
+      custom reports and analytics for enterprise mobile environment insights.
+    humanURL: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
+    baseURL: https://fef.{location}.manage.microsoft.com/ReportingService/DataWarehouseFEService
+    tags:
+      - Data Warehouse
+      - Intune
+      - OData
+      - Reporting
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
+      - type: OpenAPI
+        url: openapi/microsoft-endpoint-configuration-management-intune-data-warehouse-api-openapi.yml
+      - type: GettingStarted
+        url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-api-url
+      - type: Authentication
+        url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
+      - type: Reference
+        url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-proc-data-rest
+      - type: ChangeLog
+        url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
+  - name: Intune App SDK
+    description: >-
+      SDKs for iOS and Android that enable mobile apps to support Intune app protection policies. Allows developers to
+      integrate mobile application management features into line-of-business and partner apps.
+    humanURL: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-sdk-get-started
+    tags:
+      - App Protection
+      - Intune
+      - Mobile Apps
+      - SDK
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-sdk
+      - type: GettingStarted
+        url: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-sdk-get-started
+      - type: Reference
+        url: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-sdk-ios-phase1
+      - type: GitHubOrganization
+        url: https://github.com/msintuneappsdk
+  - name: Intune Reporting Export API
+    description: >-
+      Microsoft Graph API endpoints for exporting Intune reports programmatically. Supports exporting device,
+      compliance, and app management reports in CSV or JSON format using asynchronous export jobs.
+    humanURL: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
+    baseURL: https://graph.microsoft.com/v1.0/deviceManagement/reports
+    tags:
+      - Export
+      - Intune
+      - Microsoft Graph
+      - Reporting
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
+      - type: OpenAPI
+        url: openapi/microsoft-endpoint-configuration-management-intune-reporting-export-api-openapi.yml
+      - type: Reference
+        url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports
+      - type: Authentication
+        url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
+  - name: Intune App Wrapping Tool
+    description: >-
+      Command-line tools for iOS and Android that enable existing line-of-business apps to be managed by Intune app
+      protection policies without requiring source code changes.
+    humanURL: https://learn.microsoft.com/en-us/intune/intune-service/developer/apps-prepare-mobile-application-management
+    tags:
+      - Android
+      - App Protection
+      - Intune
+      - iOS
+      - Mobile Apps
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/intune/intune-service/developer/apps-prepare-mobile-application-management
+      - type: GettingStarted
+        url: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-wrapper-prepare-ios
+      - type: Reference
+        url: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-wrapper-prepare-android
+      - type: GitHubOrganization
+        url: https://github.com/microsoftconnect
+  - name: Intune PowerShell SDK
+    description: >-
+      PowerShell module providing native cmdlet support for invoking the Microsoft Intune Graph API. Enables IT
+      administrators to automate device management, app deployment, and compliance policy operations through scripting.
+    humanURL: https://github.com/microsoft/Intune-PowerShell-SDK
+    tags:
+      - Automation
+      - Intune
+      - PowerShell
+      - SDK
+    properties:
+      - type: Documentation
+        url: https://github.com/microsoft/Intune-PowerShell-SDK
+      - type: GettingStarted
+        url: https://github.com/microsoft/mggraph-intune-samples
+      - type: SDKs
+        url: https://learn.microsoft.com/en-us/graph/sdks/sdk-installation
+common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/microsoft-endpoint-configuration-management/overview
+  - type: ArazzoWorkflows
+    url: arazzo/
+    workflows:
+      - url: arazzo/microsoft-endpoint-configuration-management-configmgr-create-application-workflow.yml
+        name: Microsoft Endpoint Configuration Management ConfigMgr Create Application
+        summary: Create a Configuration Manager application and confirm it within the application inventory.
+      - url: arazzo/microsoft-endpoint-configuration-management-configmgr-create-collection-review-deployments-workflow.yml
+        name: Microsoft Endpoint Configuration Management ConfigMgr Create Collection and Review Deployments
+        summary: >-
+          Create a Configuration Manager collection, read it back, and review application deployments targeting
+          collections.
+      - url: arazzo/microsoft-endpoint-configuration-management-configmgr-device-lookup-workflow.yml
+        name: Microsoft Endpoint Configuration Management ConfigMgr Device Lookup
+        summary: Find a Configuration Manager device by name and read its full record and discovered system.
+      - url: arazzo/microsoft-endpoint-configuration-management-configmgr-update-compliance-review-workflow.yml
+        name: Microsoft Endpoint Configuration Management ConfigMgr Update Compliance Review
+        summary: Review pending software updates, configuration baseline assignments, and target collections.
+      - url: arazzo/microsoft-endpoint-configuration-management-create-assign-compliance-policy-workflow.yml
+        name: Microsoft Endpoint Configuration Management Create and Assign Compliance Policy
+        summary: Create a device compliance policy in Intune and assign it to a target group.
+      - url: arazzo/microsoft-endpoint-configuration-management-create-assign-device-configuration-workflow.yml
+        name: Microsoft Endpoint Configuration Management Create and Assign Device Configuration
+        summary: Create a device configuration profile in Intune and assign it to a target group.
+      - url: arazzo/microsoft-endpoint-configuration-management-decommission-device-workflow.yml
+        name: Microsoft Endpoint Configuration Management Decommission Device
+        summary: Confirm a managed device, factory wipe it, and remove it from Intune.
+      - url: arazzo/microsoft-endpoint-configuration-management-deploy-mobile-app-workflow.yml
+        name: Microsoft Endpoint Configuration Management Deploy Mobile App
+        summary: Create a mobile app in Intune, assign it to a group, and inspect its install status.
+      - url: arazzo/microsoft-endpoint-configuration-management-device-compliance-triage-workflow.yml
+        name: Microsoft Endpoint Configuration Management Device Compliance Triage
+        summary: Inspect a managed device and branch on its compliance state to either sync or retire it.
+      - url: arazzo/microsoft-endpoint-configuration-management-lost-device-lockdown-workflow.yml
+        name: Microsoft Endpoint Configuration Management Lost Device Lockdown
+        summary: Locate a managed device, remotely lock it, and reset its passcode.
+      - url: arazzo/microsoft-endpoint-configuration-management-noncompliance-report-drilldown-workflow.yml
+        name: Microsoft Endpoint Configuration Management Non-Compliance Report Drilldown
+        summary: Pull the device, policy, and setting non-compliance reports inline in one pass.
+      - url: arazzo/microsoft-endpoint-configuration-management-report-export-job-workflow.yml
+        name: Microsoft Endpoint Configuration Management Report Export Job
+        summary: Create an Intune report export job, poll it, and capture the download URL when complete.
+      - url: arazzo/microsoft-endpoint-configuration-management-retire-unpublished-app-workflow.yml
+        name: Microsoft Endpoint Configuration Management Retire Unpublished App
+        summary: Inspect a mobile app and delete it only when it is still unpublished.
+      - url: arazzo/microsoft-endpoint-configuration-management-tenant-compliance-posture-workflow.yml
+        name: Microsoft Endpoint Configuration Management Tenant Compliance Posture
+        summary: Read the tenant compliance summary and, when devices are non-compliant, enumerate them.
+      - url: arazzo/microsoft-endpoint-configuration-management-update-reassign-compliance-policy-workflow.yml
+        name: Microsoft Endpoint Configuration Management Update and Reassign Compliance Policy
+        summary: Read an existing compliance policy, update its metadata, and reassign it to a group.
+      - url: arazzo/microsoft-endpoint-configuration-management-user-device-inventory-workflow.yml
+        name: Microsoft Endpoint Configuration Management User Device Inventory
+        summary: List a user's Azure AD owned devices and correlate them with their Intune managed devices.
+      - url: arazzo/microsoft-endpoint-configuration-management-warehouse-app-install-analytics-workflow.yml
+        name: Microsoft Endpoint Configuration Management Data Warehouse App Install Analytics
+        summary: Correlate Data Warehouse application inventory with install statuses and user-device associations.
+      - url: arazzo/microsoft-endpoint-configuration-management-warehouse-policy-compliance-analytics-workflow.yml
+        name: Microsoft Endpoint Configuration Management Data Warehouse Policy Compliance Analytics
+        summary: Correlate Data Warehouse policies with their device activity and the device population.
+  - type: Portal
+    url: https://endpoint.microsoft.com/
+  - type: Console
+    url: https://intune.microsoft.com/
   - type: Documentation
-    url: https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
+    url: https://learn.microsoft.com/en-us/intune/intune-service/
   - type: GettingStarted
-    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
-  - type: OpenAPI
-    url: openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml
-  - type: JSONSchema
-    url: json-schema/microsoft-endpoint-configuration-management-device-schema.json
-  - type: JSONSchema
-    url: json-schema/microsoft-endpoint-configuration-management-compliance-policy-schema.json
-  - type: JSONSchema
-    url: json-schema/microsoft-endpoint-configuration-management-application-schema.json
-  - type: JSONSchema
-    url: json-schema/microsoft-endpoint-configuration-management-configuration-profile-schema.json
-  - type: JSONLD
-    url: json-ld/microsoft-endpoint-configuration-management-context.jsonld
-  - type: Reference
-    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+    url: https://learn.microsoft.com/en-us/intune/configmgr/core/understand/introduction
   - type: Authentication
     url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
-  - type: ChangeLog
-    url: https://developer.microsoft.com/en-us/graph/changelog
-  - type: SDKs
-    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
-  - type: PostmanCollection
-    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
-  - type: NaftikoCapability
-    url: capabilities/intune-graph-applications.yaml
-  - type: NaftikoCapability
-    url: capabilities/intune-graph-compliance-policies.yaml
-  - type: NaftikoCapability
-    url: capabilities/intune-graph-configuration-profiles.yaml
-  - type: NaftikoCapability
-    url: capabilities/intune-graph-device-actions.yaml
-  - type: NaftikoCapability
-    url: capabilities/intune-graph-devices.yaml
-- name: Intune Data Warehouse API
-  description: OData-based REST API that provides access to Intune reporting data in a machine-readable format. Enables building
-    custom reports and analytics for enterprise mobile environment insights.
-  humanURL: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
-  baseURL: https://fef.{location}.manage.microsoft.com/ReportingService/DataWarehouseFEService
-  tags:
-  - Data Warehouse
-  - Intune
-  - OData
-  - Reporting
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
-  - type: OpenAPI
-    url: openapi/microsoft-endpoint-configuration-management-intune-data-warehouse-api-openapi.yml
-  - type: GettingStarted
-    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-api-url
-  - type: Authentication
-    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
-  - type: Reference
-    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-proc-data-rest
+  - type: Blog
+    url: https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/bg-p/MicrosoftEndpointManagerBlog
+  - type: Support
+    url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/contact-assisted-support
+  - type: StatusPage
+    url: https://status.azure.com/
   - type: ChangeLog
     url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
-  - type: NaftikoCapability
-    url: capabilities/intune-data-warehouse-applications.yaml
-  - type: NaftikoCapability
-    url: capabilities/intune-data-warehouse-dates.yaml
-  - type: NaftikoCapability
-    url: capabilities/intune-data-warehouse-devices.yaml
-  - type: NaftikoCapability
-    url: capabilities/intune-data-warehouse-management-extensions.yaml
-  - type: NaftikoCapability
-    url: capabilities/intune-data-warehouse-policies.yaml
-  - type: NaftikoCapability
-    url: capabilities/intune-data-warehouse-user-device-associations.yaml
-  - type: NaftikoCapability
-    url: capabilities/intune-data-warehouse-users.yaml
-- name: Intune App SDK
-  description: SDKs for iOS and Android that enable mobile apps to support Intune app protection policies. Allows developers
-    to integrate mobile application management features into line-of-business and partner apps.
-  humanURL: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-sdk-get-started
-  tags:
-  - App Protection
-  - Intune
-  - Mobile Apps
-  - SDK
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-sdk
-  - type: GettingStarted
-    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-sdk-get-started
-  - type: Reference
-    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-sdk-ios-phase1
+  - type: Pricing
+    url: https://www.microsoft.com/en-us/security/business/microsoft-intune-pricing
+  - type: SignUp
+    url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/free-trial-sign-up
+  - type: Login
+    url: https://intune.microsoft.com/
+  - type: PrivacyPolicy
+    url: https://privacy.microsoft.com/
+  - type: TermsOfService
+    url: https://www.microsoft.com/licensing/terms/
   - type: GitHubOrganization
-    url: https://github.com/msintuneappsdk
-- name: Intune Reporting Export API
-  description: Microsoft Graph API endpoints for exporting Intune reports programmatically. Supports exporting device, compliance,
-    and app management reports in CSV or JSON format using asynchronous export jobs.
-  humanURL: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
-  baseURL: https://graph.microsoft.com/v1.0/deviceManagement/reports
-  tags:
-  - Export
-  - Intune
-  - Microsoft Graph
-  - Reporting
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
-  - type: OpenAPI
-    url: openapi/microsoft-endpoint-configuration-management-intune-reporting-export-api-openapi.yml
-  - type: Reference
-    url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports
-  - type: Authentication
-    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
-  - type: NaftikoCapability
-    url: capabilities/intune-reporting-export-export-jobs.yaml
-  - type: NaftikoCapability
-    url: capabilities/intune-reporting-export-reports.yaml
-- name: Intune App Wrapping Tool
-  description: Command-line tools for iOS and Android that enable existing line-of-business apps to be managed by Intune app
-    protection policies without requiring source code changes.
-  humanURL: https://learn.microsoft.com/en-us/intune/intune-service/developer/apps-prepare-mobile-application-management
-  tags:
-  - Android
-  - App Protection
-  - Intune
-  - iOS
-  - Mobile Apps
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/apps-prepare-mobile-application-management
-  - type: GettingStarted
-    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-wrapper-prepare-ios
-  - type: Reference
-    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-wrapper-prepare-android
-  - type: GitHubOrganization
-    url: https://github.com/microsoftconnect
-- name: Intune PowerShell SDK
-  description: PowerShell module providing native cmdlet support for invoking the Microsoft Intune Graph API. Enables IT administrators
-    to automate device management, app deployment, and compliance policy operations through scripting.
-  humanURL: https://github.com/microsoft/Intune-PowerShell-SDK
-  tags:
-  - Automation
-  - Intune
-  - PowerShell
-  - SDK
-  properties:
-  - type: Documentation
-    url: https://github.com/microsoft/Intune-PowerShell-SDK
-  - type: GettingStarted
-    url: https://github.com/microsoft/mggraph-intune-samples
-  - type: SDKs
-    url: https://learn.microsoft.com/en-us/graph/sdks/sdk-installation
-common:
-- type: ArazzoWorkflows
-  url: arazzo/
-  workflows:
-  - url: arazzo/microsoft-endpoint-configuration-management-configmgr-create-application-workflow.yml
-    name: Microsoft Endpoint Configuration Management ConfigMgr Create Application
-    summary: Create a Configuration Manager application and confirm it within the application inventory.
-  - url: arazzo/microsoft-endpoint-configuration-management-configmgr-create-collection-review-deployments-workflow.yml
-    name: Microsoft Endpoint Configuration Management ConfigMgr Create Collection and Review Deployments
-    summary: Create a Configuration Manager collection, read it back, and review application deployments targeting collections.
-  - url: arazzo/microsoft-endpoint-configuration-management-configmgr-device-lookup-workflow.yml
-    name: Microsoft Endpoint Configuration Management ConfigMgr Device Lookup
-    summary: Find a Configuration Manager device by name and read its full record and discovered system.
-  - url: arazzo/microsoft-endpoint-configuration-management-configmgr-update-compliance-review-workflow.yml
-    name: Microsoft Endpoint Configuration Management ConfigMgr Update Compliance Review
-    summary: Review pending software updates, configuration baseline assignments, and target collections.
-  - url: arazzo/microsoft-endpoint-configuration-management-create-assign-compliance-policy-workflow.yml
-    name: Microsoft Endpoint Configuration Management Create and Assign Compliance Policy
-    summary: Create a device compliance policy in Intune and assign it to a target group.
-  - url: arazzo/microsoft-endpoint-configuration-management-create-assign-device-configuration-workflow.yml
-    name: Microsoft Endpoint Configuration Management Create and Assign Device Configuration
-    summary: Create a device configuration profile in Intune and assign it to a target group.
-  - url: arazzo/microsoft-endpoint-configuration-management-decommission-device-workflow.yml
-    name: Microsoft Endpoint Configuration Management Decommission Device
-    summary: Confirm a managed device, factory wipe it, and remove it from Intune.
-  - url: arazzo/microsoft-endpoint-configuration-management-deploy-mobile-app-workflow.yml
-    name: Microsoft Endpoint Configuration Management Deploy Mobile App
-    summary: Create a mobile app in Intune, assign it to a group, and inspect its install status.
-  - url: arazzo/microsoft-endpoint-configuration-management-device-compliance-triage-workflow.yml
-    name: Microsoft Endpoint Configuration Management Device Compliance Triage
-    summary: Inspect a managed device and branch on its compliance state to either sync or retire it.
-  - url: arazzo/microsoft-endpoint-configuration-management-lost-device-lockdown-workflow.yml
-    name: Microsoft Endpoint Configuration Management Lost Device Lockdown
-    summary: Locate a managed device, remotely lock it, and reset its passcode.
-  - url: arazzo/microsoft-endpoint-configuration-management-noncompliance-report-drilldown-workflow.yml
-    name: Microsoft Endpoint Configuration Management Non-Compliance Report Drilldown
-    summary: Pull the device, policy, and setting non-compliance reports inline in one pass.
-  - url: arazzo/microsoft-endpoint-configuration-management-report-export-job-workflow.yml
-    name: Microsoft Endpoint Configuration Management Report Export Job
-    summary: Create an Intune report export job, poll it, and capture the download URL when complete.
-  - url: arazzo/microsoft-endpoint-configuration-management-retire-unpublished-app-workflow.yml
-    name: Microsoft Endpoint Configuration Management Retire Unpublished App
-    summary: Inspect a mobile app and delete it only when it is still unpublished.
-  - url: arazzo/microsoft-endpoint-configuration-management-tenant-compliance-posture-workflow.yml
-    name: Microsoft Endpoint Configuration Management Tenant Compliance Posture
-    summary: Read the tenant compliance summary and, when devices are non-compliant, enumerate them.
-  - url: arazzo/microsoft-endpoint-configuration-management-update-reassign-compliance-policy-workflow.yml
-    name: Microsoft Endpoint Configuration Management Update and Reassign Compliance Policy
-    summary: Read an existing compliance policy, update its metadata, and reassign it to a group.
-  - url: arazzo/microsoft-endpoint-configuration-management-user-device-inventory-workflow.yml
-    name: Microsoft Endpoint Configuration Management User Device Inventory
-    summary: List a user's Azure AD owned devices and correlate them with their Intune managed devices.
-  - url: arazzo/microsoft-endpoint-configuration-management-warehouse-app-install-analytics-workflow.yml
-    name: Microsoft Endpoint Configuration Management Data Warehouse App Install Analytics
-    summary: Correlate Data Warehouse application inventory with install statuses and user-device associations.
-  - url: arazzo/microsoft-endpoint-configuration-management-warehouse-policy-compliance-analytics-workflow.yml
-    name: Microsoft Endpoint Configuration Management Data Warehouse Policy Compliance Analytics
-    summary: Correlate Data Warehouse policies with their device activity and the device population.
-- type: Portal
-  url: https://endpoint.microsoft.com/
-- type: Console
-  url: https://intune.microsoft.com/
-- type: Documentation
-  url: https://learn.microsoft.com/en-us/intune/intune-service/
-- type: GettingStarted
-  url: https://learn.microsoft.com/en-us/intune/configmgr/core/understand/introduction
-- type: Authentication
-  url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
-- type: Blog
-  url: https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/bg-p/MicrosoftEndpointManagerBlog
-- type: Support
-  url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/contact-assisted-support
-- type: StatusPage
-  url: https://status.azure.com/
-- type: ChangeLog
-  url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
-- type: Pricing
-  url: https://www.microsoft.com/en-us/security/business/microsoft-intune-pricing
-- type: SignUp
-  url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/free-trial-sign-up
-- type: Login
-  url: https://intune.microsoft.com/
-- type: PrivacyPolicy
-  url: https://privacy.microsoft.com/
-- type: TermsOfService
-  url: https://www.microsoft.com/licensing/terms/
-- type: GitHubOrganization
-  url: https://github.com/microsoftgraph
-- type: Community
-  url: https://techcommunity.microsoft.com/category/microsoftintune/blog/microsoftintuneblog
-- type: Website
-  url: https://learn.microsoft.com/en-us/intune/configmgr/
+    url: https://github.com/microsoftgraph
+  - type: Community
+    url: https://techcommunity.microsoft.com/category/microsoftintune/blog/microsoftintuneblog
+  - type: Website
+    url: https://learn.microsoft.com/en-us/intune/configmgr/
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com

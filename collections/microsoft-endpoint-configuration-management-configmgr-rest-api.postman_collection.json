@@ -1,0 +1,2516 @@
+{
+  "item": [
+    {
+      "id": "379b792d-701d-4abe-a293-2cf4225c187b",
+      "name": "Applications",
+      "description": {
+        "content": "Manage Configuration Manager applications.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "95fead5c-b490-4db2-9553-47faae9ae10e",
+          "name": "Microsoft Endpoint Configuration Management List applications",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List applications",
+            "description": {
+              "content": "Retrieve all applications defined in Configuration Manager, including deployment types and content information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wmi",
+                "SMS_Application"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Order results by a property."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e6395e07-e520-4efe-ae5d-05a9da5b7d44",
+              "name": "Successful response returning applications.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wmi",
+                    "SMS_Application"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"CI_ID\": 57,\n      \"CI_UniqueID\": \"string\",\n      \"LocalizedDisplayName\": \"string\",\n      \"LocalizedDescription\": \"string\",\n      \"Manufacturer\": \"string\",\n      \"SoftwareVersion\": \"string\",\n      \"DateCreated\": \"1981-11-12T11:32:45.590Z\",\n      \"DateLastModified\": \"1978-08-10T20:50:19.585Z\",\n      \"IsDeployed\": false,\n      \"IsSuperseded\": false,\n      \"IsLatest\": true,\n      \"NumberOfDeploymentTypes\": 564,\n      \"NumberOfDeployments\": 4431\n    },\n    {\n      \"CI_ID\": 1622,\n      \"CI_UniqueID\": \"string\",\n      \"LocalizedDisplayName\": \"string\",\n      \"LocalizedDescription\": \"string\",\n      \"Manufacturer\": \"string\",\n      \"SoftwareVersion\": \"string\",\n      \"DateCreated\": \"1950-05-05T14:25:50.391Z\",\n      \"DateLastModified\": \"2017-01-03T05:17:17.314Z\",\n      \"IsDeployed\": true,\n      \"IsSuperseded\": false,\n      \"IsLatest\": true,\n      \"NumberOfDeploymentTypes\": 6873,\n      \"NumberOfDeployments\": 3065\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9279d402-ed11-44ac-a19a-da4fb7c1b4d9",
+          "name": "Microsoft Endpoint Configuration Management Create an application",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management Create an application",
+            "description": {
+              "content": "Create a new application in Configuration Manager.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wmi",
+                "SMS_Application"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"CI_ID\": \"<integer>\",\n  \"CI_UniqueID\": \"<string>\",\n  \"LocalizedDisplayName\": \"<string>\",\n  \"LocalizedDescription\": \"<string>\",\n  \"Manufacturer\": \"<string>\",\n  \"SoftwareVersion\": \"<string>\",\n  \"DateCreated\": \"<dateTime>\",\n  \"DateLastModified\": \"<dateTime>\",\n  \"IsDeployed\": \"<boolean>\",\n  \"IsSuperseded\": \"<boolean>\",\n  \"IsLatest\": \"<boolean>\",\n  \"NumberOfDeploymentTypes\": \"<integer>\",\n  \"NumberOfDeployments\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "71b2d71c-bcb1-4efd-a017-5eee4a5ea9d6",
+              "name": "Successfully created application.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wmi",
+                    "SMS_Application"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CI_ID\": \"<integer>\",\n  \"CI_UniqueID\": \"<string>\",\n  \"LocalizedDisplayName\": \"<string>\",\n  \"LocalizedDescription\": \"<string>\",\n  \"Manufacturer\": \"<string>\",\n  \"SoftwareVersion\": \"<string>\",\n  \"DateCreated\": \"<dateTime>\",\n  \"DateLastModified\": \"<dateTime>\",\n  \"IsDeployed\": \"<boolean>\",\n  \"IsSuperseded\": \"<boolean>\",\n  \"IsLatest\": \"<boolean>\",\n  \"NumberOfDeploymentTypes\": \"<integer>\",\n  \"NumberOfDeployments\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8803f217-c2a8-4486-914c-bfc7bd6f1d94",
+          "name": "Microsoft Endpoint Configuration Management Get an application",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management Get an application",
+            "description": {
+              "content": "Retrieve a specific application by its CI_ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wmi",
+                "SMS_Application('{{applicationId}}')"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "273a6ac7-d381-48ff-8317-7d911ed15c96",
+              "name": "Successful response returning the application.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wmi",
+                    "SMS_Application('{{applicationId}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"CI_ID\": 9971,\n  \"CI_UniqueID\": \"string\",\n  \"LocalizedDisplayName\": \"string\",\n  \"LocalizedDescription\": \"string\",\n  \"Manufacturer\": \"string\",\n  \"SoftwareVersion\": \"string\",\n  \"DateCreated\": \"1947-03-03T02:04:46.919Z\",\n  \"DateLastModified\": \"2015-07-14T11:35:17.748Z\",\n  \"IsDeployed\": false,\n  \"IsSuperseded\": true,\n  \"IsLatest\": true,\n  \"NumberOfDeploymentTypes\": 7733,\n  \"NumberOfDeployments\": 6547\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "47e50702-0c02-4997-ae7b-ea0b9c9b4591",
+      "name": "Collections",
+      "description": {
+        "content": "Manage device and user collections.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dc178239-fb7d-44e1-a8de-bbf3b5273b11",
+          "name": "Microsoft Endpoint Configuration Management List collections",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List collections",
+            "description": {
+              "content": "Retrieve all device and user collections defined in Configuration Manager.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wmi",
+                "SMS_Collection"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Order results by a property."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a2ffe98d-964a-4afb-90d0-f6c97ce0c19a",
+              "name": "Successful response returning collections.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wmi",
+                    "SMS_Collection"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"CollectionID\": \"string\",\n      \"Name\": \"string\",\n      \"Comment\": \"string\",\n      \"CollectionType\": 6061,\n      \"MemberCount\": 4307,\n      \"LimitToCollectionID\": \"string\",\n      \"LimitToCollectionName\": \"string\",\n      \"LastRefreshTime\": \"1963-07-31T11:20:22.669Z\",\n      \"CurrentStatus\": 9450\n    },\n    {\n      \"CollectionID\": \"string\",\n      \"Name\": \"string\",\n      \"Comment\": \"string\",\n      \"CollectionType\": 7181,\n      \"MemberCount\": 2703,\n      \"LimitToCollectionID\": \"string\",\n      \"LimitToCollectionName\": \"string\",\n      \"LastRefreshTime\": \"1988-06-25T09:32:59.077Z\",\n      \"CurrentStatus\": 5094\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6d8635d-4cef-4236-9779-409b4e821aef",
+          "name": "Microsoft Endpoint Configuration Management Create a collection",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management Create a collection",
+            "description": {
+              "content": "Create a new device or user collection.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wmi",
+                "SMS_Collection"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"CollectionID\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"Comment\": \"<string>\",\n  \"CollectionType\": \"<integer>\",\n  \"MemberCount\": \"<integer>\",\n  \"LimitToCollectionID\": \"<string>\",\n  \"LimitToCollectionName\": \"<string>\",\n  \"LastRefreshTime\": \"<dateTime>\",\n  \"CurrentStatus\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7de4732e-9286-40cb-961a-b095c251d0ff",
+              "name": "Successfully created collection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wmi",
+                    "SMS_Collection"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CollectionID\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"Comment\": \"<string>\",\n  \"CollectionType\": \"<integer>\",\n  \"MemberCount\": \"<integer>\",\n  \"LimitToCollectionID\": \"<string>\",\n  \"LimitToCollectionName\": \"<string>\",\n  \"LastRefreshTime\": \"<dateTime>\",\n  \"CurrentStatus\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"CollectionID\": \"string\",\n  \"Name\": \"string\",\n  \"Comment\": \"string\",\n  \"CollectionType\": 9307,\n  \"MemberCount\": 2431,\n  \"LimitToCollectionID\": \"string\",\n  \"LimitToCollectionName\": \"string\",\n  \"LastRefreshTime\": \"1969-07-08T09:32:58.860Z\",\n  \"CurrentStatus\": 5601\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "57f6367b-9a5a-4a8c-b15d-d7d92ca45bd5",
+          "name": "Microsoft Endpoint Configuration Management Get a collection",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management Get a collection",
+            "description": {
+              "content": "Retrieve a specific collection by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wmi",
+                "SMS_Collection('{{collectionId}}')"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a97e17d2-644f-406f-8ffa-fa020af6d86e",
+              "name": "Successful response returning the collection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wmi",
+                    "SMS_Collection('{{collectionId}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"CollectionID\": \"string\",\n  \"Name\": \"string\",\n  \"Comment\": \"string\",\n  \"CollectionType\": 9307,\n  \"MemberCount\": 2431,\n  \"LimitToCollectionID\": \"string\",\n  \"LimitToCollectionName\": \"string\",\n  \"LastRefreshTime\": \"1969-07-08T09:32:58.860Z\",\n  \"CurrentStatus\": 5601\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "68e93fec-6c1e-4c65-9bd7-82e3cf2abefb",
+              "name": "Not found. The specified resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wmi",
+                    "SMS_Collection('{{collectionId}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d237b01-2403-4afa-8cb6-1c768bf8101f",
+          "name": "Microsoft Endpoint Configuration Management List collections (versioned route)",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List collections (versioned route)",
+            "description": {
+              "content": "Retrieve collections through the versioned OData v1.0 route.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1.0",
+                "Collections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe1689e8-81d4-46a5-9e90-c32b6e2fab75",
+              "name": "Successful response returning collections.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.0",
+                    "Collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"CollectionID\": \"string\",\n      \"Name\": \"string\",\n      \"Comment\": \"string\",\n      \"CollectionType\": 6061,\n      \"MemberCount\": 4307,\n      \"LimitToCollectionID\": \"string\",\n      \"LimitToCollectionName\": \"string\",\n      \"LastRefreshTime\": \"1963-07-31T11:20:22.669Z\",\n      \"CurrentStatus\": 9450\n    },\n    {\n      \"CollectionID\": \"string\",\n      \"Name\": \"string\",\n      \"Comment\": \"string\",\n      \"CollectionType\": 7181,\n      \"MemberCount\": 2703,\n      \"LimitToCollectionID\": \"string\",\n      \"LimitToCollectionName\": \"string\",\n      \"LastRefreshTime\": \"1988-06-25T09:32:59.077Z\",\n      \"CurrentStatus\": 5094\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e16c758c-6dff-44c7-8c8e-bd66cc1c2421",
+      "name": "Compliance",
+      "description": {
+        "content": "Manage compliance baselines and settings.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e12690fe-8f2c-4abb-9a68-8197bee25c4e",
+          "name": "Microsoft Endpoint Configuration Management List compliance baseline assignments",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List compliance baseline assignments",
+            "description": {
+              "content": "Retrieve all configuration baseline assignments in Configuration Manager.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wmi",
+                "SMS_BaselineAssignment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "85dbf1c5-57bb-4f5d-9ff7-3992cbb01950",
+              "name": "Successful response returning baseline assignments.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wmi",
+                    "SMS_BaselineAssignment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"AssignmentID\": 9333,\n      \"AssignmentName\": \"string\",\n      \"TargetCollectionID\": \"string\",\n      \"StartTime\": \"2005-12-14T04:40:42.518Z\"\n    },\n    {\n      \"AssignmentID\": 77,\n      \"AssignmentName\": \"string\",\n      \"TargetCollectionID\": \"string\",\n      \"StartTime\": \"2011-06-07T10:43:20.560Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a5be2e18-bc98-42f0-9837-af340f980f9e",
+      "name": "Deployments",
+      "description": {
+        "content": "View and manage application deployments.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cc3cbe5f-ba55-4573-b7f9-696912ffa363",
+          "name": "Microsoft Endpoint Configuration Management List application deployments",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List application deployments",
+            "description": {
+              "content": "Retrieve all application deployments in Configuration Manager.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wmi",
+                "SMS_ApplicationDeployment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "839b9bf0-50a7-4f3e-bf4b-5fdd4ae56b84",
+              "name": "Successful response returning deployments.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wmi",
+                    "SMS_ApplicationDeployment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"AssignmentID\": 5951,\n      \"AssignmentName\": \"string\",\n      \"ApplicationName\": \"string\",\n      \"TargetCollectionID\": \"string\",\n      \"StartTime\": \"2013-12-02T18:56:22.036Z\",\n      \"EnforcementDeadline\": \"2022-10-28T17:41:48.025Z\",\n      \"DesiredConfigType\": 6758,\n      \"OfferTypeID\": 1815,\n      \"Enabled\": true\n    },\n    {\n      \"AssignmentID\": 7034,\n      \"AssignmentName\": \"string\",\n      \"ApplicationName\": \"string\",\n      \"TargetCollectionID\": \"string\",\n      \"StartTime\": \"2018-08-31T02:27:41.204Z\",\n      \"EnforcementDeadline\": \"2012-08-10T01:29:28.003Z\",\n      \"DesiredConfigType\": 2480,\n      \"OfferTypeID\": 4109,\n      \"Enabled\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "156d08b0-4513-43dc-8358-45508f164e85",
+      "name": "Devices",
+      "description": {
+        "content": "Query and manage device resources.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f2a9f0f9-47d2-4feb-83f2-e73544fb87f0",
+          "name": "Microsoft Endpoint Configuration Management List devices via WMI route",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List devices via WMI route",
+            "description": {
+              "content": "Retrieve a collection of devices managed by Configuration Manager using the WMI route. Supports OData query options for filtering and selecting.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wmi",
+                "SMS_Device"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Order results by a property."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0de2046e-4c06-4dc1-a6ea-0d1de34b6809",
+              "name": "Successful response returning a collection of devices.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wmi",
+                    "SMS_Device"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"value\": [\n    {\n      \"DeviceID\": 2753,\n      \"Name\": \"string\",\n      \"Domain\": \"string\",\n      \"SMSID\": \"string\",\n      \"IsActive\": false,\n      \"DeviceOS\": \"string\",\n      \"DeviceOSVersion\": \"string\",\n      \"DeviceType\": 3660,\n      \"IsBlocked\": false,\n      \"LastActiveTime\": \"1974-04-29T14:08:28.921Z\"\n    },\n    {\n      \"DeviceID\": 5745,\n      \"Name\": \"string\",\n      \"Domain\": \"string\",\n      \"SMSID\": \"string\",\n      \"IsActive\": false,\n      \"DeviceOS\": \"string\",\n      \"DeviceOSVersion\": \"string\",\n      \"DeviceType\": 1209,\n      \"IsBlocked\": true,\n      \"LastActiveTime\": \"1993-11-15T18:40:29.519Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7ae35a1b-ad6c-4129-b601-2360c6ac3dbb",
+              "name": "Unauthorized. Authentication is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wmi",
+                    "SMS_Device"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "789e3c52-9365-4c71-b287-aa12858977ac",
+              "name": "Forbidden. The user account must be an administrative user in Configuration Manager.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wmi",
+                    "SMS_Device"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "72addca5-322c-4143-9903-dcb259189ad5",
+          "name": "Microsoft Endpoint Configuration Management List systems",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List systems",
+            "description": {
+              "content": "Retrieve all discovered system resources, representing computers and devices discovered by Configuration Manager.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wmi",
+                "SMS_R_System"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4b1b829c-e563-4b70-a714-f0748f3126f2",
+              "name": "Successful response returning discovered systems.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wmi",
+                    "SMS_R_System"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"ResourceID\": 964,\n      \"Name\": \"string\",\n      \"SMSUniqueIdentifier\": \"string\",\n      \"ResourceDomainORWorkgroup\": \"string\",\n      \"Client\": 2117,\n      \"Active\": 8438,\n      \"IPAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"MACAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"OperatingSystemNameandVersion\": \"string\",\n      \"LastLogonUserName\": \"string\",\n      \"LastLogonTimestamp\": \"1998-09-25T04:02:57.786Z\"\n    },\n    {\n      \"ResourceID\": 1143,\n      \"Name\": \"string\",\n      \"SMSUniqueIdentifier\": \"string\",\n      \"ResourceDomainORWorkgroup\": \"string\",\n      \"Client\": 1075,\n      \"Active\": 2798,\n      \"IPAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"MACAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"OperatingSystemNameandVersion\": \"string\",\n      \"LastLogonUserName\": \"string\",\n      \"LastLogonTimestamp\": \"1967-08-03T10:56:27.541Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c1103eb1-b34e-48b7-8e68-0f85f4c195f0",
+          "name": "Microsoft Endpoint Configuration Management List devices (versioned route)",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List devices (versioned route)",
+            "description": {
+              "content": "Retrieve devices through the versioned OData v1.0 route which supports new Configuration Manager functionality.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1.0",
+                "Device"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e56e913-6d5a-4943-ab50-171b65cfac8b",
+              "name": "Successful response returning devices.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.0",
+                    "Device"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"MachineId\": 5631,\n      \"Name\": \"string\",\n      \"Domain\": \"string\",\n      \"IsActive\": false,\n      \"LastActiveTime\": \"2009-03-21T03:50:01.068Z\",\n      \"DeviceOS\": \"string\",\n      \"Status\": \"string\",\n      \"SiteCode\": \"string\"\n    },\n    {\n      \"MachineId\": 128,\n      \"Name\": \"string\",\n      \"Domain\": \"string\",\n      \"IsActive\": false,\n      \"LastActiveTime\": \"2010-03-01T11:46:55.969Z\",\n      \"DeviceOS\": \"string\",\n      \"Status\": \"string\",\n      \"SiteCode\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac4fa54b-b85c-4e7e-ba02-e8a221840bc3",
+          "name": "Microsoft Endpoint Configuration Management Get a device (versioned route)",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management Get a device (versioned route)",
+            "description": {
+              "content": "Retrieve a specific device by ID via the versioned route.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1.0",
+                "Device({{deviceId}})"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd5a62a5-aa6e-434a-8617-732928753fa3",
+              "name": "Successful response returning the device.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.0",
+                    "Device({{deviceId}})"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"MachineId\": 9502,\n  \"Name\": \"string\",\n  \"Domain\": \"string\",\n  \"IsActive\": true,\n  \"LastActiveTime\": \"2006-04-12T22:39:04.604Z\",\n  \"DeviceOS\": \"string\",\n  \"Status\": \"string\",\n  \"SiteCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "875241b5-36ab-493c-a5ec-d939b6ea4765",
+      "name": "Packages",
+      "description": {
+        "content": "Manage legacy software packages.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c69612c2-32b5-4d6f-9546-164a7bb59870",
+          "name": "Microsoft Endpoint Configuration Management List packages",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List packages",
+            "description": {
+              "content": "Retrieve all legacy packages in Configuration Manager.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wmi",
+                "SMS_Package"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "49512201-aeab-4ebc-a3b6-3c8f02869cea",
+              "name": "Successful response returning packages.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wmi",
+                    "SMS_Package"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"PackageID\": \"string\",\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"Manufacturer\": \"string\",\n      \"Version\": \"string\",\n      \"SourceDate\": \"1988-05-16T14:01:18.310Z\",\n      \"PackageType\": 4021\n    },\n    {\n      \"PackageID\": \"string\",\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"Manufacturer\": \"string\",\n      \"Version\": \"string\",\n      \"SourceDate\": \"1982-10-27T09:12:39.266Z\",\n      \"PackageType\": 7916\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "50b0772a-f5cc-4044-a1a5-e427f6dba479",
+      "name": "Scripts",
+      "description": {
+        "content": "Manage and execute PowerShell scripts.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "88d9b1f4-c5da-452a-8f56-391255d7f485",
+          "name": "Microsoft Endpoint Configuration Management List scripts",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List scripts",
+            "description": {
+              "content": "Retrieve all PowerShell scripts available in Configuration Manager for remote execution.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1.0",
+                "Scripts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bd4e9aaf-92e5-471f-a286-11ecd70a1c79",
+              "name": "Successful response returning scripts.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.0",
+                    "Scripts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"ScriptGuid\": \"string\",\n      \"ScriptName\": \"string\",\n      \"Author\": \"string\",\n      \"ApprovalState\": \"string\",\n      \"ScriptType\": 7783\n    },\n    {\n      \"ScriptGuid\": \"string\",\n      \"ScriptName\": \"string\",\n      \"Author\": \"string\",\n      \"ApprovalState\": \"string\",\n      \"ScriptType\": 3012\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "440951b0-cf41-41e0-a370-9a830349ae0d",
+      "name": "Site Administration",
+      "description": {
+        "content": "Site configuration and administration.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9aec1e64-77e4-4373-afb2-cc05594f6b26",
+          "name": "Microsoft Endpoint Configuration Management List sites",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List sites",
+            "description": {
+              "content": "Retrieve Configuration Manager site information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wmi",
+                "SMS_Site"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b3392c28-46e9-44ab-aa54-c3494a193897",
+              "name": "Successful response returning site information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wmi",
+                    "SMS_Site"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"SiteCode\": \"string\",\n      \"SiteName\": \"string\",\n      \"Type\": 1781,\n      \"Version\": \"string\",\n      \"BuildNumber\": \"string\",\n      \"ServerName\": \"string\",\n      \"Status\": 9947\n    },\n    {\n      \"SiteCode\": \"string\",\n      \"SiteName\": \"string\",\n      \"Type\": 8821,\n      \"Version\": \"string\",\n      \"BuildNumber\": \"string\",\n      \"ServerName\": \"string\",\n      \"Status\": 2184\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f0839d1d-0a0c-4ca6-823f-8a1c8f02d236",
+      "name": "Software Updates",
+      "description": {
+        "content": "Query software update information.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "67997493-1fa9-41cb-900b-7126984b1377",
+          "name": "Microsoft Endpoint Configuration Management List software updates",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List software updates",
+            "description": {
+              "content": "Retrieve all software updates known to Configuration Manager.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wmi",
+                "SMS_SoftwareUpdate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e090d5e-bb2b-4859-a013-5a488060f363",
+              "name": "Successful response returning software updates.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wmi",
+                    "SMS_SoftwareUpdate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"CI_ID\": 4248,\n      \"ArticleID\": \"string\",\n      \"BulletinID\": \"string\",\n      \"LocalizedDisplayName\": \"string\",\n      \"LocalizedDescription\": \"string\",\n      \"DatePosted\": \"1983-08-03T16:51:18.402Z\",\n      \"DateRevised\": \"2019-06-19T08:54:55.705Z\",\n      \"IsDeployed\": false,\n      \"IsSuperseded\": false,\n      \"NumMissing\": 4861,\n      \"NumPresent\": 6553,\n      \"SeverityName\": \"string\"\n    },\n    {\n      \"CI_ID\": 7816,\n      \"ArticleID\": \"string\",\n      \"BulletinID\": \"string\",\n      \"LocalizedDisplayName\": \"string\",\n      \"LocalizedDescription\": \"string\",\n      \"DatePosted\": \"1954-06-24T18:14:21.921Z\",\n      \"DateRevised\": \"2017-06-30T12:47:18.132Z\",\n      \"IsDeployed\": true,\n      \"IsSuperseded\": false,\n      \"NumMissing\": 474,\n      \"NumPresent\": 102,\n      \"SeverityName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "bf3d79ae-ff70-442e-a83a-6f22c4a4cffc",
+      "name": "Task Sequences",
+      "description": {
+        "content": "Manage OS deployment task sequences.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7d16db0f-455e-4b2f-8017-4fdbfe3afaf2",
+          "name": "Microsoft Endpoint Configuration Management List task sequences",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List task sequences",
+            "description": {
+              "content": "Retrieve all task sequences used for operating system deployment and other complex workflows.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wmi",
+                "SMS_TaskSequence"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "02ea567d-7fbf-4b8d-b706-e61190a7ee81",
+              "name": "Successful response returning task sequences.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wmi",
+                    "SMS_TaskSequence"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"PackageID\": \"string\",\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"BootImageID\": \"string\",\n      \"Duration\": 8794,\n      \"Type\": 7681\n    },\n    {\n      \"PackageID\": \"string\",\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"BootImageID\": \"string\",\n      \"Duration\": 9230,\n      \"Type\": 511\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "smsproviderfqdn",
+      "key": "siteserver"
+    },
+    {
+      "type": "string",
+      "value": "https://{{siteserver}}/AdminService",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<integer>",
+      "key": "deviceId"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The unique identifier of the collection.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "collectionId"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "applicationId"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7755eb5a-e7f5-46c6-a424-75dccb58a1a2",
+    "name": "Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData routes. Class names are case-sensitive.\n\nContact Support:\n Name: Microsoft Configuration Manager Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,2261 @@
+{
+  "info": {
+    "_postman_id": "9d689c87-e30c-41b5-bcdb-39a300672072",
+    "name": "Microsoft Endpoint Configuration Management Intune Reporting Export API",
+    "description": "Microsoft Graph API endpoints for exporting Intune reports programmatically. Supports exporting device, compliance, and app management reports in CSV or JSON format using asynchronous export jobs. All reports migrated to the Intune reporting infrastructure are available for export from the deviceManagement/reports/exportJobs endpoint. Requires an active Intune license for the tenant.\n\nContact Support:\n Name: Microsoft Graph Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:11:47.000Z",
+    "updatedAt": "2026-06-05T15:11:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9d689c87-e30c-41b5-bcdb-39a300672072"
+  },
+  "item": [
+    {
+      "name": "deviceManagement",
+      "item": [
+        {
+          "name": "reports",
+          "item": [
+            {
+              "name": "exportJobs",
+              "item": [
+                {
+                  "name": "{deviceManagementExportJobId}",
+                  "item": [
+                    {
+                      "name": "Microsoft Endpoint Configuration Management Get export job",
+                      "id": "541abcb7-be10-490b-b32c-f595f0e67baf",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/reports/exportJobs/:deviceManagementExportJobId?$select=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "reports",
+                            "exportJobs",
+                            ":deviceManagementExportJobId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of properties to include in the response.",
+                              "key": "$select",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "155c69be-44f7-46cc-a3aa-8e322206f7a1",
+                              "key": "deviceManagementExportJobId",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the deviceManagementExportJob."
+                            }
+                          ]
+                        },
+                        "description": "Read properties and relationships of a deviceManagementExportJob object. Use this endpoint to poll the status of an export job. When the status property is completed, the url property contains the download location for the exported report file."
+                      },
+                      "response": [
+                        {
+                          "id": "b69a31b8-a34a-4224-8e45-f5d6d8d9692b",
+                          "name": "Successful response returning the export job object.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/deviceManagement/reports/exportJobs/:deviceManagementExportJobId?$select=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "deviceManagement",
+                                "reports",
+                                "exportJobs",
+                                ":deviceManagementExportJobId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Comma-separated list of properties to include in the response.",
+                                  "key": "$select",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deviceManagementExportJobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"reportName\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"format\": \"csv\",\n  \"snapshotId\": \"<string>\",\n  \"localizationType\": \"localizedValuesAsAdditionalColumn\",\n  \"status\": \"notStarted\",\n  \"url\": \"<string>\",\n  \"requestDateTime\": \"<dateTime>\",\n  \"expirationDateTime\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-06-05T15:11:47.000Z",
+                          "updatedAt": "2026-06-05T15:11:47.000Z",
+                          "uid": "35240-b69a31b8-a34a-4224-8e45-f5d6d8d9692b"
+                        },
+                        {
+                          "id": "0a8f5b74-49ca-4537-9f2a-44350cc0fbc0",
+                          "name": "Unauthorized. Authentication is required.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/deviceManagement/reports/exportJobs/:deviceManagementExportJobId?$select=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "deviceManagement",
+                                "reports",
+                                "exportJobs",
+                                ":deviceManagementExportJobId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Comma-separated list of properties to include in the response.",
+                                  "key": "$select",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deviceManagementExportJobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<string>\"\n    }\n  }\n}",
+                          "createdAt": "2026-06-05T15:11:47.000Z",
+                          "updatedAt": "2026-06-05T15:11:47.000Z",
+                          "uid": "35240-0a8f5b74-49ca-4537-9f2a-44350cc0fbc0"
+                        },
+                        {
+                          "id": "3e61f694-9cc2-45ef-9577-39a8c4a451a3",
+                          "name": "Forbidden. Insufficient permissions.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/deviceManagement/reports/exportJobs/:deviceManagementExportJobId?$select=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "deviceManagement",
+                                "reports",
+                                "exportJobs",
+                                ":deviceManagementExportJobId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Comma-separated list of properties to include in the response.",
+                                  "key": "$select",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deviceManagementExportJobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<string>\"\n    }\n  }\n}",
+                          "createdAt": "2026-06-05T15:11:47.000Z",
+                          "updatedAt": "2026-06-05T15:11:47.000Z",
+                          "uid": "35240-3e61f694-9cc2-45ef-9577-39a8c4a451a3"
+                        },
+                        {
+                          "id": "29e373ee-a0a5-4edc-8e91-cc7fce99097f",
+                          "name": "Not found. The specified resource does not exist.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/deviceManagement/reports/exportJobs/:deviceManagementExportJobId?$select=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "deviceManagement",
+                                "reports",
+                                "exportJobs",
+                                ":deviceManagementExportJobId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Comma-separated list of properties to include in the response.",
+                                  "key": "$select",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deviceManagementExportJobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<string>\"\n    }\n  }\n}",
+                          "createdAt": "2026-06-05T15:11:47.000Z",
+                          "updatedAt": "2026-06-05T15:11:47.000Z",
+                          "uid": "35240-29e373ee-a0a5-4edc-8e91-cc7fce99097f"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:11:47.000Z",
+                      "updatedAt": "2026-06-05T15:11:47.000Z",
+                      "uid": "35240-541abcb7-be10-490b-b32c-f595f0e67baf"
+                    },
+                    {
+                      "name": "Microsoft Endpoint Configuration Management Delete export job",
+                      "id": "998328a9-46e6-44b6-b633-b85a5d88128a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/reports/exportJobs/:deviceManagementExportJobId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "reports",
+                            "exportJobs",
+                            ":deviceManagementExportJobId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "2f733b3b-ad5d-4778-8aa4-8d84c8e3c6e8",
+                              "key": "deviceManagementExportJobId",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the deviceManagementExportJob."
+                            }
+                          ]
+                        },
+                        "description": "Delete a deviceManagementExportJob. Removes the export job record from the service."
+                      },
+                      "response": [
+                        {
+                          "id": "4c7f8bec-3305-4743-9e28-1e6f2edaf135",
+                          "name": "Successfully deleted the export job.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/deviceManagement/reports/exportJobs/:deviceManagementExportJobId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "deviceManagement",
+                                "reports",
+                                "exportJobs",
+                                ":deviceManagementExportJobId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deviceManagementExportJobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:11:47.000Z",
+                          "updatedAt": "2026-06-05T15:11:47.000Z",
+                          "uid": "35240-4c7f8bec-3305-4743-9e28-1e6f2edaf135"
+                        },
+                        {
+                          "id": "14f25915-f8b6-47a3-a7c3-fb83354f9a28",
+                          "name": "Unauthorized. Authentication is required.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/deviceManagement/reports/exportJobs/:deviceManagementExportJobId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "deviceManagement",
+                                "reports",
+                                "exportJobs",
+                                ":deviceManagementExportJobId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deviceManagementExportJobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<string>\"\n    }\n  }\n}",
+                          "createdAt": "2026-06-05T15:11:47.000Z",
+                          "updatedAt": "2026-06-05T15:11:47.000Z",
+                          "uid": "35240-14f25915-f8b6-47a3-a7c3-fb83354f9a28"
+                        },
+                        {
+                          "id": "95ecc5c7-8120-45e5-8b0e-9b87bffd5303",
+                          "name": "Not found. The specified resource does not exist.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/deviceManagement/reports/exportJobs/:deviceManagementExportJobId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "deviceManagement",
+                                "reports",
+                                "exportJobs",
+                                ":deviceManagementExportJobId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deviceManagementExportJobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<string>\"\n    }\n  }\n}",
+                          "createdAt": "2026-06-05T15:11:47.000Z",
+                          "updatedAt": "2026-06-05T15:11:47.000Z",
+                          "uid": "35240-95ecc5c7-8120-45e5-8b0e-9b87bffd5303"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:11:47.000Z",
+                      "updatedAt": "2026-06-05T15:11:47.000Z",
+                      "uid": "35240-998328a9-46e6-44b6-b633-b85a5d88128a"
+                    }
+                  ],
+                  "id": "6c53cc70-e979-4593-9279-f6438cdc58a5",
+                  "createdAt": "2026-06-05T15:11:47.000Z",
+                  "updatedAt": "2026-06-05T15:11:47.000Z",
+                  "uid": "35240-6c53cc70-e979-4593-9279-f6438cdc58a5"
+                },
+                {
+                  "name": "Microsoft Endpoint Configuration Management List export jobs",
+                  "id": "7539788b-7eb7-47b1-aaf8-ada157ad9082",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/reports/exportJobs?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&$orderby=<string>&$count=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "reports",
+                        "exportJobs"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of items to skip.",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include in the response.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Order results by a property.",
+                          "key": "$orderby",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Include count of items.",
+                          "key": "$count",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    },
+                    "description": "List properties and relationships of the deviceManagementExportJob objects. Returns all export jobs that have been created for the tenant."
+                  },
+                  "response": [
+                    {
+                      "id": "690e2bd7-2221-4f59-ab22-d9d3c530e75a",
+                      "name": "Successful response returning a collection of export job objects.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/reports/exportJobs?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&$orderby=<string>&$count=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "reports",
+                            "exportJobs"
+                          ],
+                          "query": [
+                            {
+                              "description": "Number of items to return.",
+                              "key": "$top",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Number of items to skip.",
+                              "key": "$skip",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "OData filter expression.",
+                              "key": "$filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Comma-separated list of properties to include in the response.",
+                              "key": "$select",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Order results by a property.",
+                              "key": "$orderby",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Include count of items.",
+                              "key": "$count",
+                              "value": "<boolean>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"@odata.context\": \"<string>\",\n  \"@odata.count\": \"<integer>\",\n  \"@odata.nextLink\": \"<string>\",\n  \"value\": [\n    {\n      \"id\": \"<string>\",\n      \"reportName\": \"<string>\",\n      \"filter\": \"<string>\",\n      \"select\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"format\": \"csv\",\n      \"snapshotId\": \"<string>\",\n      \"localizationType\": \"replaceLocalizableValues\",\n      \"status\": \"completed\",\n      \"url\": \"<string>\",\n      \"requestDateTime\": \"<dateTime>\",\n      \"expirationDateTime\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"reportName\": \"<string>\",\n      \"filter\": \"<string>\",\n      \"select\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"format\": \"pdf\",\n      \"snapshotId\": \"<string>\",\n      \"localizationType\": \"localizedValuesAsAdditionalColumn\",\n      \"status\": \"completed\",\n      \"url\": \"<string>\",\n      \"requestDateTime\": \"<dateTime>\",\n      \"expirationDateTime\": \"<dateTime>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:11:47.000Z",
+                      "updatedAt": "2026-06-05T15:11:47.000Z",
+                      "uid": "35240-690e2bd7-2221-4f59-ab22-d9d3c530e75a"
+                    },
+                    {
+                      "id": "4dc80ec3-d9ac-428c-a05d-73b5eba2fbaa",
+                      "name": "Unauthorized. Authentication is required.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/reports/exportJobs?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&$orderby=<string>&$count=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "reports",
+                            "exportJobs"
+                          ],
+                          "query": [
+                            {
+                              "description": "Number of items to return.",
+                              "key": "$top",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Number of items to skip.",
+                              "key": "$skip",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "OData filter expression.",
+                              "key": "$filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Comma-separated list of properties to include in the response.",
+                              "key": "$select",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Order results by a property.",
+                              "key": "$orderby",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Include count of items.",
+                              "key": "$count",
+                              "value": "<boolean>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-06-05T15:11:47.000Z",
+                      "updatedAt": "2026-06-05T15:11:47.000Z",
+                      "uid": "35240-4dc80ec3-d9ac-428c-a05d-73b5eba2fbaa"
+                    },
+                    {
+                      "id": "0738c780-a46b-4b44-ab09-5fba018e9d96",
+                      "name": "Forbidden. Insufficient permissions.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/reports/exportJobs?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&$orderby=<string>&$count=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "reports",
+                            "exportJobs"
+                          ],
+                          "query": [
+                            {
+                              "description": "Number of items to return.",
+                              "key": "$top",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Number of items to skip.",
+                              "key": "$skip",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "OData filter expression.",
+                              "key": "$filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Comma-separated list of properties to include in the response.",
+                              "key": "$select",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Order results by a property.",
+                              "key": "$orderby",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Include count of items.",
+                              "key": "$count",
+                              "value": "<boolean>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-06-05T15:11:47.000Z",
+                      "updatedAt": "2026-06-05T15:11:47.000Z",
+                      "uid": "35240-0738c780-a46b-4b44-ab09-5fba018e9d96"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:47.000Z",
+                  "updatedAt": "2026-06-05T15:11:47.000Z",
+                  "uid": "35240-7539788b-7eb7-47b1-aaf8-ada157ad9082"
+                },
+                {
+                  "name": "Microsoft Endpoint Configuration Management Create export job",
+                  "id": "c6bb716f-b27c-47de-8c63-57b3e8888a87",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"reportName\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"format\": \"csv\",\n  \"snapshotId\": \"<string>\",\n  \"localizationType\": \"localizedValuesAsAdditionalColumn\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/reports/exportJobs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "reports",
+                        "exportJobs"
+                      ]
+                    },
+                    "description": "Create a new deviceManagementExportJob object to initiate an asynchronous report export. The reportName parameter is required in the request body and identifies which report to export. After creation, poll the export job by ID until the status changes to completed, then download the report from the url property."
+                  },
+                  "response": [
+                    {
+                      "id": "83f4e393-5c8c-43a0-b97d-e2f7d0f771de",
+                      "name": "Successfully created the export job.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reportName\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"format\": \"csv\",\n  \"snapshotId\": \"<string>\",\n  \"localizationType\": \"localizedValuesAsAdditionalColumn\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/reports/exportJobs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "reports",
+                            "exportJobs"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"reportName\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"format\": \"csv\",\n  \"snapshotId\": \"<string>\",\n  \"localizationType\": \"localizedValuesAsAdditionalColumn\",\n  \"status\": \"notStarted\",\n  \"url\": \"<string>\",\n  \"requestDateTime\": \"<dateTime>\",\n  \"expirationDateTime\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:11:47.000Z",
+                      "updatedAt": "2026-06-05T15:11:47.000Z",
+                      "uid": "35240-83f4e393-5c8c-43a0-b97d-e2f7d0f771de"
+                    },
+                    {
+                      "id": "12b70406-fa64-4cb8-819c-1d57effb7ccc",
+                      "name": "Bad request. The request body or parameters are invalid.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reportName\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"format\": \"csv\",\n  \"snapshotId\": \"<string>\",\n  \"localizationType\": \"localizedValuesAsAdditionalColumn\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/reports/exportJobs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "reports",
+                            "exportJobs"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-06-05T15:11:47.000Z",
+                      "updatedAt": "2026-06-05T15:11:47.000Z",
+                      "uid": "35240-12b70406-fa64-4cb8-819c-1d57effb7ccc"
+                    },
+                    {
+                      "id": "eab16bd2-87ca-4d25-8f3d-751ccb458308",
+                      "name": "Unauthorized. Authentication is required.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reportName\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"format\": \"csv\",\n  \"snapshotId\": \"<string>\",\n  \"localizationType\": \"localizedValuesAsAdditionalColumn\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/reports/exportJobs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "reports",
+                            "exportJobs"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-06-05T15:11:47.000Z",
+                      "updatedAt": "2026-06-05T15:11:47.000Z",
+                      "uid": "35240-eab16bd2-87ca-4d25-8f3d-751ccb458308"
+                    },
+                    {
+                      "id": "e62b0d2c-a458-4032-bd4c-827523a24a37",
+                      "name": "Forbidden. Insufficient permissions.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reportName\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"format\": \"csv\",\n  \"snapshotId\": \"<string>\",\n  \"localizationType\": \"localizedValuesAsAdditionalColumn\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/reports/exportJobs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "reports",
+                            "exportJobs"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-06-05T15:11:47.000Z",
+                      "updatedAt": "2026-06-05T15:11:47.000Z",
+                      "uid": "35240-e62b0d2c-a458-4032-bd4c-827523a24a37"
+                    },
+                    {
+                      "id": "f03371b0-fc8a-46fa-881a-3baef571a462",
+                      "name": "Too many requests. The API supports up to 100 requests per tenant per minute, with per-user limits of 8 requests per minute and per-app limits of 48 requests per minute.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reportName\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"format\": \"csv\",\n  \"snapshotId\": \"<string>\",\n  \"localizationType\": \"localizedValuesAsAdditionalColumn\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/reports/exportJobs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "reports",
+                            "exportJobs"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-06-05T15:11:47.000Z",
+                      "updatedAt": "2026-06-05T15:11:47.000Z",
+                      "uid": "35240-f03371b0-fc8a-46fa-881a-3baef571a462"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:47.000Z",
+                  "updatedAt": "2026-06-05T15:11:47.000Z",
+                  "uid": "35240-c6bb716f-b27c-47de-8c63-57b3e8888a87"
+                }
+              ],
+              "id": "cb05f799-74e0-4f96-965d-d221c42a7540",
+              "createdAt": "2026-06-05T15:11:47.000Z",
+              "updatedAt": "2026-06-05T15:11:47.000Z",
+              "uid": "35240-cb05f799-74e0-4f96-965d-d221c42a7540"
+            },
+            {
+              "name": "getDeviceNonComplianceReport",
+              "item": [
+                {
+                  "name": "Microsoft Endpoint Configuration Management Get device non-compliance report",
+                  "id": "687ab558-7b94-4727-8a76-2c3c1b30ef93",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/reports/getDeviceNonComplianceReport",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "reports",
+                        "getDeviceNonComplianceReport"
+                      ]
+                    },
+                    "description": "Retrieve a report of devices that are not compliant with compliance policies. This is a synchronous report endpoint that returns data directly in the response body."
+                  },
+                  "response": [
+                    {
+                      "id": "deb05c6f-7e1f-44c1-9cfa-b2b1bab0f458",
+                      "name": "Successful response returning report data.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/reports/getDeviceNonComplianceReport",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "reports",
+                            "getDeviceNonComplianceReport"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"totalRowCount\": \"<integer>\",\n  \"schema\": [\n    {\n      \"column\": \"<string>\",\n      \"propertyType\": \"<integer>\"\n    },\n    {\n      \"column\": \"<string>\",\n      \"propertyType\": \"<integer>\"\n    }\n  ],\n  \"values\": [\n    [],\n    []\n  ]\n}",
+                      "createdAt": "2026-06-05T15:11:47.000Z",
+                      "updatedAt": "2026-06-05T15:11:47.000Z",
+                      "uid": "35240-deb05c6f-7e1f-44c1-9cfa-b2b1bab0f458"
+                    },
+                    {
+                      "id": "034a9b2d-266d-4224-958f-4ddfe49f5251",
+                      "name": "Unauthorized. Authentication is required.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/reports/getDeviceNonComplianceReport",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "reports",
+                            "getDeviceNonComplianceReport"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-06-05T15:11:47.000Z",
+                      "updatedAt": "2026-06-05T15:11:47.000Z",
+                      "uid": "35240-034a9b2d-266d-4224-958f-4ddfe49f5251"
+                    },
+                    {
+                      "id": "14e89de8-1c9e-488c-97ca-b0275380ff95",
+                      "name": "Forbidden. Insufficient permissions.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/reports/getDeviceNonComplianceReport",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "reports",
+                            "getDeviceNonComplianceReport"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-06-05T15:11:47.000Z",
+                      "updatedAt": "2026-06-05T15:11:47.000Z",
+                      "uid": "35240-14e89de8-1c9e-488c-97ca-b0275380ff95"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:47.000Z",
+                  "updatedAt": "2026-06-05T15:11:47.000Z",
+                  "uid": "35240-687ab558-7b94-4727-8a76-2c3c1b30ef93"
+                }
+              ],
+              "id": "c40ad975-e967-47bd-be09-3d4a2d97424f",
+              "createdAt": "2026-06-05T15:11:47.000Z",
+              "updatedAt": "2026-06-05T15:11:47.000Z",
+              "uid": "35240-c40ad975-e967-47bd-be09-3d4a2d97424f"
+            },
+            {
+              "name": "getCompliancePolicyNonComplianceReport",
+              "item": [
+                {
+                  "name": "Microsoft Endpoint Configuration Management Get compliance policy non-compliance report",
+                  "id": "a87a8e3b-1679-4774-bef0-a3c30f2058da",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/reports/getCompliancePolicyNonComplianceReport",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "reports",
+                        "getCompliancePolicyNonComplianceReport"
+                      ]
+                    },
+                    "description": "Retrieve a report of non-compliant devices grouped by compliance policy."
+                  },
+                  "response": [
+                    {
+                      "id": "54c58264-73bd-44bd-a837-2f07d2513a63",
+                      "name": "Successful response returning report data.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/reports/getCompliancePolicyNonComplianceReport",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "reports",
+                            "getCompliancePolicyNonComplianceReport"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"totalRowCount\": \"<integer>\",\n  \"schema\": [\n    {\n      \"column\": \"<string>\",\n      \"propertyType\": \"<integer>\"\n    },\n    {\n      \"column\": \"<string>\",\n      \"propertyType\": \"<integer>\"\n    }\n  ],\n  \"values\": [\n    [],\n    []\n  ]\n}",
+                      "createdAt": "2026-06-05T15:11:47.000Z",
+                      "updatedAt": "2026-06-05T15:11:47.000Z",
+                      "uid": "35240-54c58264-73bd-44bd-a837-2f07d2513a63"
+                    },
+                    {
+                      "id": "3249eeac-11ba-4f0f-b6be-35b23e4c8531",
+                      "name": "Unauthorized. Authentication is required.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/reports/getCompliancePolicyNonComplianceReport",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "reports",
+                            "getCompliancePolicyNonComplianceReport"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-06-05T15:11:47.000Z",
+                      "updatedAt": "2026-06-05T15:11:47.000Z",
+                      "uid": "35240-3249eeac-11ba-4f0f-b6be-35b23e4c8531"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:47.000Z",
+                  "updatedAt": "2026-06-05T15:11:47.000Z",
+                  "uid": "35240-a87a8e3b-1679-4774-bef0-a3c30f2058da"
+                }
+              ],
+              "id": "181bfba1-ba28-4c60-b708-fa21250e6de0",
+              "createdAt": "2026-06-05T15:11:47.000Z",
+              "updatedAt": "2026-06-05T15:11:47.000Z",
+              "uid": "35240-181bfba1-ba28-4c60-b708-fa21250e6de0"
+            },
+            {
+              "name": "getComplianceSettingNonComplianceReport",
+              "item": [
+                {
+                  "name": "Microsoft Endpoint Configuration Management Get compliance setting non-compliance report",
+                  "id": "0949aedd-7e9b-49f2-9e07-7cfb702d9193",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/reports/getComplianceSettingNonComplianceReport",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "reports",
+                        "getComplianceSettingNonComplianceReport"
+                      ]
+                    },
+                    "description": "Retrieve a report of non-compliant devices grouped by compliance setting."
+                  },
+                  "response": [
+                    {
+                      "id": "34f14827-64bc-4e23-97d6-f9aacfd76847",
+                      "name": "Successful response returning report data.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/reports/getComplianceSettingNonComplianceReport",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "reports",
+                            "getComplianceSettingNonComplianceReport"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"totalRowCount\": \"<integer>\",\n  \"schema\": [\n    {\n      \"column\": \"<string>\",\n      \"propertyType\": \"<integer>\"\n    },\n    {\n      \"column\": \"<string>\",\n      \"propertyType\": \"<integer>\"\n    }\n  ],\n  \"values\": [\n    [],\n    []\n  ]\n}",
+                      "createdAt": "2026-06-05T15:11:47.000Z",
+                      "updatedAt": "2026-06-05T15:11:47.000Z",
+                      "uid": "35240-34f14827-64bc-4e23-97d6-f9aacfd76847"
+                    },
+                    {
+                      "id": "6aa272db-fe64-4d00-be85-d7edb03f714c",
+                      "name": "Unauthorized. Authentication is required.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/reports/getComplianceSettingNonComplianceReport",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "reports",
+                            "getComplianceSettingNonComplianceReport"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-06-05T15:11:47.000Z",
+                      "updatedAt": "2026-06-05T15:11:47.000Z",
+                      "uid": "35240-6aa272db-fe64-4d00-be85-d7edb03f714c"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:47.000Z",
+                  "updatedAt": "2026-06-05T15:11:47.000Z",
+                  "uid": "35240-0949aedd-7e9b-49f2-9e07-7cfb702d9193"
+                }
+              ],
+              "id": "1ce4cb76-a161-4223-8038-150a605855ec",
+              "createdAt": "2026-06-05T15:11:47.000Z",
+              "updatedAt": "2026-06-05T15:11:47.000Z",
+              "uid": "35240-1ce4cb76-a161-4223-8038-150a605855ec"
+            },
+            {
+              "name": "getConfigurationPolicyNonComplianceReport",
+              "item": [
+                {
+                  "name": "Microsoft Endpoint Configuration Management Get configuration policy non-compliance report",
+                  "id": "0f184c56-973d-4340-bd97-12bcabb77661",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/reports/getConfigurationPolicyNonComplianceReport",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "reports",
+                        "getConfigurationPolicyNonComplianceReport"
+                      ]
+                    },
+                    "description": "Retrieve a report of non-compliant devices grouped by configuration policy."
+                  },
+                  "response": [
+                    {
+                      "id": "8363c623-0553-480d-be84-51a26d98d18d",
+                      "name": "Successful response returning report data.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/reports/getConfigurationPolicyNonComplianceReport",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "reports",
+                            "getConfigurationPolicyNonComplianceReport"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"totalRowCount\": \"<integer>\",\n  \"schema\": [\n    {\n      \"column\": \"<string>\",\n      \"propertyType\": \"<integer>\"\n    },\n    {\n      \"column\": \"<string>\",\n      \"propertyType\": \"<integer>\"\n    }\n  ],\n  \"values\": [\n    [],\n    []\n  ]\n}",
+                      "createdAt": "2026-06-05T15:11:47.000Z",
+                      "updatedAt": "2026-06-05T15:11:47.000Z",
+                      "uid": "35240-8363c623-0553-480d-be84-51a26d98d18d"
+                    },
+                    {
+                      "id": "aaf9dd45-a87d-4951-956d-18db0c0caf5f",
+                      "name": "Unauthorized. Authentication is required.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/reports/getConfigurationPolicyNonComplianceReport",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "reports",
+                            "getConfigurationPolicyNonComplianceReport"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-06-05T15:11:47.000Z",
+                      "updatedAt": "2026-06-05T15:11:47.000Z",
+                      "uid": "35240-aaf9dd45-a87d-4951-956d-18db0c0caf5f"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:47.000Z",
+                  "updatedAt": "2026-06-05T15:11:47.000Z",
+                  "uid": "35240-0f184c56-973d-4340-bd97-12bcabb77661"
+                }
+              ],
+              "id": "c31abd1b-5fd7-41e3-85d4-c9592638677a",
+              "createdAt": "2026-06-05T15:11:47.000Z",
+              "updatedAt": "2026-06-05T15:11:47.000Z",
+              "uid": "35240-c31abd1b-5fd7-41e3-85d4-c9592638677a"
+            },
+            {
+              "name": "getHistoricalReport",
+              "item": [
+                {
+                  "name": "Microsoft Endpoint Configuration Management Get historical report",
+                  "id": "a274e65f-d384-40b9-b7f9-db5d05226a4c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/reports/getHistoricalReport",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "reports",
+                        "getHistoricalReport"
+                      ]
+                    },
+                    "description": "Retrieve a historical report from the Intune reporting infrastructure. Returns report data for a specific time range."
+                  },
+                  "response": [
+                    {
+                      "id": "9afee369-b398-4416-9ca6-97fe295edf2b",
+                      "name": "Successful response returning report data.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/reports/getHistoricalReport",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "reports",
+                            "getHistoricalReport"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"totalRowCount\": \"<integer>\",\n  \"schema\": [\n    {\n      \"column\": \"<string>\",\n      \"propertyType\": \"<integer>\"\n    },\n    {\n      \"column\": \"<string>\",\n      \"propertyType\": \"<integer>\"\n    }\n  ],\n  \"values\": [\n    [],\n    []\n  ]\n}",
+                      "createdAt": "2026-06-05T15:11:47.000Z",
+                      "updatedAt": "2026-06-05T15:11:47.000Z",
+                      "uid": "35240-9afee369-b398-4416-9ca6-97fe295edf2b"
+                    },
+                    {
+                      "id": "681756c1-9d0b-4f0e-bdc3-dd44315c7372",
+                      "name": "Unauthorized. Authentication is required.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/reports/getHistoricalReport",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "reports",
+                            "getHistoricalReport"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-06-05T15:11:47.000Z",
+                      "updatedAt": "2026-06-05T15:11:47.000Z",
+                      "uid": "35240-681756c1-9d0b-4f0e-bdc3-dd44315c7372"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:47.000Z",
+                  "updatedAt": "2026-06-05T15:11:47.000Z",
+                  "uid": "35240-a274e65f-d384-40b9-b7f9-db5d05226a4c"
+                }
+              ],
+              "id": "e64fe3a8-9723-4a8e-b637-83dcfc211573",
+              "createdAt": "2026-06-05T15:11:47.000Z",
+              "updatedAt": "2026-06-05T15:11:47.000Z",
+              "uid": "35240-e64fe3a8-9723-4a8e-b637-83dcfc211573"
+            },
+            {
+              "name": "getCachedReport",
+              "item": [
+                {
+                  "name": "Microsoft Endpoint Configuration Management Get cached report",
+                  "id": "c2457675-7ecd-4f61-8edc-4ad4d7209978",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/reports/getCachedReport",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "reports",
+                        "getCachedReport"
+                      ]
+                    },
+                    "description": "Retrieve a cached report from a previous export. The snapshotId or sessionId in the request body identifies the cached data to return."
+                  },
+                  "response": [
+                    {
+                      "id": "f8c18d1a-951e-4151-ba09-e79363d25397",
+                      "name": "Successful response returning cached report data.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/reports/getCachedReport",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "reports",
+                            "getCachedReport"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"totalRowCount\": \"<integer>\",\n  \"schema\": [\n    {\n      \"column\": \"<string>\",\n      \"propertyType\": \"<integer>\"\n    },\n    {\n      \"column\": \"<string>\",\n      \"propertyType\": \"<integer>\"\n    }\n  ],\n  \"values\": [\n    [],\n    []\n  ]\n}",
+                      "createdAt": "2026-06-05T15:11:47.000Z",
+                      "updatedAt": "2026-06-05T15:11:47.000Z",
+                      "uid": "35240-f8c18d1a-951e-4151-ba09-e79363d25397"
+                    },
+                    {
+                      "id": "99cbacd2-975b-41d4-98f9-0473a3a6f664",
+                      "name": "Unauthorized. Authentication is required.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/reports/getCachedReport",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "reports",
+                            "getCachedReport"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-06-05T15:11:47.000Z",
+                      "updatedAt": "2026-06-05T15:11:47.000Z",
+                      "uid": "35240-99cbacd2-975b-41d4-98f9-0473a3a6f664"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:47.000Z",
+                  "updatedAt": "2026-06-05T15:11:47.000Z",
+                  "uid": "35240-c2457675-7ecd-4f61-8edc-4ad4d7209978"
+                }
+              ],
+              "id": "805a0257-1c2f-4beb-aea0-5e2492a71f98",
+              "createdAt": "2026-06-05T15:11:47.000Z",
+              "updatedAt": "2026-06-05T15:11:47.000Z",
+              "uid": "35240-805a0257-1c2f-4beb-aea0-5e2492a71f98"
+            }
+          ],
+          "id": "9cb219b8-ff5e-47bb-92d6-bac0c9090954",
+          "createdAt": "2026-06-05T15:11:47.000Z",
+          "updatedAt": "2026-06-05T15:11:47.000Z",
+          "uid": "35240-9cb219b8-ff5e-47bb-92d6-bac0c9090954"
+        }
+      ],
+      "id": "0c41f5ba-42cd-49a8-8b75-c26e325f2aaf",
+      "createdAt": "2026-06-05T15:11:47.000Z",
+      "updatedAt": "2026-06-05T15:11:47.000Z",
+      "uid": "35240-0c41f5ba-42cd-49a8-8b75-c26e325f2aaf"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "DeviceManagementConfiguration.Read.All DeviceManagementConfiguration.ReadWrite.All DeviceManagementApps.Read.All DeviceManagementApps.ReadWrite.All DeviceManagementManagedDevices.Read.All DeviceManagementManagedDevices.ReadWrite.All",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://graph.microsoft.com/v1.0"
+    }
+  ]
+}

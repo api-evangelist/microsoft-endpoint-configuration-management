@@ -1,0 +1,3849 @@
+{
+  "info": {
+    "_postman_id": "ed9208af-cd78-49cf-a95b-b1b296c9c86d",
+    "name": "Microsoft Endpoint Configuration Management Microsoft Intune Graph API",
+    "description": "Microsoft Graph API endpoints for Intune device management, enabling programmatic access to manage devices, apps, compliance policies, and configuration profiles. Supports both v1.0 and beta endpoints. Requires an active Intune license for the tenant.\n\nContact Support:\n Name: Microsoft Graph Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:11:44.000Z",
+    "updatedAt": "2026-06-05T15:11:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ed9208af-cd78-49cf-a95b-b1b296c9c86d"
+  },
+  "item": [
+    {
+      "name": "deviceManagement",
+      "item": [
+        {
+          "name": "managedDevices",
+          "item": [
+            {
+              "name": "{managedDeviceId}",
+              "item": [
+                {
+                  "name": "retire",
+                  "item": [
+                    {
+                      "name": "Microsoft Endpoint Configuration Management Retire a device",
+                      "id": "b8d016bd-35fd-4074-9aea-8d3dbd4c56ec",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/managedDevices/:managedDeviceId/retire",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "managedDevices",
+                            ":managedDeviceId",
+                            "retire"
+                          ],
+                          "variable": [
+                            {
+                              "id": "cf9ccab0-c7d4-4f81-a57f-3f5cff529021",
+                              "key": "managedDeviceId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Retire a device, removing corporate data while leaving personal data intact."
+                      },
+                      "response": [
+                        {
+                          "id": "191ca4fd-256c-405d-aa59-504259d07a39",
+                          "name": "Device retire action initiated.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/deviceManagement/managedDevices/:managedDeviceId/retire",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "deviceManagement",
+                                "managedDevices",
+                                ":managedDeviceId",
+                                "retire"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "managedDeviceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:11:45.000Z",
+                          "updatedAt": "2026-06-05T15:11:45.000Z",
+                          "uid": "35240-191ca4fd-256c-405d-aa59-504259d07a39"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:11:45.000Z",
+                      "updatedAt": "2026-06-05T15:11:45.000Z",
+                      "uid": "35240-b8d016bd-35fd-4074-9aea-8d3dbd4c56ec"
+                    }
+                  ],
+                  "id": "2c178b81-2b5e-4acc-ad19-d6534859d9d6",
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-2c178b81-2b5e-4acc-ad19-d6534859d9d6"
+                },
+                {
+                  "name": "wipe",
+                  "item": [
+                    {
+                      "name": "Microsoft Endpoint Configuration Management Wipe a device",
+                      "id": "5ffca9f2-0850-4d82-a7bc-6afe40f29cfb",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"keepEnrollmentData\": \"<boolean>\",\n  \"keepUserData\": \"<boolean>\",\n  \"macOsUnlockCode\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/managedDevices/:managedDeviceId/wipe",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "managedDevices",
+                            ":managedDeviceId",
+                            "wipe"
+                          ],
+                          "variable": [
+                            {
+                              "id": "dbcd95a2-0d3e-4503-8acc-aee5e61915b4",
+                              "key": "managedDeviceId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Factory reset a device, removing all data."
+                      },
+                      "response": [
+                        {
+                          "id": "abea80da-5254-4286-a83d-c7a3cc4473c8",
+                          "name": "Device wipe action initiated.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"keepEnrollmentData\": \"<boolean>\",\n  \"keepUserData\": \"<boolean>\",\n  \"macOsUnlockCode\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/deviceManagement/managedDevices/:managedDeviceId/wipe",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "deviceManagement",
+                                "managedDevices",
+                                ":managedDeviceId",
+                                "wipe"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "managedDeviceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:11:45.000Z",
+                          "updatedAt": "2026-06-05T15:11:45.000Z",
+                          "uid": "35240-abea80da-5254-4286-a83d-c7a3cc4473c8"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:11:45.000Z",
+                      "updatedAt": "2026-06-05T15:11:45.000Z",
+                      "uid": "35240-5ffca9f2-0850-4d82-a7bc-6afe40f29cfb"
+                    }
+                  ],
+                  "id": "d492e03b-06f4-42d5-8ea1-63c7dfe5f91d",
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-d492e03b-06f4-42d5-8ea1-63c7dfe5f91d"
+                },
+                {
+                  "name": "syncDevice",
+                  "item": [
+                    {
+                      "name": "Microsoft Endpoint Configuration Management Sync device",
+                      "id": "5f4a73c3-f686-4742-b0e8-777ee338925e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/managedDevices/:managedDeviceId/syncDevice",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "managedDevices",
+                            ":managedDeviceId",
+                            "syncDevice"
+                          ],
+                          "variable": [
+                            {
+                              "id": "22ea4c94-42e1-45e2-88ef-c0a830eafca0",
+                              "key": "managedDeviceId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Trigger a sync for the managed device with Intune."
+                      },
+                      "response": [
+                        {
+                          "id": "f9a43d26-952d-4071-8716-cd8693af31af",
+                          "name": "Device sync action initiated.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/deviceManagement/managedDevices/:managedDeviceId/syncDevice",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "deviceManagement",
+                                "managedDevices",
+                                ":managedDeviceId",
+                                "syncDevice"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "managedDeviceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:11:45.000Z",
+                          "updatedAt": "2026-06-05T15:11:45.000Z",
+                          "uid": "35240-f9a43d26-952d-4071-8716-cd8693af31af"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:11:45.000Z",
+                      "updatedAt": "2026-06-05T15:11:45.000Z",
+                      "uid": "35240-5f4a73c3-f686-4742-b0e8-777ee338925e"
+                    }
+                  ],
+                  "id": "d4f2af07-b073-4600-a2b9-55477adf3cbb",
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-d4f2af07-b073-4600-a2b9-55477adf3cbb"
+                },
+                {
+                  "name": "remoteLock",
+                  "item": [
+                    {
+                      "name": "Microsoft Endpoint Configuration Management Remote lock a device",
+                      "id": "2fca637e-dce0-4a4e-8a8c-34eb91a9e526",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/managedDevices/:managedDeviceId/remoteLock",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "managedDevices",
+                            ":managedDeviceId",
+                            "remoteLock"
+                          ],
+                          "variable": [
+                            {
+                              "id": "01de6d4e-8204-401b-ab78-4fc93e2e4eb9",
+                              "key": "managedDeviceId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Remotely lock a managed device."
+                      },
+                      "response": [
+                        {
+                          "id": "6aaaaaed-a533-4213-a10a-8f83ab2e7ec4",
+                          "name": "Remote lock action initiated.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/deviceManagement/managedDevices/:managedDeviceId/remoteLock",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "deviceManagement",
+                                "managedDevices",
+                                ":managedDeviceId",
+                                "remoteLock"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "managedDeviceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:11:45.000Z",
+                          "updatedAt": "2026-06-05T15:11:45.000Z",
+                          "uid": "35240-6aaaaaed-a533-4213-a10a-8f83ab2e7ec4"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:11:45.000Z",
+                      "updatedAt": "2026-06-05T15:11:45.000Z",
+                      "uid": "35240-2fca637e-dce0-4a4e-8a8c-34eb91a9e526"
+                    }
+                  ],
+                  "id": "8ef2cf05-779c-4946-b921-cf33a665efef",
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-8ef2cf05-779c-4946-b921-cf33a665efef"
+                },
+                {
+                  "name": "resetPasscode",
+                  "item": [
+                    {
+                      "name": "Microsoft Endpoint Configuration Management Reset passcode",
+                      "id": "c21b1c31-74c4-41e7-9213-ba5e39fc9c95",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/managedDevices/:managedDeviceId/resetPasscode",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "managedDevices",
+                            ":managedDeviceId",
+                            "resetPasscode"
+                          ],
+                          "variable": [
+                            {
+                              "id": "6192cf69-1fb1-49d5-af77-a37d4ab91bc9",
+                              "key": "managedDeviceId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Reset the passcode on a managed device."
+                      },
+                      "response": [
+                        {
+                          "id": "c8e1cd23-ee4f-45fc-98e6-57469e582f72",
+                          "name": "Passcode reset action initiated.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/deviceManagement/managedDevices/:managedDeviceId/resetPasscode",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "deviceManagement",
+                                "managedDevices",
+                                ":managedDeviceId",
+                                "resetPasscode"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "managedDeviceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:11:45.000Z",
+                          "updatedAt": "2026-06-05T15:11:45.000Z",
+                          "uid": "35240-c8e1cd23-ee4f-45fc-98e6-57469e582f72"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:11:45.000Z",
+                      "updatedAt": "2026-06-05T15:11:45.000Z",
+                      "uid": "35240-c21b1c31-74c4-41e7-9213-ba5e39fc9c95"
+                    }
+                  ],
+                  "id": "8b2dfdd6-e979-48ac-a4ec-a4c4d6032586",
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-8b2dfdd6-e979-48ac-a4ec-a4c4d6032586"
+                },
+                {
+                  "name": "rebootNow",
+                  "item": [
+                    {
+                      "name": "Microsoft Endpoint Configuration Management Reboot device",
+                      "id": "89e4a0f2-8f13-4f7c-afe6-9128b480048d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/managedDevices/:managedDeviceId/rebootNow",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "managedDevices",
+                            ":managedDeviceId",
+                            "rebootNow"
+                          ],
+                          "variable": [
+                            {
+                              "id": "013c109e-862a-478c-a298-737eb03ebc96",
+                              "key": "managedDeviceId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Remotely reboot a managed device."
+                      },
+                      "response": [
+                        {
+                          "id": "2f08b5c2-e7b2-455d-972b-4a92dce77b1e",
+                          "name": "Reboot action initiated.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/deviceManagement/managedDevices/:managedDeviceId/rebootNow",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "deviceManagement",
+                                "managedDevices",
+                                ":managedDeviceId",
+                                "rebootNow"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "managedDeviceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:11:45.000Z",
+                          "updatedAt": "2026-06-05T15:11:45.000Z",
+                          "uid": "35240-2f08b5c2-e7b2-455d-972b-4a92dce77b1e"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:11:45.000Z",
+                      "updatedAt": "2026-06-05T15:11:45.000Z",
+                      "uid": "35240-89e4a0f2-8f13-4f7c-afe6-9128b480048d"
+                    }
+                  ],
+                  "id": "14245246-e001-469d-9ad9-26c30b0f5e71",
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-14245246-e001-469d-9ad9-26c30b0f5e71"
+                },
+                {
+                  "name": "Microsoft Endpoint Configuration Management Get managed device",
+                  "id": "94c9e3c9-4789-421c-b164-0a13a88d32d1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/managedDevices/:managedDeviceId?$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "managedDevices",
+                        ":managedDeviceId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of properties to include in the response.",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "384206c3-de1c-43a5-8106-6ba7da5ba946",
+                          "key": "managedDeviceId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the managed device."
+                        }
+                      ]
+                    },
+                    "description": "Read properties and relationships of a managedDevice object."
+                  },
+                  "response": [
+                    {
+                      "id": "2e6ef1df-2341-4b04-92cc-e5e7bf625e83",
+                      "name": "Successful response returning the managed device.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/managedDevices/:managedDeviceId?$select=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "managedDevices",
+                            ":managedDeviceId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of properties to include in the response.",
+                              "key": "$select",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "managedDeviceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"deviceName\": \"<string>\",\n  \"managedDeviceOwnerType\": \"personal\",\n  \"enrolledDateTime\": \"<dateTime>\",\n  \"lastSyncDateTime\": \"<dateTime>\",\n  \"operatingSystem\": \"<string>\",\n  \"complianceState\": \"conflict\",\n  \"jailBroken\": \"<string>\",\n  \"managementAgent\": \"configurationManagerClientMdm\",\n  \"osVersion\": \"<string>\",\n  \"easActivated\": \"<boolean>\",\n  \"easDeviceId\": \"<string>\",\n  \"azureADRegistered\": \"<boolean>\",\n  \"deviceEnrollmentType\": \"deviceEnrollmentManager\",\n  \"emailAddress\": \"<string>\",\n  \"azureADDeviceId\": \"<string>\",\n  \"deviceRegistrationState\": \"approvalPending\",\n  \"isSupervised\": \"<boolean>\",\n  \"isEncrypted\": \"<boolean>\",\n  \"userPrincipalName\": \"<string>\",\n  \"model\": \"<string>\",\n  \"manufacturer\": \"<string>\",\n  \"imei\": \"<string>\",\n  \"serialNumber\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"androidSecurityPatchLevel\": \"<string>\",\n  \"userDisplayName\": \"<string>\",\n  \"wiFiMacAddress\": \"<string>\",\n  \"subscriberCarrier\": \"<string>\",\n  \"meid\": \"<string>\",\n  \"totalStorageSpaceInBytes\": \"<long>\",\n  \"freeStorageSpaceInBytes\": \"<long>\",\n  \"managedDeviceName\": \"<string>\",\n  \"partnerReportedThreatState\": \"secured\",\n  \"physicalMemoryInBytes\": \"<long>\",\n  \"enrollmentProfileName\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:11:45.000Z",
+                      "updatedAt": "2026-06-05T15:11:45.000Z",
+                      "uid": "35240-2e6ef1df-2341-4b04-92cc-e5e7bf625e83"
+                    },
+                    {
+                      "id": "7321b3cf-f4e9-4f32-bbe1-0e97d4918ce9",
+                      "name": "Not found. The specified resource does not exist.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/managedDevices/:managedDeviceId?$select=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "managedDevices",
+                            ":managedDeviceId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of properties to include in the response.",
+                              "key": "$select",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "managedDeviceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-06-05T15:11:45.000Z",
+                      "updatedAt": "2026-06-05T15:11:45.000Z",
+                      "uid": "35240-7321b3cf-f4e9-4f32-bbe1-0e97d4918ce9"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-94c9e3c9-4789-421c-b164-0a13a88d32d1"
+                },
+                {
+                  "name": "Microsoft Endpoint Configuration Management Update managed device",
+                  "id": "19d291c5-5c72-4f8f-8eae-604a7de3e648",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"deviceName\": \"<string>\",\n  \"managedDeviceOwnerType\": \"personal\",\n  \"enrolledDateTime\": \"<dateTime>\",\n  \"lastSyncDateTime\": \"<dateTime>\",\n  \"operatingSystem\": \"<string>\",\n  \"complianceState\": \"conflict\",\n  \"jailBroken\": \"<string>\",\n  \"managementAgent\": \"configurationManagerClientMdm\",\n  \"osVersion\": \"<string>\",\n  \"easActivated\": \"<boolean>\",\n  \"easDeviceId\": \"<string>\",\n  \"azureADRegistered\": \"<boolean>\",\n  \"deviceEnrollmentType\": \"deviceEnrollmentManager\",\n  \"emailAddress\": \"<string>\",\n  \"azureADDeviceId\": \"<string>\",\n  \"deviceRegistrationState\": \"approvalPending\",\n  \"isSupervised\": \"<boolean>\",\n  \"isEncrypted\": \"<boolean>\",\n  \"userPrincipalName\": \"<string>\",\n  \"model\": \"<string>\",\n  \"manufacturer\": \"<string>\",\n  \"imei\": \"<string>\",\n  \"serialNumber\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"androidSecurityPatchLevel\": \"<string>\",\n  \"userDisplayName\": \"<string>\",\n  \"wiFiMacAddress\": \"<string>\",\n  \"subscriberCarrier\": \"<string>\",\n  \"meid\": \"<string>\",\n  \"totalStorageSpaceInBytes\": \"<long>\",\n  \"freeStorageSpaceInBytes\": \"<long>\",\n  \"managedDeviceName\": \"<string>\",\n  \"partnerReportedThreatState\": \"secured\",\n  \"physicalMemoryInBytes\": \"<long>\",\n  \"enrollmentProfileName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/managedDevices/:managedDeviceId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "managedDevices",
+                        ":managedDeviceId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7f752cbe-0244-43ca-9a98-6236a7a5c2ff",
+                          "key": "managedDeviceId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Update the properties of a managedDevice object."
+                  },
+                  "response": [
+                    {
+                      "id": "f4bb416a-d126-45e9-b967-cf7b6954a1ff",
+                      "name": "Successfully updated managed device.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"deviceName\": \"<string>\",\n  \"managedDeviceOwnerType\": \"personal\",\n  \"enrolledDateTime\": \"<dateTime>\",\n  \"lastSyncDateTime\": \"<dateTime>\",\n  \"operatingSystem\": \"<string>\",\n  \"complianceState\": \"conflict\",\n  \"jailBroken\": \"<string>\",\n  \"managementAgent\": \"configurationManagerClientMdm\",\n  \"osVersion\": \"<string>\",\n  \"easActivated\": \"<boolean>\",\n  \"easDeviceId\": \"<string>\",\n  \"azureADRegistered\": \"<boolean>\",\n  \"deviceEnrollmentType\": \"deviceEnrollmentManager\",\n  \"emailAddress\": \"<string>\",\n  \"azureADDeviceId\": \"<string>\",\n  \"deviceRegistrationState\": \"approvalPending\",\n  \"isSupervised\": \"<boolean>\",\n  \"isEncrypted\": \"<boolean>\",\n  \"userPrincipalName\": \"<string>\",\n  \"model\": \"<string>\",\n  \"manufacturer\": \"<string>\",\n  \"imei\": \"<string>\",\n  \"serialNumber\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"androidSecurityPatchLevel\": \"<string>\",\n  \"userDisplayName\": \"<string>\",\n  \"wiFiMacAddress\": \"<string>\",\n  \"subscriberCarrier\": \"<string>\",\n  \"meid\": \"<string>\",\n  \"totalStorageSpaceInBytes\": \"<long>\",\n  \"freeStorageSpaceInBytes\": \"<long>\",\n  \"managedDeviceName\": \"<string>\",\n  \"partnerReportedThreatState\": \"secured\",\n  \"physicalMemoryInBytes\": \"<long>\",\n  \"enrollmentProfileName\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/managedDevices/:managedDeviceId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "managedDevices",
+                            ":managedDeviceId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "managedDeviceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"deviceName\": \"<string>\",\n  \"managedDeviceOwnerType\": \"personal\",\n  \"enrolledDateTime\": \"<dateTime>\",\n  \"lastSyncDateTime\": \"<dateTime>\",\n  \"operatingSystem\": \"<string>\",\n  \"complianceState\": \"conflict\",\n  \"jailBroken\": \"<string>\",\n  \"managementAgent\": \"configurationManagerClientMdm\",\n  \"osVersion\": \"<string>\",\n  \"easActivated\": \"<boolean>\",\n  \"easDeviceId\": \"<string>\",\n  \"azureADRegistered\": \"<boolean>\",\n  \"deviceEnrollmentType\": \"deviceEnrollmentManager\",\n  \"emailAddress\": \"<string>\",\n  \"azureADDeviceId\": \"<string>\",\n  \"deviceRegistrationState\": \"approvalPending\",\n  \"isSupervised\": \"<boolean>\",\n  \"isEncrypted\": \"<boolean>\",\n  \"userPrincipalName\": \"<string>\",\n  \"model\": \"<string>\",\n  \"manufacturer\": \"<string>\",\n  \"imei\": \"<string>\",\n  \"serialNumber\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"androidSecurityPatchLevel\": \"<string>\",\n  \"userDisplayName\": \"<string>\",\n  \"wiFiMacAddress\": \"<string>\",\n  \"subscriberCarrier\": \"<string>\",\n  \"meid\": \"<string>\",\n  \"totalStorageSpaceInBytes\": \"<long>\",\n  \"freeStorageSpaceInBytes\": \"<long>\",\n  \"managedDeviceName\": \"<string>\",\n  \"partnerReportedThreatState\": \"secured\",\n  \"physicalMemoryInBytes\": \"<long>\",\n  \"enrollmentProfileName\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:11:45.000Z",
+                      "updatedAt": "2026-06-05T15:11:45.000Z",
+                      "uid": "35240-f4bb416a-d126-45e9-b967-cf7b6954a1ff"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-19d291c5-5c72-4f8f-8eae-604a7de3e648"
+                },
+                {
+                  "name": "Microsoft Endpoint Configuration Management Delete managed device",
+                  "id": "1634b3d9-270d-42d8-ba51-5150243ba63d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/managedDevices/:managedDeviceId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "managedDevices",
+                        ":managedDeviceId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3e6dce0d-997f-4e81-aa9e-5db8087828d1",
+                          "key": "managedDeviceId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Deletes a managedDevice."
+                  },
+                  "response": [
+                    {
+                      "id": "e1a73609-9a0a-4739-aea8-031c060956ad",
+                      "name": "Successfully deleted.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/managedDevices/:managedDeviceId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "managedDevices",
+                            ":managedDeviceId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "managedDeviceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:11:45.000Z",
+                      "updatedAt": "2026-06-05T15:11:45.000Z",
+                      "uid": "35240-e1a73609-9a0a-4739-aea8-031c060956ad"
+                    },
+                    {
+                      "id": "04fb6090-ae6e-4db7-97db-fd5c05144c48",
+                      "name": "Not found. The specified resource does not exist.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/managedDevices/:managedDeviceId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "managedDevices",
+                            ":managedDeviceId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "managedDeviceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-06-05T15:11:45.000Z",
+                      "updatedAt": "2026-06-05T15:11:45.000Z",
+                      "uid": "35240-04fb6090-ae6e-4db7-97db-fd5c05144c48"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-1634b3d9-270d-42d8-ba51-5150243ba63d"
+                }
+              ],
+              "id": "29db9b9d-8df1-48ff-9ca2-15bce66d232e",
+              "createdAt": "2026-06-05T15:11:45.000Z",
+              "updatedAt": "2026-06-05T15:11:45.000Z",
+              "uid": "35240-29db9b9d-8df1-48ff-9ca2-15bce66d232e"
+            },
+            {
+              "name": "Microsoft Endpoint Configuration Management List managed devices",
+              "id": "175ce8e6-9678-421a-88ef-6de259f6ee45",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/deviceManagement/managedDevices?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&$orderby=<string>&$count=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "deviceManagement",
+                    "managedDevices"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of items to skip.",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include in the response.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Order results by a property.",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include count of items.",
+                      "key": "$count",
+                      "value": "<boolean>"
+                    }
+                  ]
+                },
+                "description": "List properties and relationships of the managedDevice objects enrolled in Intune."
+              },
+              "response": [
+                {
+                  "id": "251313ad-355c-443a-981f-8beafd8a594f",
+                  "name": "Successful response returning a collection of managed devices.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/managedDevices?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&$orderby=<string>&$count=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "managedDevices"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of items to skip.",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include in the response.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Order results by a property.",
+                          "key": "$orderby",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Include count of items.",
+                          "key": "$count",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"@odata.context\": \"<string>\",\n  \"@odata.count\": \"<integer>\",\n  \"@odata.nextLink\": \"<string>\",\n  \"value\": [\n    {\n      \"id\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"deviceName\": \"<string>\",\n      \"managedDeviceOwnerType\": \"unknown\",\n      \"enrolledDateTime\": \"<dateTime>\",\n      \"lastSyncDateTime\": \"<dateTime>\",\n      \"operatingSystem\": \"<string>\",\n      \"complianceState\": \"inGracePeriod\",\n      \"jailBroken\": \"<string>\",\n      \"managementAgent\": \"configurationManagerClient\",\n      \"osVersion\": \"<string>\",\n      \"easActivated\": \"<boolean>\",\n      \"easDeviceId\": \"<string>\",\n      \"azureADRegistered\": \"<boolean>\",\n      \"deviceEnrollmentType\": \"windowsAzureADJoinUsingDeviceAuth\",\n      \"emailAddress\": \"<string>\",\n      \"azureADDeviceId\": \"<string>\",\n      \"deviceRegistrationState\": \"unknown\",\n      \"isSupervised\": \"<boolean>\",\n      \"isEncrypted\": \"<boolean>\",\n      \"userPrincipalName\": \"<string>\",\n      \"model\": \"<string>\",\n      \"manufacturer\": \"<string>\",\n      \"imei\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"phoneNumber\": \"<string>\",\n      \"androidSecurityPatchLevel\": \"<string>\",\n      \"userDisplayName\": \"<string>\",\n      \"wiFiMacAddress\": \"<string>\",\n      \"subscriberCarrier\": \"<string>\",\n      \"meid\": \"<string>\",\n      \"totalStorageSpaceInBytes\": \"<long>\",\n      \"freeStorageSpaceInBytes\": \"<long>\",\n      \"managedDeviceName\": \"<string>\",\n      \"partnerReportedThreatState\": \"lowSeverity\",\n      \"physicalMemoryInBytes\": \"<long>\",\n      \"enrollmentProfileName\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"deviceName\": \"<string>\",\n      \"managedDeviceOwnerType\": \"personal\",\n      \"enrolledDateTime\": \"<dateTime>\",\n      \"lastSyncDateTime\": \"<dateTime>\",\n      \"operatingSystem\": \"<string>\",\n      \"complianceState\": \"conflict\",\n      \"jailBroken\": \"<string>\",\n      \"managementAgent\": \"eas\",\n      \"osVersion\": \"<string>\",\n      \"easActivated\": \"<boolean>\",\n      \"easDeviceId\": \"<string>\",\n      \"azureADRegistered\": \"<boolean>\",\n      \"deviceEnrollmentType\": \"userEnrollment\",\n      \"emailAddress\": \"<string>\",\n      \"azureADDeviceId\": \"<string>\",\n      \"deviceRegistrationState\": \"unknown\",\n      \"isSupervised\": \"<boolean>\",\n      \"isEncrypted\": \"<boolean>\",\n      \"userPrincipalName\": \"<string>\",\n      \"model\": \"<string>\",\n      \"manufacturer\": \"<string>\",\n      \"imei\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"phoneNumber\": \"<string>\",\n      \"androidSecurityPatchLevel\": \"<string>\",\n      \"userDisplayName\": \"<string>\",\n      \"wiFiMacAddress\": \"<string>\",\n      \"subscriberCarrier\": \"<string>\",\n      \"meid\": \"<string>\",\n      \"totalStorageSpaceInBytes\": \"<long>\",\n      \"freeStorageSpaceInBytes\": \"<long>\",\n      \"managedDeviceName\": \"<string>\",\n      \"partnerReportedThreatState\": \"highSeverity\",\n      \"physicalMemoryInBytes\": \"<long>\",\n      \"enrollmentProfileName\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-251313ad-355c-443a-981f-8beafd8a594f"
+                },
+                {
+                  "id": "f27b081c-4fa7-40ce-aada-5b90781ae072",
+                  "name": "Unauthorized. Authentication is required.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/managedDevices?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&$orderby=<string>&$count=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "managedDevices"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of items to skip.",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include in the response.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Order results by a property.",
+                          "key": "$orderby",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Include count of items.",
+                          "key": "$count",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-f27b081c-4fa7-40ce-aada-5b90781ae072"
+                },
+                {
+                  "id": "8ba6aaec-b1ca-4af0-a34e-f49a0cb8f48f",
+                  "name": "Forbidden. Insufficient permissions.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/managedDevices?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&$orderby=<string>&$count=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "managedDevices"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of items to skip.",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include in the response.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Order results by a property.",
+                          "key": "$orderby",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Include count of items.",
+                          "key": "$count",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-8ba6aaec-b1ca-4af0-a34e-f49a0cb8f48f"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:45.000Z",
+              "updatedAt": "2026-06-05T15:11:45.000Z",
+              "uid": "35240-175ce8e6-9678-421a-88ef-6de259f6ee45"
+            },
+            {
+              "name": "Microsoft Endpoint Configuration Management Create managed device",
+              "id": "cbf01134-faee-4ad9-846a-770a50ddbcbc",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"deviceName\": \"<string>\",\n  \"managedDeviceOwnerType\": \"personal\",\n  \"enrolledDateTime\": \"<dateTime>\",\n  \"lastSyncDateTime\": \"<dateTime>\",\n  \"operatingSystem\": \"<string>\",\n  \"complianceState\": \"conflict\",\n  \"jailBroken\": \"<string>\",\n  \"managementAgent\": \"configurationManagerClientMdm\",\n  \"osVersion\": \"<string>\",\n  \"easActivated\": \"<boolean>\",\n  \"easDeviceId\": \"<string>\",\n  \"azureADRegistered\": \"<boolean>\",\n  \"deviceEnrollmentType\": \"deviceEnrollmentManager\",\n  \"emailAddress\": \"<string>\",\n  \"azureADDeviceId\": \"<string>\",\n  \"deviceRegistrationState\": \"approvalPending\",\n  \"isSupervised\": \"<boolean>\",\n  \"isEncrypted\": \"<boolean>\",\n  \"userPrincipalName\": \"<string>\",\n  \"model\": \"<string>\",\n  \"manufacturer\": \"<string>\",\n  \"imei\": \"<string>\",\n  \"serialNumber\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"androidSecurityPatchLevel\": \"<string>\",\n  \"userDisplayName\": \"<string>\",\n  \"wiFiMacAddress\": \"<string>\",\n  \"subscriberCarrier\": \"<string>\",\n  \"meid\": \"<string>\",\n  \"totalStorageSpaceInBytes\": \"<long>\",\n  \"freeStorageSpaceInBytes\": \"<long>\",\n  \"managedDeviceName\": \"<string>\",\n  \"partnerReportedThreatState\": \"secured\",\n  \"physicalMemoryInBytes\": \"<long>\",\n  \"enrollmentProfileName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/deviceManagement/managedDevices",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "deviceManagement",
+                    "managedDevices"
+                  ]
+                },
+                "description": "Create a new managedDevice object."
+              },
+              "response": [
+                {
+                  "id": "469e43bc-acc4-4db9-aa89-0fad24b9419c",
+                  "name": "Successfully created managed device.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"deviceName\": \"<string>\",\n  \"managedDeviceOwnerType\": \"personal\",\n  \"enrolledDateTime\": \"<dateTime>\",\n  \"lastSyncDateTime\": \"<dateTime>\",\n  \"operatingSystem\": \"<string>\",\n  \"complianceState\": \"conflict\",\n  \"jailBroken\": \"<string>\",\n  \"managementAgent\": \"configurationManagerClientMdm\",\n  \"osVersion\": \"<string>\",\n  \"easActivated\": \"<boolean>\",\n  \"easDeviceId\": \"<string>\",\n  \"azureADRegistered\": \"<boolean>\",\n  \"deviceEnrollmentType\": \"deviceEnrollmentManager\",\n  \"emailAddress\": \"<string>\",\n  \"azureADDeviceId\": \"<string>\",\n  \"deviceRegistrationState\": \"approvalPending\",\n  \"isSupervised\": \"<boolean>\",\n  \"isEncrypted\": \"<boolean>\",\n  \"userPrincipalName\": \"<string>\",\n  \"model\": \"<string>\",\n  \"manufacturer\": \"<string>\",\n  \"imei\": \"<string>\",\n  \"serialNumber\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"androidSecurityPatchLevel\": \"<string>\",\n  \"userDisplayName\": \"<string>\",\n  \"wiFiMacAddress\": \"<string>\",\n  \"subscriberCarrier\": \"<string>\",\n  \"meid\": \"<string>\",\n  \"totalStorageSpaceInBytes\": \"<long>\",\n  \"freeStorageSpaceInBytes\": \"<long>\",\n  \"managedDeviceName\": \"<string>\",\n  \"partnerReportedThreatState\": \"secured\",\n  \"physicalMemoryInBytes\": \"<long>\",\n  \"enrollmentProfileName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/managedDevices",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "managedDevices"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"deviceName\": \"<string>\",\n  \"managedDeviceOwnerType\": \"personal\",\n  \"enrolledDateTime\": \"<dateTime>\",\n  \"lastSyncDateTime\": \"<dateTime>\",\n  \"operatingSystem\": \"<string>\",\n  \"complianceState\": \"conflict\",\n  \"jailBroken\": \"<string>\",\n  \"managementAgent\": \"configurationManagerClientMdm\",\n  \"osVersion\": \"<string>\",\n  \"easActivated\": \"<boolean>\",\n  \"easDeviceId\": \"<string>\",\n  \"azureADRegistered\": \"<boolean>\",\n  \"deviceEnrollmentType\": \"deviceEnrollmentManager\",\n  \"emailAddress\": \"<string>\",\n  \"azureADDeviceId\": \"<string>\",\n  \"deviceRegistrationState\": \"approvalPending\",\n  \"isSupervised\": \"<boolean>\",\n  \"isEncrypted\": \"<boolean>\",\n  \"userPrincipalName\": \"<string>\",\n  \"model\": \"<string>\",\n  \"manufacturer\": \"<string>\",\n  \"imei\": \"<string>\",\n  \"serialNumber\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"androidSecurityPatchLevel\": \"<string>\",\n  \"userDisplayName\": \"<string>\",\n  \"wiFiMacAddress\": \"<string>\",\n  \"subscriberCarrier\": \"<string>\",\n  \"meid\": \"<string>\",\n  \"totalStorageSpaceInBytes\": \"<long>\",\n  \"freeStorageSpaceInBytes\": \"<long>\",\n  \"managedDeviceName\": \"<string>\",\n  \"partnerReportedThreatState\": \"secured\",\n  \"physicalMemoryInBytes\": \"<long>\",\n  \"enrollmentProfileName\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-469e43bc-acc4-4db9-aa89-0fad24b9419c"
+                },
+                {
+                  "id": "643b1493-f5ac-49ab-9483-c3bbcdd80e6e",
+                  "name": "Bad request. The request body or parameters are invalid.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"deviceName\": \"<string>\",\n  \"managedDeviceOwnerType\": \"personal\",\n  \"enrolledDateTime\": \"<dateTime>\",\n  \"lastSyncDateTime\": \"<dateTime>\",\n  \"operatingSystem\": \"<string>\",\n  \"complianceState\": \"conflict\",\n  \"jailBroken\": \"<string>\",\n  \"managementAgent\": \"configurationManagerClientMdm\",\n  \"osVersion\": \"<string>\",\n  \"easActivated\": \"<boolean>\",\n  \"easDeviceId\": \"<string>\",\n  \"azureADRegistered\": \"<boolean>\",\n  \"deviceEnrollmentType\": \"deviceEnrollmentManager\",\n  \"emailAddress\": \"<string>\",\n  \"azureADDeviceId\": \"<string>\",\n  \"deviceRegistrationState\": \"approvalPending\",\n  \"isSupervised\": \"<boolean>\",\n  \"isEncrypted\": \"<boolean>\",\n  \"userPrincipalName\": \"<string>\",\n  \"model\": \"<string>\",\n  \"manufacturer\": \"<string>\",\n  \"imei\": \"<string>\",\n  \"serialNumber\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"androidSecurityPatchLevel\": \"<string>\",\n  \"userDisplayName\": \"<string>\",\n  \"wiFiMacAddress\": \"<string>\",\n  \"subscriberCarrier\": \"<string>\",\n  \"meid\": \"<string>\",\n  \"totalStorageSpaceInBytes\": \"<long>\",\n  \"freeStorageSpaceInBytes\": \"<long>\",\n  \"managedDeviceName\": \"<string>\",\n  \"partnerReportedThreatState\": \"secured\",\n  \"physicalMemoryInBytes\": \"<long>\",\n  \"enrollmentProfileName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/managedDevices",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "managedDevices"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-643b1493-f5ac-49ab-9483-c3bbcdd80e6e"
+                },
+                {
+                  "id": "b13df011-8c8c-4965-b5ab-87714bd7e767",
+                  "name": "Unauthorized. Authentication is required.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"deviceName\": \"<string>\",\n  \"managedDeviceOwnerType\": \"personal\",\n  \"enrolledDateTime\": \"<dateTime>\",\n  \"lastSyncDateTime\": \"<dateTime>\",\n  \"operatingSystem\": \"<string>\",\n  \"complianceState\": \"conflict\",\n  \"jailBroken\": \"<string>\",\n  \"managementAgent\": \"configurationManagerClientMdm\",\n  \"osVersion\": \"<string>\",\n  \"easActivated\": \"<boolean>\",\n  \"easDeviceId\": \"<string>\",\n  \"azureADRegistered\": \"<boolean>\",\n  \"deviceEnrollmentType\": \"deviceEnrollmentManager\",\n  \"emailAddress\": \"<string>\",\n  \"azureADDeviceId\": \"<string>\",\n  \"deviceRegistrationState\": \"approvalPending\",\n  \"isSupervised\": \"<boolean>\",\n  \"isEncrypted\": \"<boolean>\",\n  \"userPrincipalName\": \"<string>\",\n  \"model\": \"<string>\",\n  \"manufacturer\": \"<string>\",\n  \"imei\": \"<string>\",\n  \"serialNumber\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"androidSecurityPatchLevel\": \"<string>\",\n  \"userDisplayName\": \"<string>\",\n  \"wiFiMacAddress\": \"<string>\",\n  \"subscriberCarrier\": \"<string>\",\n  \"meid\": \"<string>\",\n  \"totalStorageSpaceInBytes\": \"<long>\",\n  \"freeStorageSpaceInBytes\": \"<long>\",\n  \"managedDeviceName\": \"<string>\",\n  \"partnerReportedThreatState\": \"secured\",\n  \"physicalMemoryInBytes\": \"<long>\",\n  \"enrollmentProfileName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/managedDevices",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "managedDevices"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-b13df011-8c8c-4965-b5ab-87714bd7e767"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:45.000Z",
+              "updatedAt": "2026-06-05T15:11:45.000Z",
+              "uid": "35240-cbf01134-faee-4ad9-846a-770a50ddbcbc"
+            }
+          ],
+          "id": "66a6d570-3041-4d19-96e8-62306195c274",
+          "createdAt": "2026-06-05T15:11:45.000Z",
+          "updatedAt": "2026-06-05T15:11:45.000Z",
+          "uid": "35240-66a6d570-3041-4d19-96e8-62306195c274"
+        },
+        {
+          "name": "deviceCompliancePolicies",
+          "item": [
+            {
+              "name": "{deviceCompliancePolicyId}",
+              "item": [
+                {
+                  "name": "assign",
+                  "item": [
+                    {
+                      "name": "Microsoft Endpoint Configuration Management Assign compliance policy",
+                      "id": "10f40187-2c02-4c9e-bd1b-08537f1f8725",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"assignments\": [\n    {\n      \"id\": \"<string>\",\n      \"target\": {\n        \"@odata.type\": \"<string>\",\n        \"groupId\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"target\": {\n        \"@odata.type\": \"<string>\",\n        \"groupId\": \"<string>\"\n      }\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/deviceCompliancePolicies/:deviceCompliancePolicyId/assign",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "deviceCompliancePolicies",
+                            ":deviceCompliancePolicyId",
+                            "assign"
+                          ],
+                          "variable": [
+                            {
+                              "id": "84143039-0f4d-4b60-89b0-bdc20594c1f6",
+                              "key": "deviceCompliancePolicyId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Assign a device compliance policy to groups."
+                      },
+                      "response": [
+                        {
+                          "id": "de92fd05-7094-4a6a-bd35-155f8b490536",
+                          "name": "Successfully assigned compliance policy.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"assignments\": [\n    {\n      \"id\": \"<string>\",\n      \"target\": {\n        \"@odata.type\": \"<string>\",\n        \"groupId\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"target\": {\n        \"@odata.type\": \"<string>\",\n        \"groupId\": \"<string>\"\n      }\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/deviceManagement/deviceCompliancePolicies/:deviceCompliancePolicyId/assign",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "deviceManagement",
+                                "deviceCompliancePolicies",
+                                ":deviceCompliancePolicyId",
+                                "assign"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deviceCompliancePolicyId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:11:45.000Z",
+                          "updatedAt": "2026-06-05T15:11:45.000Z",
+                          "uid": "35240-de92fd05-7094-4a6a-bd35-155f8b490536"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:11:45.000Z",
+                      "updatedAt": "2026-06-05T15:11:45.000Z",
+                      "uid": "35240-10f40187-2c02-4c9e-bd1b-08537f1f8725"
+                    }
+                  ],
+                  "id": "88b84441-4bf2-4288-90b5-e65ca6345da6",
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-88b84441-4bf2-4288-90b5-e65ca6345da6"
+                },
+                {
+                  "name": "Microsoft Endpoint Configuration Management Get device compliance policy",
+                  "id": "a5790ea6-2834-4ceb-b95e-f252c2eeb76a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/deviceCompliancePolicies/:deviceCompliancePolicyId?$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "deviceCompliancePolicies",
+                        ":deviceCompliancePolicyId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of properties to include in the response.",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "ce114a50-dc7b-4d06-909e-158e247cd938",
+                          "key": "deviceCompliancePolicyId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Read properties and relationships of a deviceCompliancePolicy object."
+                  },
+                  "response": [
+                    {
+                      "id": "92c91ada-cdec-41d6-97b7-f840a94e0cd6",
+                      "name": "Successful response returning the compliance policy.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/deviceCompliancePolicies/:deviceCompliancePolicyId?$select=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "deviceCompliancePolicies",
+                            ":deviceCompliancePolicyId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of properties to include in the response.",
+                              "key": "$select",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "deviceCompliancePolicyId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"createdDateTime\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"lastModifiedDateTime\": \"<dateTime>\",\n  \"displayName\": \"<string>\",\n  \"version\": \"<integer>\"\n}",
+                      "createdAt": "2026-06-05T15:11:45.000Z",
+                      "updatedAt": "2026-06-05T15:11:45.000Z",
+                      "uid": "35240-92c91ada-cdec-41d6-97b7-f840a94e0cd6"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-a5790ea6-2834-4ceb-b95e-f252c2eeb76a"
+                },
+                {
+                  "name": "Microsoft Endpoint Configuration Management Update device compliance policy",
+                  "id": "f7477e01-b0f6-4ac5-8ed7-73db13754594",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"createdDateTime\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"lastModifiedDateTime\": \"<dateTime>\",\n  \"displayName\": \"<string>\",\n  \"version\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/deviceCompliancePolicies/:deviceCompliancePolicyId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "deviceCompliancePolicies",
+                        ":deviceCompliancePolicyId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ba8c9ef7-c4ed-44c1-b1bf-831441ea2215",
+                          "key": "deviceCompliancePolicyId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Update the properties of a deviceCompliancePolicy object."
+                  },
+                  "response": [
+                    {
+                      "id": "c51a8530-86ab-4aa8-8e04-72783a8fe49d",
+                      "name": "Successfully updated compliance policy.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"createdDateTime\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"lastModifiedDateTime\": \"<dateTime>\",\n  \"displayName\": \"<string>\",\n  \"version\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/deviceCompliancePolicies/:deviceCompliancePolicyId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "deviceCompliancePolicies",
+                            ":deviceCompliancePolicyId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "deviceCompliancePolicyId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:11:45.000Z",
+                      "updatedAt": "2026-06-05T15:11:45.000Z",
+                      "uid": "35240-c51a8530-86ab-4aa8-8e04-72783a8fe49d"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-f7477e01-b0f6-4ac5-8ed7-73db13754594"
+                },
+                {
+                  "name": "Microsoft Endpoint Configuration Management Delete device compliance policy",
+                  "id": "f95c515e-ea59-4e70-8b40-40dc9fa8c377",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/deviceCompliancePolicies/:deviceCompliancePolicyId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "deviceCompliancePolicies",
+                        ":deviceCompliancePolicyId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "0e7ba6a1-7d55-461e-bec5-74c1c0c1a7c4",
+                          "key": "deviceCompliancePolicyId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Deletes a deviceCompliancePolicy."
+                  },
+                  "response": [
+                    {
+                      "id": "097e7a51-059d-494e-b6bc-7b013077477c",
+                      "name": "Successfully deleted.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/deviceCompliancePolicies/:deviceCompliancePolicyId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "deviceCompliancePolicies",
+                            ":deviceCompliancePolicyId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "deviceCompliancePolicyId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:11:45.000Z",
+                      "updatedAt": "2026-06-05T15:11:45.000Z",
+                      "uid": "35240-097e7a51-059d-494e-b6bc-7b013077477c"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-f95c515e-ea59-4e70-8b40-40dc9fa8c377"
+                }
+              ],
+              "id": "d8b4ebe6-40b8-4215-90ac-835b8ca49138",
+              "createdAt": "2026-06-05T15:11:45.000Z",
+              "updatedAt": "2026-06-05T15:11:45.000Z",
+              "uid": "35240-d8b4ebe6-40b8-4215-90ac-835b8ca49138"
+            },
+            {
+              "name": "Microsoft Endpoint Configuration Management List device compliance policies",
+              "id": "16e9b5f6-d207-4666-9d2d-9c4ea4454d8e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/deviceManagement/deviceCompliancePolicies?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&$orderby=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "deviceManagement",
+                    "deviceCompliancePolicies"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of items to skip.",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include in the response.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Order results by a property.",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "List properties and relationships of the deviceCompliancePolicy objects."
+              },
+              "response": [
+                {
+                  "id": "e48ac756-9be7-43b5-a4cd-26af5c16c329",
+                  "name": "Successful response returning compliance policies.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/deviceCompliancePolicies?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&$orderby=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "deviceCompliancePolicies"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of items to skip.",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include in the response.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Order results by a property.",
+                          "key": "$orderby",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"@odata.context\": \"<string>\",\n  \"value\": [\n    {\n      \"id\": \"<string>\",\n      \"createdDateTime\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"lastModifiedDateTime\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"version\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"createdDateTime\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"lastModifiedDateTime\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"version\": \"<integer>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-e48ac756-9be7-43b5-a4cd-26af5c16c329"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:45.000Z",
+              "updatedAt": "2026-06-05T15:11:45.000Z",
+              "uid": "35240-16e9b5f6-d207-4666-9d2d-9c4ea4454d8e"
+            },
+            {
+              "name": "Microsoft Endpoint Configuration Management Create device compliance policy",
+              "id": "f4b745cd-cc99-47ba-9129-ec3648bcb1f0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"createdDateTime\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"lastModifiedDateTime\": \"<dateTime>\",\n  \"displayName\": \"<string>\",\n  \"version\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/deviceManagement/deviceCompliancePolicies",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "deviceManagement",
+                    "deviceCompliancePolicies"
+                  ]
+                },
+                "description": "Create a new deviceCompliancePolicy object."
+              },
+              "response": [
+                {
+                  "id": "d4e51702-8a06-4a38-b99b-446cb9f316c7",
+                  "name": "Successfully created compliance policy.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"createdDateTime\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"lastModifiedDateTime\": \"<dateTime>\",\n  \"displayName\": \"<string>\",\n  \"version\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/deviceCompliancePolicies",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "deviceCompliancePolicies"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"createdDateTime\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"lastModifiedDateTime\": \"<dateTime>\",\n  \"displayName\": \"<string>\",\n  \"version\": \"<integer>\"\n}",
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-d4e51702-8a06-4a38-b99b-446cb9f316c7"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:45.000Z",
+              "updatedAt": "2026-06-05T15:11:45.000Z",
+              "uid": "35240-f4b745cd-cc99-47ba-9129-ec3648bcb1f0"
+            }
+          ],
+          "id": "9e854f6a-d11b-434c-b157-09ea05a8e5fe",
+          "createdAt": "2026-06-05T15:11:45.000Z",
+          "updatedAt": "2026-06-05T15:11:45.000Z",
+          "uid": "35240-9e854f6a-d11b-434c-b157-09ea05a8e5fe"
+        },
+        {
+          "name": "deviceConfigurations",
+          "item": [
+            {
+              "name": "{deviceConfigurationId}",
+              "item": [
+                {
+                  "name": "assign",
+                  "item": [
+                    {
+                      "name": "Microsoft Endpoint Configuration Management Assign device configuration",
+                      "id": "d97db5d7-1b68-4d40-a6ad-db12edcdcf58",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"assignments\": [\n    {\n      \"id\": \"<string>\",\n      \"target\": {\n        \"@odata.type\": \"<string>\",\n        \"groupId\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"target\": {\n        \"@odata.type\": \"<string>\",\n        \"groupId\": \"<string>\"\n      }\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/deviceConfigurations/:deviceConfigurationId/assign",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "deviceConfigurations",
+                            ":deviceConfigurationId",
+                            "assign"
+                          ],
+                          "variable": [
+                            {
+                              "id": "c55e58ad-691b-48b3-906d-f5a504581695",
+                              "key": "deviceConfigurationId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Assign a device configuration profile to groups."
+                      },
+                      "response": [
+                        {
+                          "id": "e248f6d3-0c60-42bc-b894-59681805718d",
+                          "name": "Successfully assigned device configuration.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"assignments\": [\n    {\n      \"id\": \"<string>\",\n      \"target\": {\n        \"@odata.type\": \"<string>\",\n        \"groupId\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"target\": {\n        \"@odata.type\": \"<string>\",\n        \"groupId\": \"<string>\"\n      }\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/deviceManagement/deviceConfigurations/:deviceConfigurationId/assign",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "deviceManagement",
+                                "deviceConfigurations",
+                                ":deviceConfigurationId",
+                                "assign"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deviceConfigurationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:11:45.000Z",
+                          "updatedAt": "2026-06-05T15:11:45.000Z",
+                          "uid": "35240-e248f6d3-0c60-42bc-b894-59681805718d"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:11:45.000Z",
+                      "updatedAt": "2026-06-05T15:11:45.000Z",
+                      "uid": "35240-d97db5d7-1b68-4d40-a6ad-db12edcdcf58"
+                    }
+                  ],
+                  "id": "51aa8a79-e2b9-496f-aa69-b055011fdf11",
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-51aa8a79-e2b9-496f-aa69-b055011fdf11"
+                },
+                {
+                  "name": "Microsoft Endpoint Configuration Management Get device configuration",
+                  "id": "cb44f377-7e86-48f6-aa6b-b820fe488969",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/deviceConfigurations/:deviceConfigurationId?$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "deviceConfigurations",
+                        ":deviceConfigurationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of properties to include in the response.",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "10a10e66-bafe-4e18-b0a7-a9fed61f27dc",
+                          "key": "deviceConfigurationId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Read properties and relationships of a deviceConfiguration object."
+                  },
+                  "response": [
+                    {
+                      "id": "1ecbc8fa-a2bc-4f25-8e9f-cf510fe7f7d3",
+                      "name": "Successful response returning the device configuration.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/deviceConfigurations/:deviceConfigurationId?$select=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "deviceConfigurations",
+                            ":deviceConfigurationId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of properties to include in the response.",
+                              "key": "$select",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "deviceConfigurationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"lastModifiedDateTime\": \"<dateTime>\",\n  \"createdDateTime\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"version\": \"<integer>\"\n}",
+                      "createdAt": "2026-06-05T15:11:45.000Z",
+                      "updatedAt": "2026-06-05T15:11:45.000Z",
+                      "uid": "35240-1ecbc8fa-a2bc-4f25-8e9f-cf510fe7f7d3"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-cb44f377-7e86-48f6-aa6b-b820fe488969"
+                },
+                {
+                  "name": "Microsoft Endpoint Configuration Management Update device configuration",
+                  "id": "b704ae9e-e771-41fd-9836-9e6ababfe94c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"lastModifiedDateTime\": \"<dateTime>\",\n  \"createdDateTime\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"version\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/deviceConfigurations/:deviceConfigurationId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "deviceConfigurations",
+                        ":deviceConfigurationId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "1eb03aa6-a961-46c0-874d-f58540e08281",
+                          "key": "deviceConfigurationId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Update the properties of a deviceConfiguration object."
+                  },
+                  "response": [
+                    {
+                      "id": "52d7f929-8432-4565-b8f8-cc9356c4a77d",
+                      "name": "Successfully updated device configuration.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"lastModifiedDateTime\": \"<dateTime>\",\n  \"createdDateTime\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"version\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/deviceConfigurations/:deviceConfigurationId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "deviceConfigurations",
+                            ":deviceConfigurationId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "deviceConfigurationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:11:45.000Z",
+                      "updatedAt": "2026-06-05T15:11:45.000Z",
+                      "uid": "35240-52d7f929-8432-4565-b8f8-cc9356c4a77d"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-b704ae9e-e771-41fd-9836-9e6ababfe94c"
+                },
+                {
+                  "name": "Microsoft Endpoint Configuration Management Delete device configuration",
+                  "id": "6c857730-7aa1-4314-9ffe-14cfcf141fd7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/deviceConfigurations/:deviceConfigurationId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "deviceConfigurations",
+                        ":deviceConfigurationId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f21d0103-b910-4520-be31-61d3ad9c7f1c",
+                          "key": "deviceConfigurationId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Deletes a deviceConfiguration."
+                  },
+                  "response": [
+                    {
+                      "id": "f7fce94e-a302-4da9-b352-4ba677ed100e",
+                      "name": "Successfully deleted.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceManagement/deviceConfigurations/:deviceConfigurationId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceManagement",
+                            "deviceConfigurations",
+                            ":deviceConfigurationId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "deviceConfigurationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:11:45.000Z",
+                      "updatedAt": "2026-06-05T15:11:45.000Z",
+                      "uid": "35240-f7fce94e-a302-4da9-b352-4ba677ed100e"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-6c857730-7aa1-4314-9ffe-14cfcf141fd7"
+                }
+              ],
+              "id": "3c5dea46-6cd0-4088-97cc-554a4ddd70e1",
+              "createdAt": "2026-06-05T15:11:45.000Z",
+              "updatedAt": "2026-06-05T15:11:45.000Z",
+              "uid": "35240-3c5dea46-6cd0-4088-97cc-554a4ddd70e1"
+            },
+            {
+              "name": "Microsoft Endpoint Configuration Management List device configurations",
+              "id": "c2b7418b-7769-4088-95c0-d42a1c6b5a05",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/deviceManagement/deviceConfigurations?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&$orderby=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "deviceManagement",
+                    "deviceConfigurations"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of items to skip.",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include in the response.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Order results by a property.",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "List properties and relationships of the deviceConfiguration objects."
+              },
+              "response": [
+                {
+                  "id": "dabec9b0-36b9-41e6-8f9f-cf9fd3ce33e3",
+                  "name": "Successful response returning device configurations.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/deviceConfigurations?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&$orderby=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "deviceConfigurations"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of items to skip.",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include in the response.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Order results by a property.",
+                          "key": "$orderby",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"@odata.context\": \"<string>\",\n  \"value\": [\n    {\n      \"id\": \"<string>\",\n      \"lastModifiedDateTime\": \"<dateTime>\",\n      \"createdDateTime\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"version\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"lastModifiedDateTime\": \"<dateTime>\",\n      \"createdDateTime\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"version\": \"<integer>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-dabec9b0-36b9-41e6-8f9f-cf9fd3ce33e3"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:45.000Z",
+              "updatedAt": "2026-06-05T15:11:45.000Z",
+              "uid": "35240-c2b7418b-7769-4088-95c0-d42a1c6b5a05"
+            },
+            {
+              "name": "Microsoft Endpoint Configuration Management Create device configuration",
+              "id": "e6d5edc0-0953-4f9d-8ccb-47a66f57b04f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"lastModifiedDateTime\": \"<dateTime>\",\n  \"createdDateTime\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"version\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/deviceManagement/deviceConfigurations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "deviceManagement",
+                    "deviceConfigurations"
+                  ]
+                },
+                "description": "Create a new deviceConfiguration object."
+              },
+              "response": [
+                {
+                  "id": "296f04ec-db5a-4cfe-8d09-ee216f809c5b",
+                  "name": "Successfully created device configuration.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"lastModifiedDateTime\": \"<dateTime>\",\n  \"createdDateTime\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"version\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/deviceConfigurations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "deviceConfigurations"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"lastModifiedDateTime\": \"<dateTime>\",\n  \"createdDateTime\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"version\": \"<integer>\"\n}",
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-296f04ec-db5a-4cfe-8d09-ee216f809c5b"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:45.000Z",
+              "updatedAt": "2026-06-05T15:11:45.000Z",
+              "uid": "35240-e6d5edc0-0953-4f9d-8ccb-47a66f57b04f"
+            }
+          ],
+          "id": "9f9874e5-69d5-4eb4-ad39-3ea47a4884e3",
+          "createdAt": "2026-06-05T15:11:45.000Z",
+          "updatedAt": "2026-06-05T15:11:45.000Z",
+          "uid": "35240-9f9874e5-69d5-4eb4-ad39-3ea47a4884e3"
+        },
+        {
+          "name": "deviceCompliancePolicyDeviceStateSummary",
+          "item": [
+            {
+              "name": "Microsoft Endpoint Configuration Management Get compliance state summary",
+              "id": "0907b69e-b061-4edd-87b4-869b652ae4a0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/deviceManagement/deviceCompliancePolicyDeviceStateSummary",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "deviceManagement",
+                    "deviceCompliancePolicyDeviceStateSummary"
+                  ]
+                },
+                "description": "Read properties of the deviceCompliancePolicyDeviceStateSummary object providing a summary of device compliance states across the tenant."
+              },
+              "response": [
+                {
+                  "id": "0a90a445-f801-4424-bc69-1ac619b2155a",
+                  "name": "Successful response returning compliance state summary.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceManagement/deviceCompliancePolicyDeviceStateSummary",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceManagement",
+                        "deviceCompliancePolicyDeviceStateSummary"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"inGracePeriodCount\": \"<integer>\",\n  \"configManagerCount\": \"<integer>\",\n  \"compliantDeviceCount\": \"<integer>\",\n  \"nonCompliantDeviceCount\": \"<integer>\",\n  \"remediatedDeviceCount\": \"<integer>\",\n  \"errorDeviceCount\": \"<integer>\",\n  \"conflictDeviceCount\": \"<integer>\",\n  \"unknownDeviceCount\": \"<integer>\",\n  \"notApplicableDeviceCount\": \"<integer>\"\n}",
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-0a90a445-f801-4424-bc69-1ac619b2155a"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:45.000Z",
+              "updatedAt": "2026-06-05T15:11:45.000Z",
+              "uid": "35240-0907b69e-b061-4edd-87b4-869b652ae4a0"
+            }
+          ],
+          "id": "c0eaaccf-9dca-4ef0-ac08-f12080b660d0",
+          "createdAt": "2026-06-05T15:11:45.000Z",
+          "updatedAt": "2026-06-05T15:11:45.000Z",
+          "uid": "35240-c0eaaccf-9dca-4ef0-ac08-f12080b660d0"
+        }
+      ],
+      "id": "1a7f485b-6b99-4681-8419-0f7ee4d02193",
+      "createdAt": "2026-06-05T15:11:45.000Z",
+      "updatedAt": "2026-06-05T15:11:45.000Z",
+      "uid": "35240-1a7f485b-6b99-4681-8419-0f7ee4d02193"
+    },
+    {
+      "name": "deviceAppManagement",
+      "item": [
+        {
+          "name": "mobileApps",
+          "item": [
+            {
+              "name": "{mobileAppId}",
+              "item": [
+                {
+                  "name": "assign",
+                  "item": [
+                    {
+                      "name": "Microsoft Endpoint Configuration Management Assign mobile app",
+                      "id": "ff2a8444-37d1-4e66-accf-dc74023fa1e8",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"mobileAppAssignments\": [\n    {\n      \"id\": \"<string>\",\n      \"intent\": \"available\",\n      \"target\": {\n        \"@odata.type\": \"<string>\",\n        \"groupId\": \"<string>\"\n      },\n      \"settings\": {}\n    },\n    {\n      \"id\": \"<string>\",\n      \"intent\": \"required\",\n      \"target\": {\n        \"@odata.type\": \"<string>\",\n        \"groupId\": \"<string>\"\n      },\n      \"settings\": {}\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceAppManagement/mobileApps/:mobileAppId/assign",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceAppManagement",
+                            "mobileApps",
+                            ":mobileAppId",
+                            "assign"
+                          ],
+                          "variable": [
+                            {
+                              "id": "b649ee52-52bb-4e3a-9501-bd3652e7806c",
+                              "key": "mobileAppId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Assign a mobile app to groups."
+                      },
+                      "response": [
+                        {
+                          "id": "c16de297-84ee-4196-9ff6-cf5c0c1bbc56",
+                          "name": "Successfully assigned mobile app.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"mobileAppAssignments\": [\n    {\n      \"id\": \"<string>\",\n      \"intent\": \"available\",\n      \"target\": {\n        \"@odata.type\": \"<string>\",\n        \"groupId\": \"<string>\"\n      },\n      \"settings\": {}\n    },\n    {\n      \"id\": \"<string>\",\n      \"intent\": \"required\",\n      \"target\": {\n        \"@odata.type\": \"<string>\",\n        \"groupId\": \"<string>\"\n      },\n      \"settings\": {}\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/deviceAppManagement/mobileApps/:mobileAppId/assign",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "deviceAppManagement",
+                                "mobileApps",
+                                ":mobileAppId",
+                                "assign"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "mobileAppId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:11:45.000Z",
+                          "updatedAt": "2026-06-05T15:11:45.000Z",
+                          "uid": "35240-c16de297-84ee-4196-9ff6-cf5c0c1bbc56"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:11:45.000Z",
+                      "updatedAt": "2026-06-05T15:11:45.000Z",
+                      "uid": "35240-ff2a8444-37d1-4e66-accf-dc74023fa1e8"
+                    }
+                  ],
+                  "id": "4b5d68e7-2b9c-4634-a768-8904c52e9aef",
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-4b5d68e7-2b9c-4634-a768-8904c52e9aef"
+                },
+                {
+                  "name": "deviceStatuses",
+                  "item": [
+                    {
+                      "name": "Microsoft Endpoint Configuration Management List app device statuses",
+                      "id": "21b44ca1-cee5-45f0-92ee-db6ee77f6394",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceAppManagement/mobileApps/:mobileAppId/deviceStatuses?$top=<integer>&$select=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceAppManagement",
+                            "mobileApps",
+                            ":mobileAppId",
+                            "deviceStatuses"
+                          ],
+                          "query": [
+                            {
+                              "description": "Number of items to return.",
+                              "key": "$top",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Comma-separated list of properties to include in the response.",
+                              "key": "$select",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "d02e7833-d876-4346-bfa4-21c871bc335d",
+                              "key": "mobileAppId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Get the installation status of a mobile app across devices."
+                      },
+                      "response": [
+                        {
+                          "id": "c000549d-4dc5-4070-a8f3-592460f70c48",
+                          "name": "Successful response returning device statuses.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/deviceAppManagement/mobileApps/:mobileAppId/deviceStatuses?$top=<integer>&$select=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "deviceAppManagement",
+                                "mobileApps",
+                                ":mobileAppId",
+                                "deviceStatuses"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Number of items to return.",
+                                  "key": "$top",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Comma-separated list of properties to include in the response.",
+                                  "key": "$select",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "mobileAppId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": [\n    {\n      \"id\": \"<string>\",\n      \"deviceId\": \"<string>\",\n      \"installState\": \"<string>\",\n      \"installStateDetail\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"deviceId\": \"<string>\",\n      \"installState\": \"<string>\",\n      \"installStateDetail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:11:45.000Z",
+                          "updatedAt": "2026-06-05T15:11:45.000Z",
+                          "uid": "35240-c000549d-4dc5-4070-a8f3-592460f70c48"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:11:45.000Z",
+                      "updatedAt": "2026-06-05T15:11:45.000Z",
+                      "uid": "35240-21b44ca1-cee5-45f0-92ee-db6ee77f6394"
+                    }
+                  ],
+                  "id": "dc20b6a9-5b78-46e2-b27f-f6ed43f36afa",
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-dc20b6a9-5b78-46e2-b27f-f6ed43f36afa"
+                },
+                {
+                  "name": "Microsoft Endpoint Configuration Management Get mobile app",
+                  "id": "3c493120-730d-4823-acce-202a16b17924",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceAppManagement/mobileApps/:mobileAppId?$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceAppManagement",
+                        "mobileApps",
+                        ":mobileAppId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of properties to include in the response.",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "4920b3e5-c55e-4638-80b3-9b03c168a63c",
+                          "key": "mobileAppId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Read properties and relationships of a mobileApp object."
+                  },
+                  "response": [
+                    {
+                      "id": "1d27cd95-1204-44f6-b3af-4a7b7e699331",
+                      "name": "Successful response returning the mobile app.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceAppManagement/mobileApps/:mobileAppId?$select=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceAppManagement",
+                            "mobileApps",
+                            ":mobileAppId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of properties to include in the response.",
+                              "key": "$select",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "mobileAppId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"publisher\": \"<string>\",\n  \"largeIcon\": {\n    \"type\": \"<string>\",\n    \"value\": \"<string>\"\n  },\n  \"createdDateTime\": \"<dateTime>\",\n  \"lastModifiedDateTime\": \"<dateTime>\",\n  \"isFeatured\": \"<boolean>\",\n  \"privacyInformationUrl\": \"<string>\",\n  \"informationUrl\": \"<string>\",\n  \"owner\": \"<string>\",\n  \"developer\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"publishingState\": \"processing\"\n}",
+                      "createdAt": "2026-06-05T15:11:45.000Z",
+                      "updatedAt": "2026-06-05T15:11:45.000Z",
+                      "uid": "35240-1d27cd95-1204-44f6-b3af-4a7b7e699331"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-3c493120-730d-4823-acce-202a16b17924"
+                },
+                {
+                  "name": "Microsoft Endpoint Configuration Management Update mobile app",
+                  "id": "9e700b34-fc19-4d60-b864-5ea3d01293f4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"publisher\": \"<string>\",\n  \"largeIcon\": {\n    \"type\": \"<string>\",\n    \"value\": \"<string>\"\n  },\n  \"createdDateTime\": \"<dateTime>\",\n  \"lastModifiedDateTime\": \"<dateTime>\",\n  \"isFeatured\": \"<boolean>\",\n  \"privacyInformationUrl\": \"<string>\",\n  \"informationUrl\": \"<string>\",\n  \"owner\": \"<string>\",\n  \"developer\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"publishingState\": \"processing\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceAppManagement/mobileApps/:mobileAppId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceAppManagement",
+                        "mobileApps",
+                        ":mobileAppId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "791a4400-d052-4777-aae2-dedbe017c417",
+                          "key": "mobileAppId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Update the properties of a mobileApp object."
+                  },
+                  "response": [
+                    {
+                      "id": "06c60ea3-4084-45de-93bd-f670b10066b3",
+                      "name": "Successfully updated mobile app.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"publisher\": \"<string>\",\n  \"largeIcon\": {\n    \"type\": \"<string>\",\n    \"value\": \"<string>\"\n  },\n  \"createdDateTime\": \"<dateTime>\",\n  \"lastModifiedDateTime\": \"<dateTime>\",\n  \"isFeatured\": \"<boolean>\",\n  \"privacyInformationUrl\": \"<string>\",\n  \"informationUrl\": \"<string>\",\n  \"owner\": \"<string>\",\n  \"developer\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"publishingState\": \"processing\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceAppManagement/mobileApps/:mobileAppId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceAppManagement",
+                            "mobileApps",
+                            ":mobileAppId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "mobileAppId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:11:45.000Z",
+                      "updatedAt": "2026-06-05T15:11:45.000Z",
+                      "uid": "35240-06c60ea3-4084-45de-93bd-f670b10066b3"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-9e700b34-fc19-4d60-b864-5ea3d01293f4"
+                },
+                {
+                  "name": "Microsoft Endpoint Configuration Management Delete mobile app",
+                  "id": "594e82c9-396b-41f6-92e6-63961615525a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceAppManagement/mobileApps/:mobileAppId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceAppManagement",
+                        "mobileApps",
+                        ":mobileAppId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ef66b8bc-6134-4503-b7bb-1c6c39de52ff",
+                          "key": "mobileAppId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Deletes a mobileApp."
+                  },
+                  "response": [
+                    {
+                      "id": "c76bed5b-9161-4ec1-b299-dfe35b85f891",
+                      "name": "Successfully deleted.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/deviceAppManagement/mobileApps/:mobileAppId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deviceAppManagement",
+                            "mobileApps",
+                            ":mobileAppId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "mobileAppId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:11:45.000Z",
+                      "updatedAt": "2026-06-05T15:11:45.000Z",
+                      "uid": "35240-c76bed5b-9161-4ec1-b299-dfe35b85f891"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-594e82c9-396b-41f6-92e6-63961615525a"
+                }
+              ],
+              "id": "5db28bf7-2592-4305-83fa-a94f7cb2ff33",
+              "createdAt": "2026-06-05T15:11:45.000Z",
+              "updatedAt": "2026-06-05T15:11:45.000Z",
+              "uid": "35240-5db28bf7-2592-4305-83fa-a94f7cb2ff33"
+            },
+            {
+              "name": "Microsoft Endpoint Configuration Management List mobile apps",
+              "id": "0044d8fe-889a-4796-b08a-389f68a121fa",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/deviceAppManagement/mobileApps?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&$orderby=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "deviceAppManagement",
+                    "mobileApps"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of items to skip.",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include in the response.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Order results by a property.",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "List properties and relationships of the mobileApp objects."
+              },
+              "response": [
+                {
+                  "id": "dde759b4-1e92-4177-ab6a-39915ccb8e33",
+                  "name": "Successful response returning mobile apps.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceAppManagement/mobileApps?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&$orderby=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceAppManagement",
+                        "mobileApps"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of items to skip.",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include in the response.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Order results by a property.",
+                          "key": "$orderby",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"@odata.context\": \"<string>\",\n  \"value\": [\n    {\n      \"id\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"description\": \"<string>\",\n      \"publisher\": \"<string>\",\n      \"largeIcon\": {\n        \"type\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      \"createdDateTime\": \"<dateTime>\",\n      \"lastModifiedDateTime\": \"<dateTime>\",\n      \"isFeatured\": \"<boolean>\",\n      \"privacyInformationUrl\": \"<string>\",\n      \"informationUrl\": \"<string>\",\n      \"owner\": \"<string>\",\n      \"developer\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"publishingState\": \"published\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"description\": \"<string>\",\n      \"publisher\": \"<string>\",\n      \"largeIcon\": {\n        \"type\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      \"createdDateTime\": \"<dateTime>\",\n      \"lastModifiedDateTime\": \"<dateTime>\",\n      \"isFeatured\": \"<boolean>\",\n      \"privacyInformationUrl\": \"<string>\",\n      \"informationUrl\": \"<string>\",\n      \"owner\": \"<string>\",\n      \"developer\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"publishingState\": \"processing\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-dde759b4-1e92-4177-ab6a-39915ccb8e33"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:45.000Z",
+              "updatedAt": "2026-06-05T15:11:45.000Z",
+              "uid": "35240-0044d8fe-889a-4796-b08a-389f68a121fa"
+            },
+            {
+              "name": "Microsoft Endpoint Configuration Management Create mobile app",
+              "id": "8bff366d-db64-45f4-bc2d-8d7882db1cee",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"publisher\": \"<string>\",\n  \"largeIcon\": {\n    \"type\": \"<string>\",\n    \"value\": \"<string>\"\n  },\n  \"createdDateTime\": \"<dateTime>\",\n  \"lastModifiedDateTime\": \"<dateTime>\",\n  \"isFeatured\": \"<boolean>\",\n  \"privacyInformationUrl\": \"<string>\",\n  \"informationUrl\": \"<string>\",\n  \"owner\": \"<string>\",\n  \"developer\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"publishingState\": \"processing\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/deviceAppManagement/mobileApps",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "deviceAppManagement",
+                    "mobileApps"
+                  ]
+                },
+                "description": "Create a new mobileApp object."
+              },
+              "response": [
+                {
+                  "id": "3f066ac1-27c6-4b1c-84e0-8d86ff99e4e6",
+                  "name": "Successfully created mobile app.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"publisher\": \"<string>\",\n  \"largeIcon\": {\n    \"type\": \"<string>\",\n    \"value\": \"<string>\"\n  },\n  \"createdDateTime\": \"<dateTime>\",\n  \"lastModifiedDateTime\": \"<dateTime>\",\n  \"isFeatured\": \"<boolean>\",\n  \"privacyInformationUrl\": \"<string>\",\n  \"informationUrl\": \"<string>\",\n  \"owner\": \"<string>\",\n  \"developer\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"publishingState\": \"processing\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/deviceAppManagement/mobileApps",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deviceAppManagement",
+                        "mobileApps"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"publisher\": \"<string>\",\n  \"largeIcon\": {\n    \"type\": \"<string>\",\n    \"value\": \"<string>\"\n  },\n  \"createdDateTime\": \"<dateTime>\",\n  \"lastModifiedDateTime\": \"<dateTime>\",\n  \"isFeatured\": \"<boolean>\",\n  \"privacyInformationUrl\": \"<string>\",\n  \"informationUrl\": \"<string>\",\n  \"owner\": \"<string>\",\n  \"developer\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"publishingState\": \"processing\"\n}",
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-3f066ac1-27c6-4b1c-84e0-8d86ff99e4e6"
+                }
+              ],
+              "createdAt": "2026-06-05T15:11:45.000Z",
+              "updatedAt": "2026-06-05T15:11:45.000Z",
+              "uid": "35240-8bff366d-db64-45f4-bc2d-8d7882db1cee"
+            }
+          ],
+          "id": "1c386707-6292-4f72-9060-47813d25b4c6",
+          "createdAt": "2026-06-05T15:11:45.000Z",
+          "updatedAt": "2026-06-05T15:11:45.000Z",
+          "uid": "35240-1c386707-6292-4f72-9060-47813d25b4c6"
+        }
+      ],
+      "id": "d007ee2f-b9c6-448e-b352-4927fda703b3",
+      "createdAt": "2026-06-05T15:11:45.000Z",
+      "updatedAt": "2026-06-05T15:11:45.000Z",
+      "uid": "35240-d007ee2f-b9c6-448e-b352-4927fda703b3"
+    },
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "{userId}",
+          "item": [
+            {
+              "name": "ownedDevices",
+              "item": [
+                {
+                  "name": "Microsoft Endpoint Configuration Management List user owned devices",
+                  "id": "55397a71-8beb-4327-b833-4a9f5afa22ca",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:userId/ownedDevices?$top=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":userId",
+                        "ownedDevices"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include in the response.",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "359eb05b-e336-4be4-b617-deafcb244c65",
+                          "key": "userId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Get the list of devices registered to a user from Azure Active Directory."
+                  },
+                  "response": [
+                    {
+                      "id": "9a37f883-6cff-48fb-9d4a-2d5e328ed828",
+                      "name": "Successful response returning user devices.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:userId/ownedDevices?$top=<integer>&$select=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":userId",
+                            "ownedDevices"
+                          ],
+                          "query": [
+                            {
+                              "description": "Number of items to return.",
+                              "key": "$top",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Comma-separated list of properties to include in the response.",
+                              "key": "$select",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "userId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"id\": \"<string>\",\n      \"deviceId\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"operatingSystem\": \"<string>\",\n      \"operatingSystemVersion\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"deviceId\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"operatingSystem\": \"<string>\",\n      \"operatingSystemVersion\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:11:45.000Z",
+                      "updatedAt": "2026-06-05T15:11:45.000Z",
+                      "uid": "35240-9a37f883-6cff-48fb-9d4a-2d5e328ed828"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:45.000Z",
+                  "updatedAt": "2026-06-05T15:11:45.000Z",
+                  "uid": "35240-55397a71-8beb-4327-b833-4a9f5afa22ca"
+                }
+              ],
+              "id": "e84c3671-f24b-4b6c-bec5-279c926df245",
+              "createdAt": "2026-06-05T15:11:45.000Z",
+              "updatedAt": "2026-06-05T15:11:45.000Z",
+              "uid": "35240-e84c3671-f24b-4b6c-bec5-279c926df245"
+            }
+          ],
+          "id": "35418a9f-7e6f-4bba-8115-7b9fe5501cde",
+          "createdAt": "2026-06-05T15:11:45.000Z",
+          "updatedAt": "2026-06-05T15:11:45.000Z",
+          "uid": "35240-35418a9f-7e6f-4bba-8115-7b9fe5501cde"
+        }
+      ],
+      "id": "c5419d21-5de6-47cf-9aa2-7e1c50acef0c",
+      "createdAt": "2026-06-05T15:11:45.000Z",
+      "updatedAt": "2026-06-05T15:11:45.000Z",
+      "uid": "35240-c5419d21-5de6-47cf-9aa2-7e1c50acef0c"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "DeviceManagementManagedDevices.Read.All DeviceManagementManagedDevices.ReadWrite.All DeviceManagementApps.Read.All DeviceManagementApps.ReadWrite.All DeviceManagementConfiguration.Read.All DeviceManagementConfiguration.ReadWrite.All",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://graph.microsoft.com/v1.0"
+    }
+  ]
+}

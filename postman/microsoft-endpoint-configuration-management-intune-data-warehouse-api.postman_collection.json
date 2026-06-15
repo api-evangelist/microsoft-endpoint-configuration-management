@@ -1,0 +1,1763 @@
+{
+  "info": {
+    "_postman_id": "92cadd0a-541f-4ae7-8e02-aac1d10803ca",
+    "name": "Microsoft Endpoint Configuration Management Intune Data Warehouse API",
+    "description": "OData-based REST API that provides access to Intune reporting data in a machine-readable format. Enables building custom reports and analytics for enterprise mobile environment insights. Uses OData v4.0 protocol with standard patterns for request/response headers, status codes, HTTP methods, URL conventions, and query options. Data is sampled daily to provide a historical view of the mobile device environment.\n\nContact Support:\n Name: Microsoft Intune Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:11:46.000Z",
+    "updatedAt": "2026-06-05T15:11:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-92cadd0a-541f-4ae7-8e02-aac1d10803ca"
+  },
+  "item": [
+    {
+      "name": "devices",
+      "item": [
+        {
+          "name": "Microsoft Endpoint Configuration Management List device records",
+          "id": "a2f1a1e5-ba9d-4b70-b382-047d883982c0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/devices?api-version=v1.0&$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&maxhistorydays=7",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "devices"
+              ],
+              "query": [
+                {
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features.",
+                  "key": "api-version",
+                  "value": "v1.0"
+                },
+                {
+                  "description": "Number of items to return.",
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of items to skip.",
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.",
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of properties to include.",
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.",
+                  "key": "maxhistorydays",
+                  "value": "7"
+                }
+              ]
+            },
+            "description": "Retrieve historical device records from the Data Warehouse. Returns daily snapshots of device properties including enrollment status, compliance state, and OS information."
+          },
+          "response": [
+            {
+              "id": "77143674-d41b-44f7-9cd5-aac149bd942f",
+              "name": "Successful response returning device records.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/devices?api-version=v1.0&$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&maxhistorydays=7",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "devices"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features.",
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of items to skip.",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.",
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"value\": [\n    {\n      \"deviceKey\": \"<integer>\",\n      \"deviceId\": \"<string>\",\n      \"deviceName\": \"<string>\",\n      \"deviceType\": \"<string>\",\n      \"operatingSystem\": \"<string>\",\n      \"osVersion\": \"<string>\",\n      \"ownerType\": \"<string>\",\n      \"enrolledDateTime\": \"<dateTime>\",\n      \"lastSyncDateTime\": \"<dateTime>\",\n      \"managementAgent\": \"<string>\",\n      \"managementState\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"manufacturer\": \"<string>\",\n      \"model\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"isSupervised\": \"<boolean>\",\n      \"isEncrypted\": \"<boolean>\",\n      \"dateKey\": \"<integer>\",\n      \"complianceState\": \"<string>\"\n    },\n    {\n      \"deviceKey\": \"<integer>\",\n      \"deviceId\": \"<string>\",\n      \"deviceName\": \"<string>\",\n      \"deviceType\": \"<string>\",\n      \"operatingSystem\": \"<string>\",\n      \"osVersion\": \"<string>\",\n      \"ownerType\": \"<string>\",\n      \"enrolledDateTime\": \"<dateTime>\",\n      \"lastSyncDateTime\": \"<dateTime>\",\n      \"managementAgent\": \"<string>\",\n      \"managementState\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"manufacturer\": \"<string>\",\n      \"model\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"isSupervised\": \"<boolean>\",\n      \"isEncrypted\": \"<boolean>\",\n      \"dateKey\": \"<integer>\",\n      \"complianceState\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:11:46.000Z",
+              "updatedAt": "2026-06-05T15:11:46.000Z",
+              "uid": "35240-77143674-d41b-44f7-9cd5-aac149bd942f"
+            },
+            {
+              "id": "fcc844ea-c76b-47ec-a681-7b0ad80b1b9c",
+              "name": "Unauthorized. Microsoft Entra ID authentication with OAuth 2.0 is required.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/devices?api-version=v1.0&$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&maxhistorydays=7",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "devices"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features.",
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of items to skip.",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.",
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:11:46.000Z",
+              "updatedAt": "2026-06-05T15:11:46.000Z",
+              "uid": "35240-fcc844ea-c76b-47ec-a681-7b0ad80b1b9c"
+            },
+            {
+              "id": "68364c8f-24a7-4dc6-a7e2-b8da1346f6fd",
+              "name": "Forbidden. User must have Intune service administrator role or role-based access to the Intune data warehouse resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/devices?api-version=v1.0&$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&maxhistorydays=7",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "devices"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features.",
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of items to skip.",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.",
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:11:46.000Z",
+              "updatedAt": "2026-06-05T15:11:46.000Z",
+              "uid": "35240-68364c8f-24a7-4dc6-a7e2-b8da1346f6fd"
+            }
+          ],
+          "createdAt": "2026-06-05T15:11:46.000Z",
+          "updatedAt": "2026-06-05T15:11:46.000Z",
+          "uid": "35240-a2f1a1e5-ba9d-4b70-b382-047d883982c0"
+        }
+      ],
+      "id": "f7081e4f-90bc-40e7-8349-c0cffe3270b7",
+      "createdAt": "2026-06-05T15:11:46.000Z",
+      "updatedAt": "2026-06-05T15:11:46.000Z",
+      "uid": "35240-f7081e4f-90bc-40e7-8349-c0cffe3270b7"
+    },
+    {
+      "name": "dates",
+      "item": [
+        {
+          "name": "Microsoft Endpoint Configuration Management List date dimension records",
+          "id": "b87e9f3b-219e-41c7-81d0-83e5ccd00252",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/dates?api-version=v1.0&$top=<integer>&$filter=<string>&$select=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "dates"
+              ],
+              "query": [
+                {
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features.",
+                  "key": "api-version",
+                  "value": "v1.0"
+                },
+                {
+                  "description": "Number of items to return.",
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.",
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of properties to include.",
+                  "key": "$select",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieve date dimension records used to correlate facts over time dimensions. Provides date keys with associated calendar attributes."
+          },
+          "response": [
+            {
+              "id": "25a5d105-f822-4d8c-b52d-d6de4a92f311",
+              "name": "Successful response returning date records.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/dates?api-version=v1.0&$top=<integer>&$filter=<string>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dates"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features.",
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"value\": [\n    {\n      \"dateKey\": \"<integer>\",\n      \"fullDate\": \"<date>\",\n      \"dayOfWeek\": \"<integer>\",\n      \"dayOfMonth\": \"<integer>\",\n      \"dayOfYear\": \"<integer>\",\n      \"weekOfYear\": \"<integer>\",\n      \"monthOfYear\": \"<integer>\",\n      \"calendarQuarter\": \"<integer>\",\n      \"calendarYear\": \"<integer>\"\n    },\n    {\n      \"dateKey\": \"<integer>\",\n      \"fullDate\": \"<date>\",\n      \"dayOfWeek\": \"<integer>\",\n      \"dayOfMonth\": \"<integer>\",\n      \"dayOfYear\": \"<integer>\",\n      \"weekOfYear\": \"<integer>\",\n      \"monthOfYear\": \"<integer>\",\n      \"calendarQuarter\": \"<integer>\",\n      \"calendarYear\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:11:46.000Z",
+              "updatedAt": "2026-06-05T15:11:46.000Z",
+              "uid": "35240-25a5d105-f822-4d8c-b52d-d6de4a92f311"
+            }
+          ],
+          "createdAt": "2026-06-05T15:11:46.000Z",
+          "updatedAt": "2026-06-05T15:11:46.000Z",
+          "uid": "35240-b87e9f3b-219e-41c7-81d0-83e5ccd00252"
+        }
+      ],
+      "id": "9fa03e94-8f07-4b8e-a8b3-bdc8976dce47",
+      "createdAt": "2026-06-05T15:11:46.000Z",
+      "updatedAt": "2026-06-05T15:11:46.000Z",
+      "uid": "35240-9fa03e94-8f07-4b8e-a8b3-bdc8976dce47"
+    },
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "Microsoft Endpoint Configuration Management List user records",
+          "id": "bf964f6d-83d3-40c9-900a-28e32edab05d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users?api-version=v1.0&$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&maxhistorydays=7",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users"
+              ],
+              "query": [
+                {
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features.",
+                  "key": "api-version",
+                  "value": "v1.0"
+                },
+                {
+                  "description": "Number of items to return.",
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of items to skip.",
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.",
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of properties to include.",
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.",
+                  "key": "maxhistorydays",
+                  "value": "7"
+                }
+              ]
+            },
+            "description": "Retrieve user dimension records from the Data Warehouse. Provides historical snapshots of user information associated with device enrollments."
+          },
+          "response": [
+            {
+              "id": "a4c05668-d8dc-4a17-9904-6514a08c63d6",
+              "name": "Successful response returning user records.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users?api-version=v1.0&$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&maxhistorydays=7",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features.",
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of items to skip.",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.",
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"value\": [\n    {\n      \"userKey\": \"<integer>\",\n      \"userId\": \"<string>\",\n      \"userEmail\": \"<string>\",\n      \"userPrincipalName\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"isDeleted\": \"<boolean>\",\n      \"startDateInclusiveUTC\": \"<dateTime>\",\n      \"endDateExclusiveUTC\": \"<dateTime>\",\n      \"isCurrent\": \"<boolean>\"\n    },\n    {\n      \"userKey\": \"<integer>\",\n      \"userId\": \"<string>\",\n      \"userEmail\": \"<string>\",\n      \"userPrincipalName\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"isDeleted\": \"<boolean>\",\n      \"startDateInclusiveUTC\": \"<dateTime>\",\n      \"endDateExclusiveUTC\": \"<dateTime>\",\n      \"isCurrent\": \"<boolean>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:11:46.000Z",
+              "updatedAt": "2026-06-05T15:11:46.000Z",
+              "uid": "35240-a4c05668-d8dc-4a17-9904-6514a08c63d6"
+            }
+          ],
+          "createdAt": "2026-06-05T15:11:46.000Z",
+          "updatedAt": "2026-06-05T15:11:46.000Z",
+          "uid": "35240-bf964f6d-83d3-40c9-900a-28e32edab05d"
+        }
+      ],
+      "id": "2a398828-5bbf-4506-8544-1844d1f090b0",
+      "createdAt": "2026-06-05T15:11:46.000Z",
+      "updatedAt": "2026-06-05T15:11:46.000Z",
+      "uid": "35240-2a398828-5bbf-4506-8544-1844d1f090b0"
+    },
+    {
+      "name": "devicePropertyHistories",
+      "item": [
+        {
+          "name": "Microsoft Endpoint Configuration Management List device property histories",
+          "id": "2a398408-02e2-4a0d-b366-2f000ac6e1ef",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/devicePropertyHistories?api-version=v1.0&$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&maxhistorydays=7",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "devicePropertyHistories"
+              ],
+              "query": [
+                {
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features.",
+                  "key": "api-version",
+                  "value": "v1.0"
+                },
+                {
+                  "description": "Number of items to return.",
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of items to skip.",
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.",
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of properties to include.",
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.",
+                  "key": "maxhistorydays",
+                  "value": "7"
+                }
+              ]
+            },
+            "description": "Retrieve historical device property snapshots. Contains daily snapshots of device-level data for the configured history window."
+          },
+          "response": [
+            {
+              "id": "b408de64-0747-4896-94ba-b5ea6a17f988",
+              "name": "Successful response returning device property history.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/devicePropertyHistories?api-version=v1.0&$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&maxhistorydays=7",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "devicePropertyHistories"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features.",
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of items to skip.",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.",
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"value\": [\n    {\n      \"devicePropertyHistoryKey\": \"<integer>\",\n      \"deviceKey\": \"<integer>\",\n      \"dateKey\": \"<integer>\",\n      \"deviceName\": \"<string>\",\n      \"deviceRegistrationStateKey\": \"<integer>\",\n      \"complianceStateKey\": \"<integer>\",\n      \"osVersion\": \"<string>\",\n      \"storageTotal\": \"<long>\",\n      \"storageFree\": \"<long>\"\n    },\n    {\n      \"devicePropertyHistoryKey\": \"<integer>\",\n      \"deviceKey\": \"<integer>\",\n      \"dateKey\": \"<integer>\",\n      \"deviceName\": \"<string>\",\n      \"deviceRegistrationStateKey\": \"<integer>\",\n      \"complianceStateKey\": \"<integer>\",\n      \"osVersion\": \"<string>\",\n      \"storageTotal\": \"<long>\",\n      \"storageFree\": \"<long>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:11:46.000Z",
+              "updatedAt": "2026-06-05T15:11:46.000Z",
+              "uid": "35240-b408de64-0747-4896-94ba-b5ea6a17f988"
+            }
+          ],
+          "createdAt": "2026-06-05T15:11:46.000Z",
+          "updatedAt": "2026-06-05T15:11:46.000Z",
+          "uid": "35240-2a398408-02e2-4a0d-b366-2f000ac6e1ef"
+        }
+      ],
+      "id": "e02f2431-9763-4b99-aae1-6339ea1816cf",
+      "createdAt": "2026-06-05T15:11:46.000Z",
+      "updatedAt": "2026-06-05T15:11:46.000Z",
+      "uid": "35240-e02f2431-9763-4b99-aae1-6339ea1816cf"
+    },
+    {
+      "name": "policies",
+      "item": [
+        {
+          "name": "Microsoft Endpoint Configuration Management List policy records",
+          "id": "41bd93e2-5142-4612-b282-aecaeb5ba8c8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/policies?api-version=v1.0&$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "policies"
+              ],
+              "query": [
+                {
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features.",
+                  "key": "api-version",
+                  "value": "v1.0"
+                },
+                {
+                  "description": "Number of items to return.",
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of items to skip.",
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.",
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of properties to include.",
+                  "key": "$select",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieve compliance and configuration policy records from the Data Warehouse."
+          },
+          "response": [
+            {
+              "id": "a2b824f1-b6a3-4023-b79b-1518f317b9f4",
+              "name": "Successful response returning policy records.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/policies?api-version=v1.0&$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "policies"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features.",
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of items to skip.",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"value\": [\n    {\n      \"policyKey\": \"<integer>\",\n      \"policyId\": \"<string>\",\n      \"policyName\": \"<string>\",\n      \"policyVersion\": \"<integer>\",\n      \"isDeleted\": \"<boolean>\",\n      \"policyTypeKey\": \"<integer>\",\n      \"policyPlatformKey\": \"<integer>\"\n    },\n    {\n      \"policyKey\": \"<integer>\",\n      \"policyId\": \"<string>\",\n      \"policyName\": \"<string>\",\n      \"policyVersion\": \"<integer>\",\n      \"isDeleted\": \"<boolean>\",\n      \"policyTypeKey\": \"<integer>\",\n      \"policyPlatformKey\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:11:46.000Z",
+              "updatedAt": "2026-06-05T15:11:46.000Z",
+              "uid": "35240-a2b824f1-b6a3-4023-b79b-1518f317b9f4"
+            }
+          ],
+          "createdAt": "2026-06-05T15:11:46.000Z",
+          "updatedAt": "2026-06-05T15:11:46.000Z",
+          "uid": "35240-41bd93e2-5142-4612-b282-aecaeb5ba8c8"
+        }
+      ],
+      "id": "32a00e78-9391-4356-9e69-be3f1c518ddb",
+      "createdAt": "2026-06-05T15:11:46.000Z",
+      "updatedAt": "2026-06-05T15:11:46.000Z",
+      "uid": "35240-32a00e78-9391-4356-9e69-be3f1c518ddb"
+    },
+    {
+      "name": "policyDeviceActivities",
+      "item": [
+        {
+          "name": "Microsoft Endpoint Configuration Management List policy device activities",
+          "id": "0c1b9c70-4314-4c34-91bc-8520dd964ce5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/policyDeviceActivities?api-version=v1.0&$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&maxhistorydays=7",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "policyDeviceActivities"
+              ],
+              "query": [
+                {
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features.",
+                  "key": "api-version",
+                  "value": "v1.0"
+                },
+                {
+                  "description": "Number of items to return.",
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of items to skip.",
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.",
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of properties to include.",
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.",
+                  "key": "maxhistorydays",
+                  "value": "7"
+                }
+              ]
+            },
+            "description": "Retrieve policy device activity records showing device compliance status against policies over time."
+          },
+          "response": [
+            {
+              "id": "66c61cc4-ab0a-49d8-a19e-8251dd32af03",
+              "name": "Successful response returning policy device activities.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/policyDeviceActivities?api-version=v1.0&$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&maxhistorydays=7",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "policyDeviceActivities"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features.",
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of items to skip.",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.",
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"value\": [\n    {\n      \"dateKey\": \"<integer>\",\n      \"policyKey\": \"<integer>\",\n      \"pending\": \"<integer>\",\n      \"succeeded\": \"<integer>\",\n      \"failed\": \"<integer>\",\n      \"error\": \"<integer>\"\n    },\n    {\n      \"dateKey\": \"<integer>\",\n      \"policyKey\": \"<integer>\",\n      \"pending\": \"<integer>\",\n      \"succeeded\": \"<integer>\",\n      \"failed\": \"<integer>\",\n      \"error\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:11:46.000Z",
+              "updatedAt": "2026-06-05T15:11:46.000Z",
+              "uid": "35240-66c61cc4-ab0a-49d8-a19e-8251dd32af03"
+            }
+          ],
+          "createdAt": "2026-06-05T15:11:46.000Z",
+          "updatedAt": "2026-06-05T15:11:46.000Z",
+          "uid": "35240-0c1b9c70-4314-4c34-91bc-8520dd964ce5"
+        }
+      ],
+      "id": "edcd77d4-afcd-49e2-8508-fdcf9b41cb95",
+      "createdAt": "2026-06-05T15:11:46.000Z",
+      "updatedAt": "2026-06-05T15:11:46.000Z",
+      "uid": "35240-edcd77d4-afcd-49e2-8508-fdcf9b41cb95"
+    },
+    {
+      "name": "policyUserActivities",
+      "item": [
+        {
+          "name": "Microsoft Endpoint Configuration Management List policy user activities",
+          "id": "3d9e1705-2db6-4b19-a038-cb99deccdb13",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/policyUserActivities?api-version=v1.0&$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&maxhistorydays=7",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "policyUserActivities"
+              ],
+              "query": [
+                {
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features.",
+                  "key": "api-version",
+                  "value": "v1.0"
+                },
+                {
+                  "description": "Number of items to return.",
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of items to skip.",
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.",
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of properties to include.",
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.",
+                  "key": "maxhistorydays",
+                  "value": "7"
+                }
+              ]
+            },
+            "description": "Retrieve policy user activity records showing user compliance status against policies over time."
+          },
+          "response": [
+            {
+              "id": "77483de7-3bdd-46aa-b2f8-3c5336dad0c3",
+              "name": "Successful response returning policy user activities.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/policyUserActivities?api-version=v1.0&$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&maxhistorydays=7",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "policyUserActivities"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features.",
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of items to skip.",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.",
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"value\": [\n    {\n      \"dateKey\": \"<integer>\",\n      \"policyKey\": \"<integer>\",\n      \"pending\": \"<integer>\",\n      \"succeeded\": \"<integer>\",\n      \"failed\": \"<integer>\",\n      \"error\": \"<integer>\"\n    },\n    {\n      \"dateKey\": \"<integer>\",\n      \"policyKey\": \"<integer>\",\n      \"pending\": \"<integer>\",\n      \"succeeded\": \"<integer>\",\n      \"failed\": \"<integer>\",\n      \"error\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:11:46.000Z",
+              "updatedAt": "2026-06-05T15:11:46.000Z",
+              "uid": "35240-77483de7-3bdd-46aa-b2f8-3c5336dad0c3"
+            }
+          ],
+          "createdAt": "2026-06-05T15:11:46.000Z",
+          "updatedAt": "2026-06-05T15:11:46.000Z",
+          "uid": "35240-3d9e1705-2db6-4b19-a038-cb99deccdb13"
+        }
+      ],
+      "id": "a34770b0-8b3c-43b6-bc24-3991fb7ee02f",
+      "createdAt": "2026-06-05T15:11:46.000Z",
+      "updatedAt": "2026-06-05T15:11:46.000Z",
+      "uid": "35240-a34770b0-8b3c-43b6-bc24-3991fb7ee02f"
+    },
+    {
+      "name": "applications",
+      "item": [
+        {
+          "name": "Microsoft Endpoint Configuration Management List application records",
+          "id": "e2e22c2c-107c-448e-ae5d-bd60b5049121",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/applications?api-version=v1.0&$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "applications"
+              ],
+              "query": [
+                {
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features.",
+                  "key": "api-version",
+                  "value": "v1.0"
+                },
+                {
+                  "description": "Number of items to return.",
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of items to skip.",
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.",
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of properties to include.",
+                  "key": "$select",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieve application inventory records from the Data Warehouse including discovered and managed applications."
+          },
+          "response": [
+            {
+              "id": "a91dfe8d-bf76-4246-b7a7-e10cdea91cfb",
+              "name": "Successful response returning application records.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/applications?api-version=v1.0&$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "applications"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features.",
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of items to skip.",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"value\": [\n    {\n      \"applicationKey\": \"<integer>\",\n      \"applicationId\": \"<string>\",\n      \"applicationName\": \"<string>\",\n      \"applicationVersion\": \"<string>\",\n      \"applicationPublisher\": \"<string>\",\n      \"isDeleted\": \"<boolean>\"\n    },\n    {\n      \"applicationKey\": \"<integer>\",\n      \"applicationId\": \"<string>\",\n      \"applicationName\": \"<string>\",\n      \"applicationVersion\": \"<string>\",\n      \"applicationPublisher\": \"<string>\",\n      \"isDeleted\": \"<boolean>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:11:46.000Z",
+              "updatedAt": "2026-06-05T15:11:46.000Z",
+              "uid": "35240-a91dfe8d-bf76-4246-b7a7-e10cdea91cfb"
+            }
+          ],
+          "createdAt": "2026-06-05T15:11:46.000Z",
+          "updatedAt": "2026-06-05T15:11:46.000Z",
+          "uid": "35240-e2e22c2c-107c-448e-ae5d-bd60b5049121"
+        }
+      ],
+      "id": "fc0dc555-6f9f-4639-aba9-e0d125ece8c1",
+      "createdAt": "2026-06-05T15:11:46.000Z",
+      "updatedAt": "2026-06-05T15:11:46.000Z",
+      "uid": "35240-fc0dc555-6f9f-4639-aba9-e0d125ece8c1"
+    },
+    {
+      "name": "mobileAppInstallStatuses",
+      "item": [
+        {
+          "name": "Microsoft Endpoint Configuration Management List mobile app install statuses",
+          "id": "bda6bf4c-ba90-4d87-a925-98b6440dd5d9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/mobileAppInstallStatuses?api-version=v1.0&$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&maxhistorydays=7",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mobileAppInstallStatuses"
+              ],
+              "query": [
+                {
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features.",
+                  "key": "api-version",
+                  "value": "v1.0"
+                },
+                {
+                  "description": "Number of items to return.",
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of items to skip.",
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.",
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of properties to include.",
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.",
+                  "key": "maxhistorydays",
+                  "value": "7"
+                }
+              ]
+            },
+            "description": "Retrieve mobile application installation status records."
+          },
+          "response": [
+            {
+              "id": "04913a7e-1715-453e-8d25-95573b36784e",
+              "name": "Successful response returning install statuses.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/mobileAppInstallStatuses?api-version=v1.0&$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&maxhistorydays=7",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "mobileAppInstallStatuses"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features.",
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of items to skip.",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.",
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"value\": [\n    {\n      \"dateKey\": \"<integer>\",\n      \"deviceKey\": \"<integer>\",\n      \"userKey\": \"<integer>\",\n      \"applicationKey\": \"<integer>\",\n      \"installState\": \"<string>\",\n      \"errorCode\": \"<integer>\"\n    },\n    {\n      \"dateKey\": \"<integer>\",\n      \"deviceKey\": \"<integer>\",\n      \"userKey\": \"<integer>\",\n      \"applicationKey\": \"<integer>\",\n      \"installState\": \"<string>\",\n      \"errorCode\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:11:46.000Z",
+              "updatedAt": "2026-06-05T15:11:46.000Z",
+              "uid": "35240-04913a7e-1715-453e-8d25-95573b36784e"
+            }
+          ],
+          "createdAt": "2026-06-05T15:11:46.000Z",
+          "updatedAt": "2026-06-05T15:11:46.000Z",
+          "uid": "35240-bda6bf4c-ba90-4d87-a925-98b6440dd5d9"
+        }
+      ],
+      "id": "e7a0e47d-c6de-4965-8aee-90339351de89",
+      "createdAt": "2026-06-05T15:11:46.000Z",
+      "updatedAt": "2026-06-05T15:11:46.000Z",
+      "uid": "35240-e7a0e47d-c6de-4965-8aee-90339351de89"
+    },
+    {
+      "name": "userDeviceAssociations",
+      "item": [
+        {
+          "name": "Microsoft Endpoint Configuration Management List user-device associations",
+          "id": "80928229-097e-47c3-9c71-7093accf81d1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/userDeviceAssociations?api-version=v1.0&$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&maxhistorydays=7",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "userDeviceAssociations"
+              ],
+              "query": [
+                {
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features.",
+                  "key": "api-version",
+                  "value": "v1.0"
+                },
+                {
+                  "description": "Number of items to return.",
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of items to skip.",
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.",
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of properties to include.",
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.",
+                  "key": "maxhistorydays",
+                  "value": "7"
+                }
+              ]
+            },
+            "description": "Retrieve records mapping users to their associated devices."
+          },
+          "response": [
+            {
+              "id": "14937fd1-3586-4b27-a387-75e575f9d788",
+              "name": "Successful response returning user-device associations.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/userDeviceAssociations?api-version=v1.0&$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&maxhistorydays=7",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "userDeviceAssociations"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features.",
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of items to skip.",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.",
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"value\": [\n    {\n      \"userDeviceAssociationKey\": \"<integer>\",\n      \"userKey\": \"<integer>\",\n      \"deviceKey\": \"<integer>\",\n      \"createdDate\": \"<dateTime>\"\n    },\n    {\n      \"userDeviceAssociationKey\": \"<integer>\",\n      \"userKey\": \"<integer>\",\n      \"deviceKey\": \"<integer>\",\n      \"createdDate\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:11:46.000Z",
+              "updatedAt": "2026-06-05T15:11:46.000Z",
+              "uid": "35240-14937fd1-3586-4b27-a387-75e575f9d788"
+            }
+          ],
+          "createdAt": "2026-06-05T15:11:46.000Z",
+          "updatedAt": "2026-06-05T15:11:46.000Z",
+          "uid": "35240-80928229-097e-47c3-9c71-7093accf81d1"
+        }
+      ],
+      "id": "a83eb9f4-2c4f-4829-ae9e-bfcafe632fe9",
+      "createdAt": "2026-06-05T15:11:46.000Z",
+      "updatedAt": "2026-06-05T15:11:46.000Z",
+      "uid": "35240-a83eb9f4-2c4f-4829-ae9e-bfcafe632fe9"
+    },
+    {
+      "name": "intuneManagementExtensions",
+      "item": [
+        {
+          "name": "Microsoft Endpoint Configuration Management List Intune management extension records",
+          "id": "74c560a7-20d1-4fe1-a915-f452f9acf19e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/intuneManagementExtensions?api-version=v1.0&$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&maxhistorydays=7",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "intuneManagementExtensions"
+              ],
+              "query": [
+                {
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features.",
+                  "key": "api-version",
+                  "value": "v1.0"
+                },
+                {
+                  "description": "Number of items to return.",
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of items to skip.",
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.",
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of properties to include.",
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.",
+                  "key": "maxhistorydays",
+                  "value": "7"
+                }
+              ]
+            },
+            "description": "Retrieve Intune management extension activity records including script execution results."
+          },
+          "response": [
+            {
+              "id": "ccbd7130-eb9a-4253-b65c-a5a901e5a460",
+              "name": "Successful response returning management extension records.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/intuneManagementExtensions?api-version=v1.0&$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&maxhistorydays=7",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "intuneManagementExtensions"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features.",
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "description": "Number of items to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of items to skip.",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.",
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"value\": [\n    {\n      \"dateKey\": \"<integer>\",\n      \"tenantKey\": \"<integer>\",\n      \"deviceKey\": \"<integer>\",\n      \"userKey\": \"<integer>\",\n      \"extensionVersionKey\": \"<integer>\",\n      \"policyKey\": \"<integer>\",\n      \"policyTypeKey\": \"<integer>\",\n      \"status\": \"<string>\"\n    },\n    {\n      \"dateKey\": \"<integer>\",\n      \"tenantKey\": \"<integer>\",\n      \"deviceKey\": \"<integer>\",\n      \"userKey\": \"<integer>\",\n      \"extensionVersionKey\": \"<integer>\",\n      \"policyKey\": \"<integer>\",\n      \"policyTypeKey\": \"<integer>\",\n      \"status\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:11:46.000Z",
+              "updatedAt": "2026-06-05T15:11:46.000Z",
+              "uid": "35240-ccbd7130-eb9a-4253-b65c-a5a901e5a460"
+            }
+          ],
+          "createdAt": "2026-06-05T15:11:46.000Z",
+          "updatedAt": "2026-06-05T15:11:46.000Z",
+          "uid": "35240-74c560a7-20d1-4fe1-a915-f452f9acf19e"
+        }
+      ],
+      "id": "f3972621-8cde-4b6d-8f18-8191d4b76855",
+      "createdAt": "2026-06-05T15:11:46.000Z",
+      "updatedAt": "2026-06-05T15:11:46.000Z",
+      "uid": "35240-f3972621-8cde-4b6d-8f18-8191d4b76855"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://api.manage.microsoft.com/.default",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "location",
+      "value": "msua06"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://fef.{{location}}.manage.microsoft.com/ReportingService/DataWarehouseFEService"
+    }
+  ]
+}
