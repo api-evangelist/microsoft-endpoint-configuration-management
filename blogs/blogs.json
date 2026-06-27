@@ -3,16 +3,10 @@
   "feeds": [
     {
       "source": "https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/bg-p/MicrosoftEndpointManagerBlog",
-      "feed_url": "https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/bg-p/MicrosoftEndpointManagerBlog",
-      "title": "",
       "saved": 0,
-      "method": "none"
-    },
-    {
-      "source": "https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis",
-      "error": "HTTPError"
+      "error": "redirects to login.microsoftonline.com SSO (auth wall)"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T12:57:58Z"
 }
