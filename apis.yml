@@ -221,6 +221,8 @@ apis:
       - type: SDKs
         url: https://learn.microsoft.com/en-us/graph/sdks/sdk-installation
 common:
+  - type: OAuthScopes
+    url: scopes/microsoft-endpoint-configuration-management-scopes.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/microsoft-endpoint-configuration-management/overview
   - type: Arazzo

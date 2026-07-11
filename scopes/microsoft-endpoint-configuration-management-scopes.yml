@@ -1,0 +1,82 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/microsoft-endpoint-configuration-management-configmgr-rest-api-openapi.yml,
+  openapi/microsoft-endpoint-configuration-management-intune-data-warehouse-api-openapi.yml,
+  openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml, openapi/microsoft-endpoint-configuration-management-intune-reporting-export-api-openapi.yml
+schemes:
+- name: oauth2
+  source: openapi/microsoft-endpoint-configuration-management-configmgr-rest-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+    tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+  description: OAuth 2.0 via Azure AD for cloud management gateway access.
+- name: oauth2
+  source: openapi/microsoft-endpoint-configuration-management-intune-data-warehouse-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+    tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+  description: OAuth 2.0 via Microsoft Entra ID. Requires Intune service administrator role
+    or role-based access to the Intune data warehouse resource.
+- name: oauth2
+  source: openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+    tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+- name: oauth2
+  source: openapi/microsoft-endpoint-configuration-management-intune-reporting-export-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+    tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+scopes:
+- scope: DeviceManagementApps.Read.All
+  description: Read app management data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml
+  - openapi/microsoft-endpoint-configuration-management-intune-reporting-export-api-openapi.yml
+- scope: DeviceManagementApps.ReadWrite.All
+  description: Read and write app management data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml
+  - openapi/microsoft-endpoint-configuration-management-intune-reporting-export-api-openapi.yml
+- scope: DeviceManagementConfiguration.Read.All
+  description: Read device configurations
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml
+  - openapi/microsoft-endpoint-configuration-management-intune-reporting-export-api-openapi.yml
+- scope: DeviceManagementConfiguration.ReadWrite.All
+  description: Read and write device configurations
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml
+  - openapi/microsoft-endpoint-configuration-management-intune-reporting-export-api-openapi.yml
+- scope: DeviceManagementManagedDevices.Read.All
+  description: Read managed devices
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml
+  - openapi/microsoft-endpoint-configuration-management-intune-reporting-export-api-openapi.yml
+- scope: DeviceManagementManagedDevices.ReadWrite.All
+  description: Read and write managed devices
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml
+  - openapi/microsoft-endpoint-configuration-management-intune-reporting-export-api-openapi.yml
+- scope: https://api.manage.microsoft.com/.default
+  description: Access Intune Data Warehouse
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-endpoint-configuration-management-intune-data-warehouse-api-openapi.yml
