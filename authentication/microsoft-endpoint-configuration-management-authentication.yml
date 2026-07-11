@@ -1,0 +1,31 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/microsoft-endpoint-configuration-management-configmgr-rest-api-openapi.yml,
+  openapi/microsoft-endpoint-configuration-management-intune-data-warehouse-api-openapi.yml,
+  openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml, openapi/microsoft-endpoint-configuration-management-intune-reporting-export-api-openapi.yml
+summary:
+  types:
+  - http
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: windowsAuth
+  type: http
+  scheme: negotiate
+  description: Windows Integrated Authentication (Kerberos/NTLM).
+  sources:
+  - openapi/microsoft-endpoint-configuration-management-configmgr-rest-api-openapi.yml
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+    tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+    scopes: 0
+  description: OAuth 2.0 via Azure AD for cloud management gateway access.
+  sources:
+  - openapi/microsoft-endpoint-configuration-management-configmgr-rest-api-openapi.yml
+  - openapi/microsoft-endpoint-configuration-management-intune-data-warehouse-api-openapi.yml
+  - openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml
+  - openapi/microsoft-endpoint-configuration-management-intune-reporting-export-api-openapi.yml

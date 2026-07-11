@@ -221,6 +221,12 @@ apis:
       - type: SDKs
         url: https://learn.microsoft.com/en-us/graph/sdks/sdk-installation
 common:
+  - type: VulnerabilityDisclosure
+    url: security/microsoft-endpoint-configuration-management-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/microsoft-endpoint-configuration-management-domain-security.yml
+  - type: Authentication
+    url: authentication/microsoft-endpoint-configuration-management-authentication.yml
   - type: OAuthScopes
     url: scopes/microsoft-endpoint-configuration-management-scopes.yml
   - type: PostmanWorkspace
