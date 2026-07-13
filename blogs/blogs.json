@@ -2,11 +2,13 @@
   "repo": "microsoft-endpoint-configuration-management",
   "feeds": [
     {
-      "source": "https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/bg-p/MicrosoftEndpointManagerBlog",
+      "source": "https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis",
+      "feed_url": "https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis",
+      "title": "",
       "saved": 0,
-      "error": "redirects to login.microsoftonline.com SSO (auth wall)"
+      "method": "none"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-27T12:57:58Z"
+  "fetched": "2026-07-11T11:50:51Z"
 }
