@@ -221,6 +221,8 @@ apis:
       - type: SDKs
         url: https://learn.microsoft.com/en-us/graph/sdks/sdk-installation
 common:
+  - type: AgenticAccess
+    url: agentic-access/microsoft-endpoint-configuration-management-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/microsoft-endpoint-configuration-management-vulnerability-disclosure.yml
   - type: DomainSecurity
