@@ -1,0 +1,147 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Device Actions API
+  description: REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData routes. Class names are case-sensitive.
+  version: 1.0.0
+  contact:
+    name: Microsoft Configuration Manager Support
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  license:
+    name: Microsoft API License
+    url: https://learn.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
+servers:
+- url: https://{siteserver}/AdminService
+  description: Configuration Manager AdminService endpoint
+  variables:
+    siteserver:
+      default: smsproviderfqdn
+      description: Fully qualified domain name of the SMS Provider server hosting the administration service.
+security:
+- windowsAuth: []
+- oauth2: []
+tags:
+- name: Device Actions
+  description: Remote device actions such as wipe, retire, sync, and lock.
+paths:
+  /deviceManagement/managedDevices/{managedDeviceId}/retire:
+    post:
+      operationId: retireManagedDevice
+      summary: Microsoft Endpoint Configuration Management Retire a device
+      description: Retire a device, removing corporate data while leaving personal data intact.
+      tags:
+      - Device Actions
+      parameters:
+      - name: managedDeviceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Device retire action initiated.
+  /deviceManagement/managedDevices/{managedDeviceId}/wipe:
+    post:
+      operationId: wipeManagedDevice
+      summary: Microsoft Endpoint Configuration Management Wipe a device
+      description: Factory reset a device, removing all data.
+      tags:
+      - Device Actions
+      parameters:
+      - name: managedDeviceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                keepEnrollmentData:
+                  type: boolean
+                keepUserData:
+                  type: boolean
+                macOsUnlockCode:
+                  type: string
+      responses:
+        '204':
+          description: Device wipe action initiated.
+  /deviceManagement/managedDevices/{managedDeviceId}/syncDevice:
+    post:
+      operationId: syncManagedDevice
+      summary: Microsoft Endpoint Configuration Management Sync device
+      description: Trigger a sync for the managed device with Intune.
+      tags:
+      - Device Actions
+      parameters:
+      - name: managedDeviceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Device sync action initiated.
+  /deviceManagement/managedDevices/{managedDeviceId}/remoteLock:
+    post:
+      operationId: remoteLockManagedDevice
+      summary: Microsoft Endpoint Configuration Management Remote lock a device
+      description: Remotely lock a managed device.
+      tags:
+      - Device Actions
+      parameters:
+      - name: managedDeviceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Remote lock action initiated.
+  /deviceManagement/managedDevices/{managedDeviceId}/resetPasscode:
+    post:
+      operationId: resetPasscode
+      summary: Microsoft Endpoint Configuration Management Reset passcode
+      description: Reset the passcode on a managed device.
+      tags:
+      - Device Actions
+      parameters:
+      - name: managedDeviceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Passcode reset action initiated.
+  /deviceManagement/managedDevices/{managedDeviceId}/rebootNow:
+    post:
+      operationId: rebootManagedDevice
+      summary: Microsoft Endpoint Configuration Management Reboot device
+      description: Remotely reboot a managed device.
+      tags:
+      - Device Actions
+      parameters:
+      - name: managedDeviceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Reboot action initiated.
+components:
+  securitySchemes:
+    windowsAuth:
+      type: http
+      scheme: negotiate
+      description: Windows Integrated Authentication (Kerberos/NTLM).
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via Azure AD for cloud management gateway access.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes: {}

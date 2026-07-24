@@ -1,0 +1,142 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Users API
+  description: REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData routes. Class names are case-sensitive.
+  version: 1.0.0
+  contact:
+    name: Microsoft Configuration Manager Support
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  license:
+    name: Microsoft API License
+    url: https://learn.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
+servers:
+- url: https://{siteserver}/AdminService
+  description: Configuration Manager AdminService endpoint
+  variables:
+    siteserver:
+      default: smsproviderfqdn
+      description: Fully qualified domain name of the SMS Provider server hosting the administration service.
+security:
+- windowsAuth: []
+- oauth2: []
+tags:
+- name: Users
+  description: User dimension records.
+paths:
+  /users:
+    get:
+      operationId: listUsers
+      summary: Microsoft Endpoint Configuration Management List user records
+      description: Retrieve user dimension records from the Data Warehouse. Provides historical snapshots of user information associated with device enrollments.
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/components/parameters/apiVersion'
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/maxhistorydays'
+      responses:
+        '200':
+          description: Successful response returning user records.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+components:
+  schemas:
+    User:
+      type: object
+      description: User dimension entity representing user information associated with device enrollments.
+      properties:
+        userKey:
+          type: integer
+          description: Unique identifier of the user in the Data Warehouse.
+        userId:
+          type: string
+          description: Unique identifier of the user.
+        userEmail:
+          type: string
+          description: Email address of the user.
+        userPrincipalName:
+          type: string
+          description: User principal name.
+        displayName:
+          type: string
+          description: Display name of the user.
+        isDeleted:
+          type: boolean
+          description: Whether the user has been deleted.
+        startDateInclusiveUTC:
+          type: string
+          format: date-time
+          description: Start of the record validity period.
+        endDateExclusiveUTC:
+          type: string
+          format: date-time
+          description: End of the record validity period.
+        isCurrent:
+          type: boolean
+          description: Whether this is the current record.
+  parameters:
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include.
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      description: Number of items to skip.
+      schema:
+        type: integer
+    maxhistorydays:
+      name: maxhistorydays
+      in: query
+      description: Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.
+      schema:
+        type: integer
+        default: 7
+    apiVersion:
+      name: api-version
+      in: query
+      required: true
+      description: API version. Use 'v1.0' for stable or 'beta' for preview features.
+      schema:
+        type: string
+        enum:
+        - v1.0
+        - beta
+        default: v1.0
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
+  securitySchemes:
+    windowsAuth:
+      type: http
+      scheme: negotiate
+      description: Windows Integrated Authentication (Kerberos/NTLM).
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via Azure AD for cloud management gateway access.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes: {}

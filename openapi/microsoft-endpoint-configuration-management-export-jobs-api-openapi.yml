@@ -1,0 +1,328 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Export Jobs API
+  description: REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData routes. Class names are case-sensitive.
+  version: 1.0.0
+  contact:
+    name: Microsoft Configuration Manager Support
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  license:
+    name: Microsoft API License
+    url: https://learn.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
+servers:
+- url: https://{siteserver}/AdminService
+  description: Configuration Manager AdminService endpoint
+  variables:
+    siteserver:
+      default: smsproviderfqdn
+      description: Fully qualified domain name of the SMS Provider server hosting the administration service.
+security:
+- windowsAuth: []
+- oauth2: []
+tags:
+- name: Export Jobs
+  description: Manage asynchronous report export jobs. Create export jobs, poll for completion, and download exported report files.
+paths:
+  /deviceManagement/reports/exportJobs:
+    get:
+      operationId: listExportJobs
+      summary: Microsoft Endpoint Configuration Management List export jobs
+      description: List properties and relationships of the deviceManagementExportJob objects. Returns all export jobs that have been created for the tenant.
+      tags:
+      - Export Jobs
+      parameters:
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/orderby'
+      - $ref: '#/components/parameters/count'
+      responses:
+        '200':
+          description: Successful response returning a collection of export job objects.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '@odata.context':
+                    type: string
+                  '@odata.count':
+                    type: integer
+                  '@odata.nextLink':
+                    type: string
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DeviceManagementExportJob'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+    post:
+      operationId: createExportJob
+      summary: Microsoft Endpoint Configuration Management Create export job
+      description: Create a new deviceManagementExportJob object to initiate an asynchronous report export. The reportName parameter is required in the request body and identifies which report to export. After creation, poll the export job by ID until the status changes to completed, then download the report from the url property.
+      tags:
+      - Export Jobs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceManagementExportJobCreate'
+      responses:
+        '201':
+          description: Successfully created the export job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceManagementExportJob'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /deviceManagement/reports/exportJobs/{deviceManagementExportJobId}:
+    get:
+      operationId: getExportJob
+      summary: Microsoft Endpoint Configuration Management Get export job
+      description: Read properties and relationships of a deviceManagementExportJob object. Use this endpoint to poll the status of an export job. When the status property is completed, the url property contains the download location for the exported report file.
+      tags:
+      - Export Jobs
+      parameters:
+      - name: deviceManagementExportJobId
+        in: path
+        required: true
+        description: The unique identifier of the deviceManagementExportJob.
+        schema:
+          type: string
+      - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successful response returning the export job object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceManagementExportJob'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteExportJob
+      summary: Microsoft Endpoint Configuration Management Delete export job
+      description: Delete a deviceManagementExportJob. Removes the export job record from the service.
+      tags:
+      - Export Jobs
+      parameters:
+      - name: deviceManagementExportJobId
+        in: path
+        required: true
+        description: The unique identifier of the deviceManagementExportJob.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Successfully deleted the export job.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    DeviceManagementExportJob:
+      type: object
+      description: Entity representing a job to export a report. Tracks the status of an asynchronous report export including the download URL when complete.
+      properties:
+        id:
+          type: string
+          description: Unique identifier for this entity.
+          readOnly: true
+        reportName:
+          type: string
+          description: Name of the report. The maximum length allowed for this property is 2000 characters.
+        filter:
+          type: string
+          description: Filters applied on the report. The maximum length allowed for this property is 2000 characters.
+        select:
+          type: array
+          description: Columns selected from the report. The maximum number of allowed column names is 256. The maximum length allowed for each column name is 1000 characters.
+          items:
+            type: string
+        format:
+          type: string
+          description: Format of the exported report.
+          enum:
+          - csv
+          - pdf
+          - json
+          - unknownFutureValue
+        snapshotId:
+          type: string
+          description: An identifiable subset of the dataset represented by the ReportName. A sessionId or CachedReportConfiguration id can be used here. The maximum length allowed is 128 characters.
+        localizationType:
+          type: string
+          description: Configures how the requested export job is localized.
+          enum:
+          - localizedValuesAsAdditionalColumn
+          - replaceLocalizableValues
+        status:
+          type: string
+          description: Status of the export job.
+          enum:
+          - unknown
+          - notStarted
+          - inProgress
+          - completed
+          - failed
+          readOnly: true
+        url:
+          type: string
+          description: Temporary location of the exported report. Available when status is completed. The URL is a SAS-signed Azure Blob Storage URL.
+          readOnly: true
+        requestDateTime:
+          type: string
+          format: date-time
+          description: Time that the exported report was requested.
+          readOnly: true
+        expirationDateTime:
+          type: string
+          format: date-time
+          description: Time that the exported report expires.
+          readOnly: true
+    ODataError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                date:
+                  type: string
+    DeviceManagementExportJobCreate:
+      type: object
+      description: Request body for creating a new deviceManagementExportJob.
+      required:
+      - reportName
+      properties:
+        reportName:
+          type: string
+          description: Name of the report to export (e.g., Devices, DevicesWithInventory, DeviceCompliance). The maximum length is 2000 characters.
+        filter:
+          type: string
+          description: Filters applied on the report. The maximum length is 2000 characters.
+        select:
+          type: array
+          description: Columns selected from the report. Only valid column names for the specified report are accepted. Maximum 256 column names, each up to 1000 characters.
+          items:
+            type: string
+        format:
+          type: string
+          description: Format of the exported report. Defaults to csv.
+          enum:
+          - csv
+          - json
+        snapshotId:
+          type: string
+          description: A sessionId or CachedReportConfiguration id. When specified, Filter, Select, and OrderBy cannot also be specified. Maximum 128 characters.
+        localizationType:
+          type: string
+          description: Configures how the export job is localized. Default is localizedValuesAsAdditionalColumn.
+          enum:
+          - localizedValuesAsAdditionalColumn
+          - replaceLocalizableValues
+  responses:
+    Forbidden:
+      description: Forbidden. Insufficient permissions.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    NotFound:
+      description: Not found. The specified resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized. Authentication is required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    BadRequest:
+      description: Bad request. The request body or parameters are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    TooManyRequests:
+      description: Too many requests. The API supports up to 100 requests per tenant per minute, with per-user limits of 8 requests per minute and per-app limits of 48 requests per minute.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+  parameters:
+    count:
+      name: $count
+      in: query
+      description: Include count of items.
+      schema:
+        type: boolean
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response.
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      description: Number of items to skip.
+      schema:
+        type: integer
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression.
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      description: Order results by a property.
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
+  securitySchemes:
+    windowsAuth:
+      type: http
+      scheme: negotiate
+      description: Windows Integrated Authentication (Kerberos/NTLM).
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via Azure AD for cloud management gateway access.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes: {}

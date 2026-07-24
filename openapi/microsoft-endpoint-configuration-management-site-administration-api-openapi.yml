@@ -1,0 +1,93 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Site Administration API
+  description: REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData routes. Class names are case-sensitive.
+  version: 1.0.0
+  contact:
+    name: Microsoft Configuration Manager Support
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  license:
+    name: Microsoft API License
+    url: https://learn.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
+servers:
+- url: https://{siteserver}/AdminService
+  description: Configuration Manager AdminService endpoint
+  variables:
+    siteserver:
+      default: smsproviderfqdn
+      description: Fully qualified domain name of the SMS Provider server hosting the administration service.
+security:
+- windowsAuth: []
+- oauth2: []
+tags:
+- name: Site Administration
+  description: Site configuration and administration.
+paths:
+  /wmi/SMS_Site:
+    get:
+      operationId: listSites
+      summary: Microsoft Endpoint Configuration Management List sites
+      description: Retrieve Configuration Manager site information.
+      tags:
+      - Site Administration
+      parameters:
+      - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successful response returning site information.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SMS_Site'
+components:
+  parameters:
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include.
+      schema:
+        type: string
+  schemas:
+    SMS_Site:
+      type: object
+      description: Represents a Configuration Manager site.
+      properties:
+        SiteCode:
+          type: string
+          description: Three-character site code.
+        SiteName:
+          type: string
+          description: Site name.
+        Type:
+          type: integer
+          description: Site type (1=Secondary, 2=Primary, 4=CAS).
+        Version:
+          type: string
+          description: Site version.
+        BuildNumber:
+          type: string
+          description: Build number.
+        ServerName:
+          type: string
+          description: Site server name.
+        Status:
+          type: integer
+          description: Site status.
+  securitySchemes:
+    windowsAuth:
+      type: http
+      scheme: negotiate
+      description: Windows Integrated Authentication (Kerberos/NTLM).
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via Azure AD for cloud management gateway access.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes: {}

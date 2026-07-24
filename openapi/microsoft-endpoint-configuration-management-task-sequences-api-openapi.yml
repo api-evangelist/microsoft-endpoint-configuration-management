@@ -1,0 +1,104 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Task Sequences API
+  description: REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData routes. Class names are case-sensitive.
+  version: 1.0.0
+  contact:
+    name: Microsoft Configuration Manager Support
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  license:
+    name: Microsoft API License
+    url: https://learn.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
+servers:
+- url: https://{siteserver}/AdminService
+  description: Configuration Manager AdminService endpoint
+  variables:
+    siteserver:
+      default: smsproviderfqdn
+      description: Fully qualified domain name of the SMS Provider server hosting the administration service.
+security:
+- windowsAuth: []
+- oauth2: []
+tags:
+- name: Task Sequences
+  description: Manage OS deployment task sequences.
+paths:
+  /wmi/SMS_TaskSequence:
+    get:
+      operationId: listTaskSequences
+      summary: Microsoft Endpoint Configuration Management List task sequences
+      description: Retrieve all task sequences used for operating system deployment and other complex workflows.
+      tags:
+      - Task Sequences
+      parameters:
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successful response returning task sequences.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SMS_TaskSequence'
+components:
+  parameters:
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include.
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression.
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
+  schemas:
+    SMS_TaskSequence:
+      type: object
+      description: Represents a task sequence used for OS deployment and complex automation workflows.
+      properties:
+        PackageID:
+          type: string
+          description: Task sequence package ID.
+        Name:
+          type: string
+          description: Task sequence name.
+        Description:
+          type: string
+          description: Task sequence description.
+        BootImageID:
+          type: string
+          description: Associated boot image ID.
+        Duration:
+          type: integer
+          description: Estimated duration in minutes.
+        Type:
+          type: integer
+          description: Task sequence type.
+  securitySchemes:
+    windowsAuth:
+      type: http
+      scheme: negotiate
+      description: Windows Integrated Authentication (Kerberos/NTLM).
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via Azure AD for cloud management gateway access.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes: {}

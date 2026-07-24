@@ -1,0 +1,905 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Devices API
+  description: REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData routes. Class names are case-sensitive.
+  version: 1.0.0
+  contact:
+    name: Microsoft Configuration Manager Support
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  license:
+    name: Microsoft API License
+    url: https://learn.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
+servers:
+- url: https://{siteserver}/AdminService
+  description: Configuration Manager AdminService endpoint
+  variables:
+    siteserver:
+      default: smsproviderfqdn
+      description: Fully qualified domain name of the SMS Provider server hosting the administration service.
+security:
+- windowsAuth: []
+- oauth2: []
+tags:
+- name: Devices
+  description: Query and manage device resources.
+paths:
+  /wmi/SMS_Device:
+    get:
+      operationId: listDevicesWmi
+      summary: Microsoft Endpoint Configuration Management List devices via WMI route
+      description: Retrieve a collection of devices managed by Configuration Manager using the WMI route. Supports OData query options for filtering and selecting.
+      tags:
+      - Devices
+      parameters:
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/orderby'
+      responses:
+        '200':
+          description: Successful response returning a collection of devices.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '@odata.context':
+                    type: string
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SMS_Device'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /wmi/SMS_R_System:
+    get:
+      operationId: listSystems
+      summary: Microsoft Endpoint Configuration Management List systems
+      description: Retrieve all discovered system resources, representing computers and devices discovered by Configuration Manager.
+      tags:
+      - Devices
+      parameters:
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successful response returning discovered systems.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SMS_R_System'
+  /v1.0/Device:
+    get:
+      operationId: listDevicesV1
+      summary: Microsoft Endpoint Configuration Management List devices (versioned route)
+      description: Retrieve devices through the versioned OData v1.0 route which supports new Configuration Manager functionality.
+      tags:
+      - Devices
+      parameters:
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successful response returning devices.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Device'
+  /v1.0/Device({deviceId}):
+    get:
+      operationId: getDeviceV1
+      summary: Microsoft Endpoint Configuration Management Get a device (versioned route)
+      description: Retrieve a specific device by ID via the versioned route.
+      tags:
+      - Devices
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response returning the device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+  /devices:
+    get:
+      operationId: listDevices
+      summary: Microsoft Endpoint Configuration Management List device records
+      description: Retrieve historical device records from the Data Warehouse. Returns daily snapshots of device properties including enrollment status, compliance state, and OS information.
+      tags:
+      - Devices
+      parameters:
+      - $ref: '#/components/parameters/apiVersion'
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter_2'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/maxhistorydays'
+      responses:
+        '200':
+          description: Successful response returning device records.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Device_2'
+        '401':
+          $ref: '#/components/responses/Unauthorized_2'
+        '403':
+          $ref: '#/components/responses/Forbidden_2'
+  /devicePropertyHistories:
+    get:
+      operationId: listDevicePropertyHistories
+      summary: Microsoft Endpoint Configuration Management List device property histories
+      description: Retrieve historical device property snapshots. Contains daily snapshots of device-level data for the configured history window.
+      tags:
+      - Devices
+      parameters:
+      - $ref: '#/components/parameters/apiVersion'
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter_2'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/maxhistorydays'
+      responses:
+        '200':
+          description: Successful response returning device property history.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DevicePropertyHistory'
+  /deviceManagement/managedDevices:
+    get:
+      operationId: listManagedDevices
+      summary: Microsoft Endpoint Configuration Management List managed devices
+      description: List properties and relationships of the managedDevice objects enrolled in Intune.
+      tags:
+      - Devices
+      parameters:
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select_2'
+      - $ref: '#/components/parameters/orderby'
+      - $ref: '#/components/parameters/count'
+      responses:
+        '200':
+          description: Successful response returning a collection of managed devices.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '@odata.context':
+                    type: string
+                  '@odata.count':
+                    type: integer
+                  '@odata.nextLink':
+                    type: string
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ManagedDevice'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden_3'
+    post:
+      operationId: createManagedDevice
+      summary: Microsoft Endpoint Configuration Management Create managed device
+      description: Create a new managedDevice object.
+      tags:
+      - Devices
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ManagedDevice'
+      responses:
+        '201':
+          description: Successfully created managed device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedDevice'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /deviceManagement/managedDevices/{managedDeviceId}:
+    get:
+      operationId: getManagedDevice
+      summary: Microsoft Endpoint Configuration Management Get managed device
+      description: Read properties and relationships of a managedDevice object.
+      tags:
+      - Devices
+      parameters:
+      - name: managedDeviceId
+        in: path
+        required: true
+        description: The unique identifier of the managed device.
+        schema:
+          type: string
+      - $ref: '#/components/parameters/select_2'
+      responses:
+        '200':
+          description: Successful response returning the managed device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedDevice'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateManagedDevice
+      summary: Microsoft Endpoint Configuration Management Update managed device
+      description: Update the properties of a managedDevice object.
+      tags:
+      - Devices
+      parameters:
+      - name: managedDeviceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ManagedDevice'
+      responses:
+        '200':
+          description: Successfully updated managed device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedDevice'
+    delete:
+      operationId: deleteManagedDevice
+      summary: Microsoft Endpoint Configuration Management Delete managed device
+      description: Deletes a managedDevice.
+      tags:
+      - Devices
+      parameters:
+      - name: managedDeviceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Successfully deleted.
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /users/{userId}/ownedDevices:
+    get:
+      operationId: listUserOwnedDevices
+      summary: Microsoft Endpoint Configuration Management List user owned devices
+      description: Get the list of devices registered to a user from Azure Active Directory.
+      tags:
+      - Devices
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/select_2'
+      responses:
+        '200':
+          description: Successful response returning user devices.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        deviceId:
+                          type: string
+                        displayName:
+                          type: string
+                        operatingSystem:
+                          type: string
+                        operatingSystemVersion:
+                          type: string
+components:
+  schemas:
+    DevicePropertyHistory:
+      type: object
+      description: Historical snapshot of device properties taken daily.
+      properties:
+        devicePropertyHistoryKey:
+          type: integer
+          description: Unique key for the history record.
+        deviceKey:
+          type: integer
+          description: Reference to the device.
+        dateKey:
+          type: integer
+          description: Date key for this snapshot.
+        deviceName:
+          type: string
+          description: Device name at the time of snapshot.
+        deviceRegistrationStateKey:
+          type: integer
+          description: Device registration state key.
+        complianceStateKey:
+          type: integer
+          description: Compliance state key.
+        osVersion:
+          type: string
+          description: OS version at the time of snapshot.
+        storageTotal:
+          type: integer
+          format: int64
+          description: Total storage in bytes.
+        storageFree:
+          type: integer
+          format: int64
+          description: Free storage in bytes.
+    ODataError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+    ODataError_2:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                date:
+                  type: string
+    Device:
+      type: object
+      description: Device entity available through the versioned v1.0 OData route of the AdminService.
+      properties:
+        MachineId:
+          type: integer
+          description: Unique machine identifier.
+        Name:
+          type: string
+          description: Device name.
+        Domain:
+          type: string
+          description: Domain.
+        IsActive:
+          type: boolean
+          description: Whether the device is active.
+        LastActiveTime:
+          type: string
+          format: date-time
+          description: Last active time.
+        DeviceOS:
+          type: string
+          description: Operating system.
+        Status:
+          type: string
+          description: Device status.
+        SiteCode:
+          type: string
+          description: Associated site code.
+    ManagedDevice:
+      type: object
+      description: Devices that are managed or pre-enrolled through Intune.
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the device.
+          readOnly: true
+        userId:
+          type: string
+          description: Unique identifier for the user associated with the device.
+          readOnly: true
+        deviceName:
+          type: string
+          description: Name of the device.
+          readOnly: true
+        managedDeviceOwnerType:
+          type: string
+          description: Ownership of the device.
+          enum:
+          - unknown
+          - company
+          - personal
+        enrolledDateTime:
+          type: string
+          format: date-time
+          description: Enrollment time of the device.
+          readOnly: true
+        lastSyncDateTime:
+          type: string
+          format: date-time
+          description: The date and time that the device last completed a successful sync with Intune.
+          readOnly: true
+        operatingSystem:
+          type: string
+          description: Operating system of the device (Windows, iOS, etc.).
+          readOnly: true
+        complianceState:
+          type: string
+          description: Compliance state of the device.
+          enum:
+          - unknown
+          - compliant
+          - noncompliant
+          - conflict
+          - error
+          - inGracePeriod
+          - configManager
+        jailBroken:
+          type: string
+          description: Whether the device is jail broken or rooted.
+          readOnly: true
+        managementAgent:
+          type: string
+          description: Management channel of the device.
+          enum:
+          - eas
+          - mdm
+          - easMdm
+          - intuneClient
+          - easIntuneClient
+          - configurationManagerClient
+          - configurationManagerClientMdm
+          - configurationManagerClientMdmEas
+          - unknown
+          - jamf
+          - googleCloudDevicePolicyController
+        osVersion:
+          type: string
+          description: Operating system version of the device.
+          readOnly: true
+        easActivated:
+          type: boolean
+          description: Whether the device is Exchange ActiveSync activated.
+          readOnly: true
+        easDeviceId:
+          type: string
+          description: Exchange ActiveSync Id of the device.
+          readOnly: true
+        azureADRegistered:
+          type: boolean
+          description: Whether the device is Azure Active Directory registered.
+          readOnly: true
+        deviceEnrollmentType:
+          type: string
+          description: Enrollment type of the device.
+          enum:
+          - unknown
+          - userEnrollment
+          - deviceEnrollmentManager
+          - appleBulkWithUser
+          - appleBulkWithoutUser
+          - windowsAzureADJoin
+          - windowsBulkUserless
+          - windowsAutoEnrollment
+          - windowsBulkAzureDomainJoin
+          - windowsCoManagement
+          - windowsAzureADJoinUsingDeviceAuth
+          - appleUserEnrollment
+          - appleUserEnrollmentWithServiceAccount
+          readOnly: true
+        emailAddress:
+          type: string
+          description: Email(s) for the user associated with the device.
+          readOnly: true
+        azureADDeviceId:
+          type: string
+          description: The unique identifier for the Azure Active Directory device.
+          readOnly: true
+        deviceRegistrationState:
+          type: string
+          description: Device registration state.
+          enum:
+          - notRegistered
+          - registered
+          - revoked
+          - keyConflict
+          - approvalPending
+          - certificateReset
+          - notRegisteredPendingEnrollment
+          - unknown
+          readOnly: true
+        isSupervised:
+          type: boolean
+          description: Device supervised status.
+          readOnly: true
+        isEncrypted:
+          type: boolean
+          description: Device encryption status.
+          readOnly: true
+        userPrincipalName:
+          type: string
+          description: Device user principal name.
+          readOnly: true
+        model:
+          type: string
+          description: Model of the device.
+          readOnly: true
+        manufacturer:
+          type: string
+          description: Manufacturer of the device.
+          readOnly: true
+        imei:
+          type: string
+          description: IMEI.
+          readOnly: true
+        serialNumber:
+          type: string
+          description: Serial number of the device.
+          readOnly: true
+        phoneNumber:
+          type: string
+          description: Phone number of the device.
+          readOnly: true
+        androidSecurityPatchLevel:
+          type: string
+          description: Android security patch level.
+          readOnly: true
+        userDisplayName:
+          type: string
+          description: User display name.
+          readOnly: true
+        wiFiMacAddress:
+          type: string
+          description: Wi-Fi MAC address.
+          readOnly: true
+        subscriberCarrier:
+          type: string
+          description: Subscriber carrier.
+          readOnly: true
+        meid:
+          type: string
+          description: MEID.
+          readOnly: true
+        totalStorageSpaceInBytes:
+          type: integer
+          format: int64
+          description: Total storage in bytes.
+          readOnly: true
+        freeStorageSpaceInBytes:
+          type: integer
+          format: int64
+          description: Free storage in bytes.
+          readOnly: true
+        managedDeviceName:
+          type: string
+          description: Automatically generated name to identify a device. Can be overwritten to a user friendly name.
+        partnerReportedThreatState:
+          type: string
+          description: Threat state of a device when a Mobile Threat Defense partner is in use.
+          enum:
+          - unknown
+          - activated
+          - deactivated
+          - secured
+          - lowSeverity
+          - mediumSeverity
+          - highSeverity
+          - unresponsive
+          - compromised
+          - misconfigured
+          readOnly: true
+        physicalMemoryInBytes:
+          type: integer
+          format: int64
+          description: Total memory in bytes.
+          readOnly: true
+        enrollmentProfileName:
+          type: string
+          description: Name of the enrollment profile assigned to the device.
+          readOnly: true
+    Device_2:
+      type: object
+      description: Device entity representing a snapshot of device properties in the Data Warehouse.
+      properties:
+        deviceKey:
+          type: integer
+          description: Unique identifier of the device in the Data Warehouse.
+        deviceId:
+          type: string
+          description: Unique identifier of the device.
+        deviceName:
+          type: string
+          description: Name of the device.
+        deviceType:
+          type: string
+          description: Type of device.
+        operatingSystem:
+          type: string
+          description: Operating system of the device.
+        osVersion:
+          type: string
+          description: Operating system version.
+        ownerType:
+          type: string
+          description: Type of owner (company, personal, unknown).
+        enrolledDateTime:
+          type: string
+          format: date-time
+          description: Date and time the device was enrolled.
+        lastSyncDateTime:
+          type: string
+          format: date-time
+          description: Last time the device synced with Intune.
+        managementAgent:
+          type: string
+          description: Management agent type.
+        managementState:
+          type: string
+          description: Management state of the device.
+        referenceId:
+          type: string
+          description: Reference identifier for the device in Azure AD.
+        manufacturer:
+          type: string
+          description: Manufacturer of the device.
+        model:
+          type: string
+          description: Model of the device.
+        serialNumber:
+          type: string
+          description: Serial number of the device.
+        isSupervised:
+          type: boolean
+          description: Whether the device is supervised.
+        isEncrypted:
+          type: boolean
+          description: Whether the device is encrypted.
+        dateKey:
+          type: integer
+          description: Date key reference for the snapshot.
+        complianceState:
+          type: string
+          description: Compliance state of the device.
+    SMS_Device:
+      type: object
+      description: Represents a device discovered and managed by Configuration Manager via the WMI route.
+      properties:
+        DeviceID:
+          type: integer
+          description: Unique device identifier.
+        Name:
+          type: string
+          description: Device name.
+        Domain:
+          type: string
+          description: Domain the device belongs to.
+        SMSID:
+          type: string
+          description: SMS unique identifier.
+        IsActive:
+          type: boolean
+          description: Whether the device is currently active.
+        DeviceOS:
+          type: string
+          description: Operating system of the device.
+        DeviceOSVersion:
+          type: string
+          description: Operating system version.
+        DeviceType:
+          type: integer
+          description: Type of device (1=Desktop, 2=Laptop, etc.).
+        IsBlocked:
+          type: boolean
+          description: Whether the device is blocked.
+        LastActiveTime:
+          type: string
+          format: date-time
+          description: Last time the device was active.
+    SMS_R_System:
+      type: object
+      description: Represents a discovered system resource (computer or device) in Configuration Manager.
+      properties:
+        ResourceID:
+          type: integer
+          description: Unique resource identifier.
+        Name:
+          type: string
+          description: Computer name.
+        SMSUniqueIdentifier:
+          type: string
+          description: SMS unique identifier.
+        ResourceDomainORWorkgroup:
+          type: string
+          description: Domain or workgroup.
+        Client:
+          type: integer
+          description: Whether the Configuration Manager client is installed (1=yes).
+        Active:
+          type: integer
+          description: Whether the resource is active.
+        IPAddresses:
+          type: array
+          items:
+            type: string
+          description: IP addresses of the system.
+        MACAddresses:
+          type: array
+          items:
+            type: string
+          description: MAC addresses of the system.
+        OperatingSystemNameandVersion:
+          type: string
+          description: Full operating system name and version string.
+        LastLogonUserName:
+          type: string
+          description: Last logged on user name.
+        LastLogonTimestamp:
+          type: string
+          format: date-time
+          description: Last logon timestamp.
+  responses:
+    NotFound:
+      description: Not found. The specified resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError_2'
+    Forbidden_2:
+      description: Forbidden. User must have Intune service administrator role or role-based access to the Intune data warehouse resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized_2:
+      description: Unauthorized. Microsoft Entra ID authentication with OAuth 2.0 is required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Forbidden_3:
+      description: Forbidden. Insufficient permissions.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError_2'
+    Forbidden:
+      description: Forbidden. The user account must be an administrative user in Configuration Manager.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized. Authentication is required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    BadRequest:
+      description: Bad request. The request body or parameters are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError_2'
+  parameters:
+    maxhistorydays:
+      name: maxhistorydays
+      in: query
+      description: Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.
+      schema:
+        type: integer
+        default: 7
+    select_2:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response.
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression.
+      schema:
+        type: string
+    apiVersion:
+      name: api-version
+      in: query
+      required: true
+      description: API version. Use 'v1.0' for stable or 'beta' for preview features.
+      schema:
+        type: string
+        enum:
+        - v1.0
+        - beta
+        default: v1.0
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include.
+      schema:
+        type: string
+    filter_2:
+      name: $filter
+      in: query
+      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
+      schema:
+        type: string
+    count:
+      name: $count
+      in: query
+      description: Include count of items.
+      schema:
+        type: boolean
+    skip:
+      name: $skip
+      in: query
+      description: Number of items to skip.
+      schema:
+        type: integer
+    orderby:
+      name: $orderby
+      in: query
+      description: Order results by a property.
+      schema:
+        type: string
+  securitySchemes:
+    windowsAuth:
+      type: http
+      scheme: negotiate
+      description: Windows Integrated Authentication (Kerberos/NTLM).
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via Azure AD for cloud management gateway access.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes: {}

@@ -1,0 +1,276 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Compliance Policies API
+  description: REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData routes. Class names are case-sensitive.
+  version: 1.0.0
+  contact:
+    name: Microsoft Configuration Manager Support
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  license:
+    name: Microsoft API License
+    url: https://learn.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
+servers:
+- url: https://{siteserver}/AdminService
+  description: Configuration Manager AdminService endpoint
+  variables:
+    siteserver:
+      default: smsproviderfqdn
+      description: Fully qualified domain name of the SMS Provider server hosting the administration service.
+security:
+- windowsAuth: []
+- oauth2: []
+tags:
+- name: Compliance Policies
+  description: Manage device compliance policies.
+paths:
+  /deviceManagement/deviceCompliancePolicies:
+    get:
+      operationId: listDeviceCompliancePolicies
+      summary: Microsoft Endpoint Configuration Management List device compliance policies
+      description: List properties and relationships of the deviceCompliancePolicy objects.
+      tags:
+      - Compliance Policies
+      parameters:
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/orderby'
+      responses:
+        '200':
+          description: Successful response returning compliance policies.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '@odata.context':
+                    type: string
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DeviceCompliancePolicy'
+    post:
+      operationId: createDeviceCompliancePolicy
+      summary: Microsoft Endpoint Configuration Management Create device compliance policy
+      description: Create a new deviceCompliancePolicy object.
+      tags:
+      - Compliance Policies
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceCompliancePolicy'
+      responses:
+        '201':
+          description: Successfully created compliance policy.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceCompliancePolicy'
+  /deviceManagement/deviceCompliancePolicies/{deviceCompliancePolicyId}:
+    get:
+      operationId: getDeviceCompliancePolicy
+      summary: Microsoft Endpoint Configuration Management Get device compliance policy
+      description: Read properties and relationships of a deviceCompliancePolicy object.
+      tags:
+      - Compliance Policies
+      parameters:
+      - name: deviceCompliancePolicyId
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successful response returning the compliance policy.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceCompliancePolicy'
+    patch:
+      operationId: updateDeviceCompliancePolicy
+      summary: Microsoft Endpoint Configuration Management Update device compliance policy
+      description: Update the properties of a deviceCompliancePolicy object.
+      tags:
+      - Compliance Policies
+      parameters:
+      - name: deviceCompliancePolicyId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceCompliancePolicy'
+      responses:
+        '200':
+          description: Successfully updated compliance policy.
+    delete:
+      operationId: deleteDeviceCompliancePolicy
+      summary: Microsoft Endpoint Configuration Management Delete device compliance policy
+      description: Deletes a deviceCompliancePolicy.
+      tags:
+      - Compliance Policies
+      parameters:
+      - name: deviceCompliancePolicyId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Successfully deleted.
+  /deviceManagement/deviceCompliancePolicies/{deviceCompliancePolicyId}/assign:
+    post:
+      operationId: assignDeviceCompliancePolicy
+      summary: Microsoft Endpoint Configuration Management Assign compliance policy
+      description: Assign a device compliance policy to groups.
+      tags:
+      - Compliance Policies
+      parameters:
+      - name: deviceCompliancePolicyId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                assignments:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/DeviceCompliancePolicyAssignment'
+      responses:
+        '200':
+          description: Successfully assigned compliance policy.
+  /deviceManagement/deviceCompliancePolicyDeviceStateSummary:
+    get:
+      operationId: getDeviceCompliancePolicyDeviceStateSummary
+      summary: Microsoft Endpoint Configuration Management Get compliance state summary
+      description: Read properties of the deviceCompliancePolicyDeviceStateSummary object providing a summary of device compliance states across the tenant.
+      tags:
+      - Compliance Policies
+      responses:
+        '200':
+          description: Successful response returning compliance state summary.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  inGracePeriodCount:
+                    type: integer
+                  configManagerCount:
+                    type: integer
+                  compliantDeviceCount:
+                    type: integer
+                  nonCompliantDeviceCount:
+                    type: integer
+                  remediatedDeviceCount:
+                    type: integer
+                  errorDeviceCount:
+                    type: integer
+                  conflictDeviceCount:
+                    type: integer
+                  unknownDeviceCount:
+                    type: integer
+                  notApplicableDeviceCount:
+                    type: integer
+components:
+  schemas:
+    DeviceCompliancePolicy:
+      type: object
+      description: Base class for compliance policy. Compliance policies are platform specific and individual per-platform compliance policies inherit from here.
+      properties:
+        id:
+          type: string
+          description: Key of the entity.
+        createdDateTime:
+          type: string
+          format: date-time
+          description: DateTime the object was created.
+          readOnly: true
+        description:
+          type: string
+          description: Admin provided description of the device configuration.
+        lastModifiedDateTime:
+          type: string
+          format: date-time
+          description: DateTime the object was last modified.
+          readOnly: true
+        displayName:
+          type: string
+          description: Admin provided name of the device configuration.
+        version:
+          type: integer
+          description: Version of the device configuration.
+          readOnly: true
+    DeviceCompliancePolicyAssignment:
+      type: object
+      description: Assignment of a device compliance policy to a group.
+      properties:
+        id:
+          type: string
+        target:
+          type: object
+          properties:
+            '@odata.type':
+              type: string
+            groupId:
+              type: string
+  parameters:
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response.
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression.
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      description: Number of items to skip.
+      schema:
+        type: integer
+    orderby:
+      name: $orderby
+      in: query
+      description: Order results by a property.
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
+  securitySchemes:
+    windowsAuth:
+      type: http
+      scheme: negotiate
+      description: Windows Integrated Authentication (Kerberos/NTLM).
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via Azure AD for cloud management gateway access.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes: {}

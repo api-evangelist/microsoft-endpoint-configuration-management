@@ -1,0 +1,241 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Configuration Profiles API
+  description: REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData routes. Class names are case-sensitive.
+  version: 1.0.0
+  contact:
+    name: Microsoft Configuration Manager Support
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  license:
+    name: Microsoft API License
+    url: https://learn.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
+servers:
+- url: https://{siteserver}/AdminService
+  description: Configuration Manager AdminService endpoint
+  variables:
+    siteserver:
+      default: smsproviderfqdn
+      description: Fully qualified domain name of the SMS Provider server hosting the administration service.
+security:
+- windowsAuth: []
+- oauth2: []
+tags:
+- name: Configuration Profiles
+  description: Manage device configuration profiles.
+paths:
+  /deviceManagement/deviceConfigurations:
+    get:
+      operationId: listDeviceConfigurations
+      summary: Microsoft Endpoint Configuration Management List device configurations
+      description: List properties and relationships of the deviceConfiguration objects.
+      tags:
+      - Configuration Profiles
+      parameters:
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/orderby'
+      responses:
+        '200':
+          description: Successful response returning device configurations.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '@odata.context':
+                    type: string
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DeviceConfiguration'
+    post:
+      operationId: createDeviceConfiguration
+      summary: Microsoft Endpoint Configuration Management Create device configuration
+      description: Create a new deviceConfiguration object.
+      tags:
+      - Configuration Profiles
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceConfiguration'
+      responses:
+        '201':
+          description: Successfully created device configuration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceConfiguration'
+  /deviceManagement/deviceConfigurations/{deviceConfigurationId}:
+    get:
+      operationId: getDeviceConfiguration
+      summary: Microsoft Endpoint Configuration Management Get device configuration
+      description: Read properties and relationships of a deviceConfiguration object.
+      tags:
+      - Configuration Profiles
+      parameters:
+      - name: deviceConfigurationId
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successful response returning the device configuration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceConfiguration'
+    patch:
+      operationId: updateDeviceConfiguration
+      summary: Microsoft Endpoint Configuration Management Update device configuration
+      description: Update the properties of a deviceConfiguration object.
+      tags:
+      - Configuration Profiles
+      parameters:
+      - name: deviceConfigurationId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceConfiguration'
+      responses:
+        '200':
+          description: Successfully updated device configuration.
+    delete:
+      operationId: deleteDeviceConfiguration
+      summary: Microsoft Endpoint Configuration Management Delete device configuration
+      description: Deletes a deviceConfiguration.
+      tags:
+      - Configuration Profiles
+      parameters:
+      - name: deviceConfigurationId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Successfully deleted.
+  /deviceManagement/deviceConfigurations/{deviceConfigurationId}/assign:
+    post:
+      operationId: assignDeviceConfiguration
+      summary: Microsoft Endpoint Configuration Management Assign device configuration
+      description: Assign a device configuration profile to groups.
+      tags:
+      - Configuration Profiles
+      parameters:
+      - name: deviceConfigurationId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                assignments:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/DeviceConfigurationAssignment'
+      responses:
+        '200':
+          description: Successfully assigned device configuration.
+components:
+  schemas:
+    DeviceConfiguration:
+      type: object
+      description: Device configuration profile.
+      properties:
+        id:
+          type: string
+          description: Key of the entity.
+        lastModifiedDateTime:
+          type: string
+          format: date-time
+          description: DateTime the object was last modified.
+          readOnly: true
+        createdDateTime:
+          type: string
+          format: date-time
+          description: DateTime the object was created.
+          readOnly: true
+        description:
+          type: string
+          description: Admin provided description of the device configuration.
+        displayName:
+          type: string
+          description: Admin provided name of the device configuration.
+        version:
+          type: integer
+          description: Version of the device configuration.
+          readOnly: true
+    DeviceConfigurationAssignment:
+      type: object
+      description: Assignment of a device configuration profile to a group.
+      properties:
+        id:
+          type: string
+        target:
+          type: object
+          properties:
+            '@odata.type':
+              type: string
+            groupId:
+              type: string
+  parameters:
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response.
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression.
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      description: Number of items to skip.
+      schema:
+        type: integer
+    orderby:
+      name: $orderby
+      in: query
+      description: Order results by a property.
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
+  securitySchemes:
+    windowsAuth:
+      type: http
+      scheme: negotiate
+      description: Windows Integrated Authentication (Kerberos/NTLM).
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via Azure AD for cloud management gateway access.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes: {}

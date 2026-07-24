@@ -1,0 +1,229 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Policies API
+  description: REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData routes. Class names are case-sensitive.
+  version: 1.0.0
+  contact:
+    name: Microsoft Configuration Manager Support
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  license:
+    name: Microsoft API License
+    url: https://learn.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
+servers:
+- url: https://{siteserver}/AdminService
+  description: Configuration Manager AdminService endpoint
+  variables:
+    siteserver:
+      default: smsproviderfqdn
+      description: Fully qualified domain name of the SMS Provider server hosting the administration service.
+security:
+- windowsAuth: []
+- oauth2: []
+tags:
+- name: Policies
+  description: Policy records and compliance activities.
+paths:
+  /policies:
+    get:
+      operationId: listPolicies
+      summary: Microsoft Endpoint Configuration Management List policy records
+      description: Retrieve compliance and configuration policy records from the Data Warehouse.
+      tags:
+      - Policies
+      parameters:
+      - $ref: '#/components/parameters/apiVersion'
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successful response returning policy records.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Policy'
+  /policyDeviceActivities:
+    get:
+      operationId: listPolicyDeviceActivities
+      summary: Microsoft Endpoint Configuration Management List policy device activities
+      description: Retrieve policy device activity records showing device compliance status against policies over time.
+      tags:
+      - Policies
+      parameters:
+      - $ref: '#/components/parameters/apiVersion'
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/maxhistorydays'
+      responses:
+        '200':
+          description: Successful response returning policy device activities.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PolicyDeviceActivity'
+  /policyUserActivities:
+    get:
+      operationId: listPolicyUserActivities
+      summary: Microsoft Endpoint Configuration Management List policy user activities
+      description: Retrieve policy user activity records showing user compliance status against policies over time.
+      tags:
+      - Policies
+      parameters:
+      - $ref: '#/components/parameters/apiVersion'
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/maxhistorydays'
+      responses:
+        '200':
+          description: Successful response returning policy user activities.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PolicyUserActivity'
+components:
+  schemas:
+    PolicyUserActivity:
+      type: object
+      description: User compliance activity record against a specific policy.
+      properties:
+        dateKey:
+          type: integer
+          description: Date key for the activity.
+        policyKey:
+          type: integer
+          description: Policy key reference.
+        pending:
+          type: integer
+          description: Number of users pending compliance evaluation.
+        succeeded:
+          type: integer
+          description: Number of users in compliance.
+        failed:
+          type: integer
+          description: Number of users out of compliance.
+        error:
+          type: integer
+          description: Number of users in error state.
+    Policy:
+      type: object
+      description: Policy entity representing compliance and configuration policies.
+      properties:
+        policyKey:
+          type: integer
+          description: Unique key for the policy in the Data Warehouse.
+        policyId:
+          type: string
+          description: Unique identifier of the policy.
+        policyName:
+          type: string
+          description: Name of the policy.
+        policyVersion:
+          type: integer
+          description: Version of the policy.
+        isDeleted:
+          type: boolean
+          description: Whether the policy has been deleted.
+        policyTypeKey:
+          type: integer
+          description: Reference to the policy type.
+        policyPlatformKey:
+          type: integer
+          description: Reference to the platform.
+    PolicyDeviceActivity:
+      type: object
+      description: Device compliance activity record against a specific policy.
+      properties:
+        dateKey:
+          type: integer
+          description: Date key for the activity.
+        policyKey:
+          type: integer
+          description: Policy key reference.
+        pending:
+          type: integer
+          description: Number of devices pending compliance evaluation.
+        succeeded:
+          type: integer
+          description: Number of devices in compliance.
+        failed:
+          type: integer
+          description: Number of devices out of compliance.
+        error:
+          type: integer
+          description: Number of devices in error state.
+  parameters:
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include.
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      description: Number of items to skip.
+      schema:
+        type: integer
+    maxhistorydays:
+      name: maxhistorydays
+      in: query
+      description: Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.
+      schema:
+        type: integer
+        default: 7
+    apiVersion:
+      name: api-version
+      in: query
+      required: true
+      description: API version. Use 'v1.0' for stable or 'beta' for preview features.
+      schema:
+        type: string
+        enum:
+        - v1.0
+        - beta
+        default: v1.0
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
+  securitySchemes:
+    windowsAuth:
+      type: http
+      scheme: negotiate
+      description: Windows Integrated Authentication (Kerberos/NTLM).
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via Azure AD for cloud management gateway access.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes: {}

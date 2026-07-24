@@ -1,0 +1,550 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications API
+  description: REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData routes. Class names are case-sensitive.
+  version: 1.0.0
+  contact:
+    name: Microsoft Configuration Manager Support
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  license:
+    name: Microsoft API License
+    url: https://learn.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
+servers:
+- url: https://{siteserver}/AdminService
+  description: Configuration Manager AdminService endpoint
+  variables:
+    siteserver:
+      default: smsproviderfqdn
+      description: Fully qualified domain name of the SMS Provider server hosting the administration service.
+security:
+- windowsAuth: []
+- oauth2: []
+tags:
+- name: Applications
+  description: Manage Configuration Manager applications.
+paths:
+  /wmi/SMS_Application:
+    get:
+      operationId: listApplications
+      summary: Microsoft Endpoint Configuration Management List applications
+      description: Retrieve all applications defined in Configuration Manager, including deployment types and content information.
+      tags:
+      - Applications
+      parameters:
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/orderby'
+      responses:
+        '200':
+          description: Successful response returning applications.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SMS_Application'
+    post:
+      operationId: createApplication
+      summary: Microsoft Endpoint Configuration Management Create an application
+      description: Create a new application in Configuration Manager.
+      tags:
+      - Applications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SMS_Application'
+      responses:
+        '201':
+          description: Successfully created application.
+  /wmi/SMS_Application('{applicationId}'):
+    get:
+      operationId: getApplication
+      summary: Microsoft Endpoint Configuration Management Get an application
+      description: Retrieve a specific application by its CI_ID.
+      tags:
+      - Applications
+      parameters:
+      - name: applicationId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response returning the application.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SMS_Application'
+  /applications:
+    get:
+      operationId: listApplications
+      summary: Microsoft Endpoint Configuration Management List application records
+      description: Retrieve application inventory records from the Data Warehouse including discovered and managed applications.
+      tags:
+      - Applications
+      parameters:
+      - $ref: '#/components/parameters/apiVersion'
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter_2'
+      - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successful response returning application records.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Application'
+  /mobileAppInstallStatuses:
+    get:
+      operationId: listMobileAppInstallStatuses
+      summary: Microsoft Endpoint Configuration Management List mobile app install statuses
+      description: Retrieve mobile application installation status records.
+      tags:
+      - Applications
+      parameters:
+      - $ref: '#/components/parameters/apiVersion'
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter_2'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/maxhistorydays'
+      responses:
+        '200':
+          description: Successful response returning install statuses.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/MobileAppInstallStatus'
+  /deviceAppManagement/mobileApps:
+    get:
+      operationId: listMobileApps
+      summary: Microsoft Endpoint Configuration Management List mobile apps
+      description: List properties and relationships of the mobileApp objects.
+      tags:
+      - Applications
+      parameters:
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select_2'
+      - $ref: '#/components/parameters/orderby'
+      responses:
+        '200':
+          description: Successful response returning mobile apps.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '@odata.context':
+                    type: string
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/MobileApp'
+    post:
+      operationId: createMobileApp
+      summary: Microsoft Endpoint Configuration Management Create mobile app
+      description: Create a new mobileApp object.
+      tags:
+      - Applications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MobileApp'
+      responses:
+        '201':
+          description: Successfully created mobile app.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MobileApp'
+  /deviceAppManagement/mobileApps/{mobileAppId}:
+    get:
+      operationId: getMobileApp
+      summary: Microsoft Endpoint Configuration Management Get mobile app
+      description: Read properties and relationships of a mobileApp object.
+      tags:
+      - Applications
+      parameters:
+      - name: mobileAppId
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/select_2'
+      responses:
+        '200':
+          description: Successful response returning the mobile app.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MobileApp'
+    patch:
+      operationId: updateMobileApp
+      summary: Microsoft Endpoint Configuration Management Update mobile app
+      description: Update the properties of a mobileApp object.
+      tags:
+      - Applications
+      parameters:
+      - name: mobileAppId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MobileApp'
+      responses:
+        '200':
+          description: Successfully updated mobile app.
+    delete:
+      operationId: deleteMobileApp
+      summary: Microsoft Endpoint Configuration Management Delete mobile app
+      description: Deletes a mobileApp.
+      tags:
+      - Applications
+      parameters:
+      - name: mobileAppId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Successfully deleted.
+  /deviceAppManagement/mobileApps/{mobileAppId}/assign:
+    post:
+      operationId: assignMobileApp
+      summary: Microsoft Endpoint Configuration Management Assign mobile app
+      description: Assign a mobile app to groups.
+      tags:
+      - Applications
+      parameters:
+      - name: mobileAppId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                mobileAppAssignments:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/MobileAppAssignment'
+      responses:
+        '204':
+          description: Successfully assigned mobile app.
+  /deviceAppManagement/mobileApps/{mobileAppId}/deviceStatuses:
+    get:
+      operationId: listMobileAppDeviceStatuses
+      summary: Microsoft Endpoint Configuration Management List app device statuses
+      description: Get the installation status of a mobile app across devices.
+      tags:
+      - Applications
+      parameters:
+      - name: mobileAppId
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/select_2'
+      responses:
+        '200':
+          description: Successful response returning device statuses.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        deviceId:
+                          type: string
+                        installState:
+                          type: string
+                        installStateDetail:
+                          type: string
+components:
+  parameters:
+    select_2:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response.
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include.
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression.
+      schema:
+        type: string
+    maxhistorydays:
+      name: maxhistorydays
+      in: query
+      description: Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.
+      schema:
+        type: integer
+        default: 7
+    filter_2:
+      name: $filter
+      in: query
+      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      description: Order results by a property.
+      schema:
+        type: string
+    apiVersion:
+      name: api-version
+      in: query
+      required: true
+      description: API version. Use 'v1.0' for stable or 'beta' for preview features.
+      schema:
+        type: string
+        enum:
+        - v1.0
+        - beta
+        default: v1.0
+    skip:
+      name: $skip
+      in: query
+      description: Number of items to skip.
+      schema:
+        type: integer
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
+  schemas:
+    MobileAppAssignment:
+      type: object
+      description: Assignment of a mobile app to a group.
+      properties:
+        id:
+          type: string
+        intent:
+          type: string
+          enum:
+          - available
+          - required
+          - uninstall
+          - availableWithoutEnrollment
+        target:
+          type: object
+          properties:
+            '@odata.type':
+              type: string
+            groupId:
+              type: string
+        settings:
+          type: object
+    SMS_Application:
+      type: object
+      description: Represents an application in Configuration Manager with deployment types, requirements, and detection methods.
+      properties:
+        CI_ID:
+          type: integer
+          description: Configuration item ID.
+        CI_UniqueID:
+          type: string
+          description: Unique configuration item identifier.
+        LocalizedDisplayName:
+          type: string
+          description: Display name of the application.
+        LocalizedDescription:
+          type: string
+          description: Description of the application.
+        Manufacturer:
+          type: string
+          description: Application manufacturer/publisher.
+        SoftwareVersion:
+          type: string
+          description: Software version.
+        DateCreated:
+          type: string
+          format: date-time
+          description: Date the application was created.
+        DateLastModified:
+          type: string
+          format: date-time
+          description: Date the application was last modified.
+        IsDeployed:
+          type: boolean
+          description: Whether the application is currently deployed.
+        IsSuperseded:
+          type: boolean
+          description: Whether the application has been superseded.
+        IsLatest:
+          type: boolean
+          description: Whether this is the latest version.
+        NumberOfDeploymentTypes:
+          type: integer
+          description: Number of deployment types.
+        NumberOfDeployments:
+          type: integer
+          description: Number of active deployments.
+    MobileApp:
+      type: object
+      description: Abstract class containing the base properties for Intune mobile apps.
+      properties:
+        id:
+          type: string
+          description: Key of the entity.
+          readOnly: true
+        displayName:
+          type: string
+          description: The admin provided or imported title of the app.
+        description:
+          type: string
+          description: The description of the app.
+        publisher:
+          type: string
+          description: The publisher of the app.
+        largeIcon:
+          type: object
+          description: The large icon for the app.
+          properties:
+            type:
+              type: string
+            value:
+              type: string
+              format: byte
+        createdDateTime:
+          type: string
+          format: date-time
+          description: The date and time the app was created.
+          readOnly: true
+        lastModifiedDateTime:
+          type: string
+          format: date-time
+          description: The date and time the app was last modified.
+          readOnly: true
+        isFeatured:
+          type: boolean
+          description: Whether the app is marked as featured by the admin.
+        privacyInformationUrl:
+          type: string
+          description: The privacy statement URL.
+        informationUrl:
+          type: string
+          description: The more information URL.
+        owner:
+          type: string
+          description: The owner of the app.
+        developer:
+          type: string
+          description: The developer of the app.
+        notes:
+          type: string
+          description: Notes for the app.
+        publishingState:
+          type: string
+          description: The publishing state for the app.
+          enum:
+          - notPublished
+          - processing
+          - published
+          readOnly: true
+    Application:
+      type: object
+      description: Application entity from the Data Warehouse inventory.
+      properties:
+        applicationKey:
+          type: integer
+          description: Unique key for the application in the Data Warehouse.
+        applicationId:
+          type: string
+          description: Unique identifier of the application.
+        applicationName:
+          type: string
+          description: Name of the application.
+        applicationVersion:
+          type: string
+          description: Version of the application.
+        applicationPublisher:
+          type: string
+          description: Publisher of the application.
+        isDeleted:
+          type: boolean
+          description: Whether the application record has been deleted.
+    MobileAppInstallStatus:
+      type: object
+      description: Mobile application installation status record.
+      properties:
+        dateKey:
+          type: integer
+          description: Date key for the status.
+        deviceKey:
+          type: integer
+          description: Device key reference.
+        userKey:
+          type: integer
+          description: User key reference.
+        applicationKey:
+          type: integer
+          description: Application key reference.
+        installState:
+          type: string
+          description: Installation state.
+        errorCode:
+          type: integer
+          description: Error code if installation failed.
+  securitySchemes:
+    windowsAuth:
+      type: http
+      scheme: negotiate
+      description: Windows Integrated Authentication (Kerberos/NTLM).
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via Azure AD for cloud management gateway access.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes: {}
