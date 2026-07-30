@@ -3,6 +3,19 @@ description: >-
   Microsoft Endpoint Configuration Management (formerly System Center Configuration Manager) provides comprehensive
   management of devices and applications across an enterprise. It enables IT administrators to manage PCs, servers, and
   mobile devices, deploy software, manage compliance, and protect data.
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://docs.microsoft.com/en-us/mem/configmgr/core/media/configmgr-logo.png
 url: https://learn.microsoft.com/en-us/intune/configmgr/
 created: '2024'
@@ -17,209 +30,1376 @@ tags:
   - Patch Management
   - Software Deployment
 apis:
-  - name: Configuration Manager REST API
-    description: >-
-      REST API for managing Configuration Manager resources including collections, deployments, applications, and device
-      queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData
-      routes.
-    image: https://docs.microsoft.com/en-us/mem/configmgr/core/media/configmgr-logo.png
-    humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
-    baseURL: https://{siteserver}/AdminService
-    tags:
-      - Admin Service
-      - Configuration Manager
-      - REST API
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
-      - type: GettingStarted
-        url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up
-      - type: OpenAPI
-        url: openapi/microsoft-endpoint-configuration-management-configmgr-rest-api-openapi.yml
-      - type: Authentication
-        url: >-
-          https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up#enable-secure-https-communication
-      - type: Reference
-        url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/usage
-      - type: ChangeLog
-        url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/release-notes
-  - name: Configuration Manager PowerShell Cmdlets
-    description: >-
-      PowerShell module for Configuration Manager automation and scripting, providing over 1100 cmdlets for all major
-      management tasks including device collections, software deployment, and compliance settings.
-    humanURL: https://learn.microsoft.com/en-us/powershell/sccm/overview?view=sccm-ps
-    tags:
-      - Automation
-      - Configuration Manager
-      - PowerShell
-      - Scripting
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/powershell/sccm/overview?view=sccm-ps
-      - type: Reference
-        url: https://learn.microsoft.com/en-us/powershell/module/configurationmanager/?view=sccm-ps
-      - type: GettingStarted
-        url: https://learn.microsoft.com/en-us/intune/configmgr/core/servers/manage/admin-console
-      - type: ChangeLog
-        url: https://learn.microsoft.com/en-us/intune/configmgr/core/plan-design/changes/whats-new-incremental-versions
-  - name: Configuration Manager SDK
-    description: >-
-      Software Development Kit for extending and integrating with Configuration Manager, including WMI providers, class
-      schemas, and programming interfaces for custom solutions.
-    humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/
-    tags:
-      - Configuration Manager
-      - Development
-      - SDK
-      - WMI
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/intune/configmgr/develop/
-      - type: Reference
-        url: https://learn.microsoft.com/en-us/intune/configmgr/develop/reference/configuration-manager-reference
-      - type: GettingStarted
-        url: >-
-          https://learn.microsoft.com/en-us/intune/configmgr/develop/core/understand/getting-started-with-configuration-manager-programming
-      - type: ChangeLog
-        url: https://learn.microsoft.com/en-us/intune/configmgr/core/plan-design/changes/whats-new-incremental-versions
-  - name: Microsoft Intune Graph API
-    description: >-
-      Microsoft Graph API endpoints for Intune device management, enabling programmatic access to manage devices, apps,
-      compliance policies, and configuration profiles. Supports both v1.0 and beta endpoints.
-    humanURL: https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
-    baseURL: https://graph.microsoft.com/v1.0
-    tags:
-      - Compliance
-      - Device Management
-      - Intune
-      - Microsoft Graph
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
-      - type: GettingStarted
-        url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
-      - type: OpenAPI
-        url: openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml
-      - type: JSONSchema
-        url: json-schema/microsoft-endpoint-configuration-management-device-schema.json
-      - type: JSONSchema
-        url: json-schema/microsoft-endpoint-configuration-management-compliance-policy-schema.json
-      - type: JSONSchema
-        url: json-schema/microsoft-endpoint-configuration-management-application-schema.json
-      - type: JSONSchema
-        url: json-schema/microsoft-endpoint-configuration-management-configuration-profile-schema.json
-      - type: JSONLD
-        url: json-ld/microsoft-endpoint-configuration-management-context.jsonld
-      - type: Reference
-        url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
-      - type: Authentication
-        url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
-      - type: ChangeLog
-        url: https://developer.microsoft.com/en-us/graph/changelog
-      - type: SDKs
-        url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
-      - type: PostmanCollection
-        url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
-  - name: Intune Data Warehouse API
-    description: >-
-      OData-based REST API that provides access to Intune reporting data in a machine-readable format. Enables building
-      custom reports and analytics for enterprise mobile environment insights.
-    humanURL: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
-    baseURL: https://fef.{location}.manage.microsoft.com/ReportingService/DataWarehouseFEService
-    tags:
-      - Data Warehouse
-      - Intune
-      - OData
-      - Reporting
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
-      - type: OpenAPI
-        url: openapi/microsoft-endpoint-configuration-management-intune-data-warehouse-api-openapi.yml
-      - type: GettingStarted
-        url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-api-url
-      - type: Authentication
-        url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
-      - type: Reference
-        url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-proc-data-rest
-      - type: ChangeLog
-        url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
-  - name: Intune App SDK
-    description: >-
-      SDKs for iOS and Android that enable mobile apps to support Intune app protection policies. Allows developers to
-      integrate mobile application management features into line-of-business and partner apps.
-    humanURL: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-sdk-get-started
-    tags:
-      - App Protection
-      - Intune
-      - Mobile Apps
-      - SDK
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-sdk
-      - type: GettingStarted
-        url: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-sdk-get-started
-      - type: Reference
-        url: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-sdk-ios-phase1
-      - type: GitHubOrganization
-        url: https://github.com/msintuneappsdk
-  - name: Intune Reporting Export API
-    description: >-
-      Microsoft Graph API endpoints for exporting Intune reports programmatically. Supports exporting device,
-      compliance, and app management reports in CSV or JSON format using asynchronous export jobs.
-    humanURL: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
-    baseURL: https://graph.microsoft.com/v1.0/deviceManagement/reports
-    tags:
-      - Export
-      - Intune
-      - Microsoft Graph
-      - Reporting
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
-      - type: OpenAPI
-        url: openapi/microsoft-endpoint-configuration-management-intune-reporting-export-api-openapi.yml
-      - type: Reference
-        url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports
-      - type: Authentication
-        url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
-  - name: Intune App Wrapping Tool
-    description: >-
-      Command-line tools for iOS and Android that enable existing line-of-business apps to be managed by Intune app
-      protection policies without requiring source code changes.
-    humanURL: https://learn.microsoft.com/en-us/intune/intune-service/developer/apps-prepare-mobile-application-management
-    tags:
-      - Android
-      - App Protection
-      - Intune
-      - iOS
-      - Mobile Apps
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/intune/intune-service/developer/apps-prepare-mobile-application-management
-      - type: GettingStarted
-        url: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-wrapper-prepare-ios
-      - type: Reference
-        url: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-wrapper-prepare-android
-      - type: GitHubOrganization
-        url: https://github.com/microsoftconnect
-  - name: Intune PowerShell SDK
-    description: >-
-      PowerShell module providing native cmdlet support for invoking the Microsoft Intune Graph API. Enables IT
-      administrators to automate device management, app deployment, and compliance policy operations through scripting.
-    humanURL: https://github.com/microsoft/Intune-PowerShell-SDK
-    tags:
-      - Automation
-      - Intune
-      - PowerShell
-      - SDK
-    properties:
-      - type: Documentation
-        url: https://github.com/microsoft/Intune-PowerShell-SDK
-      - type: GettingStarted
-        url: https://github.com/microsoft/mggraph-intune-samples
-      - type: SDKs
-        url: https://learn.microsoft.com/en-us/graph/sdks/sdk-installation
+- name: Configuration Manager PowerShell Cmdlets
+  description: >-
+    PowerShell module for Configuration Manager automation and scripting, providing over 1100 cmdlets
+    for all major management tasks including device collections, software deployment, and compliance settings.
+  humanURL: https://learn.microsoft.com/en-us/powershell/sccm/overview?view=sccm-ps
+  tags:
+  - Automation
+  - Configuration Manager
+  - PowerShell
+  - Scripting
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/powershell/sccm/overview?view=sccm-ps
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/powershell/module/configurationmanager/?view=sccm-ps
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/configmgr/core/servers/manage/admin-console
+  - type: ChangeLog
+    url: >-
+      https://learn.microsoft.com/en-us/intune/configmgr/core/plan-design/changes/whats-new-incremental-versions
+- name: Configuration Manager SDK
+  description: >-
+    Software Development Kit for extending and integrating with Configuration Manager, including WMI providers,
+    class schemas, and programming interfaces for custom solutions.
+  humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/
+  tags:
+  - Configuration Manager
+  - Development
+  - SDK
+  - WMI
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/intune/configmgr/develop/reference/configuration-manager-reference
+  - type: GettingStarted
+    url: >-
+      https://learn.microsoft.com/en-us/intune/configmgr/develop/core/understand/getting-started-with-configuration-manager-programming
+  - type: ChangeLog
+    url: >-
+      https://learn.microsoft.com/en-us/intune/configmgr/core/plan-design/changes/whats-new-incremental-versions
+- name: Intune App SDK
+  description: >-
+    SDKs for iOS and Android that enable mobile apps to support Intune app protection policies. Allows
+    developers to integrate mobile application management features into line-of-business and partner apps.
+  humanURL: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-sdk-get-started
+  tags:
+  - App Protection
+  - Intune
+  - Mobile Apps
+  - SDK
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-sdk
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-sdk-get-started
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/app-sdk-ios-phase1
+  - type: GitHubOrganization
+    url: https://github.com/msintuneappsdk
+- name: Intune App Wrapping Tool
+  description: >-
+    Command-line tools for iOS and Android that enable existing line-of-business apps to be managed by
+    Intune app protection policies without requiring source code changes.
+  humanURL: >-
+    https://learn.microsoft.com/en-us/intune/intune-service/developer/apps-prepare-mobile-application-management
+  tags:
+  - Android
+  - App Protection
+  - Intune
+  - iOS
+  - Mobile Apps
+  properties:
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/developer/apps-prepare-mobile-application-management
+  - type: GettingStarted
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/developer/app-wrapper-prepare-ios
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/developer/app-wrapper-prepare-android
+  - type: GitHubOrganization
+    url: https://github.com/microsoftconnect
+- name: Intune PowerShell SDK
+  description: >-
+    PowerShell module providing native cmdlet support for invoking the Microsoft Intune Graph API. Enables
+    IT administrators to automate device management, app deployment, and compliance policy operations
+    through scripting.
+  humanURL: https://github.com/microsoft/Intune-PowerShell-SDK
+  tags:
+  - Automation
+  - Intune
+  - PowerShell
+  - SDK
+  properties:
+  - type: Documentation
+    url: https://github.com/microsoft/Intune-PowerShell-SDK
+  - type: GettingStarted
+    url: https://github.com/microsoft/mggraph-intune-samples
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdk-installation
+- aid: >-
+    microsoft-endpoint-configuration-management:microsoft-endpoint-configuration-management-applications-api
+  name: Microsoft Endpoint Configuration Management Applications API
+  description: Manage Configuration Manager applications.
+  humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  baseURL: https://{siteserver}/AdminService
+  tags:
+  - Applications
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-endpoint-configuration-management-applications-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up
+  - type: Authentication
+    url: >-
+      https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up#enable-secure-https-communication
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/usage
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/release-notes
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-device-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-compliance-policy-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-application-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/microsoft-endpoint-configuration-management-configuration-profile-schema.json
+  - type: JSONLD
+    url: json-ld/microsoft-endpoint-configuration-management-context.jsonld
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: PostmanCollection
+    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-api-url
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-proc-data-rest
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports
+- aid: >-
+    microsoft-endpoint-configuration-management:microsoft-endpoint-configuration-management-collections-api
+  name: Microsoft Endpoint Configuration Management Collections API
+  description: Manage device and user collections.
+  humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  baseURL: https://{siteserver}/AdminService
+  tags:
+  - Collections
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-endpoint-configuration-management-collections-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up
+  - type: Authentication
+    url: >-
+      https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up#enable-secure-https-communication
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/usage
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/release-notes
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-device-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-compliance-policy-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-application-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/microsoft-endpoint-configuration-management-configuration-profile-schema.json
+  - type: JSONLD
+    url: json-ld/microsoft-endpoint-configuration-management-context.jsonld
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: PostmanCollection
+    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-api-url
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-proc-data-rest
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports
+- aid: >-
+    microsoft-endpoint-configuration-management:microsoft-endpoint-configuration-management-compliance-api
+  name: Microsoft Endpoint Configuration Management Compliance API
+  description: Manage compliance baselines and settings.
+  humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  baseURL: https://{siteserver}/AdminService
+  tags:
+  - Compliance
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-endpoint-configuration-management-compliance-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up
+  - type: Authentication
+    url: >-
+      https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up#enable-secure-https-communication
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/usage
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/release-notes
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-device-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-compliance-policy-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-application-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/microsoft-endpoint-configuration-management-configuration-profile-schema.json
+  - type: JSONLD
+    url: json-ld/microsoft-endpoint-configuration-management-context.jsonld
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: PostmanCollection
+    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-api-url
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-proc-data-rest
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports
+- aid: >-
+    microsoft-endpoint-configuration-management:microsoft-endpoint-configuration-management-compliance-policies-api
+  name: Microsoft Endpoint Configuration Management Compliance Policies API
+  description: Manage device compliance policies.
+  humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  baseURL: https://{siteserver}/AdminService
+  tags:
+  - Compliance Policies
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-endpoint-configuration-management-compliance-policies-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up
+  - type: Authentication
+    url: >-
+      https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up#enable-secure-https-communication
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/usage
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/release-notes
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-device-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-compliance-policy-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-application-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/microsoft-endpoint-configuration-management-configuration-profile-schema.json
+  - type: JSONLD
+    url: json-ld/microsoft-endpoint-configuration-management-context.jsonld
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: PostmanCollection
+    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-api-url
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-proc-data-rest
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports
+- aid: >-
+    microsoft-endpoint-configuration-management:microsoft-endpoint-configuration-management-configuration-profiles-api
+  name: Microsoft Endpoint Configuration Management Configuration Profiles API
+  description: Manage device configuration profiles.
+  humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  baseURL: https://{siteserver}/AdminService
+  tags:
+  - Configuration Profiles
+  properties:
+  - type: OpenAPI
+    url: >-
+      openapi/microsoft-endpoint-configuration-management-configuration-profiles-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up
+  - type: Authentication
+    url: >-
+      https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up#enable-secure-https-communication
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/usage
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/release-notes
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-device-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-compliance-policy-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-application-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/microsoft-endpoint-configuration-management-configuration-profile-schema.json
+  - type: JSONLD
+    url: json-ld/microsoft-endpoint-configuration-management-context.jsonld
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: PostmanCollection
+    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-api-url
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-proc-data-rest
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports
+- aid: >-
+    microsoft-endpoint-configuration-management:microsoft-endpoint-configuration-management-dates-api
+  name: Microsoft Endpoint Configuration Management Dates API
+  description: Date dimension for time-based reporting.
+  humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  baseURL: https://{siteserver}/AdminService
+  tags:
+  - Dates
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-endpoint-configuration-management-dates-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up
+  - type: Authentication
+    url: >-
+      https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up#enable-secure-https-communication
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/usage
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/release-notes
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-device-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-compliance-policy-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-application-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/microsoft-endpoint-configuration-management-configuration-profile-schema.json
+  - type: JSONLD
+    url: json-ld/microsoft-endpoint-configuration-management-context.jsonld
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: PostmanCollection
+    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-api-url
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-proc-data-rest
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports
+- aid: >-
+    microsoft-endpoint-configuration-management:microsoft-endpoint-configuration-management-deployments-api
+  name: Microsoft Endpoint Configuration Management Deployments API
+  description: View and manage application deployments.
+  humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  baseURL: https://{siteserver}/AdminService
+  tags:
+  - Deployments
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-endpoint-configuration-management-deployments-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up
+  - type: Authentication
+    url: >-
+      https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up#enable-secure-https-communication
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/usage
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/release-notes
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-device-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-compliance-policy-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-application-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/microsoft-endpoint-configuration-management-configuration-profile-schema.json
+  - type: JSONLD
+    url: json-ld/microsoft-endpoint-configuration-management-context.jsonld
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: PostmanCollection
+    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-api-url
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-proc-data-rest
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports
+- aid: >-
+    microsoft-endpoint-configuration-management:microsoft-endpoint-configuration-management-device-actions-api
+  name: Microsoft Endpoint Configuration Management Device Actions API
+  description: Remote device actions such as wipe, retire, sync, and lock.
+  humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  baseURL: https://{siteserver}/AdminService
+  tags:
+  - Device Actions
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-endpoint-configuration-management-device-actions-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up
+  - type: Authentication
+    url: >-
+      https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up#enable-secure-https-communication
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/usage
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/release-notes
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-device-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-compliance-policy-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-application-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/microsoft-endpoint-configuration-management-configuration-profile-schema.json
+  - type: JSONLD
+    url: json-ld/microsoft-endpoint-configuration-management-context.jsonld
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: PostmanCollection
+    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-api-url
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-proc-data-rest
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports
+- aid: >-
+    microsoft-endpoint-configuration-management:microsoft-endpoint-configuration-management-devices-api
+  name: Microsoft Endpoint Configuration Management Devices API
+  description: Query and manage device resources.
+  humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  baseURL: https://{siteserver}/AdminService
+  tags:
+  - Devices
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-endpoint-configuration-management-devices-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up
+  - type: Authentication
+    url: >-
+      https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up#enable-secure-https-communication
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/usage
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/release-notes
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-device-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-compliance-policy-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-application-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/microsoft-endpoint-configuration-management-configuration-profile-schema.json
+  - type: JSONLD
+    url: json-ld/microsoft-endpoint-configuration-management-context.jsonld
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: PostmanCollection
+    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-api-url
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-proc-data-rest
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports
+- aid: >-
+    microsoft-endpoint-configuration-management:microsoft-endpoint-configuration-management-export-jobs-api
+  name: Microsoft Endpoint Configuration Management Export Jobs API
+  description: >-
+    Manage asynchronous report export jobs. Create export jobs, poll for completion, and download exported
+    report files.
+  humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  baseURL: https://{siteserver}/AdminService
+  tags:
+  - Export Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-endpoint-configuration-management-export-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up
+  - type: Authentication
+    url: >-
+      https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up#enable-secure-https-communication
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/usage
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/release-notes
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-device-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-compliance-policy-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-application-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/microsoft-endpoint-configuration-management-configuration-profile-schema.json
+  - type: JSONLD
+    url: json-ld/microsoft-endpoint-configuration-management-context.jsonld
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: PostmanCollection
+    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-api-url
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-proc-data-rest
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports
+- aid: >-
+    microsoft-endpoint-configuration-management:microsoft-endpoint-configuration-management-management-extensions-api
+  name: Microsoft Endpoint Configuration Management Management Extensions API
+  description: Intune management extension activities.
+  humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  baseURL: https://{siteserver}/AdminService
+  tags:
+  - Management Extensions
+  properties:
+  - type: OpenAPI
+    url: >-
+      openapi/microsoft-endpoint-configuration-management-management-extensions-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up
+  - type: Authentication
+    url: >-
+      https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up#enable-secure-https-communication
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/usage
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/release-notes
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-device-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-compliance-policy-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-application-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/microsoft-endpoint-configuration-management-configuration-profile-schema.json
+  - type: JSONLD
+    url: json-ld/microsoft-endpoint-configuration-management-context.jsonld
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: PostmanCollection
+    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-api-url
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-proc-data-rest
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports
+- aid: >-
+    microsoft-endpoint-configuration-management:microsoft-endpoint-configuration-management-packages-api
+  name: Microsoft Endpoint Configuration Management Packages API
+  description: Manage legacy software packages.
+  humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  baseURL: https://{siteserver}/AdminService
+  tags:
+  - Packages
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-endpoint-configuration-management-packages-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up
+  - type: Authentication
+    url: >-
+      https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up#enable-secure-https-communication
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/usage
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/release-notes
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-device-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-compliance-policy-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-application-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/microsoft-endpoint-configuration-management-configuration-profile-schema.json
+  - type: JSONLD
+    url: json-ld/microsoft-endpoint-configuration-management-context.jsonld
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: PostmanCollection
+    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-api-url
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-proc-data-rest
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports
+- aid: >-
+    microsoft-endpoint-configuration-management:microsoft-endpoint-configuration-management-policies-api
+  name: Microsoft Endpoint Configuration Management Policies API
+  description: Policy records and compliance activities.
+  humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  baseURL: https://{siteserver}/AdminService
+  tags:
+  - Policies
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-endpoint-configuration-management-policies-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up
+  - type: Authentication
+    url: >-
+      https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up#enable-secure-https-communication
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/usage
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/release-notes
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-device-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-compliance-policy-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-application-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/microsoft-endpoint-configuration-management-configuration-profile-schema.json
+  - type: JSONLD
+    url: json-ld/microsoft-endpoint-configuration-management-context.jsonld
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: PostmanCollection
+    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-api-url
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-proc-data-rest
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports
+- aid: >-
+    microsoft-endpoint-configuration-management:microsoft-endpoint-configuration-management-reports-api
+  name: Microsoft Endpoint Configuration Management Reports API
+  description: >-
+    Retrieve inline Intune reports for device compliance, configuration policy status, and historical
+    data.
+  humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  baseURL: https://{siteserver}/AdminService
+  tags:
+  - Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-endpoint-configuration-management-reports-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up
+  - type: Authentication
+    url: >-
+      https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up#enable-secure-https-communication
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/usage
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/release-notes
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-device-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-compliance-policy-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-application-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/microsoft-endpoint-configuration-management-configuration-profile-schema.json
+  - type: JSONLD
+    url: json-ld/microsoft-endpoint-configuration-management-context.jsonld
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: PostmanCollection
+    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-api-url
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-proc-data-rest
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports
+- aid: >-
+    microsoft-endpoint-configuration-management:microsoft-endpoint-configuration-management-scripts-api
+  name: Microsoft Endpoint Configuration Management Scripts API
+  description: Manage and execute PowerShell scripts.
+  humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  baseURL: https://{siteserver}/AdminService
+  tags:
+  - Scripts
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-endpoint-configuration-management-scripts-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up
+  - type: Authentication
+    url: >-
+      https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up#enable-secure-https-communication
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/usage
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/release-notes
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-device-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-compliance-policy-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-application-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/microsoft-endpoint-configuration-management-configuration-profile-schema.json
+  - type: JSONLD
+    url: json-ld/microsoft-endpoint-configuration-management-context.jsonld
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: PostmanCollection
+    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-api-url
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-proc-data-rest
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports
+- aid: >-
+    microsoft-endpoint-configuration-management:microsoft-endpoint-configuration-management-site-administration-api
+  name: Microsoft Endpoint Configuration Management Site Administration API
+  description: Site configuration and administration.
+  humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  baseURL: https://{siteserver}/AdminService
+  tags:
+  - Site Administration
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-endpoint-configuration-management-site-administration-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up
+  - type: Authentication
+    url: >-
+      https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up#enable-secure-https-communication
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/usage
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/release-notes
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-device-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-compliance-policy-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-application-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/microsoft-endpoint-configuration-management-configuration-profile-schema.json
+  - type: JSONLD
+    url: json-ld/microsoft-endpoint-configuration-management-context.jsonld
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: PostmanCollection
+    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-api-url
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-proc-data-rest
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports
+- aid: >-
+    microsoft-endpoint-configuration-management:microsoft-endpoint-configuration-management-software-updates-api
+  name: Microsoft Endpoint Configuration Management Software Updates API
+  description: Query software update information.
+  humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  baseURL: https://{siteserver}/AdminService
+  tags:
+  - Software Updates
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-endpoint-configuration-management-software-updates-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up
+  - type: Authentication
+    url: >-
+      https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up#enable-secure-https-communication
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/usage
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/release-notes
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-device-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-compliance-policy-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-application-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/microsoft-endpoint-configuration-management-configuration-profile-schema.json
+  - type: JSONLD
+    url: json-ld/microsoft-endpoint-configuration-management-context.jsonld
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: PostmanCollection
+    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-api-url
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-proc-data-rest
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports
+- aid: >-
+    microsoft-endpoint-configuration-management:microsoft-endpoint-configuration-management-task-sequences-api
+  name: Microsoft Endpoint Configuration Management Task Sequences API
+  description: Manage OS deployment task sequences.
+  humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  baseURL: https://{siteserver}/AdminService
+  tags:
+  - Task Sequences
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-endpoint-configuration-management-task-sequences-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up
+  - type: Authentication
+    url: >-
+      https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up#enable-secure-https-communication
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/usage
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/release-notes
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-device-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-compliance-policy-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-application-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/microsoft-endpoint-configuration-management-configuration-profile-schema.json
+  - type: JSONLD
+    url: json-ld/microsoft-endpoint-configuration-management-context.jsonld
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: PostmanCollection
+    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-api-url
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-proc-data-rest
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports
+- aid: >-
+    microsoft-endpoint-configuration-management:microsoft-endpoint-configuration-management-user-device-associations-api
+  name: Microsoft Endpoint Configuration Management User Device Associations API
+  description: User-to-device mapping records.
+  humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  baseURL: https://{siteserver}/AdminService
+  tags:
+  - User Device Associations
+  properties:
+  - type: OpenAPI
+    url: >-
+      openapi/microsoft-endpoint-configuration-management-user-device-associations-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up
+  - type: Authentication
+    url: >-
+      https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up#enable-secure-https-communication
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/usage
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/release-notes
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-device-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-compliance-policy-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-application-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/microsoft-endpoint-configuration-management-configuration-profile-schema.json
+  - type: JSONLD
+    url: json-ld/microsoft-endpoint-configuration-management-context.jsonld
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: PostmanCollection
+    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-api-url
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-proc-data-rest
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports
+- aid: >-
+    microsoft-endpoint-configuration-management:microsoft-endpoint-configuration-management-users-api
+  name: Microsoft Endpoint Configuration Management Users API
+  description: User dimension records.
+  humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  baseURL: https://{siteserver}/AdminService
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-endpoint-configuration-management-users-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up
+  - type: Authentication
+    url: >-
+      https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up#enable-secure-https-communication
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/usage
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/release-notes
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-device-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-compliance-policy-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-endpoint-configuration-management-application-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/microsoft-endpoint-configuration-management-configuration-profile-schema.json
+  - type: JSONLD
+    url: json-ld/microsoft-endpoint-configuration-management-context.jsonld
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/intune-concept-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: PostmanCollection
+    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-api-url
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-proc-data-rest
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports
 common:
   - type: AgenticAccess
     url: agentic-access/microsoft-endpoint-configuration-management-agentic-access.yml
