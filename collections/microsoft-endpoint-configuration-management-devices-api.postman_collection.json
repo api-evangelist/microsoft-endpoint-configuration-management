@@ -1,0 +1,2299 @@
+{
+  "item": [
+    {
+      "id": "c051feb9-d050-46a2-9639-fd464095ad32",
+      "name": "Devices",
+      "description": {
+        "content": "Query and manage device resources.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8cf9dc66-bb4e-43a2-80ea-3e163b91b5f2",
+          "name": "Microsoft Endpoint Configuration Management List devices via WMI route",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List devices via WMI route",
+            "description": {
+              "content": "Retrieve a collection of devices managed by Configuration Manager using the WMI route. Supports OData query options for filtering and selecting.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wmi",
+                "SMS_Device"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Order results by a property."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5125b595-7389-42a8-909f-be2471af754a",
+              "name": "Successful response returning a collection of devices.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wmi",
+                    "SMS_Device"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"value\": [\n    {\n      \"DeviceID\": 6216,\n      \"Name\": \"string\",\n      \"Domain\": \"string\",\n      \"SMSID\": \"string\",\n      \"IsActive\": true,\n      \"DeviceOS\": \"string\",\n      \"DeviceOSVersion\": \"string\",\n      \"DeviceType\": 7231,\n      \"IsBlocked\": false,\n      \"LastActiveTime\": \"1980-08-22T07:41:27.768Z\"\n    },\n    {\n      \"DeviceID\": 8209,\n      \"Name\": \"string\",\n      \"Domain\": \"string\",\n      \"SMSID\": \"string\",\n      \"IsActive\": false,\n      \"DeviceOS\": \"string\",\n      \"DeviceOSVersion\": \"string\",\n      \"DeviceType\": 4044,\n      \"IsBlocked\": true,\n      \"LastActiveTime\": \"1961-10-20T06:39:23.030Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a84d657c-cec9-4178-962d-0f84e161c677",
+              "name": "Unauthorized. Authentication is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wmi",
+                    "SMS_Device"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "650f1c91-1148-4064-91f7-a4930d62e86d",
+              "name": "Forbidden. The user account must be an administrative user in Configuration Manager.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wmi",
+                    "SMS_Device"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8437aea0-ab88-4021-b2ee-7140a78be82d",
+          "name": "Microsoft Endpoint Configuration Management List systems",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List systems",
+            "description": {
+              "content": "Retrieve all discovered system resources, representing computers and devices discovered by Configuration Manager.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wmi",
+                "SMS_R_System"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6609a974-1836-4547-a330-4a7d70d3c553",
+              "name": "Successful response returning discovered systems.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wmi",
+                    "SMS_R_System"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"ResourceID\": 9686,\n      \"Name\": \"string\",\n      \"SMSUniqueIdentifier\": \"string\",\n      \"ResourceDomainORWorkgroup\": \"string\",\n      \"Client\": 2552,\n      \"Active\": 4294,\n      \"IPAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"MACAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"OperatingSystemNameandVersion\": \"string\",\n      \"LastLogonUserName\": \"string\",\n      \"LastLogonTimestamp\": \"1958-06-10T10:28:04.005Z\"\n    },\n    {\n      \"ResourceID\": 8976,\n      \"Name\": \"string\",\n      \"SMSUniqueIdentifier\": \"string\",\n      \"ResourceDomainORWorkgroup\": \"string\",\n      \"Client\": 5288,\n      \"Active\": 5966,\n      \"IPAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"MACAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"OperatingSystemNameandVersion\": \"string\",\n      \"LastLogonUserName\": \"string\",\n      \"LastLogonTimestamp\": \"2020-09-03T18:47:12.669Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d42f2963-bc5b-4ca7-b75b-980ee7d42bdf",
+          "name": "Microsoft Endpoint Configuration Management List devices (versioned route)",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List devices (versioned route)",
+            "description": {
+              "content": "Retrieve devices through the versioned OData v1.0 route which supports new Configuration Manager functionality.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1.0",
+                "Device"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "39efc349-c6c8-4bea-b08a-813cb800d2ef",
+              "name": "Successful response returning devices.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.0",
+                    "Device"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"MachineId\": 8821,\n      \"Name\": \"string\",\n      \"Domain\": \"string\",\n      \"IsActive\": true,\n      \"LastActiveTime\": \"1993-11-06T19:51:44.384Z\",\n      \"DeviceOS\": \"string\",\n      \"Status\": \"string\",\n      \"SiteCode\": \"string\"\n    },\n    {\n      \"MachineId\": 243,\n      \"Name\": \"string\",\n      \"Domain\": \"string\",\n      \"IsActive\": true,\n      \"LastActiveTime\": \"1979-10-25T08:12:33.276Z\",\n      \"DeviceOS\": \"string\",\n      \"Status\": \"string\",\n      \"SiteCode\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8de0b785-e77c-42c8-a3eb-939a5c629f90",
+          "name": "Microsoft Endpoint Configuration Management Get a device (versioned route)",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management Get a device (versioned route)",
+            "description": {
+              "content": "Retrieve a specific device by ID via the versioned route.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1.0",
+                "Device({{deviceId}})"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "79a5e9af-c427-46a9-9c7e-70fe1627583b",
+              "name": "Successful response returning the device.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.0",
+                    "Device({{deviceId}})"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"MachineId\": 6997,\n  \"Name\": \"string\",\n  \"Domain\": \"string\",\n  \"IsActive\": false,\n  \"LastActiveTime\": \"1949-04-22T16:11:17.459Z\",\n  \"DeviceOS\": \"string\",\n  \"Status\": \"string\",\n  \"SiteCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "722994fd-d7ed-47af-a58d-9f14b108c596",
+          "name": "Microsoft Endpoint Configuration Management List device records",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List device records",
+            "description": {
+              "content": "Retrieve historical device records from the Data Warehouse. Returns daily snapshots of device properties including enrollment status, compliance state, and OS information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "v1.0",
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of items to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxhistorydays",
+                  "value": "7",
+                  "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5eb3d1ec-8b87-4a4e-9065-dcb093c414f5",
+              "name": "Successful response returning device records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"deviceKey\": 5179,\n      \"deviceId\": \"string\",\n      \"deviceName\": \"string\",\n      \"deviceType\": \"string\",\n      \"operatingSystem\": \"string\",\n      \"osVersion\": \"string\",\n      \"ownerType\": \"string\",\n      \"enrolledDateTime\": \"1981-10-28T07:50:55.054Z\",\n      \"lastSyncDateTime\": \"2004-09-22T06:30:31.164Z\",\n      \"managementAgent\": \"string\",\n      \"managementState\": \"string\",\n      \"referenceId\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"serialNumber\": \"string\",\n      \"isSupervised\": true,\n      \"isEncrypted\": false,\n      \"dateKey\": 549,\n      \"complianceState\": \"string\"\n    },\n    {\n      \"deviceKey\": 1090,\n      \"deviceId\": \"string\",\n      \"deviceName\": \"string\",\n      \"deviceType\": \"string\",\n      \"operatingSystem\": \"string\",\n      \"osVersion\": \"string\",\n      \"ownerType\": \"string\",\n      \"enrolledDateTime\": \"1964-05-30T15:02:23.567Z\",\n      \"lastSyncDateTime\": \"2006-04-19T21:47:14.809Z\",\n      \"managementAgent\": \"string\",\n      \"managementState\": \"string\",\n      \"referenceId\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"serialNumber\": \"string\",\n      \"isSupervised\": false,\n      \"isEncrypted\": false,\n      \"dateKey\": 1357,\n      \"complianceState\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "176e0134-daf6-44ff-9107-a12a34babef5",
+              "name": "Unauthorized. Microsoft Entra ID authentication with OAuth 2.0 is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d464d4e-843b-4b2b-adbb-5bfbdd65cd93",
+              "name": "Forbidden. User must have Intune service administrator role or role-based access to the Intune data warehouse resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "90c2f0b9-35a8-4c71-9642-1176048328b4",
+          "name": "Microsoft Endpoint Configuration Management List device property histories",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List device property histories",
+            "description": {
+              "content": "Retrieve historical device property snapshots. Contains daily snapshots of device-level data for the configured history window.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "devicePropertyHistories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "v1.0",
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of items to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxhistorydays",
+                  "value": "7",
+                  "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aeb46df6-ddab-4434-998e-779c4f65dc77",
+              "name": "Successful response returning device property history.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devicePropertyHistories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"devicePropertyHistoryKey\": 3201,\n      \"deviceKey\": 6678,\n      \"dateKey\": 3187,\n      \"deviceName\": \"string\",\n      \"deviceRegistrationStateKey\": 8110,\n      \"complianceStateKey\": 6591,\n      \"osVersion\": \"string\",\n      \"storageTotal\": 1169,\n      \"storageFree\": 4308\n    },\n    {\n      \"devicePropertyHistoryKey\": 7652,\n      \"deviceKey\": 3956,\n      \"dateKey\": 2011,\n      \"deviceName\": \"string\",\n      \"deviceRegistrationStateKey\": 6717,\n      \"complianceStateKey\": 3944,\n      \"osVersion\": \"string\",\n      \"storageTotal\": 6815,\n      \"storageFree\": 7659\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5abb800-6fc1-42c9-82ed-b7d5077c131a",
+          "name": "Microsoft Endpoint Configuration Management List managed devices",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List managed devices",
+            "description": {
+              "content": "List properties and relationships of the managedDevice objects enrolled in Intune.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deviceManagement",
+                "managedDevices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of items to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Order results by a property."
+                },
+                {
+                  "disabled": false,
+                  "key": "$count",
+                  "value": "<boolean>",
+                  "description": "Include count of items."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6d9dd526-2946-4e28-b7d4-a8013075fc73",
+              "name": "Successful response returning a collection of managed devices.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deviceManagement",
+                    "managedDevices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"@odata.count\": 4811,\n  \"@odata.nextLink\": \"string\",\n  \"value\": [\n    {\n      \"id\": \"string\",\n      \"userId\": \"string\",\n      \"deviceName\": \"string\",\n      \"managedDeviceOwnerType\": \"unknown\",\n      \"enrolledDateTime\": \"1993-03-15T20:26:44.484Z\",\n      \"lastSyncDateTime\": \"1987-08-02T13:32:33.097Z\",\n      \"operatingSystem\": \"string\",\n      \"complianceState\": \"inGracePeriod\",\n      \"jailBroken\": \"string\",\n      \"managementAgent\": \"configurationManagerClientMdm\",\n      \"osVersion\": \"string\",\n      \"easActivated\": false,\n      \"easDeviceId\": \"string\",\n      \"azureADRegistered\": true,\n      \"deviceEnrollmentType\": \"appleUserEnrollmentWithServiceAccount\",\n      \"emailAddress\": \"string\",\n      \"azureADDeviceId\": \"string\",\n      \"deviceRegistrationState\": \"certificateReset\",\n      \"isSupervised\": false,\n      \"isEncrypted\": true,\n      \"userPrincipalName\": \"string\",\n      \"model\": \"string\",\n      \"manufacturer\": \"string\",\n      \"imei\": \"string\",\n      \"serialNumber\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"androidSecurityPatchLevel\": \"string\",\n      \"userDisplayName\": \"string\",\n      \"wiFiMacAddress\": \"string\",\n      \"subscriberCarrier\": \"string\",\n      \"meid\": \"string\",\n      \"totalStorageSpaceInBytes\": 1408,\n      \"freeStorageSpaceInBytes\": 361,\n      \"managedDeviceName\": \"string\",\n      \"partnerReportedThreatState\": \"secured\",\n      \"physicalMemoryInBytes\": 9293,\n      \"enrollmentProfileName\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"userId\": \"string\",\n      \"deviceName\": \"string\",\n      \"managedDeviceOwnerType\": \"unknown\",\n      \"enrolledDateTime\": \"2017-07-17T06:32:23.014Z\",\n      \"lastSyncDateTime\": \"1965-08-02T00:55:41.047Z\",\n      \"operatingSystem\": \"string\",\n      \"complianceState\": \"error\",\n      \"jailBroken\": \"string\",\n      \"managementAgent\": \"unknown\",\n      \"osVersion\": \"string\",\n      \"easActivated\": false,\n      \"easDeviceId\": \"string\",\n      \"azureADRegistered\": true,\n      \"deviceEnrollmentType\": \"windowsAutoEnrollment\",\n      \"emailAddress\": \"string\",\n      \"azureADDeviceId\": \"string\",\n      \"deviceRegistrationState\": \"notRegistered\",\n      \"isSupervised\": true,\n      \"isEncrypted\": true,\n      \"userPrincipalName\": \"string\",\n      \"model\": \"string\",\n      \"manufacturer\": \"string\",\n      \"imei\": \"string\",\n      \"serialNumber\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"androidSecurityPatchLevel\": \"string\",\n      \"userDisplayName\": \"string\",\n      \"wiFiMacAddress\": \"string\",\n      \"subscriberCarrier\": \"string\",\n      \"meid\": \"string\",\n      \"totalStorageSpaceInBytes\": 4829,\n      \"freeStorageSpaceInBytes\": 359,\n      \"managedDeviceName\": \"string\",\n      \"partnerReportedThreatState\": \"lowSeverity\",\n      \"physicalMemoryInBytes\": 207,\n      \"enrollmentProfileName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b13c3eea-6565-4862-a957-a7cdcc4a6b4c",
+              "name": "Unauthorized. Authentication is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deviceManagement",
+                    "managedDevices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0dda7055-e2b3-4721-a298-aed6e6542696",
+              "name": "Forbidden. Insufficient permissions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deviceManagement",
+                    "managedDevices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5478df76-998e-40db-89f5-67b30f2455f2",
+          "name": "Microsoft Endpoint Configuration Management Create managed device",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management Create managed device",
+            "description": {
+              "content": "Create a new managedDevice object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deviceManagement",
+                "managedDevices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"managedDeviceOwnerType\": \"<string>\",\n  \"complianceState\": \"<string>\",\n  \"managementAgent\": \"<string>\",\n  \"managedDeviceName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9ef73ba4-dd98-40f1-83d8-21453b74cd3e",
+              "name": "Successfully created managed device.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deviceManagement",
+                    "managedDevices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"managedDeviceOwnerType\": \"<string>\",\n  \"complianceState\": \"<string>\",\n  \"managementAgent\": \"<string>\",\n  \"managedDeviceName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"userId\": \"string\",\n  \"deviceName\": \"string\",\n  \"managedDeviceOwnerType\": \"unknown\",\n  \"enrolledDateTime\": \"2016-03-28T13:11:06.502Z\",\n  \"lastSyncDateTime\": \"1972-10-07T03:27:16.685Z\",\n  \"operatingSystem\": \"string\",\n  \"complianceState\": \"unknown\",\n  \"jailBroken\": \"string\",\n  \"managementAgent\": \"configurationManagerClientMdm\",\n  \"osVersion\": \"string\",\n  \"easActivated\": true,\n  \"easDeviceId\": \"string\",\n  \"azureADRegistered\": true,\n  \"deviceEnrollmentType\": \"windowsAutoEnrollment\",\n  \"emailAddress\": \"string\",\n  \"azureADDeviceId\": \"string\",\n  \"deviceRegistrationState\": \"registered\",\n  \"isSupervised\": true,\n  \"isEncrypted\": false,\n  \"userPrincipalName\": \"string\",\n  \"model\": \"string\",\n  \"manufacturer\": \"string\",\n  \"imei\": \"string\",\n  \"serialNumber\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"androidSecurityPatchLevel\": \"string\",\n  \"userDisplayName\": \"string\",\n  \"wiFiMacAddress\": \"string\",\n  \"subscriberCarrier\": \"string\",\n  \"meid\": \"string\",\n  \"totalStorageSpaceInBytes\": 488,\n  \"freeStorageSpaceInBytes\": 5087,\n  \"managedDeviceName\": \"string\",\n  \"partnerReportedThreatState\": \"compromised\",\n  \"physicalMemoryInBytes\": 7226,\n  \"enrollmentProfileName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a272ebb-84f3-4f64-94b1-093427064830",
+              "name": "Bad request. The request body or parameters are invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deviceManagement",
+                    "managedDevices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"managedDeviceOwnerType\": \"<string>\",\n  \"complianceState\": \"<string>\",\n  \"managementAgent\": \"<string>\",\n  \"managedDeviceName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3fc6a908-745a-4f7d-9f4d-f6784edc0222",
+              "name": "Unauthorized. Authentication is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deviceManagement",
+                    "managedDevices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"managedDeviceOwnerType\": \"<string>\",\n  \"complianceState\": \"<string>\",\n  \"managementAgent\": \"<string>\",\n  \"managedDeviceName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c8aff64d-3d1f-492f-b98c-588a67b53394",
+          "name": "Microsoft Endpoint Configuration Management Get managed device",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management Get managed device",
+            "description": {
+              "content": "Read properties and relationships of a managedDevice object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deviceManagement",
+                "managedDevices",
+                ":managedDeviceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "managedDeviceId",
+                  "description": "(Required) The unique identifier of the managed device."
+                },
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e1bb53fb-48de-4e69-9e1d-46101c5b7abb",
+              "name": "Successful response returning the managed device.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deviceManagement",
+                    "managedDevices",
+                    ":managedDeviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "managedDeviceId",
+                      "description": "(Required) The unique identifier of the managed device."
+                    },
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"userId\": \"string\",\n  \"deviceName\": \"string\",\n  \"managedDeviceOwnerType\": \"unknown\",\n  \"enrolledDateTime\": \"2016-03-28T13:11:06.502Z\",\n  \"lastSyncDateTime\": \"1972-10-07T03:27:16.685Z\",\n  \"operatingSystem\": \"string\",\n  \"complianceState\": \"unknown\",\n  \"jailBroken\": \"string\",\n  \"managementAgent\": \"configurationManagerClientMdm\",\n  \"osVersion\": \"string\",\n  \"easActivated\": true,\n  \"easDeviceId\": \"string\",\n  \"azureADRegistered\": true,\n  \"deviceEnrollmentType\": \"windowsAutoEnrollment\",\n  \"emailAddress\": \"string\",\n  \"azureADDeviceId\": \"string\",\n  \"deviceRegistrationState\": \"registered\",\n  \"isSupervised\": true,\n  \"isEncrypted\": false,\n  \"userPrincipalName\": \"string\",\n  \"model\": \"string\",\n  \"manufacturer\": \"string\",\n  \"imei\": \"string\",\n  \"serialNumber\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"androidSecurityPatchLevel\": \"string\",\n  \"userDisplayName\": \"string\",\n  \"wiFiMacAddress\": \"string\",\n  \"subscriberCarrier\": \"string\",\n  \"meid\": \"string\",\n  \"totalStorageSpaceInBytes\": 488,\n  \"freeStorageSpaceInBytes\": 5087,\n  \"managedDeviceName\": \"string\",\n  \"partnerReportedThreatState\": \"compromised\",\n  \"physicalMemoryInBytes\": 7226,\n  \"enrollmentProfileName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf91fd7a-44a8-4181-8399-af41750d7afb",
+              "name": "Not found. The specified resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deviceManagement",
+                    "managedDevices",
+                    ":managedDeviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "managedDeviceId",
+                      "description": "(Required) The unique identifier of the managed device."
+                    },
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a033c2c2-9cc6-45da-a008-0a1926d3bbad",
+          "name": "Microsoft Endpoint Configuration Management Update managed device",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management Update managed device",
+            "description": {
+              "content": "Update the properties of a managedDevice object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deviceManagement",
+                "managedDevices",
+                ":managedDeviceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "managedDeviceId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"managedDeviceOwnerType\": \"<string>\",\n  \"complianceState\": \"<string>\",\n  \"managementAgent\": \"<string>\",\n  \"managedDeviceName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fd3860da-a1c9-4f83-b031-e04a2149eb83",
+              "name": "Successfully updated managed device.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deviceManagement",
+                    "managedDevices",
+                    ":managedDeviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "managedDeviceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"managedDeviceOwnerType\": \"<string>\",\n  \"complianceState\": \"<string>\",\n  \"managementAgent\": \"<string>\",\n  \"managedDeviceName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"userId\": \"string\",\n  \"deviceName\": \"string\",\n  \"managedDeviceOwnerType\": \"unknown\",\n  \"enrolledDateTime\": \"2016-03-28T13:11:06.502Z\",\n  \"lastSyncDateTime\": \"1972-10-07T03:27:16.685Z\",\n  \"operatingSystem\": \"string\",\n  \"complianceState\": \"unknown\",\n  \"jailBroken\": \"string\",\n  \"managementAgent\": \"configurationManagerClientMdm\",\n  \"osVersion\": \"string\",\n  \"easActivated\": true,\n  \"easDeviceId\": \"string\",\n  \"azureADRegistered\": true,\n  \"deviceEnrollmentType\": \"windowsAutoEnrollment\",\n  \"emailAddress\": \"string\",\n  \"azureADDeviceId\": \"string\",\n  \"deviceRegistrationState\": \"registered\",\n  \"isSupervised\": true,\n  \"isEncrypted\": false,\n  \"userPrincipalName\": \"string\",\n  \"model\": \"string\",\n  \"manufacturer\": \"string\",\n  \"imei\": \"string\",\n  \"serialNumber\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"androidSecurityPatchLevel\": \"string\",\n  \"userDisplayName\": \"string\",\n  \"wiFiMacAddress\": \"string\",\n  \"subscriberCarrier\": \"string\",\n  \"meid\": \"string\",\n  \"totalStorageSpaceInBytes\": 488,\n  \"freeStorageSpaceInBytes\": 5087,\n  \"managedDeviceName\": \"string\",\n  \"partnerReportedThreatState\": \"compromised\",\n  \"physicalMemoryInBytes\": 7226,\n  \"enrollmentProfileName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1b1dcdd9-ccb5-45e4-b3c9-9a37786f8db0",
+          "name": "Microsoft Endpoint Configuration Management Delete managed device",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management Delete managed device",
+            "description": {
+              "content": "Deletes a managedDevice.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deviceManagement",
+                "managedDevices",
+                ":managedDeviceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "managedDeviceId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fb852cd7-a1f9-46eb-9c80-56541f54ecb2",
+              "name": "Successfully deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deviceManagement",
+                    "managedDevices",
+                    ":managedDeviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "managedDeviceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "89ef8232-f4f3-4061-8bdb-622d988bdb61",
+              "name": "Not found. The specified resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deviceManagement",
+                    "managedDevices",
+                    ":managedDeviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "managedDeviceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7a0bc7b0-7017-4c63-b034-8ce0ee52256c",
+          "name": "Microsoft Endpoint Configuration Management List user owned devices",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List user owned devices",
+            "description": {
+              "content": "Get the list of devices registered to a user from Azure Active Directory.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":userId",
+                "ownedDevices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "043e5717-01c3-45f2-8e03-d2c959700b1f",
+              "name": "Successful response returning user devices.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId",
+                    "ownedDevices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"id\": \"string\",\n      \"deviceId\": \"string\",\n      \"displayName\": \"string\",\n      \"operatingSystem\": \"string\",\n      \"operatingSystemVersion\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"deviceId\": \"string\",\n      \"displayName\": \"string\",\n      \"operatingSystem\": \"string\",\n      \"operatingSystemVersion\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "smsproviderfqdn",
+      "key": "siteserver"
+    },
+    {
+      "type": "string",
+      "value": "https://{{siteserver}}/AdminService",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<integer>",
+      "key": "deviceId"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c39a1ff3-dc1f-43e8-8663-52aa3e9813d0",
+    "name": "Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Devices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData routes. Class names are case-sensitive.\n\nContact Support:\n Name: Microsoft Configuration Manager Support",
+      "type": "text/plain"
+    }
+  }
+}

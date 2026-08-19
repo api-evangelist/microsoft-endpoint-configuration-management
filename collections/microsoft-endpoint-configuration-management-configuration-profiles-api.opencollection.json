@@ -1,0 +1,162 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Configuration Profiles API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Configuration Profiles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List device configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{siteserver}/AdminService/deviceManagement/deviceConfigurations",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response."
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Order results by a property."
+              }
+            ]
+          },
+          "docs": "List properties and relationships of the deviceConfiguration objects."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Create device configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{siteserver}/AdminService/deviceManagement/deviceConfigurations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new deviceConfiguration object."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Get device configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{siteserver}/AdminService/deviceManagement/deviceConfigurations/:deviceConfigurationId",
+            "params": [
+              {
+                "name": "deviceConfigurationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response."
+              }
+            ]
+          },
+          "docs": "Read properties and relationships of a deviceConfiguration object."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Update device configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{siteserver}/AdminService/deviceManagement/deviceConfigurations/:deviceConfigurationId",
+            "params": [
+              {
+                "name": "deviceConfigurationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the properties of a deviceConfiguration object."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Delete device configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{siteserver}/AdminService/deviceManagement/deviceConfigurations/:deviceConfigurationId",
+            "params": [
+              {
+                "name": "deviceConfigurationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a deviceConfiguration."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Assign device configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{siteserver}/AdminService/deviceManagement/deviceConfigurations/:deviceConfigurationId/assign",
+            "params": [
+              {
+                "name": "deviceConfigurationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Assign a device configuration profile to groups."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

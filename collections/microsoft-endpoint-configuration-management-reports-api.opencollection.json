@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Reports API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Get device non-compliance report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{siteserver}/AdminService/deviceManagement/reports/getDeviceNonComplianceReport",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve a report of devices that are not compliant with compliance policies. This is a synchronous report endpoint that returns data directly in the response body."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Get compliance policy non-compliance report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{siteserver}/AdminService/deviceManagement/reports/getCompliancePolicyNonComplianceReport",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve a report of non-compliant devices grouped by compliance policy."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Get compliance setting non-compliance report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{siteserver}/AdminService/deviceManagement/reports/getComplianceSettingNonComplianceReport",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve a report of non-compliant devices grouped by compliance setting."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Get configuration policy non-compliance report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{siteserver}/AdminService/deviceManagement/reports/getConfigurationPolicyNonComplianceReport",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve a report of non-compliant devices grouped by configuration policy."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Get historical report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{siteserver}/AdminService/deviceManagement/reports/getHistoricalReport",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve a historical report from the Intune reporting infrastructure. Returns report data for a specific time range."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Get cached report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{siteserver}/AdminService/deviceManagement/reports/getCachedReport",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve a cached report from a previous export. The snapshotId or sessionId in the request body identifies the cached data to return."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

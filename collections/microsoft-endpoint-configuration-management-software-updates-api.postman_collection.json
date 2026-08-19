@@ -1,0 +1,184 @@
+{
+  "item": [
+    {
+      "id": "f15812ec-9159-40ec-bc12-9772fbd4e715",
+      "name": "Software Updates",
+      "description": {
+        "content": "Query software update information.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e29443b5-c9cc-474c-8396-b8cbc8e0c8d1",
+          "name": "Microsoft Endpoint Configuration Management List software updates",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List software updates",
+            "description": {
+              "content": "Retrieve all software updates known to Configuration Manager.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wmi",
+                "SMS_SoftwareUpdate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a9ec1251-ebf4-4973-9895-e95d0026eca7",
+              "name": "Successful response returning software updates.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wmi",
+                    "SMS_SoftwareUpdate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"CI_ID\": 1358,\n      \"ArticleID\": \"string\",\n      \"BulletinID\": \"string\",\n      \"LocalizedDisplayName\": \"string\",\n      \"LocalizedDescription\": \"string\",\n      \"DatePosted\": \"1957-12-01T13:58:01.325Z\",\n      \"DateRevised\": \"1946-11-09T17:15:05.492Z\",\n      \"IsDeployed\": false,\n      \"IsSuperseded\": true,\n      \"NumMissing\": 3279,\n      \"NumPresent\": 2703,\n      \"SeverityName\": \"string\"\n    },\n    {\n      \"CI_ID\": 7544,\n      \"ArticleID\": \"string\",\n      \"BulletinID\": \"string\",\n      \"LocalizedDisplayName\": \"string\",\n      \"LocalizedDescription\": \"string\",\n      \"DatePosted\": \"1989-06-21T01:29:15.362Z\",\n      \"DateRevised\": \"1967-01-03T14:37:32.195Z\",\n      \"IsDeployed\": false,\n      \"IsSuperseded\": false,\n      \"NumMissing\": 358,\n      \"NumPresent\": 9399,\n      \"SeverityName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "smsproviderfqdn",
+      "key": "siteserver"
+    },
+    {
+      "type": "string",
+      "value": "https://{{siteserver}}/AdminService",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "957a37be-3068-4190-a309-12d080158a06",
+    "name": "Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Software Updates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData routes. Class names are case-sensitive.\n\nContact Support:\n Name: Microsoft Configuration Manager Support",
+      "type": "text/plain"
+    }
+  }
+}

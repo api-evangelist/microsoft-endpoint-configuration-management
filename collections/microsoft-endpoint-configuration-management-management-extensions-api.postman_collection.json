@@ -1,0 +1,212 @@
+{
+  "item": [
+    {
+      "id": "16ad1726-7a78-45d2-84c7-6b2f0c898d38",
+      "name": "Management Extensions",
+      "description": {
+        "content": "Intune management extension activities.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9670282f-6544-48d0-bad7-3c723e7ec2d2",
+          "name": "Microsoft Endpoint Configuration Management List Intune management extension records",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List Intune management extension records",
+            "description": {
+              "content": "Retrieve Intune management extension activity records including script execution results.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "intuneManagementExtensions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "v1.0",
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of items to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxhistorydays",
+                  "value": "7",
+                  "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c89dc189-09ee-4636-a74f-b61d25f69ae2",
+              "name": "Successful response returning management extension records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "intuneManagementExtensions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"dateKey\": 2236,\n      \"tenantKey\": 3657,\n      \"deviceKey\": 8855,\n      \"userKey\": 5404,\n      \"extensionVersionKey\": 6870,\n      \"policyKey\": 2147,\n      \"policyTypeKey\": 2016,\n      \"status\": \"string\"\n    },\n    {\n      \"dateKey\": 8645,\n      \"tenantKey\": 1717,\n      \"deviceKey\": 9164,\n      \"userKey\": 9609,\n      \"extensionVersionKey\": 681,\n      \"policyKey\": 3369,\n      \"policyTypeKey\": 9940,\n      \"status\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "smsproviderfqdn",
+      "key": "siteserver"
+    },
+    {
+      "type": "string",
+      "value": "https://{{siteserver}}/AdminService",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4396fe71-eb75-499b-b668-516bd9bbb23e",
+    "name": "Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Management Extensions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData routes. Class names are case-sensitive.\n\nContact Support:\n Name: Microsoft Configuration Manager Support",
+      "type": "text/plain"
+    }
+  }
+}

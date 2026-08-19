@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Dates API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Dates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List date dimension records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{siteserver}/AdminService/dates",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "API version. Use 'v1.0' for stable or 'beta' for preview features."
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include."
+              }
+            ]
+          },
+          "docs": "Retrieve date dimension records used to correlate facts over time dimensions. Provides date keys with associated calendar attributes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

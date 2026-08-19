@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Scripts API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Scripts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List scripts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{siteserver}/AdminService/v1.0/Scripts",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include."
+              }
+            ]
+          },
+          "docs": "Retrieve all PowerShell scripts available in Configuration Manager for remote execution."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

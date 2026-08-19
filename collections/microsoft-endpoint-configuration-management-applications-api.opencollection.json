@@ -1,0 +1,354 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Applications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List applications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{siteserver}/AdminService/wmi/SMS_Application",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include."
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Order results by a property."
+              }
+            ]
+          },
+          "docs": "Retrieve all applications defined in Configuration Manager, including deployment types and content information."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Create an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{siteserver}/AdminService/wmi/SMS_Application",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new application in Configuration Manager."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Get an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{siteserver}/AdminService/wmi/SMS_Application(':applicationId')",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific application by its CI_ID."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List application records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{siteserver}/AdminService/applications",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "API version. Use 'v1.0' for stable or 'beta' for preview features."
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include."
+              }
+            ]
+          },
+          "docs": "Retrieve application inventory records from the Data Warehouse including discovered and managed applications."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List mobile app install statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{siteserver}/AdminService/mobileAppInstallStatuses",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "API version. Use 'v1.0' for stable or 'beta' for preview features."
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include."
+              },
+              {
+                "name": "maxhistorydays",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property."
+              }
+            ]
+          },
+          "docs": "Retrieve mobile application installation status records."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List mobile apps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{siteserver}/AdminService/deviceAppManagement/mobileApps",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response."
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Order results by a property."
+              }
+            ]
+          },
+          "docs": "List properties and relationships of the mobileApp objects."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Create mobile app",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{siteserver}/AdminService/deviceAppManagement/mobileApps",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new mobileApp object."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Get mobile app",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{siteserver}/AdminService/deviceAppManagement/mobileApps/:mobileAppId",
+            "params": [
+              {
+                "name": "mobileAppId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response."
+              }
+            ]
+          },
+          "docs": "Read properties and relationships of a mobileApp object."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Update mobile app",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{siteserver}/AdminService/deviceAppManagement/mobileApps/:mobileAppId",
+            "params": [
+              {
+                "name": "mobileAppId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the properties of a mobileApp object."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Delete mobile app",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{siteserver}/AdminService/deviceAppManagement/mobileApps/:mobileAppId",
+            "params": [
+              {
+                "name": "mobileAppId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a mobileApp."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Assign mobile app",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{siteserver}/AdminService/deviceAppManagement/mobileApps/:mobileAppId/assign",
+            "params": [
+              {
+                "name": "mobileAppId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Assign a mobile app to groups."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List app device statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{siteserver}/AdminService/deviceAppManagement/mobileApps/:mobileAppId/deviceStatuses",
+            "params": [
+              {
+                "name": "mobileAppId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response."
+              }
+            ]
+          },
+          "docs": "Get the installation status of a mobile app across devices."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

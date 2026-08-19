@@ -1,0 +1,510 @@
+{
+  "item": [
+    {
+      "id": "8cfcf05a-4e07-4d32-bc3f-7d09c149a557",
+      "name": "Policies",
+      "description": {
+        "content": "Policy records and compliance activities.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "433f1b0f-0b9c-49ee-9792-1148334771b0",
+          "name": "Microsoft Endpoint Configuration Management List policy records",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List policy records",
+            "description": {
+              "content": "Retrieve compliance and configuration policy records from the Data Warehouse.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "policies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "v1.0",
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of items to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5f28d9f4-5d5e-40a5-b209-d52bbbd164ca",
+              "name": "Successful response returning policy records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"policyKey\": 4228,\n      \"policyId\": \"string\",\n      \"policyName\": \"string\",\n      \"policyVersion\": 1566,\n      \"isDeleted\": true,\n      \"policyTypeKey\": 153,\n      \"policyPlatformKey\": 9700\n    },\n    {\n      \"policyKey\": 6575,\n      \"policyId\": \"string\",\n      \"policyName\": \"string\",\n      \"policyVersion\": 8354,\n      \"isDeleted\": false,\n      \"policyTypeKey\": 2662,\n      \"policyPlatformKey\": 4451\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0bc9e0d9-bd15-4e31-9f2a-745eaac883ba",
+          "name": "Microsoft Endpoint Configuration Management List policy device activities",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List policy device activities",
+            "description": {
+              "content": "Retrieve policy device activity records showing device compliance status against policies over time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "policyDeviceActivities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "v1.0",
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of items to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxhistorydays",
+                  "value": "7",
+                  "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a96dd077-2559-430b-8c1f-4558e0be1f0f",
+              "name": "Successful response returning policy device activities.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policyDeviceActivities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"dateKey\": 2494,\n      \"policyKey\": 4778,\n      \"pending\": 8316,\n      \"succeeded\": 7595,\n      \"failed\": 1575,\n      \"error\": 5495\n    },\n    {\n      \"dateKey\": 1985,\n      \"policyKey\": 436,\n      \"pending\": 7212,\n      \"succeeded\": 5539,\n      \"failed\": 1880,\n      \"error\": 3870\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "25a100d2-445d-491e-a2d5-0a269348552f",
+          "name": "Microsoft Endpoint Configuration Management List policy user activities",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List policy user activities",
+            "description": {
+              "content": "Retrieve policy user activity records showing user compliance status against policies over time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "policyUserActivities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "v1.0",
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of items to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxhistorydays",
+                  "value": "7",
+                  "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c2fcc73d-3691-464d-9d78-4e90ba74c7ba",
+              "name": "Successful response returning policy user activities.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policyUserActivities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"dateKey\": 9232,\n      \"policyKey\": 1221,\n      \"pending\": 5549,\n      \"succeeded\": 4382,\n      \"failed\": 346,\n      \"error\": 129\n    },\n    {\n      \"dateKey\": 764,\n      \"policyKey\": 7561,\n      \"pending\": 3352,\n      \"succeeded\": 4963,\n      \"failed\": 5097,\n      \"error\": 7653\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "smsproviderfqdn",
+      "key": "siteserver"
+    },
+    {
+      "type": "string",
+      "value": "https://{{siteserver}}/AdminService",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6698aa95-9a6e-4af8-9ae4-0616d827a35f",
+    "name": "Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Policies API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData routes. Class names are case-sensitive.\n\nContact Support:\n Name: Microsoft Configuration Manager Support",
+      "type": "text/plain"
+    }
+  }
+}

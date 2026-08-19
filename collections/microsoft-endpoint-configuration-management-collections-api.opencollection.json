@@ -1,0 +1,120 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Collections API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Collections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{siteserver}/AdminService/wmi/SMS_Collection",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include."
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Order results by a property."
+              }
+            ]
+          },
+          "docs": "Retrieve all device and user collections defined in Configuration Manager."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Create a collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{siteserver}/AdminService/wmi/SMS_Collection",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new device or user collection."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Get a collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{siteserver}/AdminService/wmi/SMS_Collection(':collectionId')",
+            "params": [
+              {
+                "name": "collectionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the collection."
+              }
+            ]
+          },
+          "docs": "Retrieve a specific collection by its ID."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List collections (versioned route)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{siteserver}/AdminService/v1.0/Collections",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include."
+              }
+            ]
+          },
+          "docs": "Retrieve collections through the versioned OData v1.0 route."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

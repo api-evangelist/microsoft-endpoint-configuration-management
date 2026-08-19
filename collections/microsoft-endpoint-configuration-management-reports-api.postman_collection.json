@@ -1,0 +1,1180 @@
+{
+  "item": [
+    {
+      "id": "3e03a550-62f3-4297-a769-2b0b88522797",
+      "name": "Reports",
+      "description": {
+        "content": "Retrieve inline Intune reports for device compliance, configuration policy status, and historical data.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "79d98a39-7f31-4001-9fca-8d3903ebee6d",
+          "name": "Microsoft Endpoint Configuration Management Get device non-compliance report",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management Get device non-compliance report",
+            "description": {
+              "content": "Retrieve a report of devices that are not compliant with compliance policies. This is a synchronous report endpoint that returns data directly in the response body.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deviceManagement",
+                "reports",
+                "getDeviceNonComplianceReport"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ea52decc-2034-4a09-bf1e-615f80150d5e",
+              "name": "Successful response returning report data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deviceManagement",
+                    "reports",
+                    "getDeviceNonComplianceReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalRowCount\": 3423,\n  \"schema\": [\n    {\n      \"column\": \"string\",\n      \"propertyType\": 9553\n    },\n    {\n      \"column\": \"string\",\n      \"propertyType\": 5842\n    }\n  ],\n  \"values\": [\n    [],\n    []\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "16e18d43-eedd-4dd5-a78c-eb27d076ea8c",
+              "name": "Unauthorized. Authentication is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deviceManagement",
+                    "reports",
+                    "getDeviceNonComplianceReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e6380d3-c899-4784-9975-e20a6a6c471b",
+              "name": "Forbidden. Insufficient permissions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deviceManagement",
+                    "reports",
+                    "getDeviceNonComplianceReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c5a59de6-5869-4452-9b8c-8e0b57f67b7f",
+          "name": "Microsoft Endpoint Configuration Management Get compliance policy non-compliance report",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management Get compliance policy non-compliance report",
+            "description": {
+              "content": "Retrieve a report of non-compliant devices grouped by compliance policy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deviceManagement",
+                "reports",
+                "getCompliancePolicyNonComplianceReport"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dbe98bd4-f114-4644-8e1a-3b1906683ed3",
+              "name": "Successful response returning report data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deviceManagement",
+                    "reports",
+                    "getCompliancePolicyNonComplianceReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalRowCount\": 3423,\n  \"schema\": [\n    {\n      \"column\": \"string\",\n      \"propertyType\": 9553\n    },\n    {\n      \"column\": \"string\",\n      \"propertyType\": 5842\n    }\n  ],\n  \"values\": [\n    [],\n    []\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34338634-9e74-408b-8668-83585fbc580f",
+              "name": "Unauthorized. Authentication is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deviceManagement",
+                    "reports",
+                    "getCompliancePolicyNonComplianceReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9912cc77-a3cf-419f-92c4-97afeac57940",
+          "name": "Microsoft Endpoint Configuration Management Get compliance setting non-compliance report",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management Get compliance setting non-compliance report",
+            "description": {
+              "content": "Retrieve a report of non-compliant devices grouped by compliance setting.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deviceManagement",
+                "reports",
+                "getComplianceSettingNonComplianceReport"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "92d6a560-f22c-4403-8713-0dc365a83ea1",
+              "name": "Successful response returning report data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deviceManagement",
+                    "reports",
+                    "getComplianceSettingNonComplianceReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalRowCount\": 3423,\n  \"schema\": [\n    {\n      \"column\": \"string\",\n      \"propertyType\": 9553\n    },\n    {\n      \"column\": \"string\",\n      \"propertyType\": 5842\n    }\n  ],\n  \"values\": [\n    [],\n    []\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd4b7072-c609-4c48-9464-f4ab12f2764a",
+              "name": "Unauthorized. Authentication is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deviceManagement",
+                    "reports",
+                    "getComplianceSettingNonComplianceReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "595b9034-e0d4-48db-a195-36f5099eca48",
+          "name": "Microsoft Endpoint Configuration Management Get configuration policy non-compliance report",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management Get configuration policy non-compliance report",
+            "description": {
+              "content": "Retrieve a report of non-compliant devices grouped by configuration policy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deviceManagement",
+                "reports",
+                "getConfigurationPolicyNonComplianceReport"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "79771f8e-d136-4f24-ae35-7aca3af23118",
+              "name": "Successful response returning report data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deviceManagement",
+                    "reports",
+                    "getConfigurationPolicyNonComplianceReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalRowCount\": 3423,\n  \"schema\": [\n    {\n      \"column\": \"string\",\n      \"propertyType\": 9553\n    },\n    {\n      \"column\": \"string\",\n      \"propertyType\": 5842\n    }\n  ],\n  \"values\": [\n    [],\n    []\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "33f43026-0631-44d5-b3a7-a3667b3e2d5e",
+              "name": "Unauthorized. Authentication is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deviceManagement",
+                    "reports",
+                    "getConfigurationPolicyNonComplianceReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5a0b396-ec88-47e4-8158-148a567647ff",
+          "name": "Microsoft Endpoint Configuration Management Get historical report",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management Get historical report",
+            "description": {
+              "content": "Retrieve a historical report from the Intune reporting infrastructure. Returns report data for a specific time range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deviceManagement",
+                "reports",
+                "getHistoricalReport"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2378cd81-d0ec-45e8-a8b5-a57d73239501",
+              "name": "Successful response returning report data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deviceManagement",
+                    "reports",
+                    "getHistoricalReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalRowCount\": 3423,\n  \"schema\": [\n    {\n      \"column\": \"string\",\n      \"propertyType\": 9553\n    },\n    {\n      \"column\": \"string\",\n      \"propertyType\": 5842\n    }\n  ],\n  \"values\": [\n    [],\n    []\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee4b3ce0-4c1c-4d67-85be-a9ebd20d6932",
+              "name": "Unauthorized. Authentication is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deviceManagement",
+                    "reports",
+                    "getHistoricalReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "362dbd2e-e24f-4b2c-b103-d5de63dfbbad",
+          "name": "Microsoft Endpoint Configuration Management Get cached report",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management Get cached report",
+            "description": {
+              "content": "Retrieve a cached report from a previous export. The snapshotId or sessionId in the request body identifies the cached data to return.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deviceManagement",
+                "reports",
+                "getCachedReport"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "041311e5-f9dd-4e18-a1d0-a3e5d83c8c52",
+              "name": "Successful response returning cached report data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deviceManagement",
+                    "reports",
+                    "getCachedReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalRowCount\": 3423,\n  \"schema\": [\n    {\n      \"column\": \"string\",\n      \"propertyType\": 9553\n    },\n    {\n      \"column\": \"string\",\n      \"propertyType\": 5842\n    }\n  ],\n  \"values\": [\n    [],\n    []\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b1cd1234-78ed-4aa8-9a61-accad6a408d4",
+              "name": "Unauthorized. Authentication is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deviceManagement",
+                    "reports",
+                    "getCachedReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orderBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip\": \"<integer>\",\n  \"top\": \"<integer>\",\n  \"sessionId\": \"<string>\",\n  \"search\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "smsproviderfqdn",
+      "key": "siteserver"
+    },
+    {
+      "type": "string",
+      "value": "https://{{siteserver}}/AdminService",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5c72c9b1-8c3e-4653-8fc4-395690ca7fe3",
+    "name": "Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Reports API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData routes. Class names are case-sensitive.\n\nContact Support:\n Name: Microsoft Configuration Manager Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,212 @@
+{
+  "item": [
+    {
+      "id": "14c7d6e9-2745-4bae-a0f2-9caa147035c4",
+      "name": "Users",
+      "description": {
+        "content": "User dimension records.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "82401172-b052-4957-9862-6bcd4a99353b",
+          "name": "Microsoft Endpoint Configuration Management List user records",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List user records",
+            "description": {
+              "content": "Retrieve user dimension records from the Data Warehouse. Provides historical snapshots of user information associated with device enrollments.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "v1.0",
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of items to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxhistorydays",
+                  "value": "7",
+                  "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a0de40e8-a3fb-4d94-99d8-911f957e365f",
+              "name": "Successful response returning user records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxhistorydays",
+                      "value": "7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"userKey\": 1111,\n      \"userId\": \"string\",\n      \"userEmail\": \"string\",\n      \"userPrincipalName\": \"string\",\n      \"displayName\": \"string\",\n      \"isDeleted\": true,\n      \"startDateInclusiveUTC\": \"1984-12-23T12:24:33.388Z\",\n      \"endDateExclusiveUTC\": \"1950-04-19T13:12:33.226Z\",\n      \"isCurrent\": true\n    },\n    {\n      \"userKey\": 7422,\n      \"userId\": \"string\",\n      \"userEmail\": \"string\",\n      \"userPrincipalName\": \"string\",\n      \"displayName\": \"string\",\n      \"isDeleted\": true,\n      \"startDateInclusiveUTC\": \"1953-07-01T05:44:59.927Z\",\n      \"endDateExclusiveUTC\": \"2023-09-21T01:48:27.428Z\",\n      \"isCurrent\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "smsproviderfqdn",
+      "key": "siteserver"
+    },
+    {
+      "type": "string",
+      "value": "https://{{siteserver}}/AdminService",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2e2d6f60-b2cb-4088-a338-a55202f0d273",
+    "name": "Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData routes. Class names are case-sensitive.\n\nContact Support:\n Name: Microsoft Configuration Manager Support",
+      "type": "text/plain"
+    }
+  }
+}

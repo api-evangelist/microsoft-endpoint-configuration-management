@@ -1,0 +1,192 @@
+{
+  "item": [
+    {
+      "id": "26a25d59-d3fc-44cb-9519-99831be51d75",
+      "name": "Dates",
+      "description": {
+        "content": "Date dimension for time-based reporting.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fbd4eb1e-907c-4ee4-815c-7f1d48589e94",
+          "name": "Microsoft Endpoint Configuration Management List date dimension records",
+          "request": {
+            "name": "Microsoft Endpoint Configuration Management List date dimension records",
+            "description": {
+              "content": "Retrieve date dimension records used to correlate facts over time dimensions. Provides date keys with associated calendar attributes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "v1.0",
+                  "description": "(Required) API version. Use 'v1.0' for stable or 'beta' for preview features."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                  "type": "any",
+                  "value": "{{siteserver}}",
+                  "key": "siteserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "207c7d0f-b098-46ea-88b1-af07a4b79ba9",
+              "name": "Successful response returning date records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "v1.0"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+                      "type": "any",
+                      "value": "{{siteserver}}",
+                      "key": "siteserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"dateKey\": 4538,\n      \"fullDate\": \"2013-07-02\",\n      \"dayOfWeek\": 6923,\n      \"dayOfMonth\": 1102,\n      \"dayOfYear\": 610,\n      \"weekOfYear\": 124,\n      \"monthOfYear\": 1858,\n      \"calendarQuarter\": 6708,\n      \"calendarYear\": 42\n    },\n    {\n      \"dateKey\": 7145,\n      \"fullDate\": \"1985-06-24\",\n      \"dayOfWeek\": 7385,\n      \"dayOfMonth\": 6022,\n      \"dayOfYear\": 2069,\n      \"weekOfYear\": 5878,\n      \"monthOfYear\": 4761,\n      \"calendarQuarter\": 1632,\n      \"calendarYear\": 4368\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Fully qualified domain name of the SMS Provider server hosting the administration service.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "smsproviderfqdn",
+      "key": "siteserver"
+    },
+    {
+      "type": "string",
+      "value": "https://{{siteserver}}/AdminService",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ecebb11c-6a85-4f52-8942-b3a43bda0228",
+    "name": "Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Dates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData routes. Class names are case-sensitive.\n\nContact Support:\n Name: Microsoft Configuration Manager Support",
+      "type": "text/plain"
+    }
+  }
+}

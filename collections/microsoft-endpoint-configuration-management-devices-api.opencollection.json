@@ -1,0 +1,392 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Devices API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List devices via WMI route",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{siteserver}/AdminService/wmi/SMS_Device",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include."
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Order results by a property."
+              }
+            ]
+          },
+          "docs": "Retrieve a collection of devices managed by Configuration Manager using the WMI route. Supports OData query options for filtering and selecting."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List systems",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{siteserver}/AdminService/wmi/SMS_R_System",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include."
+              }
+            ]
+          },
+          "docs": "Retrieve all discovered system resources, representing computers and devices discovered by Configuration Manager."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List devices (versioned route)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{siteserver}/AdminService/v1.0/Device",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include."
+              }
+            ]
+          },
+          "docs": "Retrieve devices through the versioned OData v1.0 route which supports new Configuration Manager functionality."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Get a device (versioned route)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{siteserver}/AdminService/v1.0/Device(:deviceId)",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific device by ID via the versioned route."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List device records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{siteserver}/AdminService/devices",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "API version. Use 'v1.0' for stable or 'beta' for preview features."
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include."
+              },
+              {
+                "name": "maxhistorydays",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property."
+              }
+            ]
+          },
+          "docs": "Retrieve historical device records from the Data Warehouse. Returns daily snapshots of device properties including enrollment status, compliance state, and OS information."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List device property histories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{siteserver}/AdminService/devicePropertyHistories",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "API version. Use 'v1.0' for stable or 'beta' for preview features."
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include."
+              },
+              {
+                "name": "maxhistorydays",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property."
+              }
+            ]
+          },
+          "docs": "Retrieve historical device property snapshots. Contains daily snapshots of device-level data for the configured history window."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List managed devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{siteserver}/AdminService/deviceManagement/managedDevices",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response."
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Order results by a property."
+              },
+              {
+                "name": "$count",
+                "value": "",
+                "type": "query",
+                "description": "Include count of items."
+              }
+            ]
+          },
+          "docs": "List properties and relationships of the managedDevice objects enrolled in Intune."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Create managed device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{siteserver}/AdminService/deviceManagement/managedDevices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new managedDevice object."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Get managed device",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{siteserver}/AdminService/deviceManagement/managedDevices/:managedDeviceId",
+            "params": [
+              {
+                "name": "managedDeviceId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the managed device."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response."
+              }
+            ]
+          },
+          "docs": "Read properties and relationships of a managedDevice object."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Update managed device",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{siteserver}/AdminService/deviceManagement/managedDevices/:managedDeviceId",
+            "params": [
+              {
+                "name": "managedDeviceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the properties of a managedDevice object."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Delete managed device",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{siteserver}/AdminService/deviceManagement/managedDevices/:managedDeviceId",
+            "params": [
+              {
+                "name": "managedDeviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a managedDevice."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management List user owned devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{siteserver}/AdminService/users/:userId/ownedDevices",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response."
+              }
+            ]
+          },
+          "docs": "Get the list of devices registered to a user from Azure Active Directory."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

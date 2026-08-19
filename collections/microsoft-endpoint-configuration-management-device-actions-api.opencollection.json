@@ -1,0 +1,130 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Device Actions API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Device Actions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Retire a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{siteserver}/AdminService/deviceManagement/managedDevices/:managedDeviceId/retire",
+            "params": [
+              {
+                "name": "managedDeviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retire a device, removing corporate data while leaving personal data intact."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Wipe a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{siteserver}/AdminService/deviceManagement/managedDevices/:managedDeviceId/wipe",
+            "params": [
+              {
+                "name": "managedDeviceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Factory reset a device, removing all data."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Sync device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{siteserver}/AdminService/deviceManagement/managedDevices/:managedDeviceId/syncDevice",
+            "params": [
+              {
+                "name": "managedDeviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Trigger a sync for the managed device with Intune."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Remote lock a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{siteserver}/AdminService/deviceManagement/managedDevices/:managedDeviceId/remoteLock",
+            "params": [
+              {
+                "name": "managedDeviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remotely lock a managed device."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Reset passcode",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{siteserver}/AdminService/deviceManagement/managedDevices/:managedDeviceId/resetPasscode",
+            "params": [
+              {
+                "name": "managedDeviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reset the passcode on a managed device."
+        },
+        {
+          "info": {
+            "name": "Microsoft Endpoint Configuration Management Reboot device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{siteserver}/AdminService/deviceManagement/managedDevices/:managedDeviceId/rebootNow",
+            "params": [
+              {
+                "name": "managedDeviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remotely reboot a managed device."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
