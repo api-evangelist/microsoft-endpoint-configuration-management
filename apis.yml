@@ -140,6 +140,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
   baseURL: https://{siteserver}/AdminService
   tags:
+  - Application
+  tags_raw:
   - Applications
   properties:
   - type: OpenAPI
@@ -203,6 +205,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
   baseURL: https://{siteserver}/AdminService
   tags:
+  - Collection
+  tags_raw:
   - Collections
   properties:
   - type: OpenAPI
@@ -519,6 +523,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
   baseURL: https://{siteserver}/AdminService
   tags:
+  - Deployment
+  tags_raw:
   - Deployments
   properties:
   - type: OpenAPI
@@ -1344,6 +1350,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
   baseURL: https://{siteserver}/AdminService
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
