@@ -12,8 +12,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: intuneDataWarehouseApi
-  url: ../openapi/microsoft-endpoint-configuration-management-intune-data-warehouse-api-openapi.yml
+- name: devicesApi
+  url: ../openapi/microsoft-endpoint-configuration-management-devices-api-openapi.yml
+  type: openapi
+- name: policiesApi
+  url: ../openapi/microsoft-endpoint-configuration-management-policies-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: warehouse-policy-compliance-analytics

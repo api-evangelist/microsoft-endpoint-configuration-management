@@ -12,8 +12,14 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: configMgrRestApi
-  url: ../openapi/microsoft-endpoint-configuration-management-configmgr-rest-api-openapi.yml
+- name: collectionsApi
+  url: ../openapi/microsoft-endpoint-configuration-management-collections-api-openapi.yml
+  type: openapi
+- name: complianceApi
+  url: ../openapi/microsoft-endpoint-configuration-management-compliance-api-openapi.yml
+  type: openapi
+- name: softwareUpdatesApi
+  url: ../openapi/microsoft-endpoint-configuration-management-software-updates-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: configmgr-update-compliance-review

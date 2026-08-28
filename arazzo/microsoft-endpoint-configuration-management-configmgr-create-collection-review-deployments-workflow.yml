@@ -14,8 +14,11 @@ info:
     underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: configMgrRestApi
-  url: ../openapi/microsoft-endpoint-configuration-management-configmgr-rest-api-openapi.yml
+- name: collectionsApi
+  url: ../openapi/microsoft-endpoint-configuration-management-collections-api-openapi.yml
+  type: openapi
+- name: deploymentsApi
+  url: ../openapi/microsoft-endpoint-configuration-management-deployments-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: configmgr-create-collection-review-deployments

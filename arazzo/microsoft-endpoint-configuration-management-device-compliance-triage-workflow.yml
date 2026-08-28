@@ -11,8 +11,11 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: intuneGraphApi
-  url: ../openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml
+- name: deviceActionsApi
+  url: ../openapi/microsoft-endpoint-configuration-management-device-actions-api-openapi.yml
+  type: openapi
+- name: devicesApi
+  url: ../openapi/microsoft-endpoint-configuration-management-devices-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: device-compliance-triage

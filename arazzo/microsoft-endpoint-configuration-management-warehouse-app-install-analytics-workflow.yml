@@ -12,8 +12,11 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: intuneDataWarehouseApi
-  url: ../openapi/microsoft-endpoint-configuration-management-intune-data-warehouse-api-openapi.yml
+- name: applicationsApi
+  url: ../openapi/microsoft-endpoint-configuration-management-applications-api-openapi.yml
+  type: openapi
+- name: userDeviceAssociationsApi
+  url: ../openapi/microsoft-endpoint-configuration-management-user-device-associations-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: warehouse-app-install-analytics
@@ -41,7 +44,7 @@ workflows:
   steps:
   - stepId: listApplications
     description: List the Data Warehouse application inventory.
-    operationId: $sourceDescriptions.intuneDataWarehouseApi.listApplications
+    operationId: $sourceDescriptions.applicationsApi.listApplications
     parameters:
     - name: api-version
       in: query

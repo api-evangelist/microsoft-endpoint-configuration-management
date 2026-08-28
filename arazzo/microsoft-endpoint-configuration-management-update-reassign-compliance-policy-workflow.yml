@@ -11,8 +11,8 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: intuneGraphApi
-  url: ../openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml
+- name: compliancePoliciesApi
+  url: ../openapi/microsoft-endpoint-configuration-management-compliance-policies-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: update-and-reassign-compliance-policy

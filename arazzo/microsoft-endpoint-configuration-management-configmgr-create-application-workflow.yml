@@ -13,8 +13,11 @@ info:
     without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: configMgrRestApi
-  url: ../openapi/microsoft-endpoint-configuration-management-configmgr-rest-api-openapi.yml
+- name: applicationsApi
+  url: ../openapi/microsoft-endpoint-configuration-management-applications-api-openapi.yml
+  type: openapi
+- name: packagesApi
+  url: ../openapi/microsoft-endpoint-configuration-management-packages-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: configmgr-create-application
