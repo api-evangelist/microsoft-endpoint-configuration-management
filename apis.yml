@@ -3,6 +3,18 @@ description: >-
   Microsoft Endpoint Configuration Management (formerly System Center Configuration Manager) provides comprehensive
   management of devices and applications across an enterprise. It enables IT administrators to manage PCs, servers, and
   mobile devices, deploy software, manage compliance, and protect data.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
@@ -1409,6 +1421,9 @@ apis:
     url: >-
       https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports
 common:
+  - type: CapabilityMap
+    url: capabilities/microsoft-endpoint-configuration-management-capability-edges.yml
+    name: Microsoft Endpoint Configuration Management Business Capability Map
   - type: AgenticAccess
     url: agentic-access/microsoft-endpoint-configuration-management-agentic-access.yml
   - type: VulnerabilityDisclosure

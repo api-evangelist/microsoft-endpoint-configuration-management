@@ -1,0 +1,37 @@
+slug: microsoft-endpoint-configuration-management
+provider: Microsoft Endpoint Configuration Management
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Device Actions
+  spec_file: microsoft-endpoint-configuration-management-device-actions-api-openapi.yml
+  capability_id: BC-600
+  capability_id_l1: BC-600
+  capability_name: Information Technology Management
+  confidence: 0.8
+  evidence: POST /deviceManagement/managedDevices/{id}/wipe 'Wipe a device'; '/remoteLock' 'Remote lock
+    a device'; '/retire' 'Retire a device'
+  reason: Remote administrative actions on managed enterprise endpoints (wipe, lock, reboot, passcode
+    reset) are IT endpoint operations; sits between IT operations and endpoint security so L1 only.
+- tag: Compliance Policies
+  spec_file: microsoft-endpoint-configuration-management-compliance-policies-api-openapi.yml
+  capability_id: BC-600
+  capability_id_l1: BC-600
+  capability_name: Information Technology Management
+  confidence: 0.75
+  evidence: GET /deviceManagement/deviceCompliancePolicies listDeviceCompliancePolicies; POST .../assign
+    'Assign compliance policy'; 'Get compliance state summary'
+  reason: Device compliance policies here are endpoint configuration/security baselines pushed to managed
+    devices, not corporate regulatory compliance. This is IT endpoint management, so IT Management at
+    L1; the split between IT operations and cybersecurity governance is ambiguous so no L2 asserted.
