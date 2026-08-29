@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Collections API
+  title: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Collections API
   description: REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData routes. Class names are case-sensitive.
   version: 1.0.0
   contact:
@@ -114,6 +114,16 @@ paths:
                       $ref: '#/components/schemas/SMS_Collection'
 components:
   schemas:
+    ODataError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
     SMS_Collection:
       type: object
       description: Represents a device or user collection in Configuration Manager used for targeting deployments and policies.
@@ -146,23 +156,6 @@ components:
         CurrentStatus:
           type: integer
           description: Current evaluation status of the collection.
-    ODataError:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
-  responses:
-    NotFound:
-      description: Not found. The specified resource does not exist.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
   parameters:
     select:
       name: $select
@@ -170,6 +163,12 @@ components:
       description: Comma-separated list of properties to include.
       schema:
         type: string
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
     filter:
       name: $filter
       in: query
@@ -182,12 +181,13 @@ components:
       description: Order results by a property.
       schema:
         type: string
-    top:
-      name: $top
-      in: query
-      description: Number of items to return.
-      schema:
-        type: integer
+  responses:
+    NotFound:
+      description: Not found. The specified resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
   securitySchemes:
     windowsAuth:
       type: http

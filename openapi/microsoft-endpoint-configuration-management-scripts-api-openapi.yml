@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Scripts API
+  title: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Scripts API
   description: REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData routes. Class names are case-sensitive.
   version: 1.0.0
   contact:

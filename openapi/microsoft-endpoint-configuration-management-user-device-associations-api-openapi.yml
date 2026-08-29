@@ -1,23 +1,22 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications User Device Associations API
-  description: REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData routes. Class names are case-sensitive.
+  title: Microsoft Endpoint Configuration Management Intune Data Warehouse User Device Associations API
+  description: OData-based REST API that provides access to Intune reporting data in a machine-readable format. Enables building custom reports and analytics for enterprise mobile environment insights. Uses OData v4.0 protocol with standard patterns for request/response headers, status codes, HTTP methods, URL conventions, and query options. Data is sampled daily to provide a historical view of the mobile device environment.
   version: 1.0.0
   contact:
-    name: Microsoft Configuration Manager Support
-    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+    name: Microsoft Intune Support
+    url: https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse
   license:
     name: Microsoft API License
     url: https://learn.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
 servers:
-- url: https://{siteserver}/AdminService
-  description: Configuration Manager AdminService endpoint
+- url: https://fef.{location}.manage.microsoft.com/ReportingService/DataWarehouseFEService
+  description: Intune Data Warehouse endpoint
   variables:
-    siteserver:
-      default: smsproviderfqdn
-      description: Fully qualified domain name of the SMS Provider server hosting the administration service.
+    location:
+      default: msua06
+      description: Location identifier found in the Data Warehouse API blade in the Microsoft Intune admin center.
 security:
-- windowsAuth: []
 - oauth2: []
 tags:
 - name: User Device Associations
@@ -50,43 +49,7 @@ paths:
                     items:
                       $ref: '#/components/schemas/UserDeviceAssociation'
 components:
-  schemas:
-    UserDeviceAssociation:
-      type: object
-      description: Record mapping a user to an associated device.
-      properties:
-        userDeviceAssociationKey:
-          type: integer
-          description: Unique key for the association.
-        userKey:
-          type: integer
-          description: User key reference.
-        deviceKey:
-          type: integer
-          description: Device key reference.
-        createdDate:
-          type: string
-          format: date-time
-          description: Date the association was created.
   parameters:
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include.
-      schema:
-        type: string
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
-      schema:
-        type: string
-    skip:
-      name: $skip
-      in: query
-      description: Number of items to skip.
-      schema:
-        type: integer
     maxhistorydays:
       name: maxhistorydays
       in: query
@@ -105,22 +68,55 @@ components:
         - v1.0
         - beta
         default: v1.0
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include.
+      schema:
+        type: string
     top:
       name: $top
       in: query
       description: Number of items to return.
       schema:
         type: integer
+    skip:
+      name: $skip
+      in: query
+      description: Number of items to skip.
+      schema:
+        type: integer
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
+      schema:
+        type: string
+  schemas:
+    UserDeviceAssociation:
+      type: object
+      description: Record mapping a user to an associated device.
+      properties:
+        userDeviceAssociationKey:
+          type: integer
+          description: Unique key for the association.
+        userKey:
+          type: integer
+          description: User key reference.
+        deviceKey:
+          type: integer
+          description: Device key reference.
+        createdDate:
+          type: string
+          format: date-time
+          description: Date the association was created.
   securitySchemes:
-    windowsAuth:
-      type: http
-      scheme: negotiate
-      description: Windows Integrated Authentication (Kerberos/NTLM).
     oauth2:
       type: oauth2
-      description: OAuth 2.0 via Azure AD for cloud management gateway access.
+      description: OAuth 2.0 via Microsoft Entra ID. Requires Intune service administrator role or role-based access to the Intune data warehouse resource.
       flows:
         authorizationCode:
           authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
           tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
-          scopes: {}
+          scopes:
+            https://api.manage.microsoft.com/.default: Access Intune Data Warehouse

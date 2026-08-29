@@ -1,23 +1,20 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Reports API
-  description: REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData routes. Class names are case-sensitive.
+  title: Microsoft Endpoint Configuration Management Intune Reporting Export Reports API
+  description: Microsoft Graph API endpoints for exporting Intune reports programmatically. Supports exporting device, compliance, and app management reports in CSV or JSON format using asynchronous export jobs. All reports migrated to the Intune reporting infrastructure are available for export from the deviceManagement/reports/exportJobs endpoint. Requires an active Intune license for the tenant.
   version: 1.0.0
   contact:
-    name: Microsoft Configuration Manager Support
-    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+    name: Microsoft Graph Support
+    url: https://developer.microsoft.com/en-us/graph/support
   license:
     name: Microsoft API License
     url: https://learn.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
 servers:
-- url: https://{siteserver}/AdminService
-  description: Configuration Manager AdminService endpoint
-  variables:
-    siteserver:
-      default: smsproviderfqdn
-      description: Fully qualified domain name of the SMS Provider server hosting the administration service.
+- url: https://graph.microsoft.com/v1.0
+  description: Microsoft Graph v1.0 production endpoint
+- url: https://graph.microsoft.com/beta
+  description: Microsoft Graph beta endpoint
 security:
-- windowsAuth: []
 - oauth2: []
 tags:
 - name: Reports
@@ -158,37 +155,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Forbidden:
-      description: Forbidden. Insufficient permissions.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Unauthorized. Authentication is required.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
   schemas:
-    ODataError:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
-            innerError:
-              type: object
-              properties:
-                request-id:
-                  type: string
-                date:
-                  type: string
     ReportRequest:
       type: object
       description: Request body for retrieving inline Intune reports.
@@ -246,16 +213,47 @@ components:
           items:
             type: array
             items: {}
+    ODataError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                date:
+                  type: string
+  responses:
+    Forbidden:
+      description: Forbidden. Insufficient permissions.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized. Authentication is required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
   securitySchemes:
-    windowsAuth:
-      type: http
-      scheme: negotiate
-      description: Windows Integrated Authentication (Kerberos/NTLM).
     oauth2:
       type: oauth2
-      description: OAuth 2.0 via Azure AD for cloud management gateway access.
       flows:
         authorizationCode:
           authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
           tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
-          scopes: {}
+          scopes:
+            DeviceManagementConfiguration.Read.All: Read device configurations
+            DeviceManagementConfiguration.ReadWrite.All: Read and write device configurations
+            DeviceManagementApps.Read.All: Read app management data
+            DeviceManagementApps.ReadWrite.All: Read and write app management data
+            DeviceManagementManagedDevices.Read.All: Read managed devices
+            DeviceManagementManagedDevices.ReadWrite.All: Read and write managed devices

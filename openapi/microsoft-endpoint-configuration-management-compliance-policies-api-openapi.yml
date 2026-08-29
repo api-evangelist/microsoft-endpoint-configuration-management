@@ -1,23 +1,20 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Compliance Policies API
-  description: REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData routes. Class names are case-sensitive.
+  title: Microsoft Endpoint Configuration Management Microsoft Intune Graph Compliance Policies API
+  description: Microsoft Graph API endpoints for Intune device management, enabling programmatic access to manage devices, apps, compliance policies, and configuration profiles. Supports both v1.0 and beta endpoints. Requires an active Intune license for the tenant.
   version: 1.0.0
   contact:
-    name: Microsoft Configuration Manager Support
-    url: https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview
+    name: Microsoft Graph Support
+    url: https://developer.microsoft.com/en-us/graph/support
   license:
     name: Microsoft API License
     url: https://learn.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
 servers:
-- url: https://{siteserver}/AdminService
-  description: Configuration Manager AdminService endpoint
-  variables:
-    siteserver:
-      default: smsproviderfqdn
-      description: Fully qualified domain name of the SMS Provider server hosting the administration service.
+- url: https://graph.microsoft.com/v1.0
+  description: Microsoft Graph v1.0 production endpoint
+- url: https://graph.microsoft.com/beta
+  description: Microsoft Graph beta endpoint
 security:
-- windowsAuth: []
 - oauth2: []
 tags:
 - name: Compliance Policies
@@ -189,6 +186,37 @@ paths:
                   notApplicableDeviceCount:
                     type: integer
 components:
+  parameters:
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response.
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
+    skip:
+      name: $skip
+      in: query
+      description: Number of items to skip.
+      schema:
+        type: integer
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression.
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      description: Order results by a property.
+      schema:
+        type: string
   schemas:
     DeviceCompliancePolicy:
       type: object
@@ -230,47 +258,17 @@ components:
               type: string
             groupId:
               type: string
-  parameters:
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include in the response.
-      schema:
-        type: string
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression.
-      schema:
-        type: string
-    skip:
-      name: $skip
-      in: query
-      description: Number of items to skip.
-      schema:
-        type: integer
-    orderby:
-      name: $orderby
-      in: query
-      description: Order results by a property.
-      schema:
-        type: string
-    top:
-      name: $top
-      in: query
-      description: Number of items to return.
-      schema:
-        type: integer
   securitySchemes:
-    windowsAuth:
-      type: http
-      scheme: negotiate
-      description: Windows Integrated Authentication (Kerberos/NTLM).
     oauth2:
       type: oauth2
-      description: OAuth 2.0 via Azure AD for cloud management gateway access.
       flows:
         authorizationCode:
           authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
           tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
-          scopes: {}
+          scopes:
+            DeviceManagementManagedDevices.Read.All: Read managed devices
+            DeviceManagementManagedDevices.ReadWrite.All: Read and write managed devices
+            DeviceManagementApps.Read.All: Read app management data
+            DeviceManagementApps.ReadWrite.All: Read and write app management data
+            DeviceManagementConfiguration.Read.All: Read device configurations
+            DeviceManagementConfiguration.ReadWrite.All: Read and write device configurations
