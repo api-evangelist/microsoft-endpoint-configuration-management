@@ -86,6 +86,11 @@ apis:
   tags:
   - App Protection
   - Intune
+  - Mobile App
+  - SDK
+  tags_raw:
+  - App Protection
+  - Intune
   - Mobile Apps
   - SDK
   properties:
@@ -102,6 +107,12 @@ apis:
     managed by Intune app protection policies without requiring source code changes.
   humanURL: https://learn.microsoft.com/en-us/intune/intune-service/developer/apps-prepare-mobile-application-management
   tags:
+  - Android
+  - App Protection
+  - Intune
+  - iOS
+  - Mobile App
+  tags_raw:
   - Android
   - App Protection
   - Intune
