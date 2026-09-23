@@ -428,6 +428,49 @@ paths:
     - url: https://graph.microsoft.com/beta
       description: Microsoft Graph beta endpoint
 components:
+  responses:
+    Forbidden:
+      description: Forbidden. The user account must be an administrative user in Configuration Manager.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized. Authentication is required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Forbidden_2:
+      description: Forbidden. User must have Intune service administrator role or role-based access to the Intune data warehouse resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized_2:
+      description: Unauthorized. Microsoft Entra ID authentication with OAuth 2.0 is required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    BadRequest:
+      description: Bad request. The request body or parameters are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError_2'
+    Forbidden_3:
+      description: Forbidden. Insufficient permissions.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError_2'
+    NotFound:
+      description: Not found. The specified resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError_2'
   schemas:
     Device:
       type: object
@@ -458,6 +501,41 @@ components:
         SiteCode:
           type: string
           description: Associated site code.
+    SMS_Device:
+      type: object
+      description: Represents a device discovered and managed by Configuration Manager via the WMI route.
+      properties:
+        DeviceID:
+          type: integer
+          description: Unique device identifier.
+        Name:
+          type: string
+          description: Device name.
+        Domain:
+          type: string
+          description: Domain the device belongs to.
+        SMSID:
+          type: string
+          description: SMS unique identifier.
+        IsActive:
+          type: boolean
+          description: Whether the device is currently active.
+        DeviceOS:
+          type: string
+          description: Operating system of the device.
+        DeviceOSVersion:
+          type: string
+          description: Operating system version.
+        DeviceType:
+          type: integer
+          description: Type of device (1=Desktop, 2=Laptop, etc.).
+        IsBlocked:
+          type: boolean
+          description: Whether the device is blocked.
+        LastActiveTime:
+          type: string
+          format: date-time
+          description: Last time the device was active.
     SMS_R_System:
       type: object
       description: Represents a discovered system resource (computer or device) in Configuration Manager.
@@ -510,41 +588,6 @@ components:
               type: string
             message:
               type: string
-    SMS_Device:
-      type: object
-      description: Represents a device discovered and managed by Configuration Manager via the WMI route.
-      properties:
-        DeviceID:
-          type: integer
-          description: Unique device identifier.
-        Name:
-          type: string
-          description: Device name.
-        Domain:
-          type: string
-          description: Domain the device belongs to.
-        SMSID:
-          type: string
-          description: SMS unique identifier.
-        IsActive:
-          type: boolean
-          description: Whether the device is currently active.
-        DeviceOS:
-          type: string
-          description: Operating system of the device.
-        DeviceOSVersion:
-          type: string
-          description: Operating system version.
-        DeviceType:
-          type: integer
-          description: Type of device (1=Desktop, 2=Laptop, etc.).
-        IsBlocked:
-          type: boolean
-          description: Whether the device is blocked.
-        LastActiveTime:
-          type: string
-          format: date-time
-          description: Last time the device was active.
     Device_2:
       type: object
       description: Device entity representing a snapshot of device properties in the Data Warehouse.
@@ -870,18 +913,6 @@ components:
           description: Name of the enrollment profile assigned to the device.
           readOnly: true
   parameters:
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include.
-      schema:
-        type: string
-    top:
-      name: $top
-      in: query
-      description: Number of items to return.
-      schema:
-        type: integer
     filter:
       name: $filter
       in: query
@@ -894,13 +925,30 @@ components:
       description: Order results by a property.
       schema:
         type: string
-    maxhistorydays:
-      name: maxhistorydays
+    select:
+      name: $select
       in: query
-      description: Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.
+      description: Comma-separated list of properties to include.
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
       schema:
         type: integer
-        default: 7
+    filter_2:
+      name: $filter
+      in: query
+      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      description: Number of items to skip.
+      schema:
+        type: integer
     apiVersion:
       name: api-version
       in: query
@@ -912,18 +960,13 @@ components:
         - v1.0
         - beta
         default: v1.0
-    skip:
-      name: $skip
+    maxhistorydays:
+      name: maxhistorydays
       in: query
-      description: Number of items to skip.
+      description: Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.
       schema:
         type: integer
-    filter_2:
-      name: $filter
-      in: query
-      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
-      schema:
-        type: string
+        default: 7
     select_2:
       name: $select
       in: query
@@ -936,49 +979,6 @@ components:
       description: Include count of items.
       schema:
         type: boolean
-  responses:
-    Forbidden:
-      description: Forbidden. The user account must be an administrative user in Configuration Manager.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Unauthorized. Authentication is required.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Forbidden_2:
-      description: Forbidden. User must have Intune service administrator role or role-based access to the Intune data warehouse resource.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Unauthorized_2:
-      description: Unauthorized. Microsoft Entra ID authentication with OAuth 2.0 is required.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    NotFound:
-      description: Not found. The specified resource does not exist.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError_2'
-    Forbidden_3:
-      description: Forbidden. Insufficient permissions.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError_2'
-    BadRequest:
-      description: Bad request. The request body or parameters are invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError_2'
   securitySchemes:
     windowsAuth:
       type: http

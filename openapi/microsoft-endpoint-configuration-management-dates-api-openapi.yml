@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Endpoint Configuration Management Intune Data Warehouse Dates API
+  title: Microsoft Endpoint Configuration Management Intune Data…
   description: OData-based REST API that provides access to Intune reporting data in a machine-readable format. Enables building custom reports and analytics for enterprise mobile environment insights. Uses OData v4.0 protocol with standard patterns for request/response headers, status codes, HTTP methods, URL conventions, and query options. Data is sampled daily to provide a historical view of the mobile device environment.
   version: 1.0.0
   contact:
@@ -47,6 +47,36 @@ paths:
                     items:
                       $ref: '#/components/schemas/DateEntity'
 components:
+  parameters:
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include.
+      schema:
+        type: string
+    apiVersion:
+      name: api-version
+      in: query
+      required: true
+      description: API version. Use 'v1.0' for stable or 'beta' for preview features.
+      schema:
+        type: string
+        enum:
+        - v1.0
+        - beta
+        default: v1.0
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
   schemas:
     DateEntity:
       type: object
@@ -80,36 +110,6 @@ components:
         calendarYear:
           type: integer
           description: Calendar year.
-  parameters:
-    apiVersion:
-      name: api-version
-      in: query
-      required: true
-      description: API version. Use 'v1.0' for stable or 'beta' for preview features.
-      schema:
-        type: string
-        enum:
-        - v1.0
-        - beta
-        default: v1.0
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include.
-      schema:
-        type: string
-    top:
-      name: $top
-      in: query
-      description: Number of items to return.
-      schema:
-        type: integer
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
-      schema:
-        type: string
   securitySchemes:
     oauth2:
       type: oauth2

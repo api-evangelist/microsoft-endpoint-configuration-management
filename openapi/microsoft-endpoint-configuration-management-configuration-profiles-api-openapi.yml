@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Endpoint Configuration Management Microsoft Intune Graph Configuration Profiles API
+  title: Microsoft Endpoint Configuration Management Microsoft…
   description: Microsoft Graph API endpoints for Intune device management, enabling programmatic access to manage devices, apps, compliance policies, and configuration profiles. Supports both v1.0 and beta endpoints. Requires an active Intune license for the tenant.
   version: 1.0.0
   contact:
@@ -152,36 +152,36 @@ paths:
           description: Successfully assigned device configuration.
 components:
   parameters:
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include in the response.
-      schema:
-        type: string
-    top:
-      name: $top
-      in: query
-      description: Number of items to return.
-      schema:
-        type: integer
-    skip:
-      name: $skip
-      in: query
-      description: Number of items to skip.
-      schema:
-        type: integer
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression.
-      schema:
-        type: string
     orderby:
       name: $orderby
       in: query
       description: Order results by a property.
       schema:
         type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression.
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response.
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      description: Number of items to skip.
+      schema:
+        type: integer
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
   schemas:
     DeviceConfigurationAssignment:
       type: object

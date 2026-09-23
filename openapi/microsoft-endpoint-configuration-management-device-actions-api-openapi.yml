@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Endpoint Configuration Management Microsoft Intune Graph Device Actions API
+  title: Microsoft Endpoint Configuration Management Microsoft…
   description: Microsoft Graph API endpoints for Intune device management, enabling programmatic access to manage devices, apps, compliance policies, and configuration profiles. Supports both v1.0 and beta endpoints. Requires an active Intune license for the tenant.
   version: 1.0.0
   contact:

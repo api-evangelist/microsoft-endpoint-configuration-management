@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Endpoint Configuration Management Intune Data Warehouse Management Extensions API
+  title: Microsoft Endpoint Configuration Management Intune Data…
   description: OData-based REST API that provides access to Intune reporting data in a machine-readable format. Enables building custom reports and analytics for enterprise mobile environment insights. Uses OData v4.0 protocol with standard patterns for request/response headers, status codes, HTTP methods, URL conventions, and query options. Data is sampled daily to provide a historical view of the mobile device environment.
   version: 1.0.0
   contact:
@@ -25,7 +25,7 @@ paths:
   /intuneManagementExtensions:
     get:
       operationId: listIntuneManagementExtensions
-      summary: Microsoft Endpoint Configuration Management List Intune management extension records
+      summary: Microsoft Endpoint Configuration Management List Intune management extension…
       description: Retrieve Intune management extension activity records including script execution results.
       tags:
       - Management Extensions
@@ -50,13 +50,24 @@ paths:
                       $ref: '#/components/schemas/IntuneManagementExtension'
 components:
   parameters:
-    maxhistorydays:
-      name: maxhistorydays
+    filter:
+      name: $filter
       in: query
-      description: Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.
+      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include.
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      description: Number of items to skip.
       schema:
         type: integer
-        default: 7
     apiVersion:
       name: api-version
       in: query
@@ -68,30 +79,19 @@ components:
         - v1.0
         - beta
         default: v1.0
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include.
-      schema:
-        type: string
     top:
       name: $top
       in: query
       description: Number of items to return.
       schema:
         type: integer
-    skip:
-      name: $skip
+    maxhistorydays:
+      name: maxhistorydays
       in: query
-      description: Number of items to skip.
+      description: Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.
       schema:
         type: integer
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
-      schema:
-        type: string
+        default: 7
   schemas:
     IntuneManagementExtension:
       type: object

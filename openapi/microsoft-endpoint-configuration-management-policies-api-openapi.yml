@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Endpoint Configuration Management Intune Data Warehouse Policies API
+  title: Microsoft Endpoint Configuration Management Intune Data…
   description: OData-based REST API that provides access to Intune reporting data in a machine-readable format. Enables building custom reports and analytics for enterprise mobile environment insights. Uses OData v4.0 protocol with standard patterns for request/response headers, status codes, HTTP methods, URL conventions, and query options. Data is sampled daily to provide a historical view of the mobile device environment.
   version: 1.0.0
   contact:
@@ -100,6 +100,49 @@ paths:
                     items:
                       $ref: '#/components/schemas/PolicyUserActivity'
 components:
+  parameters:
+    maxhistorydays:
+      name: maxhistorydays
+      in: query
+      description: Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.
+      schema:
+        type: integer
+        default: 7
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include.
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      description: Number of items to skip.
+      schema:
+        type: integer
+    apiVersion:
+      name: api-version
+      in: query
+      required: true
+      description: API version. Use 'v1.0' for stable or 'beta' for preview features.
+      schema:
+        type: string
+        enum:
+        - v1.0
+        - beta
+        default: v1.0
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
   schemas:
     PolicyUserActivity:
       type: object
@@ -123,6 +166,28 @@ components:
         error:
           type: integer
           description: Number of users in error state.
+    PolicyDeviceActivity:
+      type: object
+      description: Device compliance activity record against a specific policy.
+      properties:
+        dateKey:
+          type: integer
+          description: Date key for the activity.
+        policyKey:
+          type: integer
+          description: Policy key reference.
+        pending:
+          type: integer
+          description: Number of devices pending compliance evaluation.
+        succeeded:
+          type: integer
+          description: Number of devices in compliance.
+        failed:
+          type: integer
+          description: Number of devices out of compliance.
+        error:
+          type: integer
+          description: Number of devices in error state.
     Policy:
       type: object
       description: Policy entity representing compliance and configuration policies.
@@ -148,71 +213,6 @@ components:
         policyPlatformKey:
           type: integer
           description: Reference to the platform.
-    PolicyDeviceActivity:
-      type: object
-      description: Device compliance activity record against a specific policy.
-      properties:
-        dateKey:
-          type: integer
-          description: Date key for the activity.
-        policyKey:
-          type: integer
-          description: Policy key reference.
-        pending:
-          type: integer
-          description: Number of devices pending compliance evaluation.
-        succeeded:
-          type: integer
-          description: Number of devices in compliance.
-        failed:
-          type: integer
-          description: Number of devices out of compliance.
-        error:
-          type: integer
-          description: Number of devices in error state.
-  parameters:
-    maxhistorydays:
-      name: maxhistorydays
-      in: query
-      description: Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.
-      schema:
-        type: integer
-        default: 7
-    apiVersion:
-      name: api-version
-      in: query
-      required: true
-      description: API version. Use 'v1.0' for stable or 'beta' for preview features.
-      schema:
-        type: string
-        enum:
-        - v1.0
-        - beta
-        default: v1.0
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include.
-      schema:
-        type: string
-    top:
-      name: $top
-      in: query
-      description: Number of items to return.
-      schema:
-        type: integer
-    skip:
-      name: $skip
-      in: query
-      description: Number of items to skip.
-      schema:
-        type: integer
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
-      schema:
-        type: string
   securitySchemes:
     oauth2:
       type: oauth2

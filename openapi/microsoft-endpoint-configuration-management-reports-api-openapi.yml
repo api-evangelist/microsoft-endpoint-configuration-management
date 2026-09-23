@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Endpoint Configuration Management Intune Reporting Export Reports API
+  title: Microsoft Endpoint Configuration Management Intune…
   description: Microsoft Graph API endpoints for exporting Intune reports programmatically. Supports exporting device, compliance, and app management reports in CSV or JSON format using asynchronous export jobs. All reports migrated to the Intune reporting infrastructure are available for export from the deviceManagement/reports/exportJobs endpoint. Requires an active Intune license for the tenant.
   version: 1.0.0
   contact:
@@ -47,7 +47,7 @@ paths:
   /deviceManagement/reports/getCompliancePolicyNonComplianceReport:
     post:
       operationId: getCompliancePolicyNonComplianceReport
-      summary: Microsoft Endpoint Configuration Management Get compliance policy non-compliance report
+      summary: Microsoft Endpoint Configuration Management Get compliance policy…
       description: Retrieve a report of non-compliant devices grouped by compliance policy.
       tags:
       - Reports
@@ -69,7 +69,7 @@ paths:
   /deviceManagement/reports/getComplianceSettingNonComplianceReport:
     post:
       operationId: getComplianceSettingNonComplianceReport
-      summary: Microsoft Endpoint Configuration Management Get compliance setting non-compliance report
+      summary: Microsoft Endpoint Configuration Management Get compliance setting…
       description: Retrieve a report of non-compliant devices grouped by compliance setting.
       tags:
       - Reports
@@ -91,7 +91,7 @@ paths:
   /deviceManagement/reports/getConfigurationPolicyNonComplianceReport:
     post:
       operationId: getConfigurationPolicyNonComplianceReport
-      summary: Microsoft Endpoint Configuration Management Get configuration policy non-compliance report
+      summary: Microsoft Endpoint Configuration Management Get configuration policy…
       description: Retrieve a report of non-compliant devices grouped by configuration policy.
       tags:
       - Reports
@@ -156,6 +156,31 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    ReportResponse:
+      type: object
+      description: Response body for inline Intune reports. Contains report metadata and tabular data in a values array format.
+      properties:
+        totalRowCount:
+          type: integer
+          description: Total number of rows in the report.
+        schema:
+          type: array
+          description: Array of column definitions describing the columns in the values array.
+          items:
+            type: object
+            properties:
+              column:
+                type: string
+                description: Column name.
+              propertyType:
+                type: integer
+                description: Data type of the column. Common values include 1 for string, 2 for int32, 3 for dateTime, 4 for boolean.
+        values:
+          type: array
+          description: Array of row data. Each row is an array of values corresponding to the columns defined in the schema.
+          items:
+            type: array
+            items: {}
     ReportRequest:
       type: object
       description: Request body for retrieving inline Intune reports.
@@ -188,31 +213,6 @@ components:
         search:
           type: string
           description: Search string to filter results.
-    ReportResponse:
-      type: object
-      description: Response body for inline Intune reports. Contains report metadata and tabular data in a values array format.
-      properties:
-        totalRowCount:
-          type: integer
-          description: Total number of rows in the report.
-        schema:
-          type: array
-          description: Array of column definitions describing the columns in the values array.
-          items:
-            type: object
-            properties:
-              column:
-                type: string
-                description: Column name.
-              propertyType:
-                type: integer
-                description: Data type of the column. Common values include 1 for string, 2 for int32, 3 for dateTime, 4 for boolean.
-        values:
-          type: array
-          description: Array of row data. Each row is an array of values corresponding to the columns defined in the schema.
-          items:
-            type: array
-            items: {}
     ODataError:
       type: object
       properties:

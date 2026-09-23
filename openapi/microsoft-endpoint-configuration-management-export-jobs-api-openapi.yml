@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Endpoint Configuration Management Intune Reporting Export Export Jobs API
+  title: Microsoft Endpoint Configuration Management Intune…
   description: Microsoft Graph API endpoints for exporting Intune reports programmatically. Supports exporting device, compliance, and app management reports in CSV or JSON format using asynchronous export jobs. All reports migrated to the Intune reporting infrastructure are available for export from the deviceManagement/reports/exportJobs endpoint. Requires an active Intune license for the tenant.
   version: 1.0.0
   contact:
@@ -132,7 +132,124 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    Forbidden:
+      description: Forbidden. Insufficient permissions.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    NotFound:
+      description: Not found. The specified resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized. Authentication is required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    TooManyRequests:
+      description: Too many requests. The API supports up to 100 requests per tenant per minute, with per-user limits of 8 requests per minute and per-app limits of 48 requests per minute.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    BadRequest:
+      description: Bad request. The request body or parameters are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+  parameters:
+    count:
+      name: $count
+      in: query
+      description: Include count of items.
+      schema:
+        type: boolean
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response.
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression.
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      description: Order results by a property.
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      description: Number of items to skip.
+      schema:
+        type: integer
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
   schemas:
+    DeviceManagementExportJobCreate:
+      type: object
+      description: Request body for creating a new deviceManagementExportJob.
+      required:
+      - reportName
+      properties:
+        reportName:
+          type: string
+          description: Name of the report to export (e.g., Devices, DevicesWithInventory, DeviceCompliance). The maximum length is 2000 characters.
+        filter:
+          type: string
+          description: Filters applied on the report. The maximum length is 2000 characters.
+        select:
+          type: array
+          description: Columns selected from the report. Only valid column names for the specified report are accepted. Maximum 256 column names, each up to 1000 characters.
+          items:
+            type: string
+        format:
+          type: string
+          description: Format of the exported report. Defaults to csv.
+          enum:
+          - csv
+          - json
+        snapshotId:
+          type: string
+          description: A sessionId or CachedReportConfiguration id. When specified, Filter, Select, and OrderBy cannot also be specified. Maximum 128 characters.
+        localizationType:
+          type: string
+          description: Configures how the export job is localized. Default is localizedValuesAsAdditionalColumn.
+          enum:
+          - localizedValuesAsAdditionalColumn
+          - replaceLocalizableValues
+    ODataError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                date:
+                  type: string
     DeviceManagementExportJob:
       type: object
       description: Entity representing a job to export a report. Tracks the status of an asynchronous report export including the download URL when complete.
@@ -193,123 +310,6 @@ components:
           format: date-time
           description: Time that the exported report expires.
           readOnly: true
-    ODataError:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
-            innerError:
-              type: object
-              properties:
-                request-id:
-                  type: string
-                date:
-                  type: string
-    DeviceManagementExportJobCreate:
-      type: object
-      description: Request body for creating a new deviceManagementExportJob.
-      required:
-      - reportName
-      properties:
-        reportName:
-          type: string
-          description: Name of the report to export (e.g., Devices, DevicesWithInventory, DeviceCompliance). The maximum length is 2000 characters.
-        filter:
-          type: string
-          description: Filters applied on the report. The maximum length is 2000 characters.
-        select:
-          type: array
-          description: Columns selected from the report. Only valid column names for the specified report are accepted. Maximum 256 column names, each up to 1000 characters.
-          items:
-            type: string
-        format:
-          type: string
-          description: Format of the exported report. Defaults to csv.
-          enum:
-          - csv
-          - json
-        snapshotId:
-          type: string
-          description: A sessionId or CachedReportConfiguration id. When specified, Filter, Select, and OrderBy cannot also be specified. Maximum 128 characters.
-        localizationType:
-          type: string
-          description: Configures how the export job is localized. Default is localizedValuesAsAdditionalColumn.
-          enum:
-          - localizedValuesAsAdditionalColumn
-          - replaceLocalizableValues
-  parameters:
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include in the response.
-      schema:
-        type: string
-    skip:
-      name: $skip
-      in: query
-      description: Number of items to skip.
-      schema:
-        type: integer
-    count:
-      name: $count
-      in: query
-      description: Include count of items.
-      schema:
-        type: boolean
-    top:
-      name: $top
-      in: query
-      description: Number of items to return.
-      schema:
-        type: integer
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression.
-      schema:
-        type: string
-    orderby:
-      name: $orderby
-      in: query
-      description: Order results by a property.
-      schema:
-        type: string
-  responses:
-    NotFound:
-      description: Not found. The specified resource does not exist.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Forbidden:
-      description: Forbidden. Insufficient permissions.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Unauthorized. Authentication is required.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    BadRequest:
-      description: Bad request. The request body or parameters are invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    TooManyRequests:
-      description: Too many requests. The API supports up to 100 requests per tenant per minute, with per-user limits of 8 requests per minute and per-app limits of 48 requests per minute.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
   securitySchemes:
     oauth2:
       type: oauth2
