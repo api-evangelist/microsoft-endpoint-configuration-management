@@ -428,50 +428,59 @@ paths:
     - url: https://graph.microsoft.com/beta
       description: Microsoft Graph beta endpoint
 components:
-  responses:
-    Forbidden:
-      description: Forbidden. The user account must be an administrative user in Configuration Manager.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Unauthorized. Authentication is required.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Forbidden_2:
-      description: Forbidden. User must have Intune service administrator role or role-based access to the Intune data warehouse resource.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Unauthorized_2:
-      description: Unauthorized. Microsoft Entra ID authentication with OAuth 2.0 is required.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    BadRequest:
-      description: Bad request. The request body or parameters are invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError_2'
-    Forbidden_3:
-      description: Forbidden. Insufficient permissions.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError_2'
-    NotFound:
-      description: Not found. The specified resource does not exist.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError_2'
   schemas:
+    ODataError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+    SMS_R_System:
+      type: object
+      description: Represents a discovered system resource (computer or device) in Configuration Manager.
+      properties:
+        ResourceID:
+          type: integer
+          description: Unique resource identifier.
+        Name:
+          type: string
+          description: Computer name.
+        SMSUniqueIdentifier:
+          type: string
+          description: SMS unique identifier.
+        ResourceDomainORWorkgroup:
+          type: string
+          description: Domain or workgroup.
+        Client:
+          type: integer
+          description: Whether the Configuration Manager client is installed (1=yes).
+        Active:
+          type: integer
+          description: Whether the resource is active.
+        IPAddresses:
+          type: array
+          items:
+            type: string
+          description: IP addresses of the system.
+        MACAddresses:
+          type: array
+          items:
+            type: string
+          description: MAC addresses of the system.
+        OperatingSystemNameandVersion:
+          type: string
+          description: Full operating system name and version string.
+        LastLogonUserName:
+          type: string
+          description: Last logged on user name.
+        LastLogonTimestamp:
+          type: string
+          format: date-time
+          description: Last logon timestamp.
     Device:
       type: object
       description: Device entity available through the versioned v1.0 OData route of the AdminService.
@@ -536,58 +545,6 @@ components:
           type: string
           format: date-time
           description: Last time the device was active.
-    SMS_R_System:
-      type: object
-      description: Represents a discovered system resource (computer or device) in Configuration Manager.
-      properties:
-        ResourceID:
-          type: integer
-          description: Unique resource identifier.
-        Name:
-          type: string
-          description: Computer name.
-        SMSUniqueIdentifier:
-          type: string
-          description: SMS unique identifier.
-        ResourceDomainORWorkgroup:
-          type: string
-          description: Domain or workgroup.
-        Client:
-          type: integer
-          description: Whether the Configuration Manager client is installed (1=yes).
-        Active:
-          type: integer
-          description: Whether the resource is active.
-        IPAddresses:
-          type: array
-          items:
-            type: string
-          description: IP addresses of the system.
-        MACAddresses:
-          type: array
-          items:
-            type: string
-          description: MAC addresses of the system.
-        OperatingSystemNameandVersion:
-          type: string
-          description: Full operating system name and version string.
-        LastLogonUserName:
-          type: string
-          description: Last logged on user name.
-        LastLogonTimestamp:
-          type: string
-          format: date-time
-          description: Last logon timestamp.
-    ODataError:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
     Device_2:
       type: object
       description: Device entity representing a snapshot of device properties in the Data Warehouse.
@@ -913,12 +870,12 @@ components:
           description: Name of the enrollment profile assigned to the device.
           readOnly: true
   parameters:
-    filter:
-      name: $filter
+    top:
+      name: $top
       in: query
-      description: OData filter expression.
+      description: Number of items to return.
       schema:
-        type: string
+        type: integer
     orderby:
       name: $orderby
       in: query
@@ -931,12 +888,30 @@ components:
       description: Comma-separated list of properties to include.
       schema:
         type: string
-    top:
-      name: $top
+    filter:
+      name: $filter
       in: query
-      description: Number of items to return.
+      description: OData filter expression.
+      schema:
+        type: string
+    maxhistorydays:
+      name: maxhistorydays
+      in: query
+      description: Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.
       schema:
         type: integer
+        default: 7
+    apiVersion:
+      name: api-version
+      in: query
+      required: true
+      description: API version. Use 'v1.0' for stable or 'beta' for preview features.
+      schema:
+        type: string
+        enum:
+        - v1.0
+        - beta
+        default: v1.0
     filter_2:
       name: $filter
       in: query
@@ -949,36 +924,61 @@ components:
       description: Number of items to skip.
       schema:
         type: integer
-    apiVersion:
-      name: api-version
-      in: query
-      required: true
-      description: API version. Use 'v1.0' for stable or 'beta' for preview features.
-      schema:
-        type: string
-        enum:
-        - v1.0
-        - beta
-        default: v1.0
-    maxhistorydays:
-      name: maxhistorydays
-      in: query
-      description: Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.
-      schema:
-        type: integer
-        default: 7
-    select_2:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include in the response.
-      schema:
-        type: string
     count:
       name: $count
       in: query
       description: Include count of items.
       schema:
         type: boolean
+    select_2:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response.
+      schema:
+        type: string
+  responses:
+    Forbidden:
+      description: Forbidden. The user account must be an administrative user in Configuration Manager.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized. Authentication is required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Forbidden_2:
+      description: Forbidden. User must have Intune service administrator role or role-based access to the Intune data warehouse resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized_2:
+      description: Unauthorized. Microsoft Entra ID authentication with OAuth 2.0 is required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    BadRequest:
+      description: Bad request. The request body or parameters are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError_2'
+    Forbidden_3:
+      description: Forbidden. Insufficient permissions.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError_2'
+    NotFound:
+      description: Not found. The specified resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError_2'
   securitySchemes:
     windowsAuth:
       type: http

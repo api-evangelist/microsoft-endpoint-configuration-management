@@ -48,18 +48,12 @@ paths:
                       $ref: '#/components/schemas/DateEntity'
 components:
   parameters:
-    filter:
-      name: $filter
+    top:
+      name: $top
       in: query
-      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
+      description: Number of items to return.
       schema:
-        type: string
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include.
-      schema:
-        type: string
+        type: integer
     apiVersion:
       name: api-version
       in: query
@@ -71,12 +65,18 @@ components:
         - v1.0
         - beta
         default: v1.0
-    top:
-      name: $top
+    select:
+      name: $select
       in: query
-      description: Number of items to return.
+      description: Comma-separated list of properties to include.
       schema:
-        type: integer
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
+      schema:
+        type: string
   schemas:
     DateEntity:
       type: object

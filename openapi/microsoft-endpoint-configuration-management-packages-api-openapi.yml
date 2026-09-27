@@ -75,6 +75,12 @@ components:
           type: integer
           description: Type of package.
   parameters:
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include.
+      schema:
+        type: string
     filter:
       name: $filter
       in: query
@@ -87,12 +93,6 @@ components:
       description: Number of items to return.
       schema:
         type: integer
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include.
-      schema:
-        type: string
   securitySchemes:
     windowsAuth:
       type: http

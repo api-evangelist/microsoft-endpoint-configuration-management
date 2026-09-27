@@ -111,7 +111,7 @@ paths:
           description: Fully qualified domain name of the SMS Provider server hosting the administration service.
   /applications:
     get:
-      operationId: listApplications
+      operationId: getApplications
       summary: Microsoft Endpoint Configuration Management List application records
       description: Retrieve application inventory records from the Data Warehouse including discovered and managed applications.
       tags:
@@ -136,6 +136,8 @@ paths:
                       $ref: '#/components/schemas/Application'
       security:
       - oauth2: []
+      x-operation-id-source: normalized
+      x-operation-id-original: listApplications
     servers:
     - url: https://fef.{location}.manage.microsoft.com/ReportingService/DataWarehouseFEService
       description: Intune Data Warehouse endpoint
@@ -379,67 +381,6 @@ paths:
     - url: https://graph.microsoft.com/beta
       description: Microsoft Graph beta endpoint
 components:
-  parameters:
-    orderby:
-      name: $orderby
-      in: query
-      description: Order results by a property.
-      schema:
-        type: string
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression.
-      schema:
-        type: string
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include.
-      schema:
-        type: string
-    top:
-      name: $top
-      in: query
-      description: Number of items to return.
-      schema:
-        type: integer
-    filter_2:
-      name: $filter
-      in: query
-      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
-      schema:
-        type: string
-    skip:
-      name: $skip
-      in: query
-      description: Number of items to skip.
-      schema:
-        type: integer
-    apiVersion:
-      name: api-version
-      in: query
-      required: true
-      description: API version. Use 'v1.0' for stable or 'beta' for preview features.
-      schema:
-        type: string
-        enum:
-        - v1.0
-        - beta
-        default: v1.0
-    maxhistorydays:
-      name: maxhistorydays
-      in: query
-      description: Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.
-      schema:
-        type: integer
-        default: 7
-    select_2:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include in the response.
-      schema:
-        type: string
   schemas:
     SMS_Application:
       type: object
@@ -530,6 +471,28 @@ components:
         isDeleted:
           type: boolean
           description: Whether the application record has been deleted.
+    MobileAppAssignment:
+      type: object
+      description: Assignment of a mobile app to a group.
+      properties:
+        id:
+          type: string
+        intent:
+          type: string
+          enum:
+          - available
+          - required
+          - uninstall
+          - availableWithoutEnrollment
+        target:
+          type: object
+          properties:
+            '@odata.type':
+              type: string
+            groupId:
+              type: string
+        settings:
+          type: object
     MobileApp:
       type: object
       description: Abstract class containing the base properties for Intune mobile apps.
@@ -592,28 +555,67 @@ components:
           - processing
           - published
           readOnly: true
-    MobileAppAssignment:
-      type: object
-      description: Assignment of a mobile app to a group.
-      properties:
-        id:
-          type: string
-        intent:
-          type: string
-          enum:
-          - available
-          - required
-          - uninstall
-          - availableWithoutEnrollment
-        target:
-          type: object
-          properties:
-            '@odata.type':
-              type: string
-            groupId:
-              type: string
-        settings:
-          type: object
+  parameters:
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
+    orderby:
+      name: $orderby
+      in: query
+      description: Order results by a property.
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include.
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression.
+      schema:
+        type: string
+    maxhistorydays:
+      name: maxhistorydays
+      in: query
+      description: Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.
+      schema:
+        type: integer
+        default: 7
+    apiVersion:
+      name: api-version
+      in: query
+      required: true
+      description: API version. Use 'v1.0' for stable or 'beta' for preview features.
+      schema:
+        type: string
+        enum:
+        - v1.0
+        - beta
+        default: v1.0
+    filter_2:
+      name: $filter
+      in: query
+      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      description: Number of items to skip.
+      schema:
+        type: integer
+    select_2:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response.
+      schema:
+        type: string
   securitySchemes:
     windowsAuth:
       type: http

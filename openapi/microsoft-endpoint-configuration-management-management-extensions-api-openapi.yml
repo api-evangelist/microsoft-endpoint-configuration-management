@@ -50,35 +50,6 @@ paths:
                       $ref: '#/components/schemas/IntuneManagementExtension'
 components:
   parameters:
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
-      schema:
-        type: string
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include.
-      schema:
-        type: string
-    skip:
-      name: $skip
-      in: query
-      description: Number of items to skip.
-      schema:
-        type: integer
-    apiVersion:
-      name: api-version
-      in: query
-      required: true
-      description: API version. Use 'v1.0' for stable or 'beta' for preview features.
-      schema:
-        type: string
-        enum:
-        - v1.0
-        - beta
-        default: v1.0
     top:
       name: $top
       in: query
@@ -92,6 +63,35 @@ components:
       schema:
         type: integer
         default: 7
+    apiVersion:
+      name: api-version
+      in: query
+      required: true
+      description: API version. Use 'v1.0' for stable or 'beta' for preview features.
+      schema:
+        type: string
+        enum:
+        - v1.0
+        - beta
+        default: v1.0
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include.
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      description: Number of items to skip.
+      schema:
+        type: integer
   schemas:
     IntuneManagementExtension:
       type: object
