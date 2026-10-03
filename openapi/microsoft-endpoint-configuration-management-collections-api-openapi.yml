@@ -157,18 +157,6 @@ components:
           type: integer
           description: Current evaluation status of the collection.
   parameters:
-    top:
-      name: $top
-      in: query
-      description: Number of items to return.
-      schema:
-        type: integer
-    orderby:
-      name: $orderby
-      in: query
-      description: Order results by a property.
-      schema:
-        type: string
     select:
       name: $select
       in: query
@@ -179,6 +167,18 @@ components:
       name: $filter
       in: query
       description: OData filter expression.
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
+    orderby:
+      name: $orderby
+      in: query
+      description: Order results by a property.
       schema:
         type: string
   responses:

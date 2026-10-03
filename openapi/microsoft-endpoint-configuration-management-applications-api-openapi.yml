@@ -381,6 +381,67 @@ paths:
     - url: https://graph.microsoft.com/beta
       description: Microsoft Graph beta endpoint
 components:
+  parameters:
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include.
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression.
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
+    orderby:
+      name: $orderby
+      in: query
+      description: Order results by a property.
+      schema:
+        type: string
+    apiVersion:
+      name: api-version
+      in: query
+      required: true
+      description: API version. Use 'v1.0' for stable or 'beta' for preview features.
+      schema:
+        type: string
+        enum:
+        - v1.0
+        - beta
+        default: v1.0
+    maxhistorydays:
+      name: maxhistorydays
+      in: query
+      description: Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.
+      schema:
+        type: integer
+        default: 7
+    skip:
+      name: $skip
+      in: query
+      description: Number of items to skip.
+      schema:
+        type: integer
+    filter_2:
+      name: $filter
+      in: query
+      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
+      schema:
+        type: string
+    select_2:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response.
+      schema:
+        type: string
   schemas:
     SMS_Application:
       type: object
@@ -427,28 +488,6 @@ components:
         NumberOfDeployments:
           type: integer
           description: Number of active deployments.
-    MobileAppInstallStatus:
-      type: object
-      description: Mobile application installation status record.
-      properties:
-        dateKey:
-          type: integer
-          description: Date key for the status.
-        deviceKey:
-          type: integer
-          description: Device key reference.
-        userKey:
-          type: integer
-          description: User key reference.
-        applicationKey:
-          type: integer
-          description: Application key reference.
-        installState:
-          type: string
-          description: Installation state.
-        errorCode:
-          type: integer
-          description: Error code if installation failed.
     Application:
       type: object
       description: Application entity from the Data Warehouse inventory.
@@ -471,28 +510,28 @@ components:
         isDeleted:
           type: boolean
           description: Whether the application record has been deleted.
-    MobileAppAssignment:
+    MobileAppInstallStatus:
       type: object
-      description: Assignment of a mobile app to a group.
+      description: Mobile application installation status record.
       properties:
-        id:
+        dateKey:
+          type: integer
+          description: Date key for the status.
+        deviceKey:
+          type: integer
+          description: Device key reference.
+        userKey:
+          type: integer
+          description: User key reference.
+        applicationKey:
+          type: integer
+          description: Application key reference.
+        installState:
           type: string
-        intent:
-          type: string
-          enum:
-          - available
-          - required
-          - uninstall
-          - availableWithoutEnrollment
-        target:
-          type: object
-          properties:
-            '@odata.type':
-              type: string
-            groupId:
-              type: string
-        settings:
-          type: object
+          description: Installation state.
+        errorCode:
+          type: integer
+          description: Error code if installation failed.
     MobileApp:
       type: object
       description: Abstract class containing the base properties for Intune mobile apps.
@@ -555,67 +594,28 @@ components:
           - processing
           - published
           readOnly: true
-  parameters:
-    top:
-      name: $top
-      in: query
-      description: Number of items to return.
-      schema:
-        type: integer
-    orderby:
-      name: $orderby
-      in: query
-      description: Order results by a property.
-      schema:
-        type: string
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include.
-      schema:
-        type: string
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression.
-      schema:
-        type: string
-    maxhistorydays:
-      name: maxhistorydays
-      in: query
-      description: Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.
-      schema:
-        type: integer
-        default: 7
-    apiVersion:
-      name: api-version
-      in: query
-      required: true
-      description: API version. Use 'v1.0' for stable or 'beta' for preview features.
-      schema:
-        type: string
-        enum:
-        - v1.0
-        - beta
-        default: v1.0
-    filter_2:
-      name: $filter
-      in: query
-      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
-      schema:
-        type: string
-    skip:
-      name: $skip
-      in: query
-      description: Number of items to skip.
-      schema:
-        type: integer
-    select_2:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include in the response.
-      schema:
-        type: string
+    MobileAppAssignment:
+      type: object
+      description: Assignment of a mobile app to a group.
+      properties:
+        id:
+          type: string
+        intent:
+          type: string
+          enum:
+          - available
+          - required
+          - uninstall
+          - availableWithoutEnrollment
+        target:
+          type: object
+          properties:
+            '@odata.type':
+              type: string
+            groupId:
+              type: string
+        settings:
+          type: object
   securitySchemes:
     windowsAuth:
       type: http

@@ -48,12 +48,6 @@ paths:
                       $ref: '#/components/schemas/DateEntity'
 components:
   parameters:
-    top:
-      name: $top
-      in: query
-      description: Number of items to return.
-      schema:
-        type: integer
     apiVersion:
       name: api-version
       in: query
@@ -77,6 +71,12 @@ components:
       description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
       schema:
         type: string
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
   schemas:
     DateEntity:
       type: object

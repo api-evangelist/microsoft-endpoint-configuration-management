@@ -439,6 +439,70 @@ components:
               type: string
             message:
               type: string
+    SMS_Device:
+      type: object
+      description: Represents a device discovered and managed by Configuration Manager via the WMI route.
+      properties:
+        DeviceID:
+          type: integer
+          description: Unique device identifier.
+        Name:
+          type: string
+          description: Device name.
+        Domain:
+          type: string
+          description: Domain the device belongs to.
+        SMSID:
+          type: string
+          description: SMS unique identifier.
+        IsActive:
+          type: boolean
+          description: Whether the device is currently active.
+        DeviceOS:
+          type: string
+          description: Operating system of the device.
+        DeviceOSVersion:
+          type: string
+          description: Operating system version.
+        DeviceType:
+          type: integer
+          description: Type of device (1=Desktop, 2=Laptop, etc.).
+        IsBlocked:
+          type: boolean
+          description: Whether the device is blocked.
+        LastActiveTime:
+          type: string
+          format: date-time
+          description: Last time the device was active.
+    Device:
+      type: object
+      description: Device entity available through the versioned v1.0 OData route of the AdminService.
+      properties:
+        MachineId:
+          type: integer
+          description: Unique machine identifier.
+        Name:
+          type: string
+          description: Device name.
+        Domain:
+          type: string
+          description: Domain.
+        IsActive:
+          type: boolean
+          description: Whether the device is active.
+        LastActiveTime:
+          type: string
+          format: date-time
+          description: Last active time.
+        DeviceOS:
+          type: string
+          description: Operating system.
+        Status:
+          type: string
+          description: Device status.
+        SiteCode:
+          type: string
+          description: Associated site code.
     SMS_R_System:
       type: object
       description: Represents a discovered system resource (computer or device) in Configuration Manager.
@@ -481,70 +545,39 @@ components:
           type: string
           format: date-time
           description: Last logon timestamp.
-    Device:
+    DevicePropertyHistory:
       type: object
-      description: Device entity available through the versioned v1.0 OData route of the AdminService.
+      description: Historical snapshot of device properties taken daily.
       properties:
-        MachineId:
+        devicePropertyHistoryKey:
           type: integer
-          description: Unique machine identifier.
-        Name:
-          type: string
-          description: Device name.
-        Domain:
-          type: string
-          description: Domain.
-        IsActive:
-          type: boolean
-          description: Whether the device is active.
-        LastActiveTime:
-          type: string
-          format: date-time
-          description: Last active time.
-        DeviceOS:
-          type: string
-          description: Operating system.
-        Status:
-          type: string
-          description: Device status.
-        SiteCode:
-          type: string
-          description: Associated site code.
-    SMS_Device:
-      type: object
-      description: Represents a device discovered and managed by Configuration Manager via the WMI route.
-      properties:
-        DeviceID:
+          description: Unique key for the history record.
+        deviceKey:
           type: integer
-          description: Unique device identifier.
-        Name:
-          type: string
-          description: Device name.
-        Domain:
-          type: string
-          description: Domain the device belongs to.
-        SMSID:
-          type: string
-          description: SMS unique identifier.
-        IsActive:
-          type: boolean
-          description: Whether the device is currently active.
-        DeviceOS:
-          type: string
-          description: Operating system of the device.
-        DeviceOSVersion:
-          type: string
-          description: Operating system version.
-        DeviceType:
+          description: Reference to the device.
+        dateKey:
           type: integer
-          description: Type of device (1=Desktop, 2=Laptop, etc.).
-        IsBlocked:
-          type: boolean
-          description: Whether the device is blocked.
-        LastActiveTime:
+          description: Date key for this snapshot.
+        deviceName:
           type: string
-          format: date-time
-          description: Last time the device was active.
+          description: Device name at the time of snapshot.
+        deviceRegistrationStateKey:
+          type: integer
+          description: Device registration state key.
+        complianceStateKey:
+          type: integer
+          description: Compliance state key.
+        osVersion:
+          type: string
+          description: OS version at the time of snapshot.
+        storageTotal:
+          type: integer
+          format: int64
+          description: Total storage in bytes.
+        storageFree:
+          type: integer
+          format: int64
+          description: Free storage in bytes.
     Device_2:
       type: object
       description: Device entity representing a snapshot of device properties in the Data Warehouse.
@@ -608,39 +641,6 @@ components:
         complianceState:
           type: string
           description: Compliance state of the device.
-    DevicePropertyHistory:
-      type: object
-      description: Historical snapshot of device properties taken daily.
-      properties:
-        devicePropertyHistoryKey:
-          type: integer
-          description: Unique key for the history record.
-        deviceKey:
-          type: integer
-          description: Reference to the device.
-        dateKey:
-          type: integer
-          description: Date key for this snapshot.
-        deviceName:
-          type: string
-          description: Device name at the time of snapshot.
-        deviceRegistrationStateKey:
-          type: integer
-          description: Device registration state key.
-        complianceStateKey:
-          type: integer
-          description: Compliance state key.
-        osVersion:
-          type: string
-          description: OS version at the time of snapshot.
-        storageTotal:
-          type: integer
-          format: int64
-          description: Total storage in bytes.
-        storageFree:
-          type: integer
-          format: int64
-          description: Free storage in bytes.
     ODataError_2:
       type: object
       properties:
@@ -869,73 +869,6 @@ components:
           type: string
           description: Name of the enrollment profile assigned to the device.
           readOnly: true
-  parameters:
-    top:
-      name: $top
-      in: query
-      description: Number of items to return.
-      schema:
-        type: integer
-    orderby:
-      name: $orderby
-      in: query
-      description: Order results by a property.
-      schema:
-        type: string
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include.
-      schema:
-        type: string
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression.
-      schema:
-        type: string
-    maxhistorydays:
-      name: maxhistorydays
-      in: query
-      description: Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.
-      schema:
-        type: integer
-        default: 7
-    apiVersion:
-      name: api-version
-      in: query
-      required: true
-      description: API version. Use 'v1.0' for stable or 'beta' for preview features.
-      schema:
-        type: string
-        enum:
-        - v1.0
-        - beta
-        default: v1.0
-    filter_2:
-      name: $filter
-      in: query
-      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
-      schema:
-        type: string
-    skip:
-      name: $skip
-      in: query
-      description: Number of items to skip.
-      schema:
-        type: integer
-    count:
-      name: $count
-      in: query
-      description: Include count of items.
-      schema:
-        type: boolean
-    select_2:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include in the response.
-      schema:
-        type: string
   responses:
     Forbidden:
       description: Forbidden. The user account must be an administrative user in Configuration Manager.
@@ -979,6 +912,73 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError_2'
+  parameters:
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include.
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression.
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
+    orderby:
+      name: $orderby
+      in: query
+      description: Order results by a property.
+      schema:
+        type: string
+    apiVersion:
+      name: api-version
+      in: query
+      required: true
+      description: API version. Use 'v1.0' for stable or 'beta' for preview features.
+      schema:
+        type: string
+        enum:
+        - v1.0
+        - beta
+        default: v1.0
+    maxhistorydays:
+      name: maxhistorydays
+      in: query
+      description: Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.
+      schema:
+        type: integer
+        default: 7
+    skip:
+      name: $skip
+      in: query
+      description: Number of items to skip.
+      schema:
+        type: integer
+    filter_2:
+      name: $filter
+      in: query
+      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
+      schema:
+        type: string
+    count:
+      name: $count
+      in: query
+      description: Include count of items.
+      schema:
+        type: boolean
+    select_2:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response.
+      schema:
+        type: string
   securitySchemes:
     windowsAuth:
       type: http

@@ -151,51 +151,7 @@ paths:
         '200':
           description: Successfully assigned device configuration.
 components:
-  parameters:
-    top:
-      name: $top
-      in: query
-      description: Number of items to return.
-      schema:
-        type: integer
-    orderby:
-      name: $orderby
-      in: query
-      description: Order results by a property.
-      schema:
-        type: string
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include in the response.
-      schema:
-        type: string
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression.
-      schema:
-        type: string
-    skip:
-      name: $skip
-      in: query
-      description: Number of items to skip.
-      schema:
-        type: integer
   schemas:
-    DeviceConfigurationAssignment:
-      type: object
-      description: Assignment of a device configuration profile to a group.
-      properties:
-        id:
-          type: string
-        target:
-          type: object
-          properties:
-            '@odata.type':
-              type: string
-            groupId:
-              type: string
     DeviceConfiguration:
       type: object
       description: Device configuration profile.
@@ -223,6 +179,50 @@ components:
           type: integer
           description: Version of the device configuration.
           readOnly: true
+    DeviceConfigurationAssignment:
+      type: object
+      description: Assignment of a device configuration profile to a group.
+      properties:
+        id:
+          type: string
+        target:
+          type: object
+          properties:
+            '@odata.type':
+              type: string
+            groupId:
+              type: string
+  parameters:
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response.
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      description: Number of items to skip.
+      schema:
+        type: integer
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression.
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
+    orderby:
+      name: $orderby
+      in: query
+      description: Order results by a property.
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2
