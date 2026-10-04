@@ -133,18 +133,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   parameters:
-    count:
-      name: $count
-      in: query
-      description: Include count of items.
-      schema:
-        type: boolean
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include in the response.
-      schema:
-        type: string
     skip:
       name: $skip
       in: query
@@ -157,27 +145,33 @@ components:
       description: OData filter expression.
       schema:
         type: string
-    top:
-      name: $top
+    select:
+      name: $select
       in: query
-      description: Number of items to return.
+      description: Comma-separated list of properties to include in the response.
       schema:
-        type: integer
+        type: string
     orderby:
       name: $orderby
       in: query
       description: Order results by a property.
       schema:
         type: string
+    count:
+      name: $count
+      in: query
+      description: Include count of items.
+      schema:
+        type: boolean
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
   responses:
     BadRequest:
       description: Bad request. The request body or parameters are invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Forbidden:
-      description: Forbidden. Insufficient permissions.
       content:
         application/json:
           schema:
@@ -188,51 +182,25 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Unauthorized. Authentication is required.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
     NotFound:
       description: Not found. The specified resource does not exist.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized. Authentication is required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Forbidden:
+      description: Forbidden. Insufficient permissions.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
   schemas:
-    DeviceManagementExportJobCreate:
-      type: object
-      description: Request body for creating a new deviceManagementExportJob.
-      required:
-      - reportName
-      properties:
-        reportName:
-          type: string
-          description: Name of the report to export (e.g., Devices, DevicesWithInventory, DeviceCompliance). The maximum length is 2000 characters.
-        filter:
-          type: string
-          description: Filters applied on the report. The maximum length is 2000 characters.
-        select:
-          type: array
-          description: Columns selected from the report. Only valid column names for the specified report are accepted. Maximum 256 column names, each up to 1000 characters.
-          items:
-            type: string
-        format:
-          type: string
-          description: Format of the exported report. Defaults to csv.
-          enum:
-          - csv
-          - json
-        snapshotId:
-          type: string
-          description: A sessionId or CachedReportConfiguration id. When specified, Filter, Select, and OrderBy cannot also be specified. Maximum 128 characters.
-        localizationType:
-          type: string
-          description: Configures how the export job is localized. Default is localizedValuesAsAdditionalColumn.
-          enum:
-          - localizedValuesAsAdditionalColumn
-          - replaceLocalizableValues
     ODataError:
       type: object
       properties:
@@ -310,6 +278,38 @@ components:
           format: date-time
           description: Time that the exported report expires.
           readOnly: true
+    DeviceManagementExportJobCreate:
+      type: object
+      description: Request body for creating a new deviceManagementExportJob.
+      required:
+      - reportName
+      properties:
+        reportName:
+          type: string
+          description: Name of the report to export (e.g., Devices, DevicesWithInventory, DeviceCompliance). The maximum length is 2000 characters.
+        filter:
+          type: string
+          description: Filters applied on the report. The maximum length is 2000 characters.
+        select:
+          type: array
+          description: Columns selected from the report. Only valid column names for the specified report are accepted. Maximum 256 column names, each up to 1000 characters.
+          items:
+            type: string
+        format:
+          type: string
+          description: Format of the exported report. Defaults to csv.
+          enum:
+          - csv
+          - json
+        snapshotId:
+          type: string
+          description: A sessionId or CachedReportConfiguration id. When specified, Filter, Select, and OrderBy cannot also be specified. Maximum 128 characters.
+        localizationType:
+          type: string
+          description: Configures how the export job is localized. Default is localizedValuesAsAdditionalColumn.
+          enum:
+          - localizedValuesAsAdditionalColumn
+          - replaceLocalizableValues
   securitySchemes:
     oauth2:
       type: oauth2

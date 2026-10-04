@@ -61,6 +61,12 @@ components:
         - v1.0
         - beta
         default: v1.0
+    skip:
+      name: $skip
+      in: query
+      description: Number of items to skip.
+      schema:
+        type: integer
     maxhistorydays:
       name: maxhistorydays
       in: query
@@ -68,22 +74,16 @@ components:
       schema:
         type: integer
         default: 7
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include.
-      schema:
-        type: string
-    skip:
-      name: $skip
-      in: query
-      description: Number of items to skip.
-      schema:
-        type: integer
     filter:
       name: $filter
       in: query
       description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include.
       schema:
         type: string
     top:

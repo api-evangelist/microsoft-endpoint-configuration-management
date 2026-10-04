@@ -382,16 +382,22 @@ paths:
       description: Microsoft Graph beta endpoint
 components:
   parameters:
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression.
+      schema:
+        type: string
     select:
       name: $select
       in: query
       description: Comma-separated list of properties to include.
       schema:
         type: string
-    filter:
-      name: $filter
+    orderby:
+      name: $orderby
       in: query
-      description: OData filter expression.
+      description: Order results by a property.
       schema:
         type: string
     top:
@@ -400,12 +406,6 @@ components:
       description: Number of items to return.
       schema:
         type: integer
-    orderby:
-      name: $orderby
-      in: query
-      description: Order results by a property.
-      schema:
-        type: string
     apiVersion:
       name: api-version
       in: query
@@ -417,6 +417,12 @@ components:
         - v1.0
         - beta
         default: v1.0
+    skip:
+      name: $skip
+      in: query
+      description: Number of items to skip.
+      schema:
+        type: integer
     maxhistorydays:
       name: maxhistorydays
       in: query
@@ -424,12 +430,6 @@ components:
       schema:
         type: integer
         default: 7
-    skip:
-      name: $skip
-      in: query
-      description: Number of items to skip.
-      schema:
-        type: integer
     filter_2:
       name: $filter
       in: query
@@ -532,6 +532,28 @@ components:
         errorCode:
           type: integer
           description: Error code if installation failed.
+    MobileAppAssignment:
+      type: object
+      description: Assignment of a mobile app to a group.
+      properties:
+        id:
+          type: string
+        intent:
+          type: string
+          enum:
+          - available
+          - required
+          - uninstall
+          - availableWithoutEnrollment
+        target:
+          type: object
+          properties:
+            '@odata.type':
+              type: string
+            groupId:
+              type: string
+        settings:
+          type: object
     MobileApp:
       type: object
       description: Abstract class containing the base properties for Intune mobile apps.
@@ -594,28 +616,6 @@ components:
           - processing
           - published
           readOnly: true
-    MobileAppAssignment:
-      type: object
-      description: Assignment of a mobile app to a group.
-      properties:
-        id:
-          type: string
-        intent:
-          type: string
-          enum:
-          - available
-          - required
-          - uninstall
-          - availableWithoutEnrollment
-        target:
-          type: object
-          properties:
-            '@odata.type':
-              type: string
-            groupId:
-              type: string
-        settings:
-          type: object
   securitySchemes:
     windowsAuth:
       type: http

@@ -228,12 +228,6 @@ components:
           description: Version of the device configuration.
           readOnly: true
   parameters:
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include in the response.
-      schema:
-        type: string
     skip:
       name: $skip
       in: query
@@ -246,18 +240,24 @@ components:
       description: OData filter expression.
       schema:
         type: string
-    top:
-      name: $top
+    select:
+      name: $select
       in: query
-      description: Number of items to return.
+      description: Comma-separated list of properties to include in the response.
       schema:
-        type: integer
+        type: string
     orderby:
       name: $orderby
       in: query
       description: Order results by a property.
       schema:
         type: string
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
   securitySchemes:
     oauth2:
       type: oauth2

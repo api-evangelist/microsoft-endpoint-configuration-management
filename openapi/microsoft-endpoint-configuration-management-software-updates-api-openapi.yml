@@ -47,6 +47,25 @@ paths:
                     items:
                       $ref: '#/components/schemas/SMS_SoftwareUpdate'
 components:
+  parameters:
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression.
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include.
+      schema:
+        type: string
   schemas:
     SMS_SoftwareUpdate:
       type: object
@@ -90,25 +109,6 @@ components:
         SeverityName:
           type: string
           description: Severity rating.
-  parameters:
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include.
-      schema:
-        type: string
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression.
-      schema:
-        type: string
-    top:
-      name: $top
-      in: query
-      description: Number of items to return.
-      schema:
-        type: integer
   securitySchemes:
     windowsAuth:
       type: http
