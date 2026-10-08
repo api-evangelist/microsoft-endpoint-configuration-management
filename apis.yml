@@ -1275,6 +1275,12 @@ apis:
   - type: Reference
     url: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports
 common:
+- type: Plans
+  url: plans/microsoft-endpoint-configuration-management-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/microsoft-endpoint-configuration-management-rate-limits.yml
+- type: FinOps
+  url: finops/microsoft-endpoint-configuration-management-finops.yml
 - type: CapabilityMap
   url: capabilities/microsoft-endpoint-configuration-management-capability-edges.yml
   name: Microsoft Endpoint Configuration Management Business Capability Map
