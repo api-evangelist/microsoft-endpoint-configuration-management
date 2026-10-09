@@ -1,25 +1,33 @@
-generated: '2026-07-15'
+generated: '2026-09-23'
 method: generated
-source: openapi/microsoft-endpoint-configuration-management-configmgr-rest-api-openapi.yml,
-  openapi/microsoft-endpoint-configuration-management-intune-data-warehouse-api-openapi.yml,
-  openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml, openapi/microsoft-endpoint-configuration-management-intune-reporting-export-api-openapi.yml
+source: openapi/microsoft-endpoint-configuration-management-applications-api-openapi.yml, openapi/microsoft-endpoint-configuration-management-collections-api-openapi.yml,
+  openapi/microsoft-endpoint-configuration-management-compliance-api-openapi.yml, openapi/microsoft-endpoint-configuration-management-compliance-policies-api-openapi.yml,
+  openapi/microsoft-endpoint-configuration-management-configuration-profiles-api-openapi.yml,
+  openapi/microsoft-endpoint-configuration-management-dates-api-openapi.yml, openapi/microsoft-endpoint-configuration-management-deployments-api-openapi.yml,
+  openapi/microsoft-endpoint-configuration-management-device-actions-api-openapi.yml, openapi/microsoft-endpoint-configuration-management-devices-api-openapi.yml,
+  openapi/microsoft-endpoint-configuration-management-export-jobs-api-openapi.yml, openapi/microsoft-endpoint-configuration-management-management-extensions-api-openapi.yml,
+  openapi/microsoft-endpoint-configuration-management-packages-api-openapi.yml, openapi/microsoft-endpoint-configuration-management-policies-api-openapi.yml,
+  openapi/microsoft-endpoint-configuration-management-reports-api-openapi.yml, openapi/microsoft-endpoint-configuration-management-scripts-api-openapi.yml,
+  openapi/microsoft-endpoint-configuration-management-site-administration-api-openapi.yml, openapi/microsoft-endpoint-configuration-management-software-updates-api-openapi.yml,
+  openapi/microsoft-endpoint-configuration-management-task-sequences-api-openapi.yml, openapi/microsoft-endpoint-configuration-management-user-device-associations-api-openapi.yml,
+  openapi/microsoft-endpoint-configuration-management-users-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 71
   by_action_class:
-    connected: 40
-    acting: 31
+    connected: 46
+    acting: 25
   by_consequence:
-    read: 40
-    write: 29
+    read: 46
+    write: 23
     safety-critical: 2
   human_in_the_loop_required: 2
 operations:
-- path: /wmi/SMS_Device
+- path: /wmi/SMS_Application
   method: get
-  operationId: listDevicesWmi
+  operationId: listApplications
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -27,9 +35,139 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /wmi/SMS_R_System
+- path: /wmi/SMS_Application
+  method: post
+  operationId: createApplication
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wmi/SMS_Application('{applicationId}')
   method: get
-  operationId: listSystems
+  operationId: getApplication
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /applications
+  method: get
+  operationId: listApplications
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /mobileAppInstallStatuses
+  method: get
+  operationId: listMobileAppInstallStatuses
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /deviceAppManagement/mobileApps
+  method: get
+  operationId: listMobileApps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /deviceAppManagement/mobileApps
+  method: post
+  operationId: createMobileApp
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /deviceAppManagement/mobileApps/{mobileAppId}
+  method: get
+  operationId: getMobileApp
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /deviceAppManagement/mobileApps/{mobileAppId}
+  method: patch
+  operationId: updateMobileApp
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /deviceAppManagement/mobileApps/{mobileAppId}
+  method: delete
+  operationId: deleteMobileApp
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /deviceAppManagement/mobileApps/{mobileAppId}/assign
+  method: post
+  operationId: assignMobileApp
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /deviceAppManagement/mobileApps/{mobileAppId}/deviceStatuses
+  method: get
+  operationId: listMobileAppDeviceStatuses
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -73,85 +211,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /wmi/SMS_Application
+- path: /v1.0/Collections
   method: get
-  operationId: listApplications
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /wmi/SMS_Application
-  method: post
-  operationId: createApplication
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /wmi/SMS_Application('{applicationId}')
-  method: get
-  operationId: getApplication
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /wmi/SMS_ApplicationDeployment
-  method: get
-  operationId: listDeployments
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /wmi/SMS_Package
-  method: get
-  operationId: listPackages
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /wmi/SMS_TaskSequence
-  method: get
-  operationId: listTaskSequences
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /wmi/SMS_SoftwareUpdate
-  method: get
-  operationId: listSoftwareUpdates
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /wmi/SMS_Site
-  method: get
-  operationId: listSites
+  operationId: listCollectionsV1
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -169,9 +231,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /v1.0/Device
+- path: /deviceManagement/deviceCompliancePolicies
   method: get
-  operationId: listDevicesV1
+  operationId: listDeviceCompliancePolicies
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -179,9 +241,25 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /v1.0/Device({deviceId})
+- path: /deviceManagement/deviceCompliancePolicies
+  method: post
+  operationId: createDeviceCompliancePolicy
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /deviceManagement/deviceCompliancePolicies/{deviceCompliancePolicyId}
   method: get
-  operationId: getDeviceV1
+  operationId: getDeviceCompliancePolicy
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -189,9 +267,57 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /v1.0/Collections
+- path: /deviceManagement/deviceCompliancePolicies/{deviceCompliancePolicyId}
+  method: patch
+  operationId: updateDeviceCompliancePolicy
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /deviceManagement/deviceCompliancePolicies/{deviceCompliancePolicyId}
+  method: delete
+  operationId: deleteDeviceCompliancePolicy
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /deviceManagement/deviceCompliancePolicies/{deviceCompliancePolicyId}/assign
+  method: post
+  operationId: assignDeviceCompliancePolicy
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /deviceManagement/deviceCompliancePolicyDeviceStateSummary
   method: get
-  operationId: listCollectionsV1
+  operationId: getDeviceCompliancePolicyDeviceStateSummary
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -199,9 +325,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /v1.0/Scripts
+- path: /deviceManagement/deviceConfigurations
   method: get
-  operationId: listScripts
+  operationId: listDeviceConfigurations
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -209,9 +335,25 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /devices
+- path: /deviceManagement/deviceConfigurations
+  method: post
+  operationId: createDeviceConfiguration
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /deviceManagement/deviceConfigurations/{deviceConfigurationId}
   method: get
-  operationId: listDevices
+  operationId: getDeviceConfiguration
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -219,6 +361,54 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /deviceManagement/deviceConfigurations/{deviceConfigurationId}
+  method: patch
+  operationId: updateDeviceConfiguration
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /deviceManagement/deviceConfigurations/{deviceConfigurationId}
+  method: delete
+  operationId: deleteDeviceConfiguration
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /deviceManagement/deviceConfigurations/{deviceConfigurationId}/assign
+  method: post
+  operationId: assignDeviceConfiguration
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /dates
   method: get
   operationId: listDates
@@ -229,9 +419,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /users
+- path: /wmi/SMS_ApplicationDeployment
   method: get
-  operationId: listUsers
+  operationId: listDeployments
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -239,154 +429,6 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /devicePropertyHistories
-  method: get
-  operationId: listDevicePropertyHistories
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /policies
-  method: get
-  operationId: listPolicies
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /policyDeviceActivities
-  method: get
-  operationId: listPolicyDeviceActivities
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /policyUserActivities
-  method: get
-  operationId: listPolicyUserActivities
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /applications
-  method: get
-  operationId: listApplications
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /mobileAppInstallStatuses
-  method: get
-  operationId: listMobileAppInstallStatuses
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /userDeviceAssociations
-  method: get
-  operationId: listUserDeviceAssociations
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /intuneManagementExtensions
-  method: get
-  operationId: listIntuneManagementExtensions
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /deviceManagement/managedDevices
-  method: get
-  operationId: listManagedDevices
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /deviceManagement/managedDevices
-  method: post
-  operationId: createManagedDevice
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /deviceManagement/managedDevices/{managedDeviceId}
-  method: get
-  operationId: getManagedDevice
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /deviceManagement/managedDevices/{managedDeviceId}
-  method: patch
-  operationId: updateManagedDevice
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /deviceManagement/managedDevices/{managedDeviceId}
-  method: delete
-  operationId: deleteManagedDevice
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /deviceManagement/managedDevices/{managedDeviceId}/retire
   method: post
   operationId: retireManagedDevice
@@ -483,9 +525,9 @@ operations:
     escalation:
       human-in-the-loop: required
     audit: required
-- path: /deviceManagement/deviceCompliancePolicies
+- path: /wmi/SMS_Device
   method: get
-  operationId: listDeviceCompliancePolicies
+  operationId: listDevicesWmi
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -493,9 +535,69 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /deviceManagement/deviceCompliancePolicies
+- path: /wmi/SMS_R_System
+  method: get
+  operationId: listSystems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1.0/Device
+  method: get
+  operationId: listDevicesV1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1.0/Device({deviceId})
+  method: get
+  operationId: getDeviceV1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /devices
+  method: get
+  operationId: listDevices
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /devicePropertyHistories
+  method: get
+  operationId: listDevicePropertyHistories
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /deviceManagement/managedDevices
+  method: get
+  operationId: listManagedDevices
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /deviceManagement/managedDevices
   method: post
-  operationId: createDeviceCompliancePolicy
+  operationId: createManagedDevice
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -509,9 +611,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /deviceManagement/deviceCompliancePolicies/{deviceCompliancePolicyId}
+- path: /deviceManagement/managedDevices/{managedDeviceId}
   method: get
-  operationId: getDeviceCompliancePolicy
+  operationId: getManagedDevice
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -519,9 +621,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /deviceManagement/deviceCompliancePolicies/{deviceCompliancePolicyId}
+- path: /deviceManagement/managedDevices/{managedDeviceId}
   method: patch
-  operationId: updateDeviceCompliancePolicy
+  operationId: updateManagedDevice
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -535,9 +637,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /deviceManagement/deviceCompliancePolicies/{deviceCompliancePolicyId}
+- path: /deviceManagement/managedDevices/{managedDeviceId}
   method: delete
-  operationId: deleteDeviceCompliancePolicy
+  operationId: deleteManagedDevice
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -551,210 +653,6 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /deviceManagement/deviceCompliancePolicies/{deviceCompliancePolicyId}/assign
-  method: post
-  operationId: assignDeviceCompliancePolicy
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /deviceAppManagement/mobileApps
-  method: get
-  operationId: listMobileApps
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /deviceAppManagement/mobileApps
-  method: post
-  operationId: createMobileApp
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /deviceAppManagement/mobileApps/{mobileAppId}
-  method: get
-  operationId: getMobileApp
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /deviceAppManagement/mobileApps/{mobileAppId}
-  method: patch
-  operationId: updateMobileApp
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /deviceAppManagement/mobileApps/{mobileAppId}
-  method: delete
-  operationId: deleteMobileApp
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /deviceAppManagement/mobileApps/{mobileAppId}/assign
-  method: post
-  operationId: assignMobileApp
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /deviceAppManagement/mobileApps/{mobileAppId}/deviceStatuses
-  method: get
-  operationId: listMobileAppDeviceStatuses
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /deviceManagement/deviceConfigurations
-  method: get
-  operationId: listDeviceConfigurations
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /deviceManagement/deviceConfigurations
-  method: post
-  operationId: createDeviceConfiguration
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /deviceManagement/deviceConfigurations/{deviceConfigurationId}
-  method: get
-  operationId: getDeviceConfiguration
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /deviceManagement/deviceConfigurations/{deviceConfigurationId}
-  method: patch
-  operationId: updateDeviceConfiguration
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /deviceManagement/deviceConfigurations/{deviceConfigurationId}
-  method: delete
-  operationId: deleteDeviceConfiguration
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /deviceManagement/deviceConfigurations/{deviceConfigurationId}/assign
-  method: post
-  operationId: assignDeviceConfiguration
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /deviceManagement/deviceCompliancePolicyDeviceStateSummary
-  method: get
-  operationId: getDeviceCompliancePolicyDeviceStateSummary
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
 - path: /users/{userId}/ownedDevices
   method: get
   operationId: listUserOwnedDevices
@@ -817,99 +715,173 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /intuneManagementExtensions
+  method: get
+  operationId: listIntuneManagementExtensions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wmi/SMS_Package
+  method: get
+  operationId: listPackages
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /policies
+  method: get
+  operationId: listPolicies
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /policyDeviceActivities
+  method: get
+  operationId: listPolicyDeviceActivities
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /policyUserActivities
+  method: get
+  operationId: listPolicyUserActivities
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /deviceManagement/reports/getDeviceNonComplianceReport
   method: post
   operationId: getDeviceNonComplianceReport
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /deviceManagement/reports/getCompliancePolicyNonComplianceReport
   method: post
   operationId: getCompliancePolicyNonComplianceReport
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /deviceManagement/reports/getComplianceSettingNonComplianceReport
   method: post
   operationId: getComplianceSettingNonComplianceReport
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /deviceManagement/reports/getConfigurationPolicyNonComplianceReport
   method: post
   operationId: getConfigurationPolicyNonComplianceReport
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /deviceManagement/reports/getHistoricalReport
   method: post
   operationId: getHistoricalReport
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /deviceManagement/reports/getCachedReport
   method: post
   operationId: getCachedReport
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
+- path: /v1.0/Scripts
+  method: get
+  operationId: listScripts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wmi/SMS_Site
+  method: get
+  operationId: listSites
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wmi/SMS_SoftwareUpdate
+  method: get
+  operationId: listSoftwareUpdates
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wmi/SMS_TaskSequence
+  method: get
+  operationId: listTaskSequences
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /userDeviceAssociations
+  method: get
+  operationId: listUserDeviceAssociations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users
+  method: get
+  operationId: listUsers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

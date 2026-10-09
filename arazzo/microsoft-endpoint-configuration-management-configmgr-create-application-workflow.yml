@@ -63,7 +63,7 @@ workflows:
       createStatus: $statusCode
   - stepId: confirmApplication
     description: List applications filtered to the new display name to confirm it was created.
-    operationId: listApplications
+    operationId: getApplications
     parameters:
     - name: $filter
       in: query
