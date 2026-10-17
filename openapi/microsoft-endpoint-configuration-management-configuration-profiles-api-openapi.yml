@@ -151,6 +151,37 @@ paths:
         '200':
           description: Successfully assigned device configuration.
 components:
+  parameters:
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression.
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      description: Number of items to skip.
+      schema:
+        type: integer
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response.
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      description: Order results by a property.
+      schema:
+        type: string
   schemas:
     DeviceConfiguration:
       type: object
@@ -192,37 +223,6 @@ components:
               type: string
             groupId:
               type: string
-  parameters:
-    skip:
-      name: $skip
-      in: query
-      description: Number of items to skip.
-      schema:
-        type: integer
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression.
-      schema:
-        type: string
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include in the response.
-      schema:
-        type: string
-    orderby:
-      name: $orderby
-      in: query
-      description: Order results by a property.
-      schema:
-        type: string
-    top:
-      name: $top
-      in: query
-      description: Number of items to return.
-      schema:
-        type: integer
   securitySchemes:
     oauth2:
       type: oauth2

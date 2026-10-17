@@ -382,22 +382,16 @@ paths:
       description: Microsoft Graph beta endpoint
 components:
   parameters:
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression.
-      schema:
-        type: string
     select:
       name: $select
       in: query
       description: Comma-separated list of properties to include.
       schema:
         type: string
-    orderby:
-      name: $orderby
+    filter:
+      name: $filter
       in: query
-      description: Order results by a property.
+      description: OData filter expression.
       schema:
         type: string
     top:
@@ -406,6 +400,31 @@ components:
       description: Number of items to return.
       schema:
         type: integer
+    orderby:
+      name: $orderby
+      in: query
+      description: Order results by a property.
+      schema:
+        type: string
+    maxhistorydays:
+      name: maxhistorydays
+      in: query
+      description: Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.
+      schema:
+        type: integer
+        default: 7
+    skip:
+      name: $skip
+      in: query
+      description: Number of items to skip.
+      schema:
+        type: integer
+    filter_2:
+      name: $filter
+      in: query
+      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
+      schema:
+        type: string
     apiVersion:
       name: api-version
       in: query
@@ -417,25 +436,6 @@ components:
         - v1.0
         - beta
         default: v1.0
-    skip:
-      name: $skip
-      in: query
-      description: Number of items to skip.
-      schema:
-        type: integer
-    maxhistorydays:
-      name: maxhistorydays
-      in: query
-      description: Maximum number of days of history to retrieve. Only takes effect for collections that include dateKey as part of their key property.
-      schema:
-        type: integer
-        default: 7
-    filter_2:
-      name: $filter
-      in: query
-      description: OData filter expression. Only DateKey or RowLastModifiedDateTimeUTC may be supported for filtering depending on the collection.
-      schema:
-        type: string
     select_2:
       name: $select
       in: query

@@ -114,6 +114,12 @@ paths:
                       $ref: '#/components/schemas/SMS_Collection'
 components:
   parameters:
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
     filter:
       name: $filter
       in: query
@@ -132,12 +138,6 @@ components:
       description: Order results by a property.
       schema:
         type: string
-    top:
-      name: $top
-      in: query
-      description: Number of items to return.
-      schema:
-        type: integer
   responses:
     NotFound:
       description: Not found. The specified resource does not exist.
@@ -146,6 +146,16 @@ components:
           schema:
             $ref: '#/components/schemas/ODataError'
   schemas:
+    ODataError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
     SMS_Collection:
       type: object
       description: Represents a device or user collection in Configuration Manager used for targeting deployments and policies.
@@ -178,16 +188,6 @@ components:
         CurrentStatus:
           type: integer
           description: Current evaluation status of the collection.
-    ODataError:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
   securitySchemes:
     windowsAuth:
       type: http

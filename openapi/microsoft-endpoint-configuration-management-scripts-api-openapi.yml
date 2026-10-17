@@ -58,18 +58,18 @@ paths:
                           type: integer
 components:
   parameters:
-    top:
-      name: $top
-      in: query
-      description: Number of items to return.
-      schema:
-        type: integer
     select:
       name: $select
       in: query
       description: Comma-separated list of properties to include.
       schema:
         type: string
+    top:
+      name: $top
+      in: query
+      description: Number of items to return.
+      schema:
+        type: integer
   securitySchemes:
     windowsAuth:
       type: http

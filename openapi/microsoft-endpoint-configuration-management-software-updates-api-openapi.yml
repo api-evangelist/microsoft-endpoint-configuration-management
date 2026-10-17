@@ -48,6 +48,12 @@ paths:
                       $ref: '#/components/schemas/SMS_SoftwareUpdate'
 components:
   parameters:
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include.
+      schema:
+        type: string
     filter:
       name: $filter
       in: query
@@ -60,12 +66,6 @@ components:
       description: Number of items to return.
       schema:
         type: integer
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include.
-      schema:
-        type: string
   schemas:
     SMS_SoftwareUpdate:
       type: object

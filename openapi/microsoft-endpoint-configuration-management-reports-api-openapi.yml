@@ -156,6 +156,48 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    ReportResponse:
+      type: object
+      description: Response body for inline Intune reports. Contains report metadata and tabular data in a values array format.
+      properties:
+        totalRowCount:
+          type: integer
+          description: Total number of rows in the report.
+        schema:
+          type: array
+          description: Array of column definitions describing the columns in the values array.
+          items:
+            type: object
+            properties:
+              column:
+                type: string
+                description: Column name.
+              propertyType:
+                type: integer
+                description: Data type of the column. Common values include 1 for string, 2 for int32, 3 for dateTime, 4 for boolean.
+        values:
+          type: array
+          description: Array of row data. Each row is an array of values corresponding to the columns defined in the schema.
+          items:
+            type: array
+            items: {}
+    ODataError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                date:
+                  type: string
     ReportRequest:
       type: object
       description: Request body for retrieving inline Intune reports.
@@ -188,57 +230,15 @@ components:
         search:
           type: string
           description: Search string to filter results.
-    ODataError:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
-            innerError:
-              type: object
-              properties:
-                request-id:
-                  type: string
-                date:
-                  type: string
-    ReportResponse:
-      type: object
-      description: Response body for inline Intune reports. Contains report metadata and tabular data in a values array format.
-      properties:
-        totalRowCount:
-          type: integer
-          description: Total number of rows in the report.
-        schema:
-          type: array
-          description: Array of column definitions describing the columns in the values array.
-          items:
-            type: object
-            properties:
-              column:
-                type: string
-                description: Column name.
-              propertyType:
-                type: integer
-                description: Data type of the column. Common values include 1 for string, 2 for int32, 3 for dateTime, 4 for boolean.
-        values:
-          type: array
-          description: Array of row data. Each row is an array of values corresponding to the columns defined in the schema.
-          items:
-            type: array
-            items: {}
   responses:
-    Unauthorized:
-      description: Unauthorized. Authentication is required.
+    Forbidden:
+      description: Forbidden. Insufficient permissions.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
-    Forbidden:
-      description: Forbidden. Insufficient permissions.
+    Unauthorized:
+      description: Unauthorized. Authentication is required.
       content:
         application/json:
           schema:

@@ -45,13 +45,6 @@ paths:
                     items:
                       $ref: '#/components/schemas/SMS_Site'
 components:
-  parameters:
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include.
-      schema:
-        type: string
   schemas:
     SMS_Site:
       type: object
@@ -78,6 +71,13 @@ components:
         Status:
           type: integer
           description: Site status.
+  parameters:
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include.
+      schema:
+        type: string
   securitySchemes:
     windowsAuth:
       type: http
