@@ -1,4 +1,4 @@
-# Microsoft Endpoint Configuration Management (microsoft-endpoint-configuration-management)
+# Microsoft Endpoint Configuration Management
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,291 +66,258 @@
 
 Microsoft Endpoint Configuration Management (formerly System Center Configuration Manager) provides comprehensive management of devices and applications across an enterprise. It enables IT administrators to manage PCs, servers, and mobile devices, deploy software, manage compliance, and protect data.
 
-**APIs.json:** [https://learn.microsoft.com/en-us/intune/configmgr/](https://learn.microsoft.com/en-us/intune/configmgr/)
+**Areas:** Compliance · Configuration Management · Device Management · Endpoint Management · Mobile Device Management · Patch Management · Software Deployment
+
+## Microsoft Endpoint Configuration Management on APIs.io
+
+Everything profiled for Microsoft Endpoint Configuration Management is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/microsoft-endpoint-configuration-management/](https://apis.io/providers/microsoft-endpoint-configuration-management/)** — or go straight to one of the APIs or properties below.
+
+### APIs (25)
+
+- [Configuration Manager PowerShell Cmdlets](https://apis.io/apis/microsoft-endpoint-configuration-management/configuration-manager-powershell-cmdlets/) — PowerShell module for Configuration Manager automation and scripting, providing over 1100 cmdlets for all major management tasks including device…
+- [Configuration Manager SDK](https://apis.io/apis/microsoft-endpoint-configuration-management/configuration-manager-sdk/) — Software Development Kit for extending and integrating with Configuration Manager, including WMI providers, class schemas, and programming interfaces for…
+- [Intune App SDK](https://apis.io/apis/microsoft-endpoint-configuration-management/intune-app-sdk/) — SDKs for iOS and Android that enable mobile apps to support Intune app protection policies. Allows developers to integrate mobile application management…
+- [Intune App Wrapping Tool](https://apis.io/apis/microsoft-endpoint-configuration-management/intune-app-wrapping-tool/) — Command-line tools for iOS and Android that enable existing line-of-business apps to be managed by Intune app protection policies without requiring source…
+- [Intune PowerShell SDK](https://apis.io/apis/microsoft-endpoint-configuration-management/intune-powershell-sdk/) — PowerShell module providing native cmdlet support for invoking the Microsoft Intune Graph API. Enables IT administrators to automate device management, app…
+- [Microsoft Endpoint Configuration Management Applications API](https://apis.io/apis/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-applications-api/) — Manage Configuration Manager applications.
+- [Microsoft Endpoint Configuration Management Collections API](https://apis.io/apis/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-collections-api/) — Manage device and user collections.
+- [Microsoft Endpoint Configuration Management Compliance API](https://apis.io/apis/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-compliance-api/) — Manage compliance baselines and settings.
+- [Microsoft Endpoint Configuration Management Compliance Policies API](https://apis.io/apis/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-compliance-policies-api/) — Manage device compliance policies.
+- [Microsoft Endpoint Configuration Management Configuration Profiles API](https://apis.io/apis/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-configuration-profiles-api/) — Manage device configuration profiles.
+- [Microsoft Endpoint Configuration Management Dates API](https://apis.io/apis/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-dates-api/) — Date dimension for time-based reporting.
+- [Microsoft Endpoint Configuration Management Deployments API](https://apis.io/apis/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-deployments-api/) — View and manage application deployments.
+- [Microsoft Endpoint Configuration Management Device Actions API](https://apis.io/apis/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-device-actions-api/) — Remote device actions such as wipe, retire, sync, and lock.
+- [Microsoft Endpoint Configuration Management Devices API](https://apis.io/apis/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-devices-api/) — Query and manage device resources.
+- [Microsoft Endpoint Configuration Management Export Jobs API](https://apis.io/apis/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-export-jobs-api/) — Manage asynchronous report export jobs. Create export jobs, poll for completion, and download exported report files.
+- [Microsoft Endpoint Configuration Management Extensions API](https://apis.io/apis/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-management-extensions-api/) — Intune management extension activities.
+- [Microsoft Endpoint Configuration Management Packages API](https://apis.io/apis/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-packages-api/) — Manage legacy software packages.
+- [Microsoft Endpoint Configuration Management Policies API](https://apis.io/apis/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-policies-api/) — Policy records and compliance activities.
+- [Microsoft Endpoint Configuration Management Reports API](https://apis.io/apis/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-reports-api/) — Retrieve inline Intune reports for device compliance, configuration policy status, and historical data.
+- [Microsoft Endpoint Configuration Management Scripts API](https://apis.io/apis/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-scripts-api/) — Manage and execute PowerShell scripts.
+- [Microsoft Endpoint Configuration Management Site Administration API](https://apis.io/apis/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-site-administration-api/) — Site configuration and administration.
+- [Microsoft Endpoint Configuration Management Software Updates API](https://apis.io/apis/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-software-updates-api/) — Query software update information.
+- [Microsoft Endpoint Configuration Management Task Sequences API](https://apis.io/apis/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-task-sequences-api/) — Manage OS deployment task sequences.
+- [Microsoft Endpoint Configuration Management User Device Associations API](https://apis.io/apis/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-user-device-associations-api/) — User-to-device mapping records.
+- [Microsoft Endpoint Configuration Management Users API](https://apis.io/apis/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-users-api/) — User dimension records.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Arazzo workflows (18)
+
+Multi-step workflows that chain operations into a business task.
+
+- [Microsoft Endpoint Configuration Management ConfigMgr Create Application](https://apis.io/arazzos/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-configmgr-create-application-workflow/)
+- [Microsoft Endpoint Configuration Management ConfigMgr Create Collection and Review Deployments](https://apis.io/arazzos/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-configmgr-create-collection-review-deployments-workflow/)
+- [Microsoft Endpoint Configuration Management ConfigMgr Device Lookup](https://apis.io/arazzos/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-configmgr-device-lookup-workflow/)
+- [Microsoft Endpoint Configuration Management ConfigMgr Update Compliance Review](https://apis.io/arazzos/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-configmgr-update-compliance-review-workflow/)
+- [Microsoft Endpoint Configuration Management Create and Assign Compliance Policy](https://apis.io/arazzos/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-create-assign-compliance-policy-workflow/)
+- [Microsoft Endpoint Configuration Management Create and Assign Device Configuration](https://apis.io/arazzos/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-create-assign-device-configuration-workflow/)
+- [Microsoft Endpoint Configuration Management Decommission Device](https://apis.io/arazzos/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-decommission-device-workflow/)
+- [Microsoft Endpoint Configuration Management Deploy Mobile App](https://apis.io/arazzos/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-deploy-mobile-app-workflow/)
+- [Microsoft Endpoint Configuration Management Device Compliance Triage](https://apis.io/arazzos/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-device-compliance-triage-workflow/)
+- [Microsoft Endpoint Configuration Management Lost Device Lockdown](https://apis.io/arazzos/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-lost-device-lockdown-workflow/)
+- [Microsoft Endpoint Configuration Management Non-Compliance Report Drilldown](https://apis.io/arazzos/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-noncompliance-report-drilldown-workflow/)
+- [Microsoft Endpoint Configuration Management Report Export Job](https://apis.io/arazzos/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-report-export-job-workflow/)
+- [Microsoft Endpoint Configuration Management Retire Unpublished App](https://apis.io/arazzos/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-retire-unpublished-app-workflow/)
+- [Microsoft Endpoint Configuration Management Tenant Compliance Posture](https://apis.io/arazzos/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-tenant-compliance-posture-workflow/)
+- [Microsoft Endpoint Configuration Management Update and Reassign Compliance Policy](https://apis.io/arazzos/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-update-reassign-compliance-policy-workflow/)
+- [Microsoft Endpoint Configuration Management User Device Inventory](https://apis.io/arazzos/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-user-device-inventory-workflow/)
+- [Microsoft Endpoint Configuration Management Data Warehouse App Install Analytics](https://apis.io/arazzos/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-warehouse-app-install-analytics-workflow/)
+- [Microsoft Endpoint Configuration Management Data Warehouse Policy Compliance Analytics](https://apis.io/arazzos/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-warehouse-policy-compliance-analytics-workflow/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Microsoft Endpoint Configuration Management Agentic Access](https://apis.io/agentic-access/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-agentic-access/)
+
+#### JSON Schema (34)
+
+The data models the API reads and writes.
+
+- [Mobile Application](https://apis.io/schemas/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-application/)
+- [Device Compliance Policy](https://apis.io/schemas/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-compliance-policy/)
+- [Device Configuration Profile](https://apis.io/schemas/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-configuration-profile/)
+- [DateEntity](https://apis.io/schemas/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-dateentity/)
+- [Managed Device](https://apis.io/schemas/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-device/)
+- [DeviceCompliancePolicy](https://apis.io/schemas/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-devicecompliancepolicy/)
+- [DeviceCompliancePolicyAssignment](https://apis.io/schemas/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-devicecompliancepolicyassignment/)
+- [DeviceConfiguration](https://apis.io/schemas/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-deviceconfiguration/)
+- [DeviceConfigurationAssignment](https://apis.io/schemas/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-deviceconfigurationassignment/)
+- [DeviceManagementExportJob](https://apis.io/schemas/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-devicemanagementexportjob/)
+- [DeviceManagementExportJobCreate](https://apis.io/schemas/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-devicemanagementexportjobcreate/)
+- [DevicePropertyHistory](https://apis.io/schemas/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-devicepropertyhistory/)
+- [IntuneManagementExtension](https://apis.io/schemas/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-intunemanagementextension/)
+- [ManagedDevice](https://apis.io/schemas/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-manageddevice/)
+- [MobileApp](https://apis.io/schemas/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-mobileapp/)
+- [MobileAppAssignment](https://apis.io/schemas/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-mobileappassignment/)
+- [MobileAppInstallStatus](https://apis.io/schemas/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-mobileappinstallstatus/)
+- [ODataError](https://apis.io/schemas/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-odataerror/)
+- [Policy](https://apis.io/schemas/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-policy/)
+- [PolicyDeviceActivity](https://apis.io/schemas/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-policydeviceactivity/)
+- [PolicyUserActivity](https://apis.io/schemas/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-policyuseractivity/)
+- [ReportRequest](https://apis.io/schemas/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-reportrequest/)
+- [ReportResponse](https://apis.io/schemas/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-reportresponse/)
+- [SMS_Application](https://apis.io/schemas/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-sms-application/)
+- [SMS_ApplicationDeployment](https://apis.io/schemas/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-sms-applicationdeployment/)
+- …and 9 more published on APIs.io
 
-## Tags
+#### JSON Structure (1)
 
-- Compliance
-- Configuration Management
-- Device Management
-- Endpoint Management
-- Mobile Device Management
-- Patch Management
-- Software Deployment
+Data models expressed in JSON Structure.
 
-## Timestamps
+- [Microsoft Endpoint Configuration Management Structure](https://apis.io/json-structure/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-structure/)
 
-- **Created:** 2024
-- **Modified:** 2026-05-19
+#### JSON-LD (1)
 
-## APIs
+Linked-data contexts for the provider's vocabulary.
 
-### Configuration Manager REST API
+- [Microsoft Endpoint Configuration Management Context](https://apis.io/jsonld/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-context/)
 
-REST API for managing Configuration Manager resources including collections, deployments, applications, and device queries. The administration service is based on the OData v4 protocol and supports both WMI and versioned OData routes.
+#### Vocabulary (1)
 
-- **Human URL:** [https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview](https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview)
-- **Base URL:** `https://{siteserver}/AdminService`
+The provider's domain terms, defined.
 
-#### Tags
+- [Microsoft Endpoint Configuration Management Domain Vocabulary](https://apis.io/vocabularies/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-vocabulary/)
 
-- Admin Service
-- Configuration Manager
-- REST API
+#### Collections (28)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/overview)
-- [Getting Started](https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up)
-- [OpenAPI](openapi/microsoft-endpoint-configuration-management-configmgr-rest-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/microsoft-endpoint-configuration-management-configmgr-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-endpoint-configuration-management-configmgr-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Authentication](https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/set-up#enable-secure-https-communication)
-- [Reference](https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/usage)
-- [Changelog](https://learn.microsoft.com/en-us/intune/configmgr/develop/adminservice/release-notes)
+- [Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications API](https://apis.io/collections/microsoft-endpoint-configuration-management/open-microsoft-endpoint-configuration-management-applications-api/)
+- [Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Collections API](https://apis.io/collections/microsoft-endpoint-configuration-management/open-microsoft-endpoint-configuration-management-collections-api/)
+- [Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Compliance API](https://apis.io/collections/microsoft-endpoint-configuration-management/open-microsoft-endpoint-configuration-management-compliance-api/)
+- [Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Compliance Policies API](https://apis.io/collections/microsoft-endpoint-configuration-management/open-microsoft-endpoint-configuration-management-compliance-policies-api/)
+- [Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService)](https://apis.io/collections/microsoft-endpoint-configuration-management/open-microsoft-endpoint-configuration-management-configmgr-rest-api/)
+- [Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Configuration Profiles API](https://apis.io/collections/microsoft-endpoint-configuration-management/open-microsoft-endpoint-configuration-management-configuration-profiles-api/)
+- [Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Dates API](https://apis.io/collections/microsoft-endpoint-configuration-management/open-microsoft-endpoint-configuration-management-dates-api/)
+- [Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Deployments API](https://apis.io/collections/microsoft-endpoint-configuration-management/open-microsoft-endpoint-configuration-management-deployments-api/)
+- [Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Device Actions API](https://apis.io/collections/microsoft-endpoint-configuration-management/open-microsoft-endpoint-configuration-management-device-actions-api/)
+- [Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Devices API](https://apis.io/collections/microsoft-endpoint-configuration-management/open-microsoft-endpoint-configuration-management-devices-api/)
+- [Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Export Jobs API](https://apis.io/collections/microsoft-endpoint-configuration-management/open-microsoft-endpoint-configuration-management-export-jobs-api/)
+- [Microsoft Endpoint Configuration Management Intune Data Warehouse API](https://apis.io/collections/microsoft-endpoint-configuration-management/open-microsoft-endpoint-configuration-management-intune-data-warehouse-api/)
+- [Microsoft Endpoint Configuration Management Microsoft Intune Graph API](https://apis.io/collections/microsoft-endpoint-configuration-management/open-microsoft-endpoint-configuration-management-intune-graph-api/)
+- [Microsoft Endpoint Configuration Management Intune Reporting Export API](https://apis.io/collections/microsoft-endpoint-configuration-management/open-microsoft-endpoint-configuration-management-intune-reporting-export-api/)
+- [Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Management Extensions API](https://apis.io/collections/microsoft-endpoint-configuration-management/open-microsoft-endpoint-configuration-management-management-extensions-api/)
+- [Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Packages API](https://apis.io/collections/microsoft-endpoint-configuration-management/open-microsoft-endpoint-configuration-management-packages-api/)
+- [Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Policies API](https://apis.io/collections/microsoft-endpoint-configuration-management/open-microsoft-endpoint-configuration-management-policies-api/)
+- [Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Reports API](https://apis.io/collections/microsoft-endpoint-configuration-management/open-microsoft-endpoint-configuration-management-reports-api/)
+- [Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Scripts API](https://apis.io/collections/microsoft-endpoint-configuration-management/open-microsoft-endpoint-configuration-management-scripts-api/)
+- [Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Site Administration API](https://apis.io/collections/microsoft-endpoint-configuration-management/open-microsoft-endpoint-configuration-management-site-administration-api/)
+- [Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Software Updates API](https://apis.io/collections/microsoft-endpoint-configuration-management/open-microsoft-endpoint-configuration-management-software-updates-api/)
+- [Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Task Sequences API](https://apis.io/collections/microsoft-endpoint-configuration-management/open-microsoft-endpoint-configuration-management-task-sequences-api/)
+- [Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications User Device Associations API](https://apis.io/collections/microsoft-endpoint-configuration-management/open-microsoft-endpoint-configuration-management-user-device-associations-api/)
+- [Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService) Applications Users API](https://apis.io/collections/microsoft-endpoint-configuration-management/open-microsoft-endpoint-configuration-management-users-api/)
+- [Microsoft Endpoint Configuration Management Configuration Manager REST API (AdminService)](https://apis.io/collections/microsoft-endpoint-configuration-management/postman-microsoft-endpoint-configuration-management-configmgr-rest-api/)
+- …and 3 more published on APIs.io
 
-### Configuration Manager PowerShell Cmdlets
+#### Governance rules (1)
 
-PowerShell module for Configuration Manager automation and scripting, providing over 1100 cmdlets for all major management tasks including device collections, software deployment, and compliance settings.
+Spectral rulesets for the provider's contracts.
 
-- **Human URL:** [https://learn.microsoft.com/en-us/powershell/sccm/overview?view=sccm-ps](https://learn.microsoft.com/en-us/powershell/sccm/overview?view=sccm-ps)
+- [Microsoft Endpoint Configuration Management — jsonschema rules](https://apis.io/rules/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-jsonschema-spectral-rules/)
 
-#### Tags
+#### Security (3)
 
-- Automation
-- Configuration Manager
-- PowerShell
-- Scripting
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Microsoft Endpoint Configuration Management Authentication](https://apis.io/security/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-authentication/)
+- [Microsoft Endpoint Configuration Management Domain Security](https://apis.io/security/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-domain-security/)
+- [Microsoft Endpoint Configuration Management Vulnerability Disclosure](https://apis.io/security/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-vulnerability-disclosure/)
 
-- [Documentation](https://learn.microsoft.com/en-us/powershell/sccm/overview?view=sccm-ps)
-- [Reference](https://learn.microsoft.com/en-us/powershell/module/configurationmanager/?view=sccm-ps)
-- [Getting Started](https://learn.microsoft.com/en-us/intune/configmgr/core/servers/manage/admin-console)
-- [Changelog](https://learn.microsoft.com/en-us/intune/configmgr/core/plan-design/changes/whats-new-incremental-versions)
-- [Postman Collection](collections/microsoft-endpoint-configuration-management-configmgr-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-endpoint-configuration-management-configmgr-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-endpoint-configuration-management-intune-data-warehouse-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-endpoint-configuration-management-intune-data-warehouse-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-endpoint-configuration-management-intune-graph-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-endpoint-configuration-management-intune-graph-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-endpoint-configuration-management-intune-reporting-export-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-endpoint-configuration-management-intune-reporting-export-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### OAuth scopes (1)
 
-### Configuration Manager SDK
+The permissions the API asks for.
 
-Software Development Kit for extending and integrating with Configuration Manager, including WMI providers, class schemas, and programming interfaces for custom solutions.
+- [Microsoft Endpoint Configuration Management Scopes](https://apis.io/scopes/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-scopes/)
 
-- **Human URL:** [https://learn.microsoft.com/en-us/intune/configmgr/develop/](https://learn.microsoft.com/en-us/intune/configmgr/develop/)
+#### Plans and pricing (1)
 
-#### Tags
+Published plans, tiers and prices.
 
-- Configuration Manager
-- Development
-- SDK
-- WMI
+- [Microsoft Endpoint Configuration Management Plans Pricing](https://apis.io/plans/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-plans-pricing/)
 
-#### Properties
+#### Rate limits (1)
 
-- [Documentation](https://learn.microsoft.com/en-us/intune/configmgr/develop/)
-- [Reference](https://learn.microsoft.com/en-us/intune/configmgr/develop/reference/configuration-manager-reference)
-- [Getting Started](https://learn.microsoft.com/en-us/intune/configmgr/develop/core/understand/getting-started-with-configuration-manager-programming)
-- [Changelog](https://learn.microsoft.com/en-us/intune/configmgr/core/plan-design/changes/whats-new-incremental-versions)
-- [Postman Collection](collections/microsoft-endpoint-configuration-management-configmgr-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-endpoint-configuration-management-configmgr-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-endpoint-configuration-management-intune-data-warehouse-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-endpoint-configuration-management-intune-data-warehouse-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-endpoint-configuration-management-intune-graph-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-endpoint-configuration-management-intune-graph-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-endpoint-configuration-management-intune-reporting-export-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-endpoint-configuration-management-intune-reporting-export-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Published request limits.
 
-### Microsoft Intune Graph API
+- [Microsoft Endpoint Configuration Management Rate Limits](https://apis.io/rate-limits/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-rate-limits/)
 
-Microsoft Graph API endpoints for Intune device management, enabling programmatic access to manage devices, apps, compliance policies, and configuration profiles. Supports both v1.0 and beta endpoints.
+#### FinOps (1)
 
-- **Human URL:** [https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0](https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0)
-- **Base URL:** `https://graph.microsoft.com/v1.0`
+What the API costs to run, by operation.
 
-#### Tags
+- [Microsoft Endpoint Configuration Management Finops](https://apis.io/finops/microsoft-endpoint-configuration-management/microsoft-endpoint-configuration-management-finops/)
 
-- Compliance
-- Device Management
-- Intune
-- Microsoft Graph
+## Where to find this API
 
-#### Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- [Documentation](https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0)
-- [Getting Started](https://learn.microsoft.com/en-us/graph/intune-concept-overview)
-- [OpenAPI](openapi/microsoft-endpoint-configuration-management-intune-graph-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/microsoft-endpoint-configuration-management-intune-graph-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-endpoint-configuration-management-intune-graph-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/microsoft-endpoint-configuration-management-device-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/microsoft-endpoint-configuration-management-compliance-policy-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/microsoft-endpoint-configuration-management-application-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/microsoft-endpoint-configuration-management-configuration-profile-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/microsoft-endpoint-configuration-management-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Reference](https://learn.microsoft.com/en-us/graph/intune-concept-overview)
-- [Authentication](https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis)
-- [Changelog](https://developer.microsoft.com/en-us/graph/changelog)
-- [S D Ks](https://learn.microsoft.com/en-us/graph/sdks/sdks-overview)
-- [Postman Collection](https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-
-### Intune Data Warehouse API
-
-OData-based REST API that provides access to Intune reporting data in a machine-readable format. Enables building custom reports and analytics for enterprise mobile environment insights.
-
-- **Human URL:** [https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse](https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse)
-- **Base URL:** `https://fef.{location}.manage.microsoft.com/ReportingService/DataWarehouseFEService`
-
-#### Tags
-
-- Data Warehouse
-- Intune
-- OData
-- Reporting
-
-#### Properties
-
-- [Documentation](https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-nav-intune-data-warehouse)
-- [OpenAPI](openapi/microsoft-endpoint-configuration-management-intune-data-warehouse-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/microsoft-endpoint-configuration-management-intune-data-warehouse-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-endpoint-configuration-management-intune-data-warehouse-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Getting Started](https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-api-url)
-- [Authentication](https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis)
-- [Reference](https://learn.microsoft.com/en-us/intune/intune-service/developer/reports-proc-data-rest)
-- [Changelog](https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new)
-
-### Intune App SDK
-
-SDKs for iOS and Android that enable mobile apps to support Intune app protection policies. Allows developers to integrate mobile application management features into line-of-business and partner apps.
-
-- **Human URL:** [https://learn.microsoft.com/en-us/intune/intune-service/developer/app-sdk-get-started](https://learn.microsoft.com/en-us/intune/intune-service/developer/app-sdk-get-started)
-
-#### Tags
-
-- App Protection
-- Intune
-- Mobile Apps
-- SDK
-
-#### Properties
-
-- [Documentation](https://learn.microsoft.com/en-us/intune/intune-service/developer/app-sdk)
-- [Getting Started](https://learn.microsoft.com/en-us/intune/intune-service/developer/app-sdk-get-started)
-- [Reference](https://learn.microsoft.com/en-us/intune/intune-service/developer/app-sdk-ios-phase1)
-- [GitHub Organization](https://github.com/msintuneappsdk)
-- [Postman Collection](collections/microsoft-endpoint-configuration-management-configmgr-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-endpoint-configuration-management-configmgr-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-endpoint-configuration-management-intune-data-warehouse-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-endpoint-configuration-management-intune-data-warehouse-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-endpoint-configuration-management-intune-graph-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-endpoint-configuration-management-intune-graph-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-endpoint-configuration-management-intune-reporting-export-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-endpoint-configuration-management-intune-reporting-export-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Intune Reporting Export API
-
-Microsoft Graph API endpoints for exporting Intune reports programmatically. Supports exporting device, compliance, and app management reports in CSV or JSON format using asynchronous export jobs.
-
-- **Human URL:** [https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis](https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis)
-- **Base URL:** `https://graph.microsoft.com/v1.0/deviceManagement/reports`
-
-#### Tags
-
-- Export
-- Intune
-- Microsoft Graph
-- Reporting
-
-#### Properties
-
-- [Documentation](https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-apis)
-- [OpenAPI](openapi/microsoft-endpoint-configuration-management-intune-reporting-export-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/microsoft-endpoint-configuration-management-intune-reporting-export-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-endpoint-configuration-management-intune-reporting-export-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Reference](https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/reports-export-graph-available-reports)
-- [Authentication](https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis)
-
-### Intune App Wrapping Tool
-
-Command-line tools for iOS and Android that enable existing line-of-business apps to be managed by Intune app protection policies without requiring source code changes.
-
-- **Human URL:** [https://learn.microsoft.com/en-us/intune/intune-service/developer/apps-prepare-mobile-application-management](https://learn.microsoft.com/en-us/intune/intune-service/developer/apps-prepare-mobile-application-management)
-
-#### Tags
-
-- Android
-- App Protection
-- Intune
-- iOS
-- Mobile Apps
-
-#### Properties
-
-- [Documentation](https://learn.microsoft.com/en-us/intune/intune-service/developer/apps-prepare-mobile-application-management)
-- [Getting Started](https://learn.microsoft.com/en-us/intune/intune-service/developer/app-wrapper-prepare-ios)
-- [Reference](https://learn.microsoft.com/en-us/intune/intune-service/developer/app-wrapper-prepare-android)
-- [GitHub Organization](https://github.com/microsoftconnect)
-- [Postman Collection](collections/microsoft-endpoint-configuration-management-configmgr-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-endpoint-configuration-management-configmgr-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-endpoint-configuration-management-intune-data-warehouse-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-endpoint-configuration-management-intune-data-warehouse-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-endpoint-configuration-management-intune-graph-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-endpoint-configuration-management-intune-graph-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-endpoint-configuration-management-intune-reporting-export-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-endpoint-configuration-management-intune-reporting-export-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Intune PowerShell SDK
-
-PowerShell module providing native cmdlet support for invoking the Microsoft Intune Graph API. Enables IT administrators to automate device management, app deployment, and compliance policy operations through scripting.
-
-- **Human URL:** [https://github.com/microsoft/Intune-PowerShell-SDK](https://github.com/microsoft/Intune-PowerShell-SDK)
-
-#### Tags
-
-- Automation
-- Intune
-- PowerShell
-- SDK
-
-#### Properties
-
-- [Documentation](https://github.com/microsoft/Intune-PowerShell-SDK)
-- [Getting Started](https://github.com/microsoft/mggraph-intune-samples)
-- [S D Ks](https://learn.microsoft.com/en-us/graph/sdks/sdk-installation)
-- [Postman Collection](collections/microsoft-endpoint-configuration-management-configmgr-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-endpoint-configuration-management-configmgr-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-endpoint-configuration-management-intune-data-warehouse-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-endpoint-configuration-management-intune-data-warehouse-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-endpoint-configuration-management-intune-graph-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-endpoint-configuration-management-intune-graph-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-endpoint-configuration-management-intune-reporting-export-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-endpoint-configuration-management-intune-reporting-export-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Arazzo Workflows](arazzo/) — [Arazzo Specification](https://spec.openapis.org/arazzo/latest.html)
-- [Portal](https://endpoint.microsoft.com/)
-- [Console](https://intune.microsoft.com/)
-- [Documentation](https://learn.microsoft.com/en-us/intune/intune-service/)
-- [Getting Started](https://learn.microsoft.com/en-us/intune/configmgr/core/understand/introduction)
-- [Authentication](https://learn.microsoft.com/en-us/intune/intune-service/developer/intune-graph-apis)
-- [Blog](https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/bg-p/MicrosoftEndpointManagerBlog)
-- [Support](https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/contact-assisted-support)
-- [Status Page](https://status.azure.com/)
-- [Changelog](https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new)
-- [Pricing](https://www.microsoft.com/en-us/security/business/microsoft-intune-pricing)
-- [Sign Up](https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/free-trial-sign-up)
-- [Login](https://intune.microsoft.com/)
-- [Privacy Policy](https://privacy.microsoft.com/)
-- [Terms of Service](https://www.microsoft.com/licensing/terms/)
-- [GitHub Organization](https://github.com/microsoftgraph)
-- [Community](https://techcommunity.microsoft.com/category/microsoftintune/blog/microsoftintuneblog)
 - [Website](https://learn.microsoft.com/en-us/intune/configmgr/)
+- [Documentation](https://learn.microsoft.com/en-us/intune/intune-service/)
+- [Getting started](https://learn.microsoft.com/en-us/intune/configmgr/core/understand/introduction)
+- [Pricing](https://www.microsoft.com/en-us/security/business/microsoft-intune-pricing)
+- [Support](https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/contact-assisted-support)
+- [Changelog](https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new)
+- [Blog](https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/bg-p/MicrosoftEndpointManagerBlog)
+- [Terms of service](https://www.microsoft.com/licensing/terms/)
+- [Privacy policy](https://privacy.microsoft.com/)
+- [GitHub](https://github.com/microsoftgraph)
+- [Status](https://status.azure.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 59.2** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 69.6 |
+| Contract quality | 63.5 |
+| Contract governance | 9.8 |
+| Operational transparency | 52.6 |
+| Developer ergonomics | 73.8 |
+| Access clarity | 52.6 |
+
+**Agent readiness 24.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 40.2** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/microsoft-endpoint-configuration-management/](https://apis.io/providers/microsoft-endpoint-configuration-management/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Microsoft Endpoint Configuration Management: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/microsoft-endpoint-configuration-management/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
